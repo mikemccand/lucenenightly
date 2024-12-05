@@ -1,3 +1,5 @@
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/nvme0n1p1  880G  532G  303G  64% /
 + echo 'Run gradle test'
 Run gradle test
 + /usr/bin/python3 -uO /l/util.nightly/src/python/runNightlyGradleTestPrecommit.py
@@ -5,9 +7,312 @@ Run gradle test
 Using java from: /usr/lib/jvm/java-23-openjdk/bin/
 use java command /usr/lib/jvm/java-23-openjdk/bin/java --add-modules jdk.incubator.vector -Xmx32g -Xms32g -server -XX:+UseParallelGC -Djava.io.tmpdir=/l/tmp
   gradle test log: /l/logs.nightly/ant_test/2024.12.05.lucene-tests.txt
-  took: 1.9 min
+  took: 1.7 min
   gradle precommit log: /l/logs.nightly/ant_test/2024.12.05.precommit.txt
-  took: 1.0 min
-+ /l/util.nightly/src/python/runNightlyGradleTestPrecommit.py
-/home/mike/nightly_strict.cmd: line 85: /l/util.nightly/src/python/runNightlyGradleTestPrecommit.py: Permission denied
+  took: 0.9 min
++ echo 'Run lucene nightly'
+Run lucene nightly
++ /usr/bin/python -uO /l/util.nightly/src/python/nightlyBench.py -run
+***USING BIG LINE FILE***
+Using java from: /usr/lib/jvm/java-23-openjdk/bin/
+use java command /usr/lib/jvm/java-23-openjdk/bin/java --add-modules jdk.incubator.vector -Xmx32g -Xms32g -server -XX:+UseParallelGC -Djava.io.tmpdir=/l/tmp
+WARNING: Gnuplot module not present; will not make charts
+perf executable is /usr/sbin/perf; will collect aggregate CPU profiling data
+GitHub pull request counts: 206 open, 2509 closed
+
+
+
+
+[2024-12-05 12:31:14.341710] start
+[2024-12-05 12:31:14.341801] log dir /l/logs.nightly/2024.12.05.12.31.14
+openjdk full version "23"
+uname -a: Linux beast3.mikemccandless.com 6.11.6-arch1-1 #1 SMP PREEMPT_DYNAMIC Fri, 01 Nov 2024 03:30:41 +0000 x86_64 GNU/Linux
+lsb_release -a:
+LSB Version:	n/a
+Distributor ID:	Arch
+Description:	Arch Linux
+Release:	rolling
+Codename:	n/a
+luceneutil rev is baf0e23719eae69e38a8d0ee2709476575cf7403
+LUCENE rev is c1362cc6a3ed28ddad68a800122062c98b161965
+last successfull Lucene rev 552b3f52d74ea5d1e7dab44d61e08d0569a5a306, luceneutil rev 806b9dd003392a59a58ee601a6bfd8693c3f2138
+run ['git', 'log', '552b3f52d74ea5d1e7dab44d61e08d0569a5a306^..c1362cc6a3ed28ddad68a800122062c98b161965']
+No commit message asking for regold of results files
+[2024-12-05 12:31:14.368197] RUN: git clean -xfd
+Removing .gradle/
+Removing build-tools/build-infra/.gradle/
+Removing build-tools/build-infra/build/
+Removing build-tools/missing-doclet/.gradle/
+Removing build/
+Removing gradle.properties
+Removing gradle/wrapper/gradle-wrapper.jar
+Removing lucene/analysis.tests/build/
+Removing lucene/analysis/build/
+Removing lucene/analysis/common/build/
+Removing lucene/analysis/icu/build/
+Removing lucene/analysis/kuromoji/build/
+Removing lucene/analysis/morfologik.tests/build/
+Removing lucene/analysis/morfologik/build/
+Removing lucene/analysis/nori/build/
+Removing lucene/analysis/opennlp/build/
+Removing lucene/analysis/phonetic/build/
+Removing lucene/analysis/smartcn/build/
+Removing lucene/analysis/stempel/build/
+Removing lucene/backward-codecs/build/
+Removing lucene/benchmark-jmh/build/
+Removing lucene/benchmark/build/
+Removing lucene/build/
+Removing lucene/classification/build/
+Removing lucene/codecs/build/
+Removing lucene/core.tests/build/
+Removing lucene/core/build/
+Removing lucene/demo/build/
+Removing lucene/distribution.tests/build/
+Removing lucene/distribution/build/
+Removing lucene/documentation/build/
+Removing lucene/expressions/build/
+Removing lucene/facet/build/
+Removing lucene/grouping/build/
+Removing lucene/highlighter/build/
+Removing lucene/join/build/
+Removing lucene/luke/build/
+Removing lucene/memory/build/
+Removing lucene/misc/build/
+Removing lucene/monitor/build/
+Removing lucene/queries/build/
+Removing lucene/queryparser/build/
+Removing lucene/replicator/build/
+Removing lucene/sandbox/build/
+Removing lucene/spatial-extras/build/
+Removing lucene/spatial-test-fixtures/build/
+Removing lucene/spatial3d/build/
+Removing lucene/suggest/build/
+Removing lucene/test-framework/build/
+[2024-12-05 12:31:14.602832]   took 0.2 sec
+will NOT regold results files but rather compare to last good result files
+Java command-line: /usr/lib/jvm/java-23-openjdk/bin/java --add-modules jdk.incubator.vector -Xmx32g -Xms32g -server -XX:+UseParallelGC -Djava.io.tmpdir=/l/tmp
+transparent_hugepages: [always] madvise never
+
+[2024-12-05 12:31:14.602956] RUN: /l/trunk.nightly/gradlew clean > /l/logs.nightly/2024.12.05.12.31.14/clean-lucene.log 2>&1
+[2024-12-05 12:31:20.079415]   took 5.5 sec
+[2024-12-05 12:31:20.079459] RUN: /l/trunk.nightly/gradlew jar > /l/logs.nightly/2024.12.05.12.31.14/jar-lucene.log 2>&1
+[2024-12-05 12:31:40.078046]   took 20.0 sec
+
+JAVA:
+WARNING: Using incubator modules: jdk.incubator.vector
+openjdk version "23" 2024-09-17
+OpenJDK Runtime Environment (build 23)
+OpenJDK 64-Bit Server VM (build 23, mixed mode, sharing)
+
+
+OS:
+Linux beast3.mikemccandless.com 6.11.6-arch1-1 #1 SMP PREEMPT_DYNAMIC Fri, 01 Nov 2024 03:30:41 +0000 x86_64 GNU/Linux
+
+
+LOGS:
+/l/logs.nightly
+Using checkout:[/l/trunk.nightly] for competitor:[nightly]
+compile lucene:core...
+  /l/trunk.nightly/lucene/benchmark
+files ['/l/util.nightly/src/main/perf/IndexAndSearchOpenStreetMaps.java', '/l/util.nightly/src/main/perf/OpenDirectory.java', '/l/util.nightly/src/main/perf/StringFieldDocSelector.java', '/l/util.nightly/src/main/perf/SearchTaxis.java', '/l/util.nightly/src/main/perf/RemoteTaskSource.java', '/l/util.nightly/src/main/perf/SearchPerfTest.java', '/l/util.nightly/src/main/perf/KeepNoCommitsDeletionPolicy.java', '/l/util.nightly/src/main/perf/DiskUsage.java', '/l/util.nightly/src/main/perf/NRTPerfTest.java', '/l/util.nightly/src/main/perf/Indexer.java', '/l/util.nightly/src/main/perf/PKLookupWithTermStateTask.java', '/l/util.nightly/src/main/perf/IndexState.java', '/l/util.nightly/src/main/perf/VectorDictionary.java', '/l/util.nightly/src/main/perf/TaskParser.java', '/l/util.nightly/src/main/perf/IndexThreads.java', '/l/util.nightly/src/main/perf/SearchTask.java', '/l/util.nightly/src/main/perf/RespellTask.java', '/l/util.nightly/src/main/perf/TaskSource.java', '/l/util.nightly/src/main/perf/LineFileDocs.java', '/l/util.nightly/src/main/perf/CreateQueries.java', '/l/util.nightly/src/main/perf/RandomQuery.java', '/l/util.nightly/src/main/perf/PerfUtils.java', '/l/util.nightly/src/main/perf/Task.java', '/l/util.nightly/src/main/perf/LocalTaskSource.java', '/l/util.nightly/src/main/perf/IndexTaxis.java', '/l/util.nightly/src/main/perf/PointsPKLookupTask.java', '/l/util.nightly/src/main/perf/TaskThreads.java', '/l/util.nightly/src/main/perf/UnparsedTask.java', '/l/util.nightly/src/main/perf/Args.java', '/l/util.nightly/src/main/perf/TaskParserFactory.java', '/l/util.nightly/src/main/perf/StatisticsHelper.java', '/l/util.nightly/src/main/perf/BenchRearranger.java', '/l/util.nightly/src/main/perf/PKLookupTask.java', '/l/util.nightly/src/main/perf/OpenCloseIndexWriter.java']
+compile: /usr/lib/jvm/java-23-openjdk/bin/javac -g -d /l/util.nightly/build -classpath /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar:/l/trunk.nightly/lucene/sandbox/build/classes/java/main:/l/trunk.nightly/lucene/misc/build/classes/java/main:/l/trunk.nightly/lucene/facet/build/classes/java/main:/l/trunk.nightly/lucene/analysis/common/build/classes/java/main:/l/trunk.nightly/lucene/analysis/icu/build/classes/java/main:/l/trunk.nightly/lucene/queryparser/build/classes/java/main:/l/trunk.nightly/lucene/grouping/build/classes/java/main:/l/trunk.nightly/lucene/suggest/build/classes/java/main:/l/trunk.nightly/lucene/highlighter/build/classes/java/main:/l/trunk.nightly/lucene/codecs/build/classes/java/main:/l/trunk.nightly/lucene/queries/build/classes/java/main:/l/trunk.nightly/lucene/join/build/classes/java/main:/l/trunk.nightly/lucene/spatial3d/build/classes/java/main:/l/util.nightly/lib/HdrHistogram.jar:/l/util.nightly/src/main/build/classes/java/main:/l/util.nightly/build /l/util.nightly/src/main/perf/IndexAndSearchOpenStreetMaps.java /l/util.nightly/src/main/perf/OpenDirectory.java /l/util.nightly/src/main/perf/StringFieldDocSelector.java /l/util.nightly/src/main/perf/SearchTaxis.java /l/util.nightly/src/main/perf/RemoteTaskSource.java /l/util.nightly/src/main/perf/SearchPerfTest.java /l/util.nightly/src/main/perf/KeepNoCommitsDeletionPolicy.java /l/util.nightly/src/main/perf/DiskUsage.java /l/util.nightly/src/main/perf/NRTPerfTest.java /l/util.nightly/src/main/perf/Indexer.java /l/util.nightly/src/main/perf/PKLookupWithTermStateTask.java /l/util.nightly/src/main/perf/IndexState.java /l/util.nightly/src/main/perf/VectorDictionary.java /l/util.nightly/src/main/perf/TaskParser.java /l/util.nightly/src/main/perf/IndexThreads.java /l/util.nightly/src/main/perf/SearchTask.java /l/util.nightly/src/main/perf/RespellTask.java /l/util.nightly/src/main/perf/TaskSource.java /l/util.nightly/src/main/perf/LineFileDocs.java /l/util.nightly/src/main/perf/CreateQueries.java /l/util.nightly/src/main/perf/RandomQuery.java /l/util.nightly/src/main/perf/PerfUtils.java /l/util.nightly/src/main/perf/Task.java /l/util.nightly/src/main/perf/LocalTaskSource.java /l/util.nightly/src/main/perf/IndexTaxis.java /l/util.nightly/src/main/perf/PointsPKLookupTask.java /l/util.nightly/src/main/perf/TaskThreads.java /l/util.nightly/src/main/perf/UnparsedTask.java /l/util.nightly/src/main/perf/Args.java /l/util.nightly/src/main/perf/TaskParserFactory.java /l/util.nightly/src/main/perf/StatisticsHelper.java /l/util.nightly/src/main/perf/BenchRearranger.java /l/util.nightly/src/main/perf/PKLookupTask.java /l/util.nightly/src/main/perf/OpenCloseIndexWriter.java
+[2024-12-05 12:31:45.174579] now run stored fields benchmark
+RUN: javac -cp /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar -d build src/extra/perf/StoredFieldsBenchmark.java, cwd=/l/util.nightly
+Now run BEST_SPEED with doc_limit=-1:
+RUN: /usr/lib/jvm/java-23-openjdk/bin/java --add-modules jdk.incubator.vector -Xmx32g -Xms32g -server -XX:+UseParallelGC -Djava.io.tmpdir=/l/tmp -cp /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar:build perf.StoredFieldsBenchmark /lucenedata/geonames/geonames.20160818.csv /l/indices/geonames-stored-fields BEST_SPEED -1
+Mode: BEST_SPEED
+  indexing_time_msec: 131116.00
+  stored_field_size_mb: 625.54
+  retrieved_time_msec: 167.39
+Now run BEST_COMPRESSION with doc_limit=-1:
+RUN: /usr/lib/jvm/java-23-openjdk/bin/java --add-modules jdk.incubator.vector -Xmx32g -Xms32g -server -XX:+UseParallelGC -Djava.io.tmpdir=/l/tmp -cp /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar:build perf.StoredFieldsBenchmark /lucenedata/geonames/geonames.20160818.csv /l/indices/geonames-stored-fields BEST_COMPRESSION -1
+Mode: BEST_COMPRESSION
+  indexing_time_msec: 276012.00
+  stored_field_size_mb: 387.38
+  retrieved_time_msec: 1352.44
+Done: took 840.83 seconds, saved to /l/logs.nightly/2024.12.05.12.31.14/geonames-stored-fields-benchmark-results.pk
+[2024-12-05 12:45:46.454986] done run stored fields benchmark
+[2024-12-05 12:45:46.455008] now run NAD facets benchmark
+RUN: /usr/lib/jvm/java-23-openjdk/bin/javac -cp /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar:/l/trunk.nightly/lucene/facet/build/libs/lucene-facet-11.0.0-SNAPSHOT.jar:build -d build src/main/perf/facets/IndexFacets.java, cwd=/l/util.nightly
+RUN: /usr/lib/jvm/java-23-openjdk/bin/javac -cp /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar:/l/trunk.nightly/lucene/facet/build/libs/lucene-facet-11.0.0-SNAPSHOT.jar:build -d build src/main/perf/facets/BenchmarkFacets.java, cwd=/l/util.nightly
+Note: src/main/perf/facets/BenchmarkFacets.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+RUN: /usr/lib/jvm/java-23-openjdk/bin/java --add-modules jdk.incubator.vector -Xmx32g -Xms32g -server -XX:+UseParallelGC -Djava.io.tmpdir=/l/tmp -cp /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar:/l/trunk.nightly/lucene/facet/build/libs/lucene-facet-11.0.0-SNAPSHOT.jar:build perf.facets.IndexFacets /l/data/NAD_taxonomy.txt.gz /l/indices/nad-facets-nightly -1, cwd=/l/util.nightly
+Indexing documents...
+
+WARNING: Using incubator modules: jdk.incubator.vector
+Dec 05, 2024 12:45:47 PM org.apache.lucene.internal.vectorization.PanamaVectorizationProvider <init>
+INFO: Java vector incubator API enabled; uses preferredBitSize=256; FMA enabled
+Indexed 0 documents
+Indexed 100000 documents
+Indexed 200000 documents
+Indexed 300000 documents
+Indexed 400000 documents
+Indexed 500000 documents
+Indexed 600000 documents
+Indexed 700000 documents
+Indexed 800000 documents
+Indexed 900000 documents
+Indexed 1000000 documents
+Indexed 1100000 documents
+Indexed 1200000 documents
+Indexed 1300000 documents
+Indexed 1400000 documents
+Indexed 1500000 documents
+Indexed 1600000 documents
+Indexed 1700000 documents
+Indexed 1800000 documents
+Indexed 1900000 documents
+Indexed 2000000 documents
+Indexed 2100000 documents
+Indexed 2200000 documents
+Indexed 2300000 documents
+Indexed 2400000 documents
+Indexed 2500000 documents
+Indexed 2600000 documents
+Indexed 2700000 documents
+Indexed 2800000 documents
+Indexed 2900000 documents
+Indexed 3000000 documents
+Indexed 3100000 documents
+Indexed 3200000 documents
+Indexed 3300000 documents
+Indexed 3400000 documents
+Indexed 3500000 documents
+Indexed 3600000 documents
+Indexed 3700000 documents
+Indexed 3800000 documents
+Indexed 3900000 documents
+Indexed 4000000 documents
+Indexed 4100000 documents
+Indexed 4200000 documents
+Indexed 4300000 documents
+Indexed 4400000 documents
+Indexed 4500000 documents
+Indexed 4600000 documents
+Indexed 4700000 documents
+Indexed 4800000 documents
+Indexed 4900000 documents
+Indexed 5000000 documents
+Indexed 5100000 documents
+Indexed 5200000 documents
+Indexed 5300000 documents
+Indexed 5400000 documents
+Indexed 5500000 documents
+Indexed 5600000 documents
+Indexed 5700000 documents
+Indexed 5800000 documents
+Indexed 5900000 documents
+Indexed 6000000 documents
+Indexed 6100000 documents
+Indexed 6200000 documents
+Indexed 6300000 documents
+Indexed 6400000 documents
+Indexed 6500000 documents
+Indexed 6600000 documents
+Indexed 6700000 documents
+Indexed 6800000 documents
+Indexed 6900000 documents
+Indexed 7000000 documents
+Indexed 7100000 documents
+Indexed 7200000 documents
+Indexed 7300000 documents
+Indexed 7400000 documents
+Indexed 7500000 documents
+Indexed 7600000 documents
+Indexed 7700000 documents
+Indexed 7800000 documents
+Indexed 7900000 documents
+Indexed 8000000 documents
+Indexed 8100000 documents
+Indexed 8200000 documents
+Indexed 8300000 documents
+Indexed 8400000 documents
+Indexed 8500000 documents
+Indexed 8600000 documents
+Indexed 8700000 documents
+Indexed 8800000 documents
+Indexed 8900000 documents
+Indexed 9000000 documents
+Indexed 9100000 documents
+Indexed 9200000 documents
+Indexed 9300000 documents
+Indexed 9400000 documents
+Indexed 9500000 documents
+Indexed 9600000 documents
+Indexed 9700000 documents
+Indexed 9800000 documents
+Indexed 9900000 documents
+Indexed 10000000 documents
+Indexed 10100000 documents
+Indexed 10200000 documents
+Indexed 10300000 documents
+Indexed 10400000 documents
+Indexed 10500000 documents
+Indexed 10600000 documents
+Indexed 10700000 documents
+Indexed 10800000 documents
+Indexed 10900000 documents
+Indexed 11000000 documents
+Indexed 11100000 documents
+Indexed 11200000 documents
+Indexed 11300000 documents
+Indexed 11400000 documents
+Indexed 11500000 documents
+Indexed 11600000 documents
+Indexed 11700000 documents
+Indexed 11800000 documents
+Indexed 11900000 documents
+Indexed 12000000 documents
+Indexed 12100000 documents
+Indexed 12200000 documents
+Indexed 12300000 documents
+Indexed 12400000 documents
+Indexed 12500000 documents
+Indexed 12600000 documents
+Indexed 12700000 documents
+Indexed 12800000 documents
+Indexed 12900000 documents
+Indexed 13000000 documents
+Indexed 13100000 documents
+Indexed 13200000 documents
+Indexed 13300000 documents
+Indexed 13400000 documents
+Indexed 13500000 documents
+Indexed 13600000 documents
+Indexed 13700000 documents
+Indexed 13800000 documents
+Indexed 13900000 documents
+Indexed 14000000 documents
+Indexed 14100000 documents
+Indexed 14200000 documents
+Indexed 14300000 documents
+Indexed 14400000 documents
+Indexed 14500000 documents
+Indexed 14600000 documents
+Indexed 14700000 documents
+Indexed 14800000 documents
+Indexed 14900000 documents
+Indexed 15000000 documents
+Indexed 15100000 documents
+Indexed 15200000 documents
+Indexed 15300000 documents
+Indexed 15400000 documents
+Indexed 15500000 documents
+Indexed 15600000 documents
+Indexed 15700000 documents
+Indexed 15800000 documents
+Indexed 15900000 documents
+Indexed 16000000 documents
+Indexed 16100000 documents
+Indexed 16200000 documents
+Indexed 16300000 documents
+Indexed 16400000 documents
+Indexed 16500000 documents
+Indexed 16600000 documents
+Indexed 16700000 documents
+Indexed 16800000 documents
+Indexed 16900000 documents
+Indexed 17000000 documents
+Indexed 17100000 documents
 + cp /l/logs.nightly/all.log /l/reports.nightly
