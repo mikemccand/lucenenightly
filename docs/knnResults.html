@@ -9,12 +9,21 @@ luceneGitHashes = ['68051f1b9f5a052b9a2b4274ad7197eafb4a8caf', '68051f1b9f5a052b
 luceneUtilGitHashes = ['eccf31ee23b26545fe55c7ae596572b6784ede84', '85bde56123238ac36d8566f576f9025d4a5abf7b', '85bde56123238ac36d8566f576f9025d4a5abf7b', '85bde56123238ac36d8566f576f9025d4a5abf7b', '85bde56123238ac36d8566f576f9025d4a5abf7b', '85bde56123238ac36d8566f576f9025d4a5abf7b', '85bde56123238ac36d8566f576f9025d4a5abf7b', '102ffb365926fe8f9419a363d4d4c1f795c182b4', '102ffb365926fe8f9419a363d4d4c1f795c182b4', 'd704fe6e68fd7e6330cddcb4b0e1845b4137964a', '388f9d45998b8ab19904005e65c278d6b485fe9f', '388f9d45998b8ab19904005e65c278d6b485fe9f', '388f9d45998b8ab19904005e65c278d6b485fe9f', '388f9d45998b8ab19904005e65c278d6b485fe9f', '84279bd412df9bd340465afe8ff82c1cf791609a', '84279bd412df9bd340465afe8ff82c1cf791609a', '84279bd412df9bd340465afe8ff82c1cf791609a', '84279bd412df9bd340465afe8ff82c1cf791609a', '84279bd412df9bd340465afe8ff82c1cf791609a', '84279bd412df9bd340465afe8ff82c1cf791609a', '84279bd412df9bd340465afe8ff82c1cf791609a', 'a6e2cbf022369f0a89d8b2c716a10f3f9c012a2d', 'a6e2cbf022369f0a89d8b2c716a10f3f9c012a2d', 'bbee4dbb78987c216dc22e77e014c290546a1cc3', 'bbee4dbb78987c216dc22e77e014c290546a1cc3', 'bbee4dbb78987c216dc22e77e014c290546a1cc3', '9764dffb3e00fc37a9edb4a55381010d4c60c26c', '9764dffb3e00fc37a9edb4a55381010d4c60c26c', '9764dffb3e00fc37a9edb4a55381010d4c60c26c', '9764dffb3e00fc37a9edb4a55381010d4c60c26c', '9764dffb3e00fc37a9edb4a55381010d4c60c26c', '9764dffb3e00fc37a9edb4a55381010d4c60c26c', '930d9dc18e300de87183c733bf56281b605fd047', 'ddc2463ab4ad63bb1a409f92de8feadb894cacfa', '76e872e71e406d75c27be044058e59fea3f0b7d8', 'ce3159d772ed4efca6f951354191863ec220b26d', 'ce3159d772ed4efca6f951354191863ec220b26d', '710eaf77795d44c0c4a9dfcaa3ffd93ce957fde6', '710eaf77795d44c0c4a9dfcaa3ffd93ce957fde6', '630d5491e87fc4dc1bf25a173f5e547c5a5c520e', '844bbc089fdc45624ddb61b9ccef283a0116f90d', 'e890fdaa4213629fcd2be71e040bfe354149a69b', 'e890fdaa4213629fcd2be71e040bfe354149a69b', 'e890fdaa4213629fcd2be71e040bfe354149a69b', '4cedb91be700b8d9c6c2a763b4fe7cfed6baa616', '836be8d0074353abe6d5ef086a8d1d86f81c2d6f', '836be8d0074353abe6d5ef086a8d1d86f81c2d6f', '836be8d0074353abe6d5ef086a8d1d86f81c2d6f', '0ecc4a75cd95b9c8978d91f29317aeea2c7b6836', '0ecc4a75cd95b9c8978d91f29317aeea2c7b6836', '0ecc4a75cd95b9c8978d91f29317aeea2c7b6836', 'ee7bfc552331a3b16898eefead8e58a5af075c59', 'ee7bfc552331a3b16898eefead8e58a5af075c59', 'ee7bfc552331a3b16898eefead8e58a5af075c59', '21726c39502128ac70023a94f281f2e92ee98525', '21726c39502128ac70023a94f281f2e92ee98525', '52aac3fdc4827b1aa45f0488b9598ae844dc1128', '8b6302283a58e138767e9525ff31930eb74271ca', '0af07a463563138fb7f76c181afdb5d8e23518fc', '2144863c4b4d537e1d31dd6e4ef1104fe8d4e5c4', '2144863c4b4d537e1d31dd6e4ef1104fe8d4e5c4', '0da3ced9d495f428ba8f7dc1a8bc1c61d13fe9d8'];
 
 function onPointClick(e, p) {
+  // TODO: make this controllable via end-user GUI
+  var which = "luceneutil";
+  // var which = "lucene";
   if (p.idx > 0) {
-    //top.location = "https://github.com/apache/lucene/compare/" + luceneGitHashes[p.idx-1] + "..." + luceneGitHashes[p.idx];
-    top.location = "https://github.com/mikemccand/luceneutil/compare/" + luceneUtilGitHashes[p.idx-1] + "..." + luceneUtilGitHashes[p.idx];
+    if (which === "lucene") {
+      top.location = "https://github.com/apache/lucene/compare/" + luceneGitHashes[p.idx-1] + "..." + luceneGitHashes[p.idx];
+    } else {
+      top.location = "https://github.com/mikemccand/luceneutil/compare/" + luceneUtilGitHashes[p.idx-1] + "..." + luceneUtilGitHashes[p.idx];
+    }
   } else {
-    //top.location = "https://github.com/apache/lucene/commit/" + luceneGitHashes[p.idx];
-    top.location = "https://github.com/mikemccand/luceneutil/commit/" + luceneUtilGitHashes[p.idx];
+    if (which === "lucene") {
+      top.location = "https://github.com/apache/lucene/commit/" + luceneGitHashes[p.idx];
+    } else {
+      top.location = "https://github.com/mikemccand/luceneutil/commit/" + luceneUtilGitHashes[p.idx];
+    }
   }
 }
 </script>
