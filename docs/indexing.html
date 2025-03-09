@@ -4328,7 +4328,8 @@
     "2025-02-26 18:04:59,775.4\n" +
     "2025-02-27 18:05:02,880.5\n" +
     "2025-03-01 19:39:06,854.4\n" +
-    "2025-03-02 18:05:12,869.5\n",
+    "2025-03-02 18:05:12,869.5\n" +
+    "2025-03-08 09:51:30,913.7\n",
     {title: "~1 KB Wikipedia English docs", xlabel: "Date", colors: ["#218559", "#192823", "#B0A691", "#06A2CB", "#EBB035", "#DD1E2F"], ylabel: "Plain text GB/hour", labelsKMB: true, labelsSeparateLines: true, clickCallback: doClick, labelsDivStyles: {'background-color': 'transparent'}, showRoller: false}
   );
   g_MedIndexTime.setAnnotations([
@@ -7182,7 +7183,8 @@
     "2025-02-26 18:04:59,20.0\n" +
     "2025-02-27 18:05:02,20.2\n" +
     "2025-03-01 19:39:06,20.2\n" +
-    "2025-03-02 18:05:12,20.1\n",
+    "2025-03-02 18:05:12,20.1\n" +
+    "2025-03-08 09:51:30,20.3\n",
     {title: "~4 KB Wikipedia English docs, with KNN Vectors", xlabel: "Date", colors: ["#218559", "#192823", "#B0A691", "#06A2CB", "#EBB035", "#DD1E2F"], ylabel: "Plain text GB/hour", labelsKMB: true, labelsSeparateLines: true, clickCallback: doClick, labelsDivStyles: {'background-color': 'transparent'}, showRoller: false}
   );
   g_MedVectorsIndexTime.setAnnotations([
@@ -8407,7 +8409,8 @@
     "2025-02-26 18:04:59,29.2\n" +
     "2025-02-27 18:05:02,29.4\n" +
     "2025-03-01 19:39:06,30.1\n" +
-    "2025-03-02 18:05:12,29.3\n",
+    "2025-03-02 18:05:12,29.3\n" +
+    "2025-03-08 09:51:30,29.4\n",
     {title: "~4 KB Wikipedia English docs, with KNN Scalar Quantized Vectors", xlabel: "Date", colors: ["#218559", "#192823", "#B0A691", "#06A2CB", "#EBB035", "#DD1E2F"], ylabel: "Plain text GB/hour", labelsKMB: true, labelsSeparateLines: true, clickCallback: doClick, labelsDivStyles: {'background-color': 'transparent'}, showRoller: false}
   );
   g_MedQuantizedVectorsIndexTime.setAnnotations([
@@ -13127,7 +13130,8 @@
     "2025-02-26 18:04:59,968.6\n" +
     "2025-02-27 18:05:02,942.8\n" +
     "2025-03-01 19:39:06,1005.2\n" +
-    "2025-03-02 18:05:12,1037.5\n",
+    "2025-03-02 18:05:12,1037.5\n" +
+    "2025-03-08 09:51:30,1105.2\n",
     {title: "~4 KB Wikipedia English docs", xlabel: "Date", colors: ["#218559", "#192823", "#B0A691", "#06A2CB", "#EBB035", "#DD1E2F"], ylabel: "Plain text GB/hour", labelsKMB: true, labelsSeparateLines: true, clickCallback: doClick, labelsDivStyles: {'background-color': 'transparent'}, showRoller: false}
   );
   g_BigIndexTime.setAnnotations([
@@ -19072,7 +19076,8 @@
     "2025-02-26 18:04:59,20.6440,5.5180,0.7290\n" +
     "2025-02-27 18:05:02,21.8590,5.5740,0.7310\n" +
     "2025-03-01 19:39:06,22.5000,5.5200,0.7400\n" +
-    "2025-03-02 18:05:12,21.2820,5.6140,0.7200\n",
+    "2025-03-02 18:05:12,21.2820,5.6140,0.7200\n" +
+    "2025-03-08 09:51:30,22.1180,5.5530,0.7540\n",
     {title: "JIT/GC times indexing ~1 KB docs", xlabel: "Date", colors: ["#218559", "#192823", "#B0A691", "#06A2CB", "#EBB035", "#DD1E2F"], ylabel: "Seconds", labelsKMB: true, labelsSeparateLines: true, clickCallback: doClick, labelsDivStyles: {'background-color': 'transparent'}, showRoller: false}
   );
   g_GCTimes.setAnnotations([
@@ -24688,7 +24693,8 @@
     "2025-02-26 18:04:59,94.8549052734375\n" +
     "2025-02-27 18:05:02,94.854890625\n" +
     "2025-03-01 19:39:06,94.854935546875\n" +
-    "2025-03-02 18:05:12,94.85488964843749\n",
+    "2025-03-02 18:05:12,94.85488964843749\n" +
+    "2025-03-08 09:51:30,94.854865234375\n",
     {title: "Disk usage of fixed search index", xlabel: "Date", colors: ["#218559", "#192823", "#B0A691", "#06A2CB", "#EBB035", "#DD1E2F"], ylabel: "GB", labelsKMB: true, labelsSeparateLines: true, clickCallback: doClick, labelsDivStyles: {'background-color': 'transparent'}, showRoller: false}
   );
   g_FixedIndexSize.setAnnotations([
@@ -26341,9 +26347,9 @@
   <li> Test does <b>not wait for merges on close</b> (calls <tt>IW.close(false)</tt>)  <li> Analyzer is <tt>StandardAnalyzer</tt>, but we <b>index all stop words</b>  <li> Test indexes full <a href="http://en.wikipedia.org/wiki/Wikipedia:Database_download">Wikipedia English XML export</a> (1/15/2011), from a pre-created line file (one document per line), on a different drive from the one that stores the index  <li> 36 indexing threads
   <li> 2048 MB RAM buffer
   <li> Java command-line: <tt>/usr/lib/jvm/java-23-openjdk/bin/java --add-modules jdk.incubator.vector -Xmx32g -Xms32g -server -XX:+UseParallelGC -Djava.io.tmpdir=/l/tmp</tt>
-  <li> Java version: <tt>openjdk version "17.0.13" 2024-10-15
-OpenJDK Runtime Environment (build 17.0.13+11)
-OpenJDK 64-Bit Server VM (build 17.0.13+11, mixed mode, sharing)</tt>
+  <li> Java version: <tt>openjdk version "23" 2024-09-17
+OpenJDK Runtime Environment (build 23)
+OpenJDK 64-Bit Server VM (build 23, mixed mode, sharing)</tt>
   <li> OS: <tt>Linux beast3.mikemccandless.com 6.12.4-arch1-1 #1 SMP PREEMPT_DYNAMIC Mon, 09 Dec 2024 14:31:57 +0000 x86_64 GNU/Linux</tt>
   <li> CPU: 2 Xeon X5680, overclocked @ 4.0 Ghz (total 24 cores = 2 CPU * 6 core * 2 hyperthreads)
-  <li> IO: index stored on 240 GB <a href="http://www.ocztechnology.com/ocz-vertex-3-sata-iii-2-5-ssd.html">OCZ Vertex 3</a>, starting on 4/25 (previously on traditional spinning-magnets hard drive (Western Digital Caviar Green, 1TB))  <li> Source code: <a href="http://code.google.com/a/apache-extras.org/p/luceneutil/source/browse/perf/Indexer.java"><tt>Indexer.java</tt></a>  <li> All graphs are interactive <a href="http://dygraphs.com">Dygraphs</a></ul><br><a href="index.html">Back to all results</a><br><br><em>[last updated: 2025-03-06 10:49:05.964659; send questions to <a href="mailto:lucene@mikemccandless.com">Mike McCandless</a>]</em></div></body></html>
+  <li> IO: index stored on 240 GB <a href="http://www.ocztechnology.com/ocz-vertex-3-sata-iii-2-5-ssd.html">OCZ Vertex 3</a>, starting on 4/25 (previously on traditional spinning-magnets hard drive (Western Digital Caviar Green, 1TB))  <li> Source code: <a href="http://code.google.com/a/apache-extras.org/p/luceneutil/source/browse/perf/Indexer.java"><tt>Indexer.java</tt></a>  <li> All graphs are interactive <a href="http://dygraphs.com">Dygraphs</a></ul><br><a href="index.html">Back to all results</a><br><br><em>[last updated: 2025-03-09 00:42:42.710807; send questions to <a href="mailto:lucene@mikemccandless.com">Mike McCandless</a>]</em></div></body></html>
