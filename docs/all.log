@@ -24056,3 +24056,209 @@ Error resolving plugin [id: 'org.gradle.toolchains.foojay-resolver-convention', 
 
 BUILD FAILED in 12s
 + cp /l/logs.nightly/all.log /l/reports.nightly
++ echo 'clean /l/tmp'
+clean /l/tmp
++ rm -rf '/l/tmp/*'
++ echo
+
++ echo 'Now git add/commit nightly log file (all.log)'
+Now git add/commit nightly log file (all.log)
++ cd /l/lucenenightly
++ git add .
+++ date
++ git commit -m 'Tue Apr 29 06:00:37 PM EDT 2025: auto commit nightly benchy log file'
+[main 31aaf77a] Tue Apr 29 06:00:37 PM EDT 2025: auto commit nightly benchy log file
+ 1 file changed, 158 insertions(+)
++ git push
+To github.com:mikemccand/lucenenightly.git
+   dadc9592..31aaf77a  main -> main
+bash: cannot set terminal process group (3529401): Inappropriate ioctl for device
+bash: no job control in this shell
++ /bin/bash /home/mike/nightly_strict.cmd
++ export ANT_HOME=/usr/local/src/apache-ant-1.9.5
++ ANT_HOME=/usr/local/src/apache-ant-1.9.5
++ export JAVA_HOME=/usr/lib/jvm/java-23-openjdk
++ JAVA_HOME=/usr/lib/jvm/java-23-openjdk
++ export GRADLE_HOME=/usr/local/src/gradle-2.9
++ GRADLE_HOME=/usr/local/src/gradle-2.9
++ export PATH=/usr/local/src/apache-ant-1.9.5/bin:/usr/lib/jvm/java-23-openjdk/bin:/usr/local/src/gradle-2.9/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
++ PATH=/usr/local/src/apache-ant-1.9.5/bin:/usr/lib/jvm/java-23-openjdk/bin:/usr/local/src/gradle-2.9/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
+++ date
++ echo -e '\n\nWed Apr 30 06:00:23 PM EDT 2025: now start nightly benchmarks'
+
+
+Wed Apr 30 06:00:23 PM EDT 2025: now start nightly benchmarks
++ pkill java
++ true
++ pkill mencoder
++ true
++ echo 'now git pull and build Lucene JARs...'
+now git pull and build Lucene JARs...
++ cd /l/trunk.nightly/lucene
++ git checkout main
+Already on 'main'
+Your branch is up to date with 'origin/main'.
++ git pull origin main
+From https://gitbox.apache.org/repos/asf/lucene
+ * branch                    main       -> FETCH_HEAD
+   9c6708805e2..1b5c25f3d48  main       -> origin/main
+Updating 9c6708805e2..1b5c25f3d48
+Fast-forward
+ .github/dependabot.yml                             |     9 +-
+ .github/workflows/run-checks-python.yml            |     2 +-
+ dev-tools/scripts/requirements.txt                 |    13 +-
+ dev-tools/scripts/smokeTestRelease.py              |     2 +-
+ gradle/generation/extract-jdk-apis.gradle          |     2 +-
+ .../extract-jdk-apis/ExtractJdkApis.java           |     5 +-
+ gradle/java/core-mrjar.gradle                      |     4 +-
+ gradle/libs.versions.toml                          |    62 +-
+ gradle/validation/ecj-lint/ecj.javadocs.prefs      |     6 +-
+ gradle/validation/error-prone.gradle               |    21 +-
+ gradlew                                            |    93 +-
+ gradlew.bat                                        |    47 +-
+ lucene/CHANGES.txt                                 |     6 +-
+ .../src/generated/checksums/generateTlds.json      |     4 +-
+ .../checksums/generateUAX29URLEmailTokenizer.json  |     4 +-
+ .../apache/lucene/analysis/email/ASCIITLD.jflex    |     3 +-
+ .../analysis/email/UAX29URLEmailTokenizerImpl.java | 41774 +++++++++----------
+ .../test/org/apache/lucene/analysis/email/TLDs.txt |     1 -
+ .../lucene50/Lucene50CompoundReader.java           |     2 +-
+ lucene/benchmark/build.gradle                      |     1 +
+ .../simpletext/SimpleTextCompoundFormat.java       |     5 +-
+ lucene/core/src/generated/jdk/jdk21.apijar         |   Bin 57069 -> 0 bytes
+ lucene/core/src/generated/jdk/jdk24.apijar         |   Bin 0 -> 42158 bytes
+ .../codecs/lucene90/Lucene90CompoundReader.java    |     2 +-
+ .../lucene/index/DocumentsWriterPerThread.java     |     4 +-
+ .../java/org/apache/lucene/index/IndexWriter.java  |     8 +-
+ .../org/apache/lucene/index/ReadersAndUpdates.java |     4 +-
+ .../lucene/index/SortingTermVectorsConsumer.java   |     2 +-
+ .../apache/lucene/index/TermVectorsConsumer.java   |     2 +-
+ .../org/apache/lucene/store/DataAccessHint.java    |    25 +
+ .../org/apache/lucene/store/DefaultIOContext.java  |    83 +
+ .../java/org/apache/lucene/store/FileDataHint.java |    27 +
+ .../java/org/apache/lucene/store/FileTypeHint.java |    27 +
+ .../java/org/apache/lucene/store/IOContext.java    |   159 +-
+ .../java/org/apache/lucene/store/IndexInput.java   |    14 +-
+ .../org/apache/lucene/store/MMapDirectory.java     |   311 +-
+ .../lucene/store/MemorySegmentAccessInput.java     |     0
+ .../lucene/store/MemorySegmentIndexInput.java      |    18 +-
+ .../org/apache/lucene/store/NativeAccess.java      |     1 -
+ .../org/apache/lucene/store/PosixNativeAccess.java |     1 -
+ .../apache/lucene/store/RefCountedSharedArena.java |     1 -
+ .../store/MemorySegmentIndexInputProvider.java     |   191 -
+ .../Lucene99MemorySegmentByteVectorScorer.java     |     0
+ ...ene99MemorySegmentByteVectorScorerSupplier.java |     0
+ .../Lucene99MemorySegmentFlatVectorsScorer.java    |     0
+ .../MemorySegmentPostingDecodingUtil.java          |     0
+ .../vectorization/PanamaVectorConstants.java       |     0
+ .../vectorization/PanamaVectorUtilSupport.java     |     0
+ .../vectorization/PanamaVectorizationProvider.java |     0
+ .../src/test/org/apache/lucene/index/TestDoc.java  |     2 +-
+ .../org/apache/lucene/index/TestSegmentMerger.java |     2 +-
+ .../lucene/index/TestStoredFieldsConsumer.java     |     2 +-
+ .../org/apache/lucene/store/TestMMapDirectory.java |    11 +-
+ .../lucene/store/TestNRTCachingDirectory.java      |     4 +-
+ .../lucene/distribution/TestModularLayer.java      |    11 +-
+ lucene/expressions/build.gradle                    |     5 -
+ lucene/expressions/src/java/module-info.java       |     2 -
+ .../lucene/expressions/js/JavascriptCompiler.java  |   549 +-
+ lucene/licenses/asm-9.6.jar.sha1                   |     1 -
+ lucene/licenses/asm-LICENSE-BSD_LIKE.txt           |    26 -
+ lucene/licenses/asm-NOTICE.txt                     |     1 -
+ lucene/licenses/asm-commons-9.6.jar.sha1           |     1 -
+ lucene/licenses/asm-commons-LICENSE-BSD_LIKE.txt   |    26 -
+ lucene/licenses/asm-commons-NOTICE.txt             |     1 -
+ lucene/licenses/asm-tree-9.6.jar.sha1              |     1 -
+ lucene/licenses/commons-codec-1.17.2.jar.sha1      |     1 -
+ lucene/licenses/commons-codec-1.18.0.jar.sha1      |     1 +
+ lucene/licenses/commons-compress-1.19.jar.sha1     |     1 -
+ lucene/licenses/commons-compress-1.27.1.jar.sha1   |     1 +
+ lucene/licenses/commons-io-2.16.1.jar.sha1         |     1 +
+ lucene/licenses/commons-io-LICENSE-ASL.txt         |   201 +
+ lucene/licenses/commons-io-NOTICE.txt              |     5 +
+ lucene/licenses/commons-lang3-3.16.0.jar.sha1      |     1 +
+ lucene/licenses/commons-lang3-LICENSE-ASL.txt      |   201 +
+ lucene/licenses/commons-lang3-NOTICE.txt           |     5 +
+ lucene/licenses/hamcrest-2.2.jar.sha1              |     1 -
+ lucene/licenses/hamcrest-3.0.jar.sha1              |     1 +
+ lucene/licenses/jts-core-1.17.0.jar.sha1           |     1 -
+ lucene/licenses/jts-core-1.20.0.jar.sha1           |     1 +
+ lucene/licenses/junit-4.13.1.jar.sha1              |     1 -
+ lucene/licenses/junit-4.13.2.jar.sha1              |     1 +
+ lucene/licenses/nekohtml-1.9.17.jar.sha1           |     1 -
+ lucene/licenses/nekohtml-1.9.22.jar.sha1           |     1 +
+ lucene/licenses/opennlp-tools-2.5.3.jar.sha1       |     1 -
+ lucene/licenses/opennlp-tools-2.5.4.jar.sha1       |     1 +
+ lucene/licenses/slf4j-api-2.0.16.jar.sha1          |     1 -
+ lucene/licenses/slf4j-api-2.0.17.jar.sha1          |     1 +
+ .../TestByteWritesTrackingDirectoryWrapper.java    |     9 +-
+ .../lucene/misc/store/TestDirectIODirectory.java   |    18 +-
+ .../generated/checksums/javaccParserClassic.json   |     2 +-
+ .../generated/checksums/javaccParserFlexible.json  |     2 +-
+ .../generated/checksums/javaccParserSurround.json  |     2 +-
+ .../lucene/queryparser/classic/TokenMgrError.java  |     3 +-
+ .../flexible/standard/parser/TokenMgrError.java    |     3 +-
+ .../queryparser/surround/parser/TokenMgrError.java |     3 +-
+ .../tests/index/BaseCompoundFormatTestCase.java    |     2 +-
+ .../tests/index/BaseIndexFileFormatTestCase.java   |     2 +-
+ .../lucene/tests/index/RandomPostingsTester.java   |     2 +-
+ .../lucene/tests/store/MockDirectoryWrapper.java   |     9 +-
+ .../lucene/tests/store/MockIndexInputWrapper.java  |    18 +-
+ .../tests/store/SerialIOCountingDirectory.java     |    15 +-
+ .../store/SlowClosingMockIndexInputWrapper.java    |     9 +-
+ .../store/SlowOpeningMockIndexInputWrapper.java    |     9 +-
+ .../apache/lucene/tests/util/LuceneTestCase.java   |     8 +-
+ settings.gradle                                    |     6 +-
+ versions.lock                                      |   129 +-
+ 106 files changed, 22312 insertions(+), 21960 deletions(-)
+ delete mode 100644 lucene/core/src/generated/jdk/jdk21.apijar
+ create mode 100644 lucene/core/src/generated/jdk/jdk24.apijar
+ create mode 100644 lucene/core/src/java/org/apache/lucene/store/DataAccessHint.java
+ create mode 100644 lucene/core/src/java/org/apache/lucene/store/DefaultIOContext.java
+ create mode 100644 lucene/core/src/java/org/apache/lucene/store/FileDataHint.java
+ create mode 100644 lucene/core/src/java/org/apache/lucene/store/FileTypeHint.java
+ rename lucene/core/src/{java21 => java}/org/apache/lucene/store/MemorySegmentAccessInput.java (100%)
+ rename lucene/core/src/{java21 => java}/org/apache/lucene/store/MemorySegmentIndexInput.java (97%)
+ rename lucene/core/src/{java21 => java}/org/apache/lucene/store/NativeAccess.java (98%)
+ rename lucene/core/src/{java21 => java}/org/apache/lucene/store/PosixNativeAccess.java (99%)
+ rename lucene/core/src/{java21 => java}/org/apache/lucene/store/RefCountedSharedArena.java (99%)
+ delete mode 100644 lucene/core/src/java21/org/apache/lucene/store/MemorySegmentIndexInputProvider.java
+ rename lucene/core/src/{java21 => java24}/org/apache/lucene/internal/vectorization/Lucene99MemorySegmentByteVectorScorer.java (100%)
+ rename lucene/core/src/{java21 => java24}/org/apache/lucene/internal/vectorization/Lucene99MemorySegmentByteVectorScorerSupplier.java (100%)
+ rename lucene/core/src/{java21 => java24}/org/apache/lucene/internal/vectorization/Lucene99MemorySegmentFlatVectorsScorer.java (100%)
+ rename lucene/core/src/{java21 => java24}/org/apache/lucene/internal/vectorization/MemorySegmentPostingDecodingUtil.java (100%)
+ rename lucene/core/src/{java21 => java24}/org/apache/lucene/internal/vectorization/PanamaVectorConstants.java (100%)
+ rename lucene/core/src/{java21 => java24}/org/apache/lucene/internal/vectorization/PanamaVectorUtilSupport.java (100%)
+ rename lucene/core/src/{java21 => java24}/org/apache/lucene/internal/vectorization/PanamaVectorizationProvider.java (100%)
+ delete mode 100644 lucene/licenses/asm-9.6.jar.sha1
+ delete mode 100644 lucene/licenses/asm-LICENSE-BSD_LIKE.txt
+ delete mode 100644 lucene/licenses/asm-NOTICE.txt
+ delete mode 100644 lucene/licenses/asm-commons-9.6.jar.sha1
+ delete mode 100644 lucene/licenses/asm-commons-LICENSE-BSD_LIKE.txt
+ delete mode 100644 lucene/licenses/asm-commons-NOTICE.txt
+ delete mode 100644 lucene/licenses/asm-tree-9.6.jar.sha1
+ delete mode 100644 lucene/licenses/commons-codec-1.17.2.jar.sha1
+ create mode 100644 lucene/licenses/commons-codec-1.18.0.jar.sha1
+ delete mode 100644 lucene/licenses/commons-compress-1.19.jar.sha1
+ create mode 100644 lucene/licenses/commons-compress-1.27.1.jar.sha1
+ create mode 100644 lucene/licenses/commons-io-2.16.1.jar.sha1
+ create mode 100644 lucene/licenses/commons-io-LICENSE-ASL.txt
+ create mode 100644 lucene/licenses/commons-io-NOTICE.txt
+ create mode 100644 lucene/licenses/commons-lang3-3.16.0.jar.sha1
+ create mode 100644 lucene/licenses/commons-lang3-LICENSE-ASL.txt
+ create mode 100644 lucene/licenses/commons-lang3-NOTICE.txt
+ delete mode 100644 lucene/licenses/hamcrest-2.2.jar.sha1
+ create mode 100644 lucene/licenses/hamcrest-3.0.jar.sha1
+ delete mode 100644 lucene/licenses/jts-core-1.17.0.jar.sha1
+ create mode 100644 lucene/licenses/jts-core-1.20.0.jar.sha1
+ delete mode 100644 lucene/licenses/junit-4.13.1.jar.sha1
+ create mode 100644 lucene/licenses/junit-4.13.2.jar.sha1
+ delete mode 100644 lucene/licenses/nekohtml-1.9.17.jar.sha1
+ create mode 100644 lucene/licenses/nekohtml-1.9.22.jar.sha1
+ delete mode 100644 lucene/licenses/opennlp-tools-2.5.3.jar.sha1
+ create mode 100644 lucene/licenses/opennlp-tools-2.5.4.jar.sha1
+ delete mode 100644 lucene/licenses/slf4j-api-2.0.16.jar.sha1
+ create mode 100644 lucene/licenses/slf4j-api-2.0.17.jar.sha1
++ ../gradlew clean
+no main manifest attribute, in /l/trunk.nightly/gradle/wrapper/gradle-wrapper.jar
++ cp /l/logs.nightly/all.log /l/reports.nightly
