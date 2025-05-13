@@ -8,7 +8,7 @@ Run gradle test
 ***USING BIG LINE FILE***
 Using java from: /usr/lib/jvm/java-24-openjdk/bin/
   gradle test log: /l/logs.nightly/ant_test/2025.05.12.lucene-tests.txt
-  took: 1.9 min
+  took: 2.1 min
   gradle precommit log: /l/logs.nightly/ant_test/2025.05.12.precommit.txt
   took: 1.1 min
 + echo 'Run lucene nightly'
@@ -17,13 +17,13 @@ Run lucene nightly
 ***USING BIG LINE FILE***
 Using java from: /usr/lib/jvm/java-24-openjdk/bin/
 perf executable is /usr/sbin/perf; will collect aggregate CPU profiling data
-GitHub pull request counts: 241 open, 2915 closed
+GitHub pull request counts: 241 open, 2916 closed
 
 
 
 
-[2025-05-12 11:33:23.200017] start
-[2025-05-12 11:33:23.200129] log dir /l/logs.nightly/2025.05.12.11.33.23
+[2025-05-12 18:04:01.928360] start
+[2025-05-12 18:04:01.928446] log dir /l/logs.nightly/2025.05.12.18.04.01
 openjdk full version "24.0.1"
 WARNING: Using incubator modules: jdk.incubator.vector
 openjdk version "24.0.1" 2025-04-15
@@ -37,11 +37,11 @@ Description:	Arch Linux
 Release:	rolling
 Codename:	n/a
 luceneutil rev is d615d87d19ea5f3d9cfc4959046db8ba121a7371
-LUCENE rev is 92e0eb8f71e2eaad8c2d18890ed3e506bbfdc5b8
+LUCENE rev is 36b3577c17a52b2d9ae21d5976141e2da77cfab3
 last successfull Lucene rev 73aca0c6d036c8be74c7f410f84e093b96494158, luceneutil rev a75b8a4d3a8c146f3ff7e6695ab6bbf2e34e4b90
-run ['git', 'log', '73aca0c6d036c8be74c7f410f84e093b96494158^..92e0eb8f71e2eaad8c2d18890ed3e506bbfdc5b8']
+run ['git', 'log', '73aca0c6d036c8be74c7f410f84e093b96494158^..36b3577c17a52b2d9ae21d5976141e2da77cfab3']
 No commit message asking for regold of results files
-[2025-05-12 11:33:23.341459] RUN: git clean -xfd
+[2025-05-12 18:04:02.069900] RUN: git clean -xfd
 Removing .gradle/
 Removing build-tools/build-infra/.gradle/
 Removing build-tools/build-infra/build/
@@ -91,15 +91,15 @@ Removing lucene/spatial-test-fixtures/build/
 Removing lucene/spatial3d/build/
 Removing lucene/suggest/build/
 Removing lucene/test-framework/build/
-[2025-05-12 11:33:23.586282]   took 0.2 sec
+[2025-05-12 18:04:02.318273]   took 0.2 sec
 will NOT regold results files but rather compare to last good result files
 Java command-line: /usr/lib/jvm/java-24-openjdk/bin/java --add-modules jdk.incubator.vector -Xmx32g -Xms32g -server -XX:+UseParallelGC -Djava.io.tmpdir=/l/tmp
 transparent_hugepages: [always] madvise never
 
-[2025-05-12 11:33:23.586386] RUN: /l/trunk.nightly/gradlew clean > /l/logs.nightly/2025.05.12.11.33.23/clean-lucene.log 2>&1
-[2025-05-12 11:33:27.745836]   took 4.2 sec
-[2025-05-12 11:33:27.745873] RUN: /l/trunk.nightly/gradlew jar > /l/logs.nightly/2025.05.12.11.33.23/jar-lucene.log 2>&1
-[2025-05-12 11:33:48.556473]   took 20.8 sec
+[2025-05-12 18:04:02.318381] RUN: /l/trunk.nightly/gradlew clean > /l/logs.nightly/2025.05.12.18.04.01/clean-lucene.log 2>&1
+[2025-05-12 18:04:06.787134]   took 4.5 sec
+[2025-05-12 18:04:06.787175] RUN: /l/trunk.nightly/gradlew jar > /l/logs.nightly/2025.05.12.18.04.01/jar-lucene.log 2>&1
+[2025-05-12 18:04:27.219016]   took 20.4 sec
 
 JAVA:
 WARNING: Using incubator modules: jdk.incubator.vector
@@ -121,23 +121,23 @@ compile lucene:core...
 files ['/l/util.nightly/src/main/perf/TestContext.java', '/l/util.nightly/src/main/perf/IndexAndSearchOpenStreetMaps.java', '/l/util.nightly/src/main/perf/OpenDirectory.java', '/l/util.nightly/src/main/perf/StringFieldDocSelector.java', '/l/util.nightly/src/main/perf/SearchTaxis.java', '/l/util.nightly/src/main/perf/RemoteTaskSource.java', '/l/util.nightly/src/main/perf/SearchPerfTest.java', '/l/util.nightly/src/main/perf/KeepNoCommitsDeletionPolicy.java', '/l/util.nightly/src/main/perf/DiskUsage.java', '/l/util.nightly/src/main/perf/NRTPerfTest.java', '/l/util.nightly/src/main/perf/Indexer.java', '/l/util.nightly/src/main/perf/PKLookupWithTermStateTask.java', '/l/util.nightly/src/main/perf/IndexState.java', '/l/util.nightly/src/main/perf/VectorDictionary.java', '/l/util.nightly/src/main/perf/TaskParser.java', '/l/util.nightly/src/main/perf/IndexThreads.java', '/l/util.nightly/src/main/perf/SearchTask.java', '/l/util.nightly/src/main/perf/RespellTask.java', '/l/util.nightly/src/main/perf/TaskSource.java', '/l/util.nightly/src/main/perf/LineFileDocs.java', '/l/util.nightly/src/main/perf/CreateQueries.java', '/l/util.nightly/src/main/perf/RandomQuery.java', '/l/util.nightly/src/main/perf/PerfUtils.java', '/l/util.nightly/src/main/perf/Task.java', '/l/util.nightly/src/main/perf/LocalTaskSource.java', '/l/util.nightly/src/main/perf/IndexTaxis.java', '/l/util.nightly/src/main/perf/PointsPKLookupTask.java', '/l/util.nightly/src/main/perf/TaskThreads.java', '/l/util.nightly/src/main/perf/UnparsedTask.java', '/l/util.nightly/src/main/perf/Args.java', '/l/util.nightly/src/main/perf/TaskParserFactory.java', '/l/util.nightly/src/main/perf/StatisticsHelper.java', '/l/util.nightly/src/main/perf/BenchRearranger.java', '/l/util.nightly/src/main/perf/PKLookupTask.java', '/l/util.nightly/src/main/perf/OpenCloseIndexWriter.java']
 compile: /usr/lib/jvm/java-24-openjdk/bin/javac -g -d /l/util.nightly/build -classpath /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar:/l/trunk.nightly/lucene/sandbox/build/classes/java/main:/l/trunk.nightly/lucene/misc/build/classes/java/main:/l/trunk.nightly/lucene/facet/build/classes/java/main:/l/trunk.nightly/lucene/analysis/common/build/classes/java/main:/l/trunk.nightly/lucene/analysis/icu/build/classes/java/main:/l/trunk.nightly/lucene/queryparser/build/classes/java/main:/l/trunk.nightly/lucene/grouping/build/classes/java/main:/l/trunk.nightly/lucene/suggest/build/classes/java/main:/l/trunk.nightly/lucene/highlighter/build/classes/java/main:/l/trunk.nightly/lucene/codecs/build/classes/java/main:/l/trunk.nightly/lucene/queries/build/classes/java/main:/l/trunk.nightly/lucene/join/build/classes/java/main:/l/trunk.nightly/lucene/spatial3d/build/classes/java/main:/l/util.nightly/lib/HdrHistogram.jar:/l/util.nightly/src/main/build/classes/java/main:/l/util.nightly/build /l/util.nightly/src/main/perf/TestContext.java /l/util.nightly/src/main/perf/IndexAndSearchOpenStreetMaps.java /l/util.nightly/src/main/perf/OpenDirectory.java /l/util.nightly/src/main/perf/StringFieldDocSelector.java /l/util.nightly/src/main/perf/SearchTaxis.java /l/util.nightly/src/main/perf/RemoteTaskSource.java /l/util.nightly/src/main/perf/SearchPerfTest.java /l/util.nightly/src/main/perf/KeepNoCommitsDeletionPolicy.java /l/util.nightly/src/main/perf/DiskUsage.java /l/util.nightly/src/main/perf/NRTPerfTest.java /l/util.nightly/src/main/perf/Indexer.java /l/util.nightly/src/main/perf/PKLookupWithTermStateTask.java /l/util.nightly/src/main/perf/IndexState.java /l/util.nightly/src/main/perf/VectorDictionary.java /l/util.nightly/src/main/perf/TaskParser.java /l/util.nightly/src/main/perf/IndexThreads.java /l/util.nightly/src/main/perf/SearchTask.java /l/util.nightly/src/main/perf/RespellTask.java /l/util.nightly/src/main/perf/TaskSource.java /l/util.nightly/src/main/perf/LineFileDocs.java /l/util.nightly/src/main/perf/CreateQueries.java /l/util.nightly/src/main/perf/RandomQuery.java /l/util.nightly/src/main/perf/PerfUtils.java /l/util.nightly/src/main/perf/Task.java /l/util.nightly/src/main/perf/LocalTaskSource.java /l/util.nightly/src/main/perf/IndexTaxis.java /l/util.nightly/src/main/perf/PointsPKLookupTask.java /l/util.nightly/src/main/perf/TaskThreads.java /l/util.nightly/src/main/perf/UnparsedTask.java /l/util.nightly/src/main/perf/Args.java /l/util.nightly/src/main/perf/TaskParserFactory.java /l/util.nightly/src/main/perf/StatisticsHelper.java /l/util.nightly/src/main/perf/BenchRearranger.java /l/util.nightly/src/main/perf/PKLookupTask.java /l/util.nightly/src/main/perf/OpenCloseIndexWriter.java
     run: ['/usr/lib/jvm/java-24-openjdk/bin/javac', '-g', '-d', '/l/util.nightly/build', '-classpath', '/l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar:/l/trunk.nightly/lucene/sandbox/build/classes/java/main:/l/trunk.nightly/lucene/misc/build/classes/java/main:/l/trunk.nightly/lucene/facet/build/classes/java/main:/l/trunk.nightly/lucene/analysis/common/build/classes/java/main:/l/trunk.nightly/lucene/analysis/icu/build/classes/java/main:/l/trunk.nightly/lucene/queryparser/build/classes/java/main:/l/trunk.nightly/lucene/grouping/build/classes/java/main:/l/trunk.nightly/lucene/suggest/build/classes/java/main:/l/trunk.nightly/lucene/highlighter/build/classes/java/main:/l/trunk.nightly/lucene/codecs/build/classes/java/main:/l/trunk.nightly/lucene/queries/build/classes/java/main:/l/trunk.nightly/lucene/join/build/classes/java/main:/l/trunk.nightly/lucene/spatial3d/build/classes/java/main:/l/util.nightly/lib/HdrHistogram.jar:/l/util.nightly/src/main/build/classes/java/main:/l/util.nightly/build', '/l/util.nightly/src/main/perf/TestContext.java', '/l/util.nightly/src/main/perf/IndexAndSearchOpenStreetMaps.java', '/l/util.nightly/src/main/perf/OpenDirectory.java', '/l/util.nightly/src/main/perf/StringFieldDocSelector.java', '/l/util.nightly/src/main/perf/SearchTaxis.java', '/l/util.nightly/src/main/perf/RemoteTaskSource.java', '/l/util.nightly/src/main/perf/SearchPerfTest.java', '/l/util.nightly/src/main/perf/KeepNoCommitsDeletionPolicy.java', '/l/util.nightly/src/main/perf/DiskUsage.java', '/l/util.nightly/src/main/perf/NRTPerfTest.java', '/l/util.nightly/src/main/perf/Indexer.java', '/l/util.nightly/src/main/perf/PKLookupWithTermStateTask.java', '/l/util.nightly/src/main/perf/IndexState.java', '/l/util.nightly/src/main/perf/VectorDictionary.java', '/l/util.nightly/src/main/perf/TaskParser.java', '/l/util.nightly/src/main/perf/IndexThreads.java', '/l/util.nightly/src/main/perf/SearchTask.java', '/l/util.nightly/src/main/perf/RespellTask.java', '/l/util.nightly/src/main/perf/TaskSource.java', '/l/util.nightly/src/main/perf/LineFileDocs.java', '/l/util.nightly/src/main/perf/CreateQueries.java', '/l/util.nightly/src/main/perf/RandomQuery.java', '/l/util.nightly/src/main/perf/PerfUtils.java', '/l/util.nightly/src/main/perf/Task.java', '/l/util.nightly/src/main/perf/LocalTaskSource.java', '/l/util.nightly/src/main/perf/IndexTaxis.java', '/l/util.nightly/src/main/perf/PointsPKLookupTask.java', '/l/util.nightly/src/main/perf/TaskThreads.java', '/l/util.nightly/src/main/perf/UnparsedTask.java', '/l/util.nightly/src/main/perf/Args.java', '/l/util.nightly/src/main/perf/TaskParserFactory.java', '/l/util.nightly/src/main/perf/StatisticsHelper.java', '/l/util.nightly/src/main/perf/BenchRearranger.java', '/l/util.nightly/src/main/perf/PKLookupTask.java', '/l/util.nightly/src/main/perf/OpenCloseIndexWriter.java'], cwd=/l/trunk.nightly/lucene/benchmark
-[2025-05-12 11:33:52.371831] now run stored fields benchmark
+[2025-05-12 18:04:31.436639] now run stored fields benchmark
 RUN: javac -cp /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar -d build src/extra/perf/StoredFieldsBenchmark.java, cwd=/l/util.nightly
 Now run BEST_SPEED with doc_limit=-1:
 RUN: /usr/lib/jvm/java-24-openjdk/bin/java --add-modules jdk.incubator.vector -Xmx32g -Xms32g -server -XX:+UseParallelGC -Djava.io.tmpdir=/l/tmp -cp /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar:build perf.StoredFieldsBenchmark /lucenedata/geonames/geonames.20160818.csv /l/indices/geonames-stored-fields BEST_SPEED -1
 Mode: BEST_SPEED
-  indexing_time_msec: 144876.00
+  indexing_time_msec: 145359.00
   stored_field_size_mb: 624.75
-  retrieved_time_msec: 169.92
+  retrieved_time_msec: 170.73
 Now run BEST_COMPRESSION with doc_limit=-1:
 RUN: /usr/lib/jvm/java-24-openjdk/bin/java --add-modules jdk.incubator.vector -Xmx32g -Xms32g -server -XX:+UseParallelGC -Djava.io.tmpdir=/l/tmp -cp /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar:build perf.StoredFieldsBenchmark /lucenedata/geonames/geonames.20160818.csv /l/indices/geonames-stored-fields BEST_COMPRESSION -1
 Mode: BEST_COMPRESSION
-  indexing_time_msec: 355048.00
+  indexing_time_msec: 355665.00
   stored_field_size_mb: 386.25
-  retrieved_time_msec: 1399.69
-Done: took 1036.08 seconds, saved to /l/logs.nightly/2025.05.12.11.33.23/geonames-stored-fields-benchmark-results.pk
-[2025-05-12 11:51:08.964415] done run stored fields benchmark
-[2025-05-12 11:51:08.964435] now run NAD facets benchmark
+  retrieved_time_msec: 1397.34
+Done: took 1038.26 seconds, saved to /l/logs.nightly/2025.05.12.18.04.01/geonames-stored-fields-benchmark-results.pk
+[2025-05-12 18:21:50.212196] done run stored fields benchmark
+[2025-05-12 18:21:50.212217] now run NAD facets benchmark
 RUN: /usr/lib/jvm/java-24-openjdk/bin/javac -cp /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar:/l/trunk.nightly/lucene/facet/build/libs/lucene-facet-11.0.0-SNAPSHOT.jar:build -d build src/main/perf/facets/IndexFacets.java, cwd=/l/util.nightly
 RUN: /usr/lib/jvm/java-24-openjdk/bin/javac -cp /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar:/l/trunk.nightly/lucene/facet/build/libs/lucene-facet-11.0.0-SNAPSHOT.jar:build -d build src/main/perf/facets/BenchmarkFacets.java, cwd=/l/util.nightly
 Note: src/main/perf/facets/BenchmarkFacets.java uses or overrides a deprecated API.
@@ -146,7 +146,7 @@ RUN: /usr/lib/jvm/java-24-openjdk/bin/java --add-modules jdk.incubator.vector -X
 Indexing documents...
 
 WARNING: Using incubator modules: jdk.incubator.vector
-May 12, 2025 11:51:10 AM org.apache.lucene.internal.vectorization.PanamaVectorizationProvider <init>
+May 12, 2025 6:21:51 PM org.apache.lucene.internal.vectorization.PanamaVectorizationProvider <init>
 INFO: Java vector incubator API enabled; uses preferredBitSize=256; FMA enabled
 Indexed 0 documents
 Indexed 100000 documents
@@ -749,20 +749,20 @@ Indexed 59700000 documents
 Indexed 59800000 documents
 Indexed 59900000 documents
 RUN: /usr/lib/jvm/java-24-openjdk/bin/java --add-modules jdk.incubator.vector -Xmx32g -Xms32g -server -XX:+UseParallelGC -Djava.io.tmpdir=/l/tmp -cp /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar:/l/trunk.nightly/lucene/facet/build/libs/lucene-facet-11.0.0-SNAPSHOT.jar:build perf.facets.BenchmarkFacets /l/indices/nad-facets-nightly 30, cwd=/l/util.nightly
-Total time creating FastTaxonomyCounts: 1523.8058857666665 ms
-Total time creating SSDVFacetCounts: 3130.6575497333333 ms
-Total time taken to get all dims for taxonomy: 0.1806591333333333 ms
-Total time taken to get all dims for SSDV: 0.05798373333333333 ms
-Total time to get top dims for taxonomy: 0.05135089999999999 ms
-Total time to get top dims for SSDV: 0.02905206666666666 ms
-Total time to get top "address.taxonomy/TX" children: 0.12891183333333334 ms
-Total time to get top "address.sortedset/TX" children: 0.1624917 ms
-Total time to get all "address.taxonomy/TX" children: 0.6599818333333333 ms
-Total time to get all "address.sortedset/TX" children: 0.5788280333333332 ms
-Done: took 3757.37 seconds, saved to /l/logs.nightly/2025.05.12.11.33.23/nad-facet-benchmark.pk
-[2025-05-12 12:53:46.335889] done run NAD facets benchmark
-[2025-05-12 12:53:47.062856] now run KNN benchmark
-Lucene HEAD git revision at /l/trunk.nightly: 92e0eb8f71e2eaad8c2d18890ed3e506bbfdc5b8 dirty?=False
+Total time creating FastTaxonomyCounts: 1545.1944533999997 ms
+Total time creating SSDVFacetCounts: 3148.8394556666667 ms
+Total time taken to get all dims for taxonomy: 0.1778392333333333 ms
+Total time taken to get all dims for SSDV: 0.059890633333333325 ms
+Total time to get top dims for taxonomy: 0.051508533333333315 ms
+Total time to get top dims for SSDV: 0.029404166666666662 ms
+Total time to get top "address.taxonomy/TX" children: 0.1286459 ms
+Total time to get top "address.sortedset/TX" children: 0.16239463333333332 ms
+Total time to get all "address.taxonomy/TX" children: 0.6559659333333333 ms
+Total time to get all "address.sortedset/TX" children: 0.5744755 ms
+Done: took 3822.35 seconds, saved to /l/logs.nightly/2025.05.12.18.04.01/nad-facet-benchmark.pk
+[2025-05-12 19:25:32.558337] done run NAD facets benchmark
+[2025-05-12 19:25:33.289260] now run KNN benchmark
+Lucene HEAD git revision at /l/trunk.nightly: 36b3577c17a52b2d9ae21d5976141e2da77cfab3 dirty?=False
 luceneutil HEAD git revision at /l/util.nightly: d615d87d19ea5f3d9cfc4959046db8ba121a7371 dirty?=False
 removing cached KNN results /l/util.nightly/nn--xx4srw.bin
 removing cached KNN results /l/util.nightly/nn--3v9kpw.bin
@@ -774,43 +774,43 @@ Starting a Gradle Daemon (subsequent builds will be faster)
 > Task :build-infra:processResources UP-TO-DATE
 > Task :build-infra:classes UP-TO-DATE
 > Task :build-infra:jar UP-TO-DATE
-> Task :lucene:spatial3d:processResources NO-SOURCE
-> Task :lucene:analysis.tests:processResources NO-SOURCE
-> Task :lucene:memory:processResources NO-SOURCE
 > Task :lucene:queries:processResources NO-SOURCE
-> Task :lucene:spatial-extras:processResources NO-SOURCE
+> Task :lucene:spatial3d:processResources NO-SOURCE
 > Task :lucene:highlighter:processResources NO-SOURCE
+> Task :lucene:analysis.tests:processResources NO-SOURCE
 > Task :lucene:facet:processResources NO-SOURCE
-> Task :lucene:sandbox:processResources UP-TO-DATE
-> Task :lucene:backward-codecs:processResources UP-TO-DATE
-> Task :lucene:queryparser:processResources UP-TO-DATE
+> Task :lucene:memory:processResources NO-SOURCE
+> Task :lucene:spatial-extras:processResources NO-SOURCE
 > Task :lucene:benchmark:processResources NO-SOURCE
-> Task :lucene:grouping:processResources NO-SOURCE
-> Task :lucene:benchmark-jmh:processResources NO-SOURCE
-> Task :lucene:core:processResources UP-TO-DATE
-> Task :lucene:core.tests:processResources NO-SOURCE
 > Task :lucene:codecs:processResources UP-TO-DATE
-> Task :lucene:expressions:processResources UP-TO-DATE
+> Task :lucene:queryparser:processResources UP-TO-DATE
+> Task :lucene:benchmark-jmh:processResources NO-SOURCE
 > Task :lucene:classification:processResources NO-SOURCE
-> Task :lucene:demo:processResources NO-SOURCE
+> Task :lucene:grouping:processResources NO-SOURCE
+> Task :lucene:expressions:processResources UP-TO-DATE
+> Task :lucene:core.tests:processResources NO-SOURCE
 > Task :lucene:join:processResources NO-SOURCE
-> Task :lucene:core:processMain24Resources NO-SOURCE
+> Task :lucene:demo:processResources NO-SOURCE
 > Task :lucene:suggest:processResources UP-TO-DATE
+> Task :lucene:sandbox:processResources UP-TO-DATE
 > Task :lucene:analysis:morfologik:processResources UP-TO-DATE
+> Task :lucene:core:processResources UP-TO-DATE
 > Task :lucene:analysis:kuromoji:processResources UP-TO-DATE
-> Task :lucene:misc:processResources NO-SOURCE
-> Task :lucene:distribution.tests:processResources NO-SOURCE
+> Task :lucene:backward-codecs:processResources UP-TO-DATE
 > Task :lucene:analysis:phonetic:processResources UP-TO-DATE
+> Task :lucene:distribution.tests:processResources NO-SOURCE
 > Task :lucene:analysis:nori:processResources UP-TO-DATE
+> Task :lucene:misc:processResources NO-SOURCE
+> Task :lucene:core:processMain24Resources NO-SOURCE
+> Task :lucene:analysis:icu:processResources UP-TO-DATE
 > Task :lucene:monitor:processResources NO-SOURCE
 > Task :lucene:analysis:smartcn:processResources UP-TO-DATE
+> Task :lucene:analysis:common:processResources UP-TO-DATE
+> Task :lucene:replicator:processResources NO-SOURCE
 > Task :lucene:analysis:opennlp:processResources UP-TO-DATE
 > Task :lucene:spatial-test-fixtures:processResources NO-SOURCE
-> Task :lucene:analysis:morfologik.tests:processResources NO-SOURCE
-> Task :lucene:analysis:common:processResources UP-TO-DATE
-> Task :lucene:analysis:icu:processResources UP-TO-DATE
-> Task :lucene:replicator:processResources NO-SOURCE
 > Task :lucene:analysis:stempel:processResources UP-TO-DATE
+> Task :lucene:analysis:morfologik.tests:processResources NO-SOURCE
 > Task :lucene:luke:processResources UP-TO-DATE
 > Task :lucene:test-framework:processResources UP-TO-DATE
 > Task :gitStatus
@@ -820,120 +820,120 @@ WARNING: errorprone disabled (skipped on builds not running inside CI environmen
 
 > Task :lucene:analysis.tests:compileJava NO-SOURCE
 > Task :lucene:analysis.tests:classes UP-TO-DATE
-> Task :lucene:analysis.tests:jar UP-TO-DATE
-> Task :lucene:analysis:morfologik.tests:compileJava NO-SOURCE
-> Task :lucene:distribution.tests:compileJava NO-SOURCE
-> Task :lucene:analysis:morfologik.tests:classes UP-TO-DATE
-> Task :lucene:distribution.tests:classes UP-TO-DATE
-> Task :lucene:distribution.tests:jar UP-TO-DATE
-> Task :lucene:analysis:morfologik.tests:jar UP-TO-DATE
 > Task :lucene:core.tests:compileJava UP-TO-DATE
 > Task :lucene:core.tests:classes UP-TO-DATE
+> Task :lucene:distribution.tests:compileJava NO-SOURCE
+> Task :lucene:distribution.tests:classes UP-TO-DATE
+> Task :lucene:distribution.tests:jar UP-TO-DATE
+> Task :lucene:analysis.tests:jar UP-TO-DATE
+> Task :lucene:core.tests:jar UP-TO-DATE
+> Task :lucene:analysis:morfologik.tests:compileJava NO-SOURCE
+> Task :lucene:analysis:morfologik.tests:classes UP-TO-DATE
+> Task :lucene:analysis:morfologik.tests:jar UP-TO-DATE
 > Task :lucene:core:compileJava UP-TO-DATE
 > Task :lucene:core:classes UP-TO-DATE
-> Task :lucene:core.tests:jar UP-TO-DATE
 > Task :lucene:core:compileMain24Java UP-TO-DATE
 > Task :lucene:core:main24Classes UP-TO-DATE
 > Task :lucene:core:jar UP-TO-DATE
-> Task :lucene:memory:compileJava UP-TO-DATE
-> Task :lucene:memory:classes UP-TO-DATE
-> Task :lucene:join:compileJava UP-TO-DATE
-> Task :lucene:join:classes UP-TO-DATE
+> Task :lucene:facet:compileJava UP-TO-DATE
+> Task :lucene:facet:classes UP-TO-DATE
 > Task :lucene:misc:compileJava UP-TO-DATE
 > Task :lucene:misc:classes UP-TO-DATE
+> Task :lucene:memory:compileJava UP-TO-DATE
+> Task :lucene:memory:classes UP-TO-DATE
 > Task :lucene:replicator:compileJava UP-TO-DATE
 > Task :lucene:replicator:classes UP-TO-DATE
-> Task :lucene:queries:compileJava UP-TO-DATE
-> Task :lucene:queries:classes UP-TO-DATE
 > Task :lucene:backward-codecs:compileJava UP-TO-DATE
-> Task :lucene:join:jar UP-TO-DATE
+> Task :lucene:queries:compileJava UP-TO-DATE
 > Task :lucene:backward-codecs:classes UP-TO-DATE
-> Task :lucene:queries:jar UP-TO-DATE
+> Task :lucene:queries:classes UP-TO-DATE
+> Task :lucene:facet:jar UP-TO-DATE
 > Task :lucene:replicator:jar UP-TO-DATE
-> Task :lucene:memory:jar UP-TO-DATE
-> Task :lucene:spatial3d:compileJava UP-TO-DATE
-> Task :lucene:facet:compileJava UP-TO-DATE
+> Task :lucene:queries:jar UP-TO-DATE
 > Task :lucene:misc:jar UP-TO-DATE
+> Task :lucene:memory:jar UP-TO-DATE
+> Task :lucene:join:compileJava UP-TO-DATE
 > Task :lucene:codecs:compileJava UP-TO-DATE
-> Task :lucene:spatial3d:classes UP-TO-DATE
-> Task :lucene:facet:classes UP-TO-DATE
 > Task :lucene:codecs:classes UP-TO-DATE
+> Task :lucene:join:classes UP-TO-DATE
+> Task :lucene:spatial3d:compileJava UP-TO-DATE
+> Task :lucene:spatial3d:classes UP-TO-DATE
 > Task :lucene:backward-codecs:jar UP-TO-DATE
 > Task :lucene:grouping:compileJava UP-TO-DATE
 > Task :lucene:grouping:classes UP-TO-DATE
+> Task :lucene:codecs:jar UP-TO-DATE
+> Task :lucene:join:jar UP-TO-DATE
 > Task :lucene:analysis:common:compileJava UP-TO-DATE
 > Task :lucene:analysis:common:classes UP-TO-DATE
-> Task :lucene:facet:jar UP-TO-DATE
-> Task :lucene:analysis:common:jar UP-TO-DATE
-> Task :lucene:codecs:jar UP-TO-DATE
-> Task :lucene:spatial3d:jar UP-TO-DATE
 > Task :lucene:grouping:jar UP-TO-DATE
+> Task :lucene:spatial3d:jar UP-TO-DATE
+> Task :lucene:sandbox:compileJava UP-TO-DATE
+> Task :lucene:sandbox:classes UP-TO-DATE
 > Task :lucene:highlighter:compileJava UP-TO-DATE
 > Task :lucene:highlighter:classes UP-TO-DATE
+> Task :lucene:analysis:common:jar UP-TO-DATE
+> Task :lucene:sandbox:jar UP-TO-DATE
 > Task :lucene:analysis:kuromoji:compileJava UP-TO-DATE
 > Task :lucene:analysis:kuromoji:classes UP-TO-DATE
-> Task :lucene:classification:compileJava UP-TO-DATE
-> Task :lucene:analysis:nori:compileJava UP-TO-DATE
-> Task :lucene:classification:classes UP-TO-DATE
-> Task :lucene:analysis:nori:classes UP-TO-DATE
-> Task :lucene:analysis:phonetic:compileJava UP-TO-DATE
-> Task :lucene:analysis:phonetic:classes UP-TO-DATE
-> Task :lucene:highlighter:jar UP-TO-DATE
-> Task :lucene:analysis:opennlp:compileJava UP-TO-DATE
-> Task :lucene:suggest:compileJava UP-TO-DATE
-> Task :lucene:sandbox:compileJava UP-TO-DATE
-> Task :lucene:analysis:icu:compileJava UP-TO-DATE
-> Task :lucene:analysis:kuromoji:jar UP-TO-DATE
-> Task :lucene:sandbox:classes UP-TO-DATE
-> Task :lucene:analysis:opennlp:classes UP-TO-DATE
-> Task :lucene:suggest:classes UP-TO-DATE
 > Task :lucene:expressions:compileJava UP-TO-DATE
-> Task :lucene:analysis:icu:classes UP-TO-DATE
-> Task :lucene:analysis:morfologik:compileJava UP-TO-DATE
-> Task :lucene:expressions:classes UP-TO-DATE
-> Task :lucene:analysis:morfologik:classes UP-TO-DATE
+> Task :lucene:classification:compileJava UP-TO-DATE
+> Task :lucene:highlighter:jar UP-TO-DATE
 > Task :lucene:spatial-extras:compileJava UP-TO-DATE
+> Task :lucene:expressions:classes UP-TO-DATE
 > Task :lucene:spatial-extras:classes UP-TO-DATE
-> Task :lucene:analysis:nori:jar UP-TO-DATE
-> Task :lucene:classification:jar UP-TO-DATE
+> Task :lucene:classification:classes UP-TO-DATE
+> Task :lucene:suggest:compileJava UP-TO-DATE
+> Task :lucene:suggest:classes UP-TO-DATE
+> Task :lucene:analysis:phonetic:compileJava UP-TO-DATE
+> Task :lucene:analysis:morfologik:compileJava UP-TO-DATE
+> Task :lucene:analysis:phonetic:classes UP-TO-DATE
+> Task :lucene:analysis:morfologik:classes UP-TO-DATE
+> Task :lucene:analysis:kuromoji:jar UP-TO-DATE
+> Task :lucene:queryparser:compileJava UP-TO-DATE
+> Task :lucene:queryparser:classes UP-TO-DATE
+> Task :lucene:analysis:nori:compileJava UP-TO-DATE
+> Task :lucene:analysis:icu:compileJava UP-TO-DATE
+> Task :lucene:analysis:nori:classes UP-TO-DATE
+> Task :lucene:analysis:icu:classes UP-TO-DATE
+> Task :lucene:spatial-extras:jar UP-TO-DATE
+> Task :lucene:test-framework:compileJava UP-TO-DATE
+> Task :lucene:expressions:jar UP-TO-DATE
 > Task :lucene:analysis:phonetic:jar UP-TO-DATE
+> Task :lucene:queryparser:jar UP-TO-DATE
+> Task :lucene:test-framework:classes UP-TO-DATE
+> Task :lucene:classification:jar UP-TO-DATE
+> Task :lucene:analysis:opennlp:compileJava UP-TO-DATE
+> Task :lucene:analysis:opennlp:classes UP-TO-DATE
+> Task :lucene:analysis:nori:jar UP-TO-DATE
 > Task :lucene:suggest:jar UP-TO-DATE
+> Task :lucene:analysis:morfologik:jar UP-TO-DATE
 > Task :lucene:analysis:icu:jar UP-TO-DATE
-> Task :lucene:analysis:opennlp:jar UP-TO-DATE
 > Task :lucene:analysis:smartcn:compileJava UP-TO-DATE
 > Task :lucene:analysis:smartcn:classes UP-TO-DATE
-> Task :lucene:expressions:jar UP-TO-DATE
-> Task :lucene:sandbox:jar UP-TO-DATE
-> Task :lucene:analysis:stempel:compileJava UP-TO-DATE
-> Task :lucene:spatial-extras:jar UP-TO-DATE
-> Task :lucene:analysis:stempel:classes UP-TO-DATE
-> Task :lucene:analysis:smartcn:jar UP-TO-DATE
-> Task :lucene:analysis:morfologik:jar UP-TO-DATE
-> Task :lucene:analysis:stempel:jar UP-TO-DATE
 > Task :lucene:monitor:compileJava UP-TO-DATE
 > Task :lucene:monitor:classes UP-TO-DATE
-> Task :lucene:monitor:jar UP-TO-DATE
-> Task :lucene:benchmark-jmh:compileJava UP-TO-DATE
-> Task :lucene:queryparser:compileJava UP-TO-DATE
-> Task :lucene:benchmark-jmh:classes UP-TO-DATE
-> Task :lucene:queryparser:classes UP-TO-DATE
-> Task :lucene:test-framework:compileJava UP-TO-DATE
-> Task :lucene:test-framework:classes UP-TO-DATE
-> Task :lucene:queryparser:jar UP-TO-DATE
-> Task :lucene:benchmark-jmh:jar UP-TO-DATE
-> Task :lucene:test-framework:jar UP-TO-DATE
 > Task :lucene:demo:compileJava UP-TO-DATE
+> Task :lucene:analysis:stempel:compileJava UP-TO-DATE
 > Task :lucene:demo:classes UP-TO-DATE
-> Task :lucene:luke:compileJava UP-TO-DATE
-> Task :lucene:spatial-test-fixtures:compileJava UP-TO-DATE
-> Task :lucene:benchmark:compileJava UP-TO-DATE
-> Task :lucene:luke:classes UP-TO-DATE
-> Task :lucene:spatial-test-fixtures:classes UP-TO-DATE
+> Task :lucene:analysis:stempel:classes UP-TO-DATE
+> Task :lucene:test-framework:jar UP-TO-DATE
+> Task :lucene:analysis:opennlp:jar UP-TO-DATE
+> Task :lucene:analysis:smartcn:jar UP-TO-DATE
+> Task :lucene:analysis:stempel:jar UP-TO-DATE
 > Task :lucene:demo:jar UP-TO-DATE
+> Task :lucene:benchmark-jmh:compileJava UP-TO-DATE
+> Task :lucene:benchmark-jmh:classes UP-TO-DATE
+> Task :lucene:spatial-test-fixtures:compileJava UP-TO-DATE
+> Task :lucene:monitor:jar UP-TO-DATE
+> Task :lucene:spatial-test-fixtures:classes UP-TO-DATE
+> Task :lucene:benchmark:compileJava UP-TO-DATE
 > Task :lucene:benchmark:classes UP-TO-DATE
 > Task :lucene:spatial-test-fixtures:jar UP-TO-DATE
-> Task :lucene:luke:jar UP-TO-DATE
+> Task :lucene:benchmark-jmh:jar UP-TO-DATE
+> Task :lucene:luke:compileJava UP-TO-DATE
+> Task :lucene:luke:classes UP-TO-DATE
 > Task :lucene:benchmark:jar UP-TO-DATE
+> Task :lucene:luke:jar UP-TO-DATE
 
 [Incubating] Problems report is available at: file:///l/trunk.nightly/build/reports/problems/problems-report.html
 
@@ -956,7 +956,7 @@ You can use '--warning-mode all' to show the individual deprecation warnings and
 
 For more on this, please refer to https://docs.gradle.org/8.14/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
 
-BUILD SUCCESSFUL in 6s
+BUILD SUCCESSFUL in 5s
 1 actionable task: 1 executed
   cmd: ['/usr/lib/jvm/java-24-openjdk/bin/java', '--add-modules', 'jdk.incubator.vector', '-Xmx32g', '-Xms32g', '-server', '-XX:+UseParallelGC', '-Djava.io.tmpdir=/l/tmp', '-cp', '/l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar:/l/trunk.nightly/lucene/sandbox/build/classes/java/main:/l/trunk.nightly/lucene/misc/build/classes/java/main:/l/trunk.nightly/lucene/facet/build/classes/java/main:/l/trunk.nightly/lucene/analysis/common/build/classes/java/main:/l/trunk.nightly/lucene/analysis/icu/build/classes/java/main:/l/trunk.nightly/lucene/queryparser/build/classes/java/main:/l/trunk.nightly/lucene/grouping/build/classes/java/main:/l/trunk.nightly/lucene/suggest/build/classes/java/main:/l/trunk.nightly/lucene/highlighter/build/classes/java/main:/l/trunk.nightly/lucene/codecs/build/classes/java/main:/l/trunk.nightly/lucene/queries/build/classes/java/main:/l/trunk.nightly/lucene/join/build/classes/java/main:/l/trunk.nightly/lucene/spatial3d/build/classes/java/main:/l/util.nightly/lib/HdrHistogram.jar:/l/util.nightly/src/main/build/classes/java/main:/l/util.nightly/build:/l/util.nightly/build', '--add-modules', 'jdk.incubator.vector', '--enable-native-access=ALL-UNNAMED', 'knn.KnnGraphTester', '-maxConn', '32', '-dim', '768', '-docs', '/lucenedata/enwiki/cohere-wikipedia-docs-768d.vec', '-ndoc', '8000000', '-topK', '100', '-numIndexThreads', '8', '-beamWidthIndex', '100', '-search-and-stats', '/lucenedata/enwiki/cohere-wikipedia-queries-768d.vec', '-metric', 'mip', '-numMergeThread', '16', '-numMergeWorker', '48', '-reindex', '-quantize', '-quantizeBits', '4', '-quantizeCompress']
 WARNING: Using incubator modules: jdk.incubator.vector
@@ -966,8 +966,8 @@ numDocs = 8000000
 beamWidth = 100
 similarity = MAXIMUM_INNER_PRODUCT
 Index Path = knnIndices/cohere-wikipedia-docs-768d.vec-32-100-4--compressed-8000000.index
-Seed = 958245305680736
-May 12, 2025 12:54:04 PM org.apache.lucene.internal.vectorization.PanamaVectorizationProvider <init>
+Seed = 981750913699706
+May 12, 2025 7:25:49 PM org.apache.lucene.internal.vectorization.PanamaVectorizationProvider <init>
 INFO: Java vector incubator API enabled; uses preferredBitSize=256; FMA enabled
 creating index in knnIndices/cohere-wikipedia-docs-768d.vec-32-100-4--compressed-8000000.index
 33332620 doc vectors in docsPath "/lucenedata/enwiki/cohere-wikipedia-docs-768d.vec"
@@ -1294,28 +1294,27 @@ Done indexing 7975000 documents.
 Done indexing 8000000 documents.
 now IndexWriter.commit()
 done ConcurrentMergeScheduler.sync()
-Indexed 8000000 docs in 600 seconds
-reindex takes 600.65 sec
-index has 16 segments: segments_2: _fh(11.0.0):C1520489:[diagnostics={source=merge, os.arch=amd64, java.runtime.version=24.0.1, mergeFactor=6, java.vendor=Arch Linux, os=Linux, os.version=6.14.4-arch1-2, timestamp=1747068975893, mergeMaxNumSegments=-1, lucene.version=11.0.0}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=9twjn7z37znleea5wie5yhah4 _df(11.0.0):c295615:[diagnostics={source=merge, os.arch=amd64, java.runtime.version=24.0.1, mergeFactor=10, java.vendor=Arch Linux, os=Linux, os.version=6.14.4-arch1-2, timestamp=1747068958013, mergeMaxNumSegments=-1, lucene.version=11.0.0}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=9twjn7z37znleea5wie5yh9j3 _i9(11.0.0):c652866:[diagnostics={source=merge, os.arch=amd64, java.runtime.version=24.0.1, mergeFactor=10, java.vendor=Arch Linux, os=Linux, os.version=6.14.4-arch1-2, timestamp=1747069000587, mergeMaxNumSegments=-1, lucene.version=11.0.0}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=9twjn7z37znleea5wie5yharg _zk(11.0.0):C1183809:[diagnostics={source=merge, os.arch=amd64, java.runtime.version=24.0.1, mergeFactor=10, java.vendor=Arch Linux, os=Linux, os.version=6.14.4-arch1-2, timestamp=1747069176011, mergeMaxNumSegments=-1, lucene.version=11.0.0}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=9twjn7z37znleea5wie5yhbbc _tl(11.0.0):c749168:[diagnostics={source=merge, os.arch=amd64, java.runtime.version=24.0.1, mergeFactor=10, java.vendor=Arch Linux, os=Linux, os.version=6.14.4-arch1-2, timestamp=1747069113862, mergeMaxNumSegments=-1, lucene.version=11.0.0}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=9twjn7z37znleea5wie5yhbam _x6(11.0.0):C809373:[diagnostics={source=merge, os.arch=amd64, java.runtime.version=24.0.1, mergeFactor=10, java.vendor=Arch Linux, os=Linux, os.version=6.14.4-arch1-2, timestamp=1747069153043, mergeMaxNumSegments=-1, lucene.version=11.0.0}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=9twjn7z37znleea5wie5yhbb9 _qk(11.0.0):c242308:[diagnostics={source=merge, os.arch=amd64, java.runtime.version=24.0.1, mergeFactor=10, java.vendor=Arch Linux, os=Linux, os.version=6.14.4-arch1-2, timestamp=1747069083411, mergeMaxNumSegments=-1, lucene.version=11.0.0}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=9twjn7z37znleea5wie5yhauv _z0(11.0.0):c286551:[diagnostics={source=merge, os.arch=amd64, java.runtime.version=24.0.1, mergeFactor=10, java.vendor=Arch Linux, os=Linux, os.version=6.14.4-arch1-2, timestamp=1747069171039, mergeMaxNumSegments=-1, lucene.version=11.0.0}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=9twjn7z37znleea5wie5yhbbb _we(11.0.0):c118591:[diagnostics={source=merge, os.arch=amd64, java.runtime.version=24.0.1, mergeFactor=10, java.vendor=Arch Linux, os=Linux, os.version=6.14.4-arch1-2, timestamp=1747069144366, mergeMaxNumSegments=-1, lucene.version=11.0.0}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=9twjn7z37znleea5wie5yhbai _vt(11.0.0):c173336:[diagnostics={source=merge, os.arch=amd64, java.runtime.version=24.0.1, mergeFactor=10, java.vendor=Arch Linux, os=Linux, os.version=6.14.4-arch1-2, timestamp=1747069138188, mergeMaxNumSegments=-1, lucene.version=11.0.0}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=9twjn7z37znleea5wie5yhbao _wz(11.0.0):c117717:[diagnostics={source=merge, os.arch=amd64, java.runtime.version=24.0.1, mergeFactor=10, java.vendor=Arch Linux, os=Linux, os.version=6.14.4-arch1-2, timestamp=1747069151006, mergeMaxNumSegments=-1, lucene.version=11.0.0}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=9twjn7z37znleea5wie5yhban _yg(11.0.0):c172738:[diagnostics={source=merge, os.arch=amd64, java.runtime.version=24.0.1, mergeFactor=10, java.vendor=Arch Linux, os=Linux, os.version=6.14.4-arch1-2, timestamp=1747069165965, mergeMaxNumSegments=-1, lucene.version=11.0.0}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=9twjn7z37znleea5wie5yhbba _132(11.0.0):c682395:[diagnostics={source=merge, os.arch=amd64, java.runtime.version=24.0.1, mergeFactor=10, java.vendor=Arch Linux, os=Linux, os.version=6.14.4-arch1-2, timestamp=1747069254794, mergeMaxNumSegments=-1, lucene.version=11.0.0}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=9twjn7z37znleea5wie5yhbbd _133(11.0.0):c774419:[diagnostics={source=merge, os.arch=amd64, java.runtime.version=24.0.1, mergeFactor=10, java.vendor=Arch Linux, os=Linux, os.version=6.14.4-arch1-2, timestamp=1747069274453, mergeMaxNumSegments=-1, lucene.version=11.0.0}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=9twjn7z37znleea5wie5yhbbe _12z(11.0.0):c116316:[diagnostics={source=merge, os.arch=amd64, java.runtime.version=24.0.1, mergeFactor=10, java.vendor=Arch Linux, os=Linux, os.version=6.14.4-arch1-2, timestamp=1747069212054, mergeMaxNumSegments=-1, lucene.version=11.0.0}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=9twjn7z37znleea5wie5yhbb6 _131(11.0.0):c104309:[diagnostics={source=merge, os.arch=amd64, java.runtime.version=24.0.1, mergeFactor=10, java.vendor=Arch Linux, os=Linux, os.version=6.14.4-arch1-2, timestamp=1747069216610, mergeMaxNumSegments=-1, lucene.version=11.0.0}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=9twjn7z37znleea5wie5yhbb1
-  _fh: 5119.1 MB
-  _df: 993.8 MB
-  _i9: 2198.1 MB
-  _zk: 3991.0 MB
-  _tl: 2523.9 MB
-  _x6: 2728.1 MB
-  _qk: 815.1 MB
-  _z0: 964.2 MB
-  _we: 398.7 MB
-  _vt: 583.1 MB
-  _wz: 395.8 MB
-  _yg: 581.1 MB
-  _132: 2300.3 MB
-  _133: 2611.3 MB
-  _12z: 391.2 MB
-  _131: 350.8 MB
+Indexed 8000000 docs in 625 seconds
+reindex takes 625.03 sec
+index has 15 segments: segments_2: _78(11.0.0):C767896:[diagnostics={lucene.version=11.0.0, mergeMaxNumSegments=-1, timestamp=1747092415784, os.version=6.14.4-arch1-2, os=Linux, java.vendor=Arch Linux, mergeFactor=10, java.runtime.version=24.0.1, os.arch=amd64, source=merge}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=7xbesjnewzk0k62hp3zurvmlx _dj(11.0.0):C533724:[diagnostics={lucene.version=11.0.0, mergeMaxNumSegments=-1, timestamp=1747092472432, os.version=6.14.4-arch1-2, os=Linux, java.vendor=Arch Linux, mergeFactor=10, java.runtime.version=24.0.1, os.arch=amd64, source=merge}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=7xbesjnewzk0k62hp3zurvn5y _kk(11.0.0):C877963:[diagnostics={lucene.version=11.0.0, mergeMaxNumSegments=-1, timestamp=1747092537117, os.version=6.14.4-arch1-2, os=Linux, java.vendor=Arch Linux, mergeFactor=10, java.runtime.version=24.0.1, os.arch=amd64, source=merge}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=7xbesjnewzk0k62hp3zurvo08 _wk(11.0.0):C1302828:[diagnostics={lucene.version=11.0.0, mergeMaxNumSegments=-1, timestamp=1747092660033, os.version=6.14.4-arch1-2, os=Linux, java.vendor=Arch Linux, mergeFactor=10, java.runtime.version=24.0.1, os.arch=amd64, source=merge}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=7xbesjnewzk0k62hp3zurvosn _m4(11.0.0):c478769:[diagnostics={lucene.version=11.0.0, mergeMaxNumSegments=-1, timestamp=1747092552314, os.version=6.14.4-arch1-2, os=Linux, java.vendor=Arch Linux, mergeFactor=10, java.runtime.version=24.0.1, os.arch=amd64, source=merge}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=7xbesjnewzk0k62hp3zurvo75 _ty(11.0.0):c424672:[diagnostics={lucene.version=11.0.0, mergeMaxNumSegments=-1, timestamp=1747092631814, os.version=6.14.4-arch1-2, os=Linux, java.vendor=Arch Linux, mergeFactor=10, java.runtime.version=24.0.1, os.arch=amd64, source=merge}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=7xbesjnewzk0k62hp3zurvokw _133(11.0.0):C1437662:[diagnostics={lucene.version=11.0.0, mergeMaxNumSegments=-1, timestamp=1747092808745, os.version=6.14.4-arch1-2, os=Linux, java.vendor=Arch Linux, mergeFactor=10, java.runtime.version=24.0.1, os.arch=amd64, source=merge}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=7xbesjnewzk0k62hp3zurvosx _10t(11.0.0):c409627:[diagnostics={lucene.version=11.0.0, mergeMaxNumSegments=-1, timestamp=1747092703782, os.version=6.14.4-arch1-2, os=Linux, java.vendor=Arch Linux, mergeFactor=10, java.runtime.version=24.0.1, os.arch=amd64, source=merge}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=7xbesjnewzk0k62hp3zurvost _11a(11.0.0):c285483:[diagnostics={lucene.version=11.0.0, mergeMaxNumSegments=-1, timestamp=1747092708225, os.version=6.14.4-arch1-2, os=Linux, java.vendor=Arch Linux, mergeFactor=10, java.runtime.version=24.0.1, os.arch=amd64, source=merge}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=7xbesjnewzk0k62hp3zurvosv _111(11.0.0):c342995:[diagnostics={lucene.version=11.0.0, mergeMaxNumSegments=-1, timestamp=1747092705750, os.version=6.14.4-arch1-2, os=Linux, java.vendor=Arch Linux, mergeFactor=10, java.runtime.version=24.0.1, os.arch=amd64, source=merge}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=7xbesjnewzk0k62hp3zurvosu _xo(11.0.0):c307428:[diagnostics={lucene.version=11.0.0, mergeMaxNumSegments=-1, timestamp=1747092672173, os.version=6.14.4-arch1-2, os=Linux, java.vendor=Arch Linux, mergeFactor=10, java.runtime.version=24.0.1, os.arch=amd64, source=merge}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=7xbesjnewzk0k62hp3zurvosp _132(11.0.0):c637160:[diagnostics={lucene.version=11.0.0, mergeMaxNumSegments=-1, timestamp=1747092769902, os.version=6.14.4-arch1-2, os=Linux, java.vendor=Arch Linux, mergeFactor=10, java.runtime.version=24.0.1, os.arch=amd64, source=merge}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=7xbesjnewzk0k62hp3zurvosw _11k(11.0.0):c60990:[diagnostics={lucene.version=11.0.0, mergeMaxNumSegments=-1, timestamp=1747092711254, os.version=6.14.4-arch1-2, os=Linux, java.vendor=Arch Linux, mergeFactor=10, java.runtime.version=24.0.1, os.arch=amd64, source=merge}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=7xbesjnewzk0k62hp3zurvosi _12j(11.0.0):c67967:[diagnostics={lucene.version=11.0.0, mergeMaxNumSegments=-1, timestamp=1747092721182, os.version=6.14.4-arch1-2, os=Linux, java.vendor=Arch Linux, mergeFactor=11, java.runtime.version=24.0.1, os.arch=amd64, source=merge}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=7xbesjnewzk0k62hp3zurvosk _131(11.0.0):c64836:[diagnostics={lucene.version=11.0.0, mergeMaxNumSegments=-1, timestamp=1747092729601, os.version=6.14.4-arch1-2, os=Linux, java.vendor=Arch Linux, mergeFactor=13, java.runtime.version=24.0.1, os.arch=amd64, source=merge}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=7xbesjnewzk0k62hp3zurvosl
+  _78: 2581.1 MB
+  _dj: 1795.3 MB
+  _kk: 2956.3 MB
+  _wk: 4391.3 MB
+  _m4: 1611.6 MB
+  _ty: 1429.7 MB
+  _133: 4849.6 MB
+  _10t: 1379.3 MB
+  _11a: 960.8 MB
+  _111: 1154.7 MB
+  _xo: 1034.8 MB
+  _132: 2147.5 MB
+  _11k: 205.1 MB
+  _12j: 228.5 MB
+  _131: 218.0 MB
 encodingByteSize=4 origByteSize=4
 realEncodingByteSize=0.5
-index disk usage is 26945.53 MB
+index disk usage is 26943.59 MB
 vector disk usage is 26397.71 MB
 vector RAM usage is 2960.21 MB
   now compute brute-force exact KNN matches
@@ -1323,368 +1322,346 @@ computing true nearest neighbors of 1000 target vectors
 parentJoin = false
 now compute brute-force KNN hits for 1000 query vectors from "/lucenedata/enwiki/cohere-wikipedia-queries-768d.vec" starting at query index 0
 path=/lucenedata/enwiki/cohere-wikipedia-queries-768d.vec dim=768 vectorEncoding.byteSize=4
- 100 120 10 40 30 50 90 80 60 70 110 20 140 150 160 130 200 210 190 180 260 170 290 230 240 300 220 310 270 250 320 330 370 280 380 400 340 390 360 350 430 450 440 410 460 420 520 540 530 480 470 510 500 600 580 490 560 640 620 550 590 660 570 610 630 690 770 700 740 670 710 760 650 680 780 790 750 720 730 810 800 820 830 870 880 840 900 910 890 860 940 850 920 950 990 960 980 930 970 1000writing true nearest neighbors to cache file "nn--xx4srw.bin"
-took 250.177 sec to compute brute-force exact matches
+ 30 10 110 80 20 120 60 90 70 40 100 50 140 170 210 190 180 160 220 200 130 150 230 260 270 250 240 280 300 310 330 320 290 370 350 360 380 340 410 390 400 430 440 420 480 450 510 470 490 500 520 460 570 540 530 600 630 590 550 580 560 660 620 640 610 650 760 680 730 670 710 720 740 690 750 790 700 780 800 840 810 830 770 860 880 870 820 890 910 960 920 850 940 950 900 930 970 990 980 1000writing true nearest neighbors to cache file "nn--xx4srw.bin"
+took 244.405 sec to compute brute-force exact matches
 path=/lucenedata/enwiki/cohere-wikipedia-queries-768d.vec dim=768 vectorEncoding.byteSize=4
 1500000 query vectors in queryPath "/lucenedata/enwiki/cohere-wikipedia-queries-768d.vec"
 searching 1000 query vectors; topK=100, fanout=100
-completed 1000 searches in 16152 ms: 61 QPS CPU time=15793ms
+completed 1000 searches in 15157 ms: 65 QPS CPU time=14823ms
 checking results
-SUMMARY: 0.470	15.793	8000000	100	100	32	100	4 bits	77230	600.65	13318.90	0.00	16	26945.53	1.00	post-filter	1.000	26397.705	2960.205	HNSW
+SUMMARY: 0.470	14.823	8000000	100	100	32	100	4 bits	75001	625.03	12799.37	0.00	15	26943.59	1.00	post-filter	1.000	26397.705	2960.205	HNSW
 Leaf 0 has 4 layers
-Leaf 0 has 1520489 documents
-Graph level=3 size=89, Fanout min=2, mean=11.08, max=27, meandelta=93166.73
+Leaf 0 has 767896 documents
+Graph level=3 size=36, Fanout min=3, mean=7.33, max=13, meandelta=41740.87
 %   0  10  20  30  40  50  60  70  80  90 100
-    0   6   7   9  10  10  12  13  14  15  27
+    0   4   5   5   6   7   8   8   9  10  13
 
-Graph level=2 size=1442, Fanout min=5, mean=23.47, max=32, meandelta=58637.87
+Graph level=2 size=605, Fanout min=6, mean=20.55, max=32, meandelta=33270.22
 %   0  10  20  30  40  50  60  70  80  90 100
-    0  13  16  18  21  24  27  31  32  32  32
+    0  11  13  16  18  20  23  25  28  32  32
 
-Graph level=1 size=46578, Fanout min=2, mean=24.20, max=32, meandelta=54712.26
+Graph level=1 size=23570, Fanout min=2, mean=23.95, max=32, meandelta=27928.21
 %   0  10  20  30  40  50  60  70  80  90 100
-    0  12  16  19  22  26  31  32  32  32  32
+    0  12  15  19  22  26  30  32  32  32  32
 
-Graph level=0 size=1520489, Fanout min=1, mean=24.79, max=64, meandelta=48760.53
+Graph level=0 size=767896, Fanout min=1, mean=24.23, max=64, meandelta=25145.18
 %   0  10  20  30  40  50  60  70  80  90 100
-    0   8  11  14  17  20  24  29  37  53  64
+    0   8  11  14  16  19  23  28  36  51  64
 
-Graph level=3 size=89, connectedness=1.00
-Graph level=2 size=1442, connectedness=1.00
-Graph level=1 size=46578, connectedness=1.00
-Graph level=0 size=1520489, connectedness=1.00
+Graph level=3 size=36, connectedness=1.00
+Graph level=2 size=605, connectedness=1.00
+Graph level=1 size=23570, connectedness=1.00
+Graph level=0 size=767896, connectedness=1.00
 Leaf 1 has 4 layers
-Leaf 1 has 295615 documents
-Graph level=3 size=19, Fanout min=2, mean=5.89, max=10, meandelta=35065.46
+Leaf 1 has 533724 documents
+Graph level=3 size=21, Fanout min=2, mean=5.52, max=9, meandelta=39752.07
 %   0  10  20  30  40  50  60  70  80  90 100
-    0   2   4   4   5   5   6   7   7   9  10
+    0   3   4   4   5   5   6   6   7   8   9
 
-Graph level=2 size=271, Fanout min=3, mean=16.13, max=32, meandelta=15579.67
+Graph level=2 size=387, Fanout min=3, mean=18.12, max=32, meandelta=25774.96
 %   0  10  20  30  40  50  60  70  80  90 100
-    0   9  11  12  14  15  17  18  21  25  32
+    0  10  12  13  16  17  19  21  25  29  32
 
-Graph level=1 size=9221, Fanout min=2, mean=24.87, max=32, meandelta=10501.31
+Graph level=1 size=16246, Fanout min=3, mean=24.82, max=32, meandelta=18982.89
 %   0  10  20  30  40  50  60  70  80  90 100
     0  13  17  20  23  27  32  32  32  32  32
 
-Graph level=0 size=295615, Fanout min=1, mean=27.02, max=64, meandelta=9059.23
+Graph level=0 size=533724, Fanout min=1, mean=26.28, max=64, meandelta=16550.24
 %   0  10  20  30  40  50  60  70  80  90 100
-    0  10  13  16  19  22  26  31  40  56  64
+    0  10  13  15  18  21  25  31  39  55  64
 
-Graph level=3 size=19, connectedness=1.00
-Graph level=2 size=271, connectedness=1.00
-Graph level=1 size=9221, connectedness=1.00
-Graph level=0 size=295615, connectedness=1.00
+Graph level=3 size=21, connectedness=1.00
+Graph level=2 size=387, connectedness=1.00
+Graph level=1 size=16246, connectedness=1.00
+Graph level=0 size=533724, connectedness=1.00
 Leaf 2 has 4 layers
-Leaf 2 has 652866 documents
-Graph level=3 size=23, Fanout min=3, mean=6.26, max=9, meandelta=48535.23
+Leaf 2 has 877963 documents
+Graph level=3 size=42, Fanout min=1, mean=6.38, max=13, meandelta=101084.12
 %   0  10  20  30  40  50  60  70  80  90 100
-    0   4   4   5   6   6   7   7   8   8   9
+    0   3   4   5   6   6   6   7   8   9  13
 
-Graph level=2 size=478, Fanout min=3, mean=20.23, max=32, meandelta=28626.96
+Graph level=2 size=772, Fanout min=5, mean=21.48, max=32, meandelta=36932.88
 %   0  10  20  30  40  50  60  70  80  90 100
-    0  10  14  16  17  20  22  24  28  32  32
+    0  11  14  17  19  21  24  27  31  32  32
 
-Graph level=1 size=19980, Fanout min=2, mean=25.12, max=32, meandelta=22977.96
-%   0  10  20  30  40  50  60  70  80  90 100
-    0  13  17  21  24  28  32  32  32  32  32
-
-Graph level=0 size=652866, Fanout min=1, mean=26.96, max=64, meandelta=19831.51
-%   0  10  20  30  40  50  60  70  80  90 100
-    0  10  13  16  19  22  26  31  40  57  64
-
-Graph level=3 size=23, connectedness=1.00
-Graph level=2 size=478, connectedness=1.00
-Graph level=1 size=19980, connectedness=1.00
-Graph level=0 size=652866, connectedness=1.00
-Leaf 3 has 4 layers
-Leaf 3 has 1183809 documents
-Graph level=3 size=75, Fanout min=3, mean=9.65, max=24, meandelta=92739.68
-%   0  10  20  30  40  50  60  70  80  90 100
-    0   6   7   8   9   9  10  11  12  14  24
-
-Graph level=2 size=1098, Fanout min=5, mean=22.59, max=32, meandelta=46525.13
-%   0  10  20  30  40  50  60  70  80  90 100
-    0  12  15  18  20  22  26  29  32  32  32
-
-Graph level=1 size=36012, Fanout min=1, mean=24.94, max=32, meandelta=41500.23
+Graph level=1 size=26803, Fanout min=3, mean=24.89, max=32, meandelta=30952.40
 %   0  10  20  30  40  50  60  70  80  90 100
     0  13  17  20  24  28  32  32  32  32  32
 
-Graph level=0 size=1183809, Fanout min=1, mean=27.01, max=64, meandelta=35820.51
+Graph level=0 size=877963, Fanout min=1, mean=26.28, max=64, meandelta=27164.33
 %   0  10  20  30  40  50  60  70  80  90 100
-    0  10  13  16  19  22  26  32  40  58  64
+    0   9  12  15  18  21  25  31  39  56  64
 
-Graph level=3 size=75, connectedness=1.00
-Graph level=2 size=1098, connectedness=1.00
-Graph level=1 size=36012, connectedness=1.00
-Graph level=0 size=1183809, connectedness=1.00
+Graph level=3 size=42, connectedness=1.00
+Graph level=2 size=772, connectedness=1.00
+Graph level=1 size=26803, connectedness=1.00
+Graph level=0 size=877963, connectedness=1.00
+Leaf 3 has 4 layers
+Leaf 3 has 1302828 documents
+Graph level=3 size=74, Fanout min=3, mean=9.35, max=20, meandelta=94967.43
+%   0  10  20  30  40  50  60  70  80  90 100
+    0   5   7   7   8   9  10  11  12  13  20
+
+Graph level=2 size=1246, Fanout min=4, mean=23.56, max=32, meandelta=50078.03
+%   0  10  20  30  40  50  60  70  80  90 100
+    0  13  16  19  21  24  28  31  32  32  32
+
+Graph level=1 size=39746, Fanout min=2, mean=24.78, max=32, meandelta=46158.46
+%   0  10  20  30  40  50  60  70  80  90 100
+    0  13  17  20  23  27  32  32  32  32  32
+
+Graph level=0 size=1302828, Fanout min=1, mean=26.54, max=64, meandelta=39837.44
+%   0  10  20  30  40  50  60  70  80  90 100
+    0   9  13  15  18  22  26  31  40  57  64
+
+Graph level=3 size=74, connectedness=1.00
+Graph level=2 size=1246, connectedness=1.00
+Graph level=1 size=39746, connectedness=1.00
+Graph level=0 size=1302828, connectedness=1.00
 Leaf 4 has 4 layers
-Leaf 4 has 749168 documents
-Graph level=3 size=37, Fanout min=2, mean=6.81, max=12, meandelta=89037.45
+Leaf 4 has 478769 documents
+Graph level=3 size=26, Fanout min=3, mean=5.77, max=11, meandelta=45297.55
 %   0  10  20  30  40  50  60  70  80  90 100
-    0   3   4   5   6   7   8   8   9  10  12
+    0   3   3   4   5   5   6   6   7   8  11
 
-Graph level=2 size=641, Fanout min=6, mean=21.74, max=32, meandelta=31554.59
+Graph level=2 size=359, Fanout min=3, mean=18.03, max=32, meandelta=19784.14
 %   0  10  20  30  40  50  60  70  80  90 100
-    0  12  15  17  19  21  24  27  31  32  32
+    0  10  12  13  15  17  19  22  24  28  32
 
-Graph level=1 size=22906, Fanout min=1, mean=25.36, max=32, meandelta=26097.08
+Graph level=1 size=14549, Fanout min=3, mean=25.16, max=32, meandelta=16823.46
 %   0  10  20  30  40  50  60  70  80  90 100
-    0  14  18  21  25  29  32  32  32  32  32
+    0  14  17  20  24  28  32  32  32  32  32
 
-Graph level=0 size=749168, Fanout min=1, mean=27.49, max=64, meandelta=22443.56
+Graph level=0 size=478769, Fanout min=1, mean=27.63, max=64, meandelta=14334.31
 %   0  10  20  30  40  50  60  70  80  90 100
-    0  10  13  16  19  23  27  32  41  59  64
+    0  10  14  16  19  23  27  32  41  59  64
 
-Graph level=3 size=37, connectedness=1.00
-Graph level=2 size=641, connectedness=1.00
-Graph level=1 size=22906, connectedness=1.00
-Graph level=0 size=749168, connectedness=1.00
+Graph level=3 size=26, connectedness=1.00
+Graph level=2 size=359, connectedness=1.00
+Graph level=1 size=14549, connectedness=1.00
+Graph level=0 size=478769, connectedness=1.00
 Leaf 5 has 4 layers
-Leaf 5 has 809373 documents
-Graph level=3 size=45, Fanout min=2, mean=8.27, max=16, meandelta=80883.18
+Leaf 5 has 424672 documents
+Graph level=3 size=24, Fanout min=3, mean=5.42, max=11, meandelta=44001.64
 %   0  10  20  30  40  50  60  70  80  90 100
-    0   4   6   7   7   7   8   9  11  13  16
+    0   3   4   4   4   5   6   6   6   7  11
 
-Graph level=2 size=723, Fanout min=5, mean=21.62, max=32, meandelta=34004.06
+Graph level=2 size=320, Fanout min=5, mean=18.21, max=32, meandelta=17225.20
 %   0  10  20  30  40  50  60  70  80  90 100
-    0  11  14  16  19  22  24  28  31  32  32
+    0   9  12  14  16  17  19  21  24  30  32
 
-Graph level=1 size=24522, Fanout min=2, mean=25.19, max=32, meandelta=28072.29
-%   0  10  20  30  40  50  60  70  80  90 100
-    0  13  17  21  24  28  32  32  32  32  32
-
-Graph level=0 size=809373, Fanout min=1, mean=27.88, max=64, meandelta=23940.34
-%   0  10  20  30  40  50  60  70  80  90 100
-    0  10  13  16  19  23  27  33  42  61  64
-
-Graph level=3 size=45, connectedness=1.00
-Graph level=2 size=723, connectedness=1.00
-Graph level=1 size=24522, connectedness=1.00
-Graph level=0 size=809373, connectedness=1.00
-Leaf 6 has 4 layers
-Leaf 6 has 242308 documents
-Graph level=3 size=16, Fanout min=2, mean=4.75, max=11, meandelta=38466.39
-%   0  10  20  30  40  50  60  70  80  90 100
-    0   2   3   3   4   4   4   5   6   6  11
-
-Graph level=2 size=232, Fanout min=4, mean=16.05, max=32, meandelta=13304.27
-%   0  10  20  30  40  50  60  70  80  90 100
-    0   9  11  12  14  15  17  18  21  24  32
-
-Graph level=1 size=7451, Fanout min=3, mean=25.46, max=32, meandelta=8469.99
-%   0  10  20  30  40  50  60  70  80  90 100
-    0  14  18  21  25  28  32  32  32  32  32
-
-Graph level=0 size=242308, Fanout min=1, mean=28.68, max=64, meandelta=7102.01
-%   0  10  20  30  40  50  60  70  80  90 100
-    0  11  14  17  20  24  28  34  43  61  64
-
-Graph level=3 size=16, connectedness=1.00
-Graph level=2 size=232, connectedness=1.00
-Graph level=1 size=7451, connectedness=1.00
-Graph level=0 size=242308, connectedness=1.00
-Leaf 7 has 4 layers
-Leaf 7 has 286551 documents
-Graph level=3 size=12, Fanout min=1, mean=4.33, max=8, meandelta=21570.54
-%   0  10  20  30  40  50  60  70  80  90 100
-    0   1   2   2   3   4   4   5   5   7   8
-
-Graph level=2 size=262, Fanout min=6, mean=16.79, max=32, meandelta=14463.88
-%   0  10  20  30  40  50  60  70  80  90 100
-    0  10  11  13  14  16  18  19  21  26  32
-
-Graph level=1 size=8814, Fanout min=4, mean=25.48, max=32, meandelta=10026.78
-%   0  10  20  30  40  50  60  70  80  90 100
-    0  14  18  21  25  28  32  32  32  32  32
-
-Graph level=0 size=286551, Fanout min=1, mean=28.61, max=64, meandelta=8405.84
-%   0  10  20  30  40  50  60  70  80  90 100
-    0  11  14  17  20  24  28  34  43  61  64
-
-Graph level=3 size=12, connectedness=1.00
-Graph level=2 size=262, connectedness=1.00
-Graph level=1 size=8814, connectedness=1.00
-Graph level=0 size=286551, connectedness=1.00
-Leaf 8 has 4 layers
-Leaf 8 has 118591 documents
-Graph level=3 size=9, Fanout min=1, mean=3.33, max=6, meandelta=19838.63
-%   0  10  20  30  40  50  60  70  80  90 100
-    0   1   1   2   2   3   3   4   4   5   6
-
-Graph level=2 size=109, Fanout min=4, mean=12.29, max=22, meandelta=8075.51
-%   0  10  20  30  40  50  60  70  80  90 100
-    0   7   8   9  11  12  13  15  16  18  22
-
-Graph level=1 size=3577, Fanout min=4, mean=25.27, max=32, meandelta=4214.23
-%   0  10  20  30  40  50  60  70  80  90 100
-    0  14  18  21  24  28  32  32  32  32  32
-
-Graph level=0 size=118591, Fanout min=1, mean=29.46, max=64, meandelta=3435.24
-%   0  10  20  30  40  50  60  70  80  90 100
-    0  12  15  18  21  25  29  35  44  62  64
-
-Graph level=3 size=9, connectedness=1.00
-Graph level=2 size=109, connectedness=1.00
-Graph level=1 size=3577, connectedness=1.00
-Graph level=0 size=118591, connectedness=1.00
-Leaf 9 has 4 layers
-Leaf 9 has 173336 documents
-Graph level=3 size=8, Fanout min=1, mean=3.00, max=5, meandelta=18290.13
-%   0  10  20  30  40  50  60  70  80  90 100
-    0   1   1   2   2   3   3   3   4   4   5
-
-Graph level=2 size=166, Fanout min=2, mean=13.77, max=32, meandelta=10378.84
-%   0  10  20  30  40  50  60  70  80  90 100
-    0   7   9  10  12  13  14  16  18  21  32
-
-Graph level=1 size=5357, Fanout min=5, mean=25.45, max=32, meandelta=6121.29
-%   0  10  20  30  40  50  60  70  80  90 100
-    0  14  18  21  24  28  32  32  32  32  32
-
-Graph level=0 size=173336, Fanout min=1, mean=29.48, max=64, meandelta=4996.53
-%   0  10  20  30  40  50  60  70  80  90 100
-    0  12  15  18  21  25  29  35  44  63  64
-
-Graph level=3 size=8, connectedness=1.00
-Graph level=2 size=166, connectedness=1.00
-Graph level=1 size=5357, connectedness=1.00
-Graph level=0 size=173336, connectedness=1.00
-Leaf 10 has 4 layers
-Leaf 10 has 117717 documents
-Graph level=3 size=9, Fanout min=2, mean=3.33, max=6, meandelta=24829.63
-%   0  10  20  30  40  50  60  70  80  90 100
-    0   1   2   3   3   3   3   3   3   4   6
-
-Graph level=2 size=108, Fanout min=4, mean=12.26, max=26, meandelta=7891.88
-%   0  10  20  30  40  50  60  70  80  90 100
-    0   7   8   9  11  12  13  15  16  18  26
-
-Graph level=1 size=3566, Fanout min=5, mean=25.15, max=32, meandelta=4199.09
-%   0  10  20  30  40  50  60  70  80  90 100
-    0  14  17  21  24  28  32  32  32  32  32
-
-Graph level=0 size=117717, Fanout min=1, mean=29.46, max=64, meandelta=3404.39
-%   0  10  20  30  40  50  60  70  80  90 100
-    0  12  15  18  21  25  29  35  44  62  64
-
-Graph level=3 size=9, connectedness=1.00
-Graph level=2 size=108, connectedness=1.00
-Graph level=1 size=3566, connectedness=1.00
-Graph level=0 size=117717, connectedness=1.00
-Leaf 11 has 4 layers
-Leaf 11 has 172738 documents
-Graph level=3 size=9, Fanout min=1, mean=2.67, max=5, meandelta=20607.17
-%   0  10  20  30  40  50  60  70  80  90 100
-    0   1   1   1   2   2   2   3   4   4   5
-
-Graph level=2 size=159, Fanout min=4, mean=14.28, max=28, meandelta=10022.43
-%   0  10  20  30  40  50  60  70  80  90 100
-    0   7   9  10  12  14  16  18  19  22  28
-
-Graph level=1 size=5305, Fanout min=3, mean=25.53, max=32, meandelta=6081.25
-%   0  10  20  30  40  50  60  70  80  90 100
-    0  14  18  21  25  28  32  32  32  32  32
-
-Graph level=0 size=172738, Fanout min=1, mean=29.57, max=64, meandelta=4965.09
-%   0  10  20  30  40  50  60  70  80  90 100
-    0  12  15  18  21  25  29  35  44  63  64
-
-Graph level=3 size=9, connectedness=1.00
-Graph level=2 size=159, connectedness=1.00
-Graph level=1 size=5305, connectedness=1.00
-Graph level=0 size=172738, connectedness=1.00
-Leaf 12 has 4 layers
-Leaf 12 has 682395 documents
-Graph level=3 size=24, Fanout min=3, mean=6.42, max=13, meandelta=38491.73
-%   0  10  20  30  40  50  60  70  80  90 100
-    0   3   4   5   5   7   7   7   8   8  13
-
-Graph level=2 size=570, Fanout min=5, mean=21.43, max=32, meandelta=29296.85
-%   0  10  20  30  40  50  60  70  80  90 100
-    0  11  14  17  18  21  24  27  30  32  32
-
-Graph level=1 size=20907, Fanout min=2, mean=25.53, max=32, meandelta=23819.29
+Graph level=1 size=12889, Fanout min=2, mean=25.43, max=32, meandelta=14818.46
 %   0  10  20  30  40  50  60  70  80  90 100
     0  14  18  21  25  29  32  32  32  32  32
 
-Graph level=0 size=682395, Fanout min=1, mean=28.56, max=64, meandelta=19837.63
+Graph level=0 size=424672, Fanout min=1, mean=28.07, max=64, meandelta=12608.09
 %   0  10  20  30  40  50  60  70  80  90 100
-    0  11  14  17  20  24  28  34  43  63  64
+    0  11  14  17  20  23  27  33  42  59  64
 
 Graph level=3 size=24, connectedness=1.00
-Graph level=2 size=570, connectedness=1.00
-Graph level=1 size=20907, connectedness=1.00
-Graph level=0 size=682395, connectedness=1.00
-Leaf 13 has 4 layers
-Leaf 13 has 774419 documents
-Graph level=3 size=38, Fanout min=3, mean=6.11, max=13, meandelta=105447.93
+Graph level=2 size=320, connectedness=1.00
+Graph level=1 size=12889, connectedness=1.00
+Graph level=0 size=424672, connectedness=1.00
+Leaf 6 has 4 layers
+Leaf 6 has 1437662 documents
+Graph level=3 size=75, Fanout min=4, mean=10.67, max=18, meandelta=85652.30
 %   0  10  20  30  40  50  60  70  80  90 100
-    0   3   4   4   5   6   6   7   8   9  13
+    0   7   7   8   9  10  12  12  14  15  18
 
-Graph level=2 size=669, Fanout min=5, mean=21.51, max=32, meandelta=32526.86
+Graph level=2 size=1413, Fanout min=4, mean=24.38, max=32, meandelta=53473.55
 %   0  10  20  30  40  50  60  70  80  90 100
-    0  11  14  16  19  21  24  26  31  32  32
+    0  14  17  20  23  26  29  32  32  32  32
 
-Graph level=1 size=23741, Fanout min=1, mean=25.49, max=32, meandelta=26904.53
+Graph level=1 size=44353, Fanout min=2, mean=25.01, max=32, meandelta=50656.92
+%   0  10  20  30  40  50  60  70  80  90 100
+    0  13  17  20  24  28  32  32  32  32  32
+
+Graph level=0 size=1437662, Fanout min=1, mean=27.22, max=64, meandelta=43138.02
+%   0  10  20  30  40  50  60  70  80  90 100
+    0  10  13  16  19  22  26  32  41  60  64
+
+Graph level=3 size=75, connectedness=1.00
+Graph level=2 size=1413, connectedness=1.00
+Graph level=1 size=44353, connectedness=1.00
+Graph level=0 size=1437662, connectedness=1.00
+Leaf 7 has 4 layers
+Leaf 7 has 409627 documents
+Graph level=3 size=27, Fanout min=1, mean=5.78, max=11, meandelta=49753.60
+%   0  10  20  30  40  50  60  70  80  90 100
+    0   2   4   5   5   6   6   6   7   8  11
+
+Graph level=2 size=353, Fanout min=6, mean=18.16, max=32, meandelta=18784.14
+%   0  10  20  30  40  50  60  70  80  90 100
+    0  10  12  14  16  18  19  21  23  28  32
+
+Graph level=1 size=12376, Fanout min=4, mean=25.52, max=32, meandelta=14133.19
+%   0  10  20  30  40  50  60  70  80  90 100
+    0  14  18  21  25  28  32  32  32  32  32
+
+Graph level=0 size=409627, Fanout min=1, mean=28.63, max=64, meandelta=11969.83
+%   0  10  20  30  40  50  60  70  80  90 100
+    0  11  14  17  20  24  28  34  43  62  64
+
+Graph level=3 size=27, connectedness=1.00
+Graph level=2 size=353, connectedness=1.00
+Graph level=1 size=12376, connectedness=1.00
+Graph level=0 size=409627, connectedness=1.00
+Leaf 8 has 4 layers
+Leaf 8 has 285483 documents
+Graph level=3 size=11, Fanout min=2, mean=4.55, max=7, meandelta=25878.04
+%   0  10  20  30  40  50  60  70  80  90 100
+    0   2   3   3   3   4   4   5   6   6   7
+
+Graph level=2 size=260, Fanout min=4, mean=17.05, max=32, meandelta=14372.45
+%   0  10  20  30  40  50  60  70  80  90 100
+    0   9  11  13  14  16  18  20  23  27  32
+
+Graph level=1 size=8878, Fanout min=3, mean=25.51, max=32, meandelta=9998.28
 %   0  10  20  30  40  50  60  70  80  90 100
     0  14  18  21  25  29  32  32  32  32  32
 
-Graph level=0 size=774419, Fanout min=1, mean=28.50, max=64, meandelta=22618.40
+Graph level=0 size=285483, Fanout min=1, mean=29.00, max=64, meandelta=8320.09
 %   0  10  20  30  40  50  60  70  80  90 100
-    0  11  14  17  20  23  28  34  43  63  64
+    0  11  15  17  21  24  28  34  44  62  64
 
-Graph level=3 size=38, connectedness=1.00
-Graph level=2 size=669, connectedness=1.00
-Graph level=1 size=23741, connectedness=1.00
-Graph level=0 size=774419, connectedness=1.00
-Leaf 14 has 4 layers
-Leaf 14 has 116316 documents
-Graph level=3 size=8, Fanout min=1, mean=3.00, max=6, meandelta=16834.00
+Graph level=3 size=11, connectedness=1.00
+Graph level=2 size=260, connectedness=1.00
+Graph level=1 size=8878, connectedness=1.00
+Graph level=0 size=285483, connectedness=1.00
+Leaf 9 has 4 layers
+Leaf 9 has 342995 documents
+Graph level=3 size=21, Fanout min=2, mean=5.24, max=7, meandelta=53073.95
 %   0  10  20  30  40  50  60  70  80  90 100
-    0   1   1   2   2   3   3   3   3   4   6
+    0   3   4   4   5   6   6   6   6   6   7
 
-Graph level=2 size=106, Fanout min=3, mean=11.47, max=23, meandelta=8175.82
+Graph level=2 size=323, Fanout min=5, mean=17.58, max=32, meandelta=17323.74
 %   0  10  20  30  40  50  60  70  80  90 100
-    0   5   8   9  10  11  12  14  16  17  23
+    0   9  11  14  15  17  18  21  23  26  32
 
-Graph level=1 size=3508, Fanout min=5, mean=25.32, max=32, meandelta=4107.50
+Graph level=1 size=10568, Fanout min=4, mean=25.64, max=32, meandelta=11937.22
+%   0  10  20  30  40  50  60  70  80  90 100
+    0  14  18  21  25  29  32  32  32  32  32
+
+Graph level=0 size=342995, Fanout min=1, mean=28.72, max=64, meandelta=10040.11
+%   0  10  20  30  40  50  60  70  80  90 100
+    0  11  14  17  20  24  28  34  43  62  64
+
+Graph level=3 size=21, connectedness=1.00
+Graph level=2 size=323, connectedness=1.00
+Graph level=1 size=10568, connectedness=1.00
+Graph level=0 size=342995, connectedness=1.00
+Leaf 10 has 4 layers
+Leaf 10 has 307428 documents
+Graph level=3 size=22, Fanout min=4, mean=6.00, max=11, meandelta=44872.11
+%   0  10  20  30  40  50  60  70  80  90 100
+    0   4   5   5   5   6   6   6   7   7  11
+
+Graph level=2 size=296, Fanout min=4, mean=16.70, max=32, meandelta=16124.08
+%   0  10  20  30  40  50  60  70  80  90 100
+    0   9  11  13  14  15  17  19  21  27  32
+
+Graph level=1 size=9484, Fanout min=2, mean=25.38, max=32, meandelta=10804.57
 %   0  10  20  30  40  50  60  70  80  90 100
     0  14  18  21  24  28  32  32  32  32  32
 
-Graph level=0 size=116316, Fanout min=1, mean=30.19, max=64, meandelta=3312.22
+Graph level=0 size=307428, Fanout min=1, mean=28.92, max=64, meandelta=8943.52
 %   0  10  20  30  40  50  60  70  80  90 100
-    0  12  15  18  22  25  30  36  46  64  64
+    0  11  14  17  21  24  28  34  43  62  64
 
-Graph level=3 size=8, connectedness=1.00
-Graph level=2 size=106, connectedness=1.00
-Graph level=1 size=3508, connectedness=1.00
-Graph level=0 size=116316, connectedness=1.00
-Leaf 15 has 4 layers
-Leaf 15 has 104309 documents
-Graph level=3 size=6, Fanout min=2, mean=2.33, max=3, meandelta=17674.57
+Graph level=3 size=22, connectedness=1.00
+Graph level=2 size=296, connectedness=1.00
+Graph level=1 size=9484, connectedness=1.00
+Graph level=0 size=307428, connectedness=1.00
+Leaf 11 has 4 layers
+Leaf 11 has 637160 documents
+Graph level=3 size=24, Fanout min=3, mean=5.42, max=11, meandelta=35014.66
 %   0  10  20  30  40  50  60  70  80  90 100
-    0   1   2   2   2   2   2   2   2   3   3
+    0   3   3   4   4   4   5   5   7   8  11
 
-Graph level=2 size=95, Fanout min=4, mean=11.24, max=27, meandelta=7345.16
+Graph level=2 size=522, Fanout min=4, mean=20.20, max=32, meandelta=28954.26
 %   0  10  20  30  40  50  60  70  80  90 100
-    0   6   8   8   9  11  12  13  14  16  27
+    0  11  14  16  17  19  22  24  27  32  32
 
-Graph level=1 size=3162, Fanout min=2, mean=25.19, max=32, meandelta=3724.31
+Graph level=1 size=19430, Fanout min=3, mean=25.43, max=32, meandelta=22347.49
 %   0  10  20  30  40  50  60  70  80  90 100
-    0  14  18  21  24  27  32  32  32  32  32
+    0  14  18  21  25  28  32  32  32  32  32
 
-Graph level=0 size=104309, Fanout min=1, mean=30.18, max=64, meandelta=2948.85
+Graph level=0 size=637160, Fanout min=1, mean=28.39, max=64, meandelta=18712.90
 %   0  10  20  30  40  50  60  70  80  90 100
-    0  12  15  19  22  25  30  36  45  64  64
+    0  11  14  17  20  23  28  34  43  62  64
 
-Graph level=3 size=6, connectedness=1.00
-Graph level=2 size=95, connectedness=1.00
-Graph level=1 size=3162, connectedness=1.00
-Graph level=0 size=104309, connectedness=1.00
-  took 0:14:53.290037 to run KnnGraphTester
-result: KNNResultV0(lucene_git_rev='92e0eb8f71e2eaad8c2d18890ed3e506bbfdc5b8', luceneutil_git_rev='d615d87d19ea5f3d9cfc4959046db8ba121a7371', index_vectors_file='/lucenedata/enwiki/cohere-wikipedia-docs-768d.vec', search_vectors_file='/lucenedata/enwiki/cohere-wikipedia-queries-768d.vec', vector_dims=768, do_force_merge=False, recall=0.47, cpu_time_ms=15.793, num_docs=8000000, top_k=100, fanout=100, max_conn=32, beam_width=100, quantize_desc='4 bits', total_visited=77230, index_time_sec=600.65, index_docs_per_sec=13318.9, force_merge_time_sec=0.0, index_num_segments=16, index_size_on_disk_mb=26945.53, selectivity=1.0, pre_post_filter='post-filter', vec_disk_mb=1.0, vec_ram_mb=26397.705, graph_level_conn_p_values={3: (6, {0: 0, 10: 1, 20: 2, 30: 2, 40: 2, 50: 2, 60: 2, 70: 2, 80: 2, 90: 3, 100: 3}), 2: (95, {0: 0, 10: 6, 20: 8, 30: 8, 40: 9, 50: 11, 60: 12, 70: 13, 80: 14, 90: 16, 100: 27}), 1: (3162, {0: 0, 10: 14, 20: 18, 30: 21, 40: 24, 50: 27, 60: 32, 70: 32, 80: 32, 90: 32, 100: 32}), 0: (104309, {0: 0, 10: 12, 20: 15, 30: 19, 40: 22, 50: 25, 60: 30, 70: 36, 80: 45, 90: 64, 100: 64})}, combined_run_time=datetime.timedelta(seconds=893, microseconds=290037))
+Graph level=3 size=24, connectedness=1.00
+Graph level=2 size=522, connectedness=1.00
+Graph level=1 size=19430, connectedness=1.00
+Graph level=0 size=637160, connectedness=1.00
+Leaf 12 has 4 layers
+Leaf 12 has 60990 documents
+Graph level=3 size=4, Fanout min=1, mean=2.00, max=3, meandelta=11619.38
+%   0  10  20  30  40  50  60  70  80  90 100
+    0   1   1   1   1   2   2   2   2   2   3
+
+Graph level=2 size=55, Fanout min=3, mean=8.22, max=18, meandelta=5499.38
+%   0  10  20  30  40  50  60  70  80  90 100
+    0   4   6   6   7   8   8   9  10  12  18
+
+Graph level=1 size=1842, Fanout min=4, mean=24.40, max=32, meandelta=2234.94
+%   0  10  20  30  40  50  60  70  80  90 100
+    0  13  17  20  23  26  29  32  32  32  32
+
+Graph level=0 size=60990, Fanout min=1, mean=31.15, max=64, meandelta=1715.07
+%   0  10  20  30  40  50  60  70  80  90 100
+    0  12  16  19  23  27  31  38  47  64  64
+
+Graph level=3 size=4, connectedness=1.00
+Graph level=2 size=55, connectedness=1.00
+Graph level=1 size=1842, connectedness=1.00
+Graph level=0 size=60990, connectedness=1.00
+Leaf 13 has 4 layers
+Leaf 13 has 67967 documents
+Graph level=3 size=4, Fanout min=1, mean=1.50, max=3, meandelta=2103.17
+%   0  10  20  30  40  50  60  70  80  90 100
+    0   1   1   1   1   1   1   1   1   1   3
+
+Graph level=2 size=65, Fanout min=2, mean=8.89, max=16, meandelta=6235.67
+%   0  10  20  30  40  50  60  70  80  90 100
+    0   5   6   7   8   8   9  10  11  13  16
+
+Graph level=1 size=2062, Fanout min=4, mean=24.68, max=32, meandelta=2469.56
+%   0  10  20  30  40  50  60  70  80  90 100
+    0  14  17  20  23  26  30  32  32  32  32
+
+Graph level=0 size=67967, Fanout min=1, mean=30.55, max=64, meandelta=1933.34
+%   0  10  20  30  40  50  60  70  80  90 100
+    0  12  16  19  22  26  30  37  46  64  64
+
+Graph level=3 size=4, connectedness=1.00
+Graph level=2 size=65, connectedness=1.00
+Graph level=1 size=2062, connectedness=1.00
+Graph level=0 size=67967, connectedness=1.00
+Leaf 14 has 4 layers
+Leaf 14 has 64836 documents
+Graph level=3 size=4, Fanout min=1, mean=2.00, max=3, meandelta=11619.38
+%   0  10  20  30  40  50  60  70  80  90 100
+    0   1   1   1   1   2   2   2   2   2   3
+
+Graph level=2 size=61, Fanout min=3, mean=8.89, max=23, meandelta=5698.54
+%   0  10  20  30  40  50  60  70  80  90 100
+    0   5   6   6   7   8   8  10  10  14  23
+
+Graph level=1 size=1962, Fanout min=3, mean=24.13, max=32, meandelta=2401.96
+%   0  10  20  30  40  50  60  70  80  90 100
+    0  13  16  19  22  26  29  32  32  32  32
+
+Graph level=0 size=64836, Fanout min=1, mean=30.39, max=64, meandelta=1830.81
+%   0  10  20  30  40  50  60  70  80  90 100
+    0  12  15  18  22  26  30  36  46  64  64
+
+Graph level=3 size=4, connectedness=1.00
+Graph level=2 size=61, connectedness=1.00
+Graph level=1 size=1962, connectedness=1.00
+Graph level=0 size=64836, connectedness=1.00
+  took 0:15:10.455977 to run KnnGraphTester
+result: KNNResultV0(lucene_git_rev='36b3577c17a52b2d9ae21d5976141e2da77cfab3', luceneutil_git_rev='d615d87d19ea5f3d9cfc4959046db8ba121a7371', index_vectors_file='/lucenedata/enwiki/cohere-wikipedia-docs-768d.vec', search_vectors_file='/lucenedata/enwiki/cohere-wikipedia-queries-768d.vec', vector_dims=768, do_force_merge=False, recall=0.47, cpu_time_ms=14.823, num_docs=8000000, top_k=100, fanout=100, max_conn=32, beam_width=100, quantize_desc='4 bits', total_visited=75001, index_time_sec=625.03, index_docs_per_sec=12799.37, force_merge_time_sec=0.0, index_num_segments=15, index_size_on_disk_mb=26943.59, selectivity=1.0, pre_post_filter='post-filter', vec_disk_mb=1.0, vec_ram_mb=26397.705, graph_level_conn_p_values={3: (4, {0: 0, 10: 1, 20: 1, 30: 1, 40: 1, 50: 2, 60: 2, 70: 2, 80: 2, 90: 2, 100: 3}), 2: (61, {0: 0, 10: 5, 20: 6, 30: 6, 40: 7, 50: 8, 60: 8, 70: 10, 80: 10, 90: 14, 100: 23}), 1: (1962, {0: 0, 10: 13, 20: 16, 30: 19, 40: 22, 50: 26, 60: 29, 70: 32, 80: 32, 90: 32, 100: 32}), 0: (64836, {0: 0, 10: 12, 20: 15, 30: 18, 40: 22, 50: 26, 60: 30, 70: 36, 80: 46, 90: 64, 100: 64})}, combined_run_time=datetime.timedelta(seconds=910, microseconds=455977))
   cmd: ['/usr/lib/jvm/java-24-openjdk/bin/java', '--add-modules', 'jdk.incubator.vector', '-Xmx32g', '-Xms32g', '-server', '-XX:+UseParallelGC', '-Djava.io.tmpdir=/l/tmp', '-cp', '/l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar:/l/trunk.nightly/lucene/sandbox/build/classes/java/main:/l/trunk.nightly/lucene/misc/build/classes/java/main:/l/trunk.nightly/lucene/facet/build/classes/java/main:/l/trunk.nightly/lucene/analysis/common/build/classes/java/main:/l/trunk.nightly/lucene/analysis/icu/build/classes/java/main:/l/trunk.nightly/lucene/queryparser/build/classes/java/main:/l/trunk.nightly/lucene/grouping/build/classes/java/main:/l/trunk.nightly/lucene/suggest/build/classes/java/main:/l/trunk.nightly/lucene/highlighter/build/classes/java/main:/l/trunk.nightly/lucene/codecs/build/classes/java/main:/l/trunk.nightly/lucene/queries/build/classes/java/main:/l/trunk.nightly/lucene/join/build/classes/java/main:/l/trunk.nightly/lucene/spatial3d/build/classes/java/main:/l/util.nightly/lib/HdrHistogram.jar:/l/util.nightly/src/main/build/classes/java/main:/l/util.nightly/build:/l/util.nightly/build', '--add-modules', 'jdk.incubator.vector', '--enable-native-access=ALL-UNNAMED', 'knn.KnnGraphTester', '-maxConn', '32', '-dim', '768', '-docs', '/lucenedata/enwiki/cohere-wikipedia-docs-768d.vec', '-ndoc', '8000000', '-topK', '100', '-numIndexThreads', '8', '-beamWidthIndex', '100', '-search-and-stats', '/lucenedata/enwiki/cohere-wikipedia-queries-768d.vec', '-metric', 'mip', '-numMergeThread', '16', '-numMergeWorker', '48', '-forceMerge', '-quantize', '-quantizeBits', '4', '-quantizeCompress']
 WARNING: Using incubator modules: jdk.incubator.vector
 maxConn = 32
@@ -1693,49 +1670,49 @@ numDocs = 8000000
 beamWidth = 100
 similarity = MAXIMUM_INNER_PRODUCT
 Index Path = knnIndices/cohere-wikipedia-docs-768d.vec-32-100-4--compressed-8000000.index
-Seed = 959138596805505
-May 12, 2025 1:08:57 PM org.apache.lucene.internal.vectorization.PanamaVectorizationProvider <init>
+Seed = 982661368769328
+May 12, 2025 7:41:00 PM org.apache.lucene.internal.vectorization.PanamaVectorizationProvider <init>
 INFO: Java vector incubator API enabled; uses preferredBitSize=256; FMA enabled
 Force merge index in knnIndices/cohere-wikipedia-docs-768d.vec-32-100-4--compressed-8000000.index
-Force merge done in 624.18 sec
-index has 1 segments: segments_3: _134(11.0.0):C8000000:[diagnostics={mergeMaxNumSegments=1, timestamp=1747069737563, os.version=6.14.4-arch1-2, os=Linux, java.vendor=Arch Linux, mergeFactor=16, java.runtime.version=24.0.1, os.arch=amd64, source=merge, lucene.version=11.0.0}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=4fyo3fh1kangth4c39wifpoif
-  _134: 26958.2 MB
+Force merge done in 643.09 sec
+index has 1 segments: segments_3: _134(11.0.0):C8000000:[diagnostics={os=Linux, java.vendor=Arch Linux, mergeFactor=15, java.runtime.version=24.0.1, os.arch=amd64, source=merge, lucene.version=11.0.0, mergeMaxNumSegments=1, timestamp=1747093260328, os.version=6.14.4-arch1-2}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=2ban4mmtzc2epzs3tvkmdycpr
+  _134: 26978.7 MB
 encodingByteSize=4 origByteSize=4
 realEncodingByteSize=0.5
-index disk usage is 26958.21 MB
+index disk usage is 26978.71 MB
 vector disk usage is 26397.71 MB
 vector RAM usage is 2960.21 MB
   read pre-cached exact match vectors from cache file "nn--xx4srw.bin"
 path=/lucenedata/enwiki/cohere-wikipedia-queries-768d.vec dim=768 vectorEncoding.byteSize=4
 1500000 query vectors in queryPath "/lucenedata/enwiki/cohere-wikipedia-queries-768d.vec"
 searching 1000 query vectors; topK=100, fanout=100
-completed 1000 searches in 3020 ms: 331 QPS CPU time=2959ms
+completed 1000 searches in 3114 ms: 321 QPS CPU time=3051ms
 checking results
-SUMMARY: 0.464	2.959	8000000	100	100	32	100	4 bits	7066	0.00	Infinity	624.18	1	26958.21	1.00	post-filter	1.000	26397.705	2960.205	HNSW
+SUMMARY: 0.465	3.051	8000000	100	100	32	100	4 bits	7150	0.00	Infinity	643.09	1	26978.71	1.00	post-filter	1.000	26397.705	2960.205	HNSW
 Leaf 0 has 4 layers
 Leaf 0 has 8000000 documents
-Graph level=3 size=276, Fanout min=4, mean=16.78, max=32, meandelta=413657.09
+Graph level=3 size=262, Fanout min=4, mean=16.31, max=32, meandelta=419341.31
 %   0  10  20  30  40  50  60  70  80  90 100
-    0  10  11  13  14  15  18  20  21  25  32
+    0   9  10  12  13  16  17  19  22  25  32
 
-Graph level=2 size=7652, Fanout min=3, mean=25.25, max=32, meandelta=284583.34
+Graph level=2 size=7719, Fanout min=4, mean=25.67, max=32, meandelta=279403.84
 %   0  10  20  30  40  50  60  70  80  90 100
-    0  14  17  21  24  28  32  32  32  32  32
+    0  14  18  21  25  29  32  32  32  32  32
 
-Graph level=1 size=247109, Fanout min=1, mean=22.99, max=32, meandelta=293536.66
+Graph level=1 size=247716, Fanout min=1, mean=23.35, max=32, meandelta=288766.44
 %   0  10  20  30  40  50  60  70  80  90 100
-    0  10  14  17  20  24  29  32  32  32  32
+    0  11  14  17  21  25  30  32  32  32  32
 
-Graph level=0 size=8000000, Fanout min=1, mean=23.28, max=64, meandelta=268528.94
+Graph level=0 size=8000000, Fanout min=1, mean=24.25, max=64, meandelta=258268.91
 %   0  10  20  30  40  50  60  70  80  90 100
-    0   7  10  13  15  18  22  27  35  51  64
+    0   8  10  13  16  19  23  28  37  55  64
 
-Graph level=3 size=276, connectedness=1.00
-Graph level=2 size=7652, connectedness=1.00
-Graph level=1 size=247109, connectedness=1.00
+Graph level=3 size=262, connectedness=1.00
+Graph level=2 size=7719, connectedness=1.00
+Graph level=1 size=247716, connectedness=1.00
 Graph level=0 size=8000000, connectedness=1.00
-  took 0:10:47.868866 to run KnnGraphTester
-result: KNNResultV0(lucene_git_rev='92e0eb8f71e2eaad8c2d18890ed3e506bbfdc5b8', luceneutil_git_rev='d615d87d19ea5f3d9cfc4959046db8ba121a7371', index_vectors_file='/lucenedata/enwiki/cohere-wikipedia-docs-768d.vec', search_vectors_file='/lucenedata/enwiki/cohere-wikipedia-queries-768d.vec', vector_dims=768, do_force_merge=True, recall=0.464, cpu_time_ms=2.959, num_docs=8000000, top_k=100, fanout=100, max_conn=32, beam_width=100, quantize_desc='4 bits', total_visited=7066, index_time_sec=0.0, index_docs_per_sec=inf, force_merge_time_sec=624.18, index_num_segments=1, index_size_on_disk_mb=26958.21, selectivity=1.0, pre_post_filter='post-filter', vec_disk_mb=1.0, vec_ram_mb=26397.705, graph_level_conn_p_values={3: (276, {0: 0, 10: 10, 20: 11, 30: 13, 40: 14, 50: 15, 60: 18, 70: 20, 80: 21, 90: 25, 100: 32}), 2: (7652, {0: 0, 10: 14, 20: 17, 30: 21, 40: 24, 50: 28, 60: 32, 70: 32, 80: 32, 90: 32, 100: 32}), 1: (247109, {0: 0, 10: 10, 20: 14, 30: 17, 40: 20, 50: 24, 60: 29, 70: 32, 80: 32, 90: 32, 100: 32}), 0: (8000000, {0: 0, 10: 7, 20: 10, 30: 13, 40: 15, 50: 18, 60: 22, 70: 27, 80: 35, 90: 51, 100: 64})}, combined_run_time=datetime.timedelta(seconds=647, microseconds=868866))
+  took 0:11:07.143528 to run KnnGraphTester
+result: KNNResultV0(lucene_git_rev='36b3577c17a52b2d9ae21d5976141e2da77cfab3', luceneutil_git_rev='d615d87d19ea5f3d9cfc4959046db8ba121a7371', index_vectors_file='/lucenedata/enwiki/cohere-wikipedia-docs-768d.vec', search_vectors_file='/lucenedata/enwiki/cohere-wikipedia-queries-768d.vec', vector_dims=768, do_force_merge=True, recall=0.465, cpu_time_ms=3.051, num_docs=8000000, top_k=100, fanout=100, max_conn=32, beam_width=100, quantize_desc='4 bits', total_visited=7150, index_time_sec=0.0, index_docs_per_sec=inf, force_merge_time_sec=643.09, index_num_segments=1, index_size_on_disk_mb=26978.71, selectivity=1.0, pre_post_filter='post-filter', vec_disk_mb=1.0, vec_ram_mb=26397.705, graph_level_conn_p_values={3: (262, {0: 0, 10: 9, 20: 10, 30: 12, 40: 13, 50: 16, 60: 17, 70: 19, 80: 22, 90: 25, 100: 32}), 2: (7719, {0: 0, 10: 14, 20: 18, 30: 21, 40: 25, 50: 29, 60: 32, 70: 32, 80: 32, 90: 32, 100: 32}), 1: (247716, {0: 0, 10: 11, 20: 14, 30: 17, 40: 21, 50: 25, 60: 30, 70: 32, 80: 32, 90: 32, 100: 32}), 0: (8000000, {0: 0, 10: 8, 20: 10, 30: 13, 40: 16, 50: 19, 60: 23, 70: 28, 80: 37, 90: 55, 100: 64})}, combined_run_time=datetime.timedelta(seconds=667, microseconds=143528))
 now remove KNN index knnIndices/cohere-wikipedia-docs-768d.vec-32-100-4--compressed-8000000.index
   cmd: ['/usr/lib/jvm/java-24-openjdk/bin/java', '--add-modules', 'jdk.incubator.vector', '-Xmx32g', '-Xms32g', '-server', '-XX:+UseParallelGC', '-Djava.io.tmpdir=/l/tmp', '-cp', '/l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar:/l/trunk.nightly/lucene/sandbox/build/classes/java/main:/l/trunk.nightly/lucene/misc/build/classes/java/main:/l/trunk.nightly/lucene/facet/build/classes/java/main:/l/trunk.nightly/lucene/analysis/common/build/classes/java/main:/l/trunk.nightly/lucene/analysis/icu/build/classes/java/main:/l/trunk.nightly/lucene/queryparser/build/classes/java/main:/l/trunk.nightly/lucene/grouping/build/classes/java/main:/l/trunk.nightly/lucene/suggest/build/classes/java/main:/l/trunk.nightly/lucene/highlighter/build/classes/java/main:/l/trunk.nightly/lucene/codecs/build/classes/java/main:/l/trunk.nightly/lucene/queries/build/classes/java/main:/l/trunk.nightly/lucene/join/build/classes/java/main:/l/trunk.nightly/lucene/spatial3d/build/classes/java/main:/l/util.nightly/lib/HdrHistogram.jar:/l/util.nightly/src/main/build/classes/java/main:/l/util.nightly/build:/l/util.nightly/build', '--add-modules', 'jdk.incubator.vector', '--enable-native-access=ALL-UNNAMED', 'knn.KnnGraphTester', '-maxConn', '32', '-dim', '768', '-docs', '/lucenedata/enwiki/cohere-wikipedia-docs-768d.vec', '-ndoc', '8000000', '-topK', '100', '-numIndexThreads', '8', '-beamWidthIndex', '100', '-search-and-stats', '/lucenedata/enwiki/cohere-wikipedia-queries-768d.vec', '-metric', 'mip', '-numMergeThread', '16', '-numMergeWorker', '48', '-reindex', '-quantize', '-quantizeBits', '7']
 WARNING: Using incubator modules: jdk.incubator.vector
@@ -1745,8 +1722,8 @@ numDocs = 8000000
 beamWidth = 100
 similarity = MAXIMUM_INNER_PRODUCT
 Index Path = knnIndices/cohere-wikipedia-docs-768d.vec-32-100-7-8000000.index
-Seed = 959788541697649
-May 12, 2025 1:19:47 PM org.apache.lucene.internal.vectorization.PanamaVectorizationProvider <init>
+Seed = 983330581775229
+May 12, 2025 7:52:09 PM org.apache.lucene.internal.vectorization.PanamaVectorizationProvider <init>
 INFO: Java vector incubator API enabled; uses preferredBitSize=256; FMA enabled
 creating index in knnIndices/cohere-wikipedia-docs-768d.vec-32-100-7-8000000.index
 33332620 doc vectors in docsPath "/lucenedata/enwiki/cohere-wikipedia-docs-768d.vec"
@@ -2073,31 +2050,27 @@ Done indexing 7975000 documents.
 Done indexing 8000000 documents.
 now IndexWriter.commit()
 done ConcurrentMergeScheduler.sync()
-Indexed 8000000 docs in 853 seconds
-reindex takes 853.96 sec
-index has 19 segments: segments_2: _7r(11.0.0):C1069707:[diagnostics={source=merge, os.arch=amd64, java.runtime.version=24.0.1, mergeFactor=10, java.vendor=Arch Linux, os=Linux, os.version=6.14.4-arch1-2, timestamp=1747070486717, mergeMaxNumSegments=-1, lucene.version=11.0.0}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=72rr4eup8610u11qr77l56w07 _qj(11.0.0):C1245922:[diagnostics={source=merge, os.arch=amd64, java.runtime.version=24.0.1, mergeFactor=10, java.vendor=Arch Linux, os=Linux, os.version=6.14.4-arch1-2, timestamp=1747070797098, mergeMaxNumSegments=-1, lucene.version=11.0.0}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=72rr4eup8610u11qr77l56xse _ip(11.0.0):C708778:[diagnostics={source=merge, os.arch=amd64, java.runtime.version=24.0.1, mergeFactor=10, java.vendor=Arch Linux, os=Linux, os.version=6.14.4-arch1-2, timestamp=1747070654306, mergeMaxNumSegments=-1, lucene.version=11.0.0}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=72rr4eup8610u11qr77l56wuu _f1(11.0.0):c347638:[diagnostics={source=merge, os.arch=amd64, java.runtime.version=24.0.1, mergeFactor=10, java.vendor=Arch Linux, os=Linux, os.version=6.14.4-arch1-2, timestamp=1747070596258, mergeMaxNumSegments=-1, lucene.version=11.0.0}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=72rr4eup8610u11qr77l56wca _p4(11.0.0):c321358:[diagnostics={source=merge, os.arch=amd64, java.runtime.version=24.0.1, mergeFactor=10, java.vendor=Arch Linux, os=Linux, os.version=6.14.4-arch1-2, timestamp=1747070771229, mergeMaxNumSegments=-1, lucene.version=11.0.0}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=72rr4eup8610u11qr77l56x7e _10u(11.0.0):C1045387:[diagnostics={source=merge, os.arch=amd64, java.runtime.version=24.0.1, mergeFactor=10, java.vendor=Arch Linux, os=Linux, os.version=6.14.4-arch1-2, timestamp=1747071004576, mergeMaxNumSegments=-1, lucene.version=11.0.0}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=72rr4eup8610u11qr77l56yah _tc(11.0.0):c272758:[diagnostics={source=merge, os.arch=amd64, java.runtime.version=24.0.1, mergeFactor=10, java.vendor=Arch Linux, os=Linux, os.version=6.14.4-arch1-2, timestamp=1747070849516, mergeMaxNumSegments=-1, lucene.version=11.0.0}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=72rr4eup8610u11qr77l56xw6 _x5(11.0.0):c319857:[diagnostics={source=merge, os.arch=amd64, java.runtime.version=24.0.1, mergeFactor=10, java.vendor=Arch Linux, os=Linux, os.version=6.14.4-arch1-2, timestamp=1747070924007, mergeMaxNumSegments=-1, lucene.version=11.0.0}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=72rr4eup8610u11qr77l56y0e _10a(11.0.0):c278742:[diagnostics={source=merge, os.arch=amd64, java.runtime.version=24.0.1, mergeFactor=10, java.vendor=Arch Linux, os=Linux, os.version=6.14.4-arch1-2, timestamp=1747070994518, mergeMaxNumSegments=-1, lucene.version=11.0.0}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=72rr4eup8610u11qr77l56y4f _10k(11.0.0):c216132:[diagnostics={source=merge, os.arch=amd64, java.runtime.version=24.0.1, mergeFactor=10, java.vendor=Arch Linux, os=Linux, os.version=6.14.4-arch1-2, timestamp=1747070999556, mergeMaxNumSegments=-1, lucene.version=11.0.0}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=72rr4eup8610u11qr77l56y5u _wl(11.0.0):c162529:[diagnostics={source=merge, os.arch=amd64, java.runtime.version=24.0.1, mergeFactor=10, java.vendor=Arch Linux, os=Linux, os.version=6.14.4-arch1-2, timestamp=1747070914930, mergeMaxNumSegments=-1, lucene.version=11.0.0}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=72rr4eup8610u11qr77l56xwz _12t(11.0.0):c540482:[diagnostics={source=merge, os.arch=amd64, java.runtime.version=24.0.1, mergeFactor=10, java.vendor=Arch Linux, os=Linux, os.version=6.14.4-arch1-2, timestamp=1747071043683, mergeMaxNumSegments=-1, lucene.version=11.0.0}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=72rr4eup8610u11qr77l56yaj _146(11.0.0):c276792:[diagnostics={source=merge, os.arch=amd64, java.runtime.version=24.0.1, mergeFactor=10, java.vendor=Arch Linux, os=Linux, os.version=6.14.4-arch1-2, timestamp=1747071069820, mergeMaxNumSegments=-1, lucene.version=11.0.0}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=72rr4eup8610u11qr77l56yak _131(11.0.0):c261368:[diagnostics={source=merge, os.arch=amd64, java.runtime.version=24.0.1, mergeFactor=10, java.vendor=Arch Linux, os=Linux, os.version=6.14.4-arch1-2, timestamp=1747071047754, mergeMaxNumSegments=-1, lucene.version=11.0.0}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=72rr4eup8610u11qr77l56yai _12b(11.0.0):c107290:[diagnostics={source=merge, os.arch=amd64, java.runtime.version=24.0.1, mergeFactor=10, java.vendor=Arch Linux, os=Linux, os.version=6.14.4-arch1-2, timestamp=1747071032843, mergeMaxNumSegments=-1, lucene.version=11.0.0}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=72rr4eup8610u11qr77l56ya6 _14s(11.0.0):c122282:[diagnostics={source=merge, os.arch=amd64, java.runtime.version=24.0.1, mergeFactor=10, java.vendor=Arch Linux, os=Linux, os.version=6.14.4-arch1-2, timestamp=1747071081208, mergeMaxNumSegments=-1, lucene.version=11.0.0}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=72rr4eup8610u11qr77l56yag _15u(11.0.0):c580605:[diagnostics={source=merge, os.arch=amd64, java.runtime.version=24.0.1, mergeFactor=10, java.vendor=Arch Linux, os=Linux, os.version=6.14.4-arch1-2, timestamp=1747071154313, mergeMaxNumSegments=-1, lucene.version=11.0.0}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=72rr4eup8610u11qr77l56yal _14i(11.0.0):c65560:[diagnostics={source=merge, os.arch=amd64, java.runtime.version=24.0.1, mergeFactor=11, java.vendor=Arch Linux, os=Linux, os.version=6.14.4-arch1-2, timestamp=1747071075616, mergeMaxNumSegments=-1, lucene.version=11.0.0}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=72rr4eup8610u11qr77l56yae _15e(11.0.0):c56813:[diagnostics={source=merge, os.arch=amd64, java.runtime.version=24.0.1, mergeFactor=10, java.vendor=Arch Linux, os=Linux, os.version=6.14.4-arch1-2, timestamp=1747071092956, mergeMaxNumSegments=-1, lucene.version=11.0.0}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=72rr4eup8610u11qr77l56yaf
-  _7r: 3981.7 MB
-  _qj: 4643.1 MB
-  _ip: 2639.4 MB
-  _f1: 1293.9 MB
-  _p4: 1196.4 MB
-  _10u: 3898.5 MB
-  _tc: 1015.7 MB
-  _x5: 1191.7 MB
-  _10a: 1038.2 MB
-  _10k: 804.9 MB
-  _wl: 605.1 MB
-  _12t: 2014.7 MB
-  _146: 1031.0 MB
-  _131: 973.6 MB
-  _12b: 399.4 MB
-  _14s: 455.4 MB
-  _15u: 2164.6 MB
-  _14i: 244.1 MB
-  _15e: 211.5 MB
+Indexed 8000000 docs in 887 seconds
+reindex takes 887.37 sec
+index has 15 segments: segments_2: _c9(11.0.0):C1372450:[diagnostics={lucene.version=11.0.0, source=merge, os.arch=amd64, java.runtime.version=24.0.1, mergeFactor=8, java.vendor=Arch Linux, os=Linux, os.version=6.14.4-arch1-2, timestamp=1747094085113, mergeMaxNumSegments=-1}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=6h4y4sdm8obg044x6t59f7vwh _ks(11.0.0):C1151958:[diagnostics={lucene.version=11.0.0, source=merge, os.arch=amd64, java.runtime.version=24.0.1, mergeFactor=10, java.vendor=Arch Linux, os=Linux, os.version=6.14.4-arch1-2, timestamp=1747094229485, mergeMaxNumSegments=-1}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=6h4y4sdm8obg044x6t59f7wpl _14w(11.0.0):C1244616:[diagnostics={lucene.version=11.0.0, source=merge, os.arch=amd64, java.runtime.version=24.0.1, mergeFactor=10, java.vendor=Arch Linux, os=Linux, os.version=6.14.4-arch1-2, timestamp=1747094630751, mergeMaxNumSegments=-1}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=6h4y4sdm8obg044x6t59f7xow _mw(11.0.0):c386351:[diagnostics={lucene.version=11.0.0, source=merge, os.arch=amd64, java.runtime.version=24.0.1, mergeFactor=10, java.vendor=Arch Linux, os=Linux, os.version=6.14.4-arch1-2, timestamp=1747094265514, mergeMaxNumSegments=-1}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=6h4y4sdm8obg044x6t59f7wuf _uw(11.0.0):C953829:[diagnostics={lucene.version=11.0.0, source=merge, os.arch=amd64, java.runtime.version=24.0.1, mergeFactor=10, java.vendor=Arch Linux, os=Linux, os.version=6.14.4-arch1-2, timestamp=1747094418975, mergeMaxNumSegments=-1}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=6h4y4sdm8obg044x6t59f7xj1 _uf(11.0.0):c444425:[diagnostics={lucene.version=11.0.0, source=merge, os.arch=amd64, java.runtime.version=24.0.1, mergeFactor=10, java.vendor=Arch Linux, os=Linux, os.version=6.14.4-arch1-2, timestamp=1747094406546, mergeMaxNumSegments=-1}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=6h4y4sdm8obg044x6t59f7x4c _100(11.0.0):c270488:[diagnostics={lucene.version=11.0.0, source=merge, os.arch=amd64, java.runtime.version=24.0.1, mergeFactor=10, java.vendor=Arch Linux, os=Linux, os.version=6.14.4-arch1-2, timestamp=1747094525248, mergeMaxNumSegments=-1}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=6h4y4sdm8obg044x6t59f7xnp _12b(11.0.0):c338223:[diagnostics={lucene.version=11.0.0, source=merge, os.arch=amd64, java.runtime.version=24.0.1, mergeFactor=10, java.vendor=Arch Linux, os=Linux, os.version=6.14.4-arch1-2, timestamp=1747094572674, mergeMaxNumSegments=-1}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=6h4y4sdm8obg044x6t59f7xom _10v(11.0.0):c268768:[diagnostics={lucene.version=11.0.0, source=merge, os.arch=amd64, java.runtime.version=24.0.1, mergeFactor=10, java.vendor=Arch Linux, os=Linux, os.version=6.14.4-arch1-2, timestamp=1747094543418, mergeMaxNumSegments=-1}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=6h4y4sdm8obg044x6t59f7xoe _14m(11.0.0):c215413:[diagnostics={lucene.version=11.0.0, source=merge, os.arch=amd64, java.runtime.version=24.0.1, mergeFactor=10, java.vendor=Arch Linux, os=Linux, os.version=6.14.4-arch1-2, timestamp=1747094623636, mergeMaxNumSegments=-1}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=6h4y4sdm8obg044x6t59f7xop _zf(11.0.0):c173554:[diagnostics={lucene.version=11.0.0, source=merge, os.arch=amd64, java.runtime.version=24.0.1, mergeFactor=10, java.vendor=Arch Linux, os=Linux, os.version=6.14.4-arch1-2, timestamp=1747094512256, mergeMaxNumSegments=-1}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=6h4y4sdm8obg044x6t59f7xlr _15r(11.0.0):C852560:[diagnostics={lucene.version=11.0.0, source=merge, os.arch=amd64, java.runtime.version=24.0.1, mergeFactor=10, java.vendor=Arch Linux, os=Linux, os.version=6.14.4-arch1-2, timestamp=1747094681998, mergeMaxNumSegments=-1}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=6h4y4sdm8obg044x6t59f7xox _15q(11.0.0):c155771:[diagnostics={lucene.version=11.0.0, source=merge, os.arch=amd64, java.runtime.version=24.0.1, mergeFactor=10, java.vendor=Arch Linux, os=Linux, os.version=6.14.4-arch1-2, timestamp=1747094657406, mergeMaxNumSegments=-1}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=6h4y4sdm8obg044x6t59f7xov _15p(11.0.0):c113388:[diagnostics={lucene.version=11.0.0, source=merge, os.arch=amd64, java.runtime.version=24.0.1, mergeFactor=10, java.vendor=Arch Linux, os=Linux, os.version=6.14.4-arch1-2, timestamp=1747094647970, mergeMaxNumSegments=-1}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=6h4y4sdm8obg044x6t59f7xou _15f(11.0.0):c58206:[diagnostics={lucene.version=11.0.0, source=merge, os.arch=amd64, java.runtime.version=24.0.1, mergeFactor=10, java.vendor=Arch Linux, os=Linux, os.version=6.14.4-arch1-2, timestamp=1747094641960, mergeMaxNumSegments=-1}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=6h4y4sdm8obg044x6t59f7xot
+  _c9: 5108.0 MB
+  _ks: 4292.1 MB
+  _14w: 4641.7 MB
+  _mw: 1438.7 MB
+  _uw: 3555.3 MB
+  _uf: 1656.0 MB
+  _100: 1007.5 MB
+  _12b: 1260.0 MB
+  _10v: 1001.0 MB
+  _14m: 802.3 MB
+  _zf: 646.1 MB
+  _15r: 3180.0 MB
+  _15q: 579.9 MB
+  _15p: 422.1 MB
+  _15f: 216.7 MB
 encodingByteSize=4 origByteSize=4
 realEncodingByteSize=1.0
-index disk usage is 29802.96 MB
+index disk usage is 29807.54 MB
 vector disk usage is 29327.39 MB
 vector RAM usage is 5889.89 MB
   now compute brute-force exact KNN matches
@@ -2105,434 +2078,346 @@ computing true nearest neighbors of 1000 target vectors
 parentJoin = false
 now compute brute-force KNN hits for 1000 query vectors from "/lucenedata/enwiki/cohere-wikipedia-queries-768d.vec" starting at query index 0
 path=/lucenedata/enwiki/cohere-wikipedia-queries-768d.vec dim=768 vectorEncoding.byteSize=4
- 30 40 50 70 100 20 10 60 120 80 90 110 140 200 160 130 210 170 150 220 180 190 230 250 290 260 270 240 310 320 330 280 350 300 340 370 400 360 380 390 420 440 460 470 410 450 430 480 490 530 540 520 570 500 510 560 580 610 550 600 620 660 630 590 680 650 640 720 730 710 670 700 760 690 740 770 750 780 850 840 790 800 810 830 890 900 920 820 880 930 870 860 950 910 970 960 940 990 980 1000writing true nearest neighbors to cache file "nn--hp5kni.bin"
-took 246.807 sec to compute brute-force exact matches
+ 10 50 90 70 40 30 100 20 60 120 110 80 130 140 170 200 160 180 250 220 210 190 150 260 270 280 230 240 290 360 300 420 320 310 330 390 340 410 380 400 350 370 460 450 470 430 510 530 490 440 560 480 500 570 590 520 630 540 550 600 650 580 700 660 680 610 670 620 640 720 730 710 750 690 780 740 760 790 810 770 800 830 840 820 910 870 850 860 880 920 950 980 960 900 970 890 940 930 990 1000writing true nearest neighbors to cache file "nn--hp5kni.bin"
+took 243.743 sec to compute brute-force exact matches
 path=/lucenedata/enwiki/cohere-wikipedia-queries-768d.vec dim=768 vectorEncoding.byteSize=4
 1500000 query vectors in queryPath "/lucenedata/enwiki/cohere-wikipedia-queries-768d.vec"
 searching 1000 query vectors; topK=100, fanout=100
-completed 1000 searches in 15083 ms: 66 QPS CPU time=14747ms
+completed 1000 searches in 13277 ms: 75 QPS CPU time=12980ms
 checking results
-SUMMARY: 0.859	14.747	8000000	100	100	32	100	7 bits	74456	853.96	9368.09	0.00	19	29802.96	1.00	post-filter	1.000	29327.393	5889.893	HNSW
+SUMMARY: 0.859	12.980	8000000	100	100	32	100	7 bits	65326	887.37	9015.41	0.00	15	29807.54	1.00	post-filter	1.000	29327.393	5889.893	HNSW
 Leaf 0 has 4 layers
-Leaf 0 has 1069707 documents
-Graph level=3 size=63, Fanout min=3, mean=8.38, max=16, meandelta=96969.22
+Leaf 0 has 1372450 documents
+Graph level=3 size=101, Fanout min=4, mean=10.65, max=24, meandelta=98505.03
 %   0  10  20  30  40  50  60  70  80  90 100
-    0   5   6   6   7   8   9  10  11  12  16
+    0   6   7   8   9  10  11  12  14  15  24
 
-Graph level=2 size=973, Fanout min=4, mean=21.84, max=32, meandelta=44359.91
+Graph level=2 size=1282, Fanout min=5, mean=22.82, max=32, meandelta=53994.55
 %   0  10  20  30  40  50  60  70  80  90 100
-    0  12  15  17  19  21  24  27  31  32  32
+    0  13  16  18  20  23  26  29  32  32  32
 
-Graph level=1 size=32755, Fanout min=1, mean=23.00, max=32, meandelta=40057.77
+Graph level=1 size=41956, Fanout min=1, mean=22.70, max=32, meandelta=51732.21
 %   0  10  20  30  40  50  60  70  80  90 100
-    0  11  14  17  20  24  28  32  32  32  32
+    0  10  14  17  20  24  28  32  32  32  32
 
-Graph level=0 size=1069707, Fanout min=1, mean=21.07, max=64, meandelta=37947.20
+Graph level=0 size=1372450, Fanout min=1, mean=20.33, max=64, meandelta=49880.71
 %   0  10  20  30  40  50  60  70  80  90 100
-    0   6   8  11  13  16  20  24  31  46  64
+    0   5   8  10  13  16  19  24  30  44  64
 
-Graph level=3 size=63, connectedness=1.00
-Graph level=2 size=973, connectedness=1.00
-Graph level=1 size=32755, connectedness=1.00
-Graph level=0 size=1069707, connectedness=1.00
+Graph level=3 size=101, connectedness=1.00
+Graph level=2 size=1282, connectedness=1.00
+Graph level=1 size=41956, connectedness=1.00
+Graph level=0 size=1372450, connectedness=1.00
 Leaf 1 has 4 layers
-Leaf 1 has 1245922 documents
-Graph level=3 size=85, Fanout min=4, mean=10.45, max=25, meandelta=89376.30
+Leaf 1 has 1151958 documents
+Graph level=3 size=74, Fanout min=3, mean=9.59, max=18, meandelta=90466.13
 %   0  10  20  30  40  50  60  70  80  90 100
-    0   6   7   8   9  10  11  12  13  15  25
+    0   5   6   7   7   9  10  11  14  15  18
 
-Graph level=2 size=1173, Fanout min=3, mean=23.14, max=32, meandelta=48203.61
+Graph level=2 size=1090, Fanout min=4, mean=23.20, max=32, meandelta=44567.24
 %   0  10  20  30  40  50  60  70  80  90 100
-    0  13  15  18  21  24  27  30  32  32  32
+    0  13  16  18  21  24  26  30  32  32  32
 
-Graph level=1 size=37929, Fanout min=1, mean=23.65, max=32, meandelta=45557.54
+Graph level=1 size=35019, Fanout min=1, mean=23.60, max=32, meandelta=42271.86
 %   0  10  20  30  40  50  60  70  80  90 100
     0  11  15  18  22  25  30  32  32  32  32
 
-Graph level=0 size=1245922, Fanout min=1, mean=22.44, max=64, meandelta=42383.64
+Graph level=0 size=1151958, Fanout min=1, mean=22.35, max=64, meandelta=39349.45
 %   0  10  20  30  40  50  60  70  80  90 100
-    0   6   9  12  14  18  21  26  34  49  64
+    0   6   9  11  14  17  21  26  34  49  64
 
-Graph level=3 size=85, connectedness=1.00
-Graph level=2 size=1173, connectedness=1.00
-Graph level=1 size=37929, connectedness=1.00
-Graph level=0 size=1245922, connectedness=1.00
+Graph level=3 size=74, connectedness=1.00
+Graph level=2 size=1090, connectedness=1.00
+Graph level=1 size=35019, connectedness=1.00
+Graph level=0 size=1151958, connectedness=1.00
 Leaf 2 has 4 layers
-Leaf 2 has 708778 documents
-Graph level=3 size=24, Fanout min=2, mean=6.25, max=10, meandelta=77499.02
+Leaf 2 has 1244616 documents
+Graph level=3 size=81, Fanout min=5, mean=10.20, max=18, meandelta=87388.92
 %   0  10  20  30  40  50  60  70  80  90 100
-    0   3   4   5   5   6   6   6   9  10  10
+    0   7   8   8   9  10  10  12  13  14  18
 
-Graph level=2 size=576, Fanout min=5, mean=20.89, max=32, meandelta=31241.82
+Graph level=2 size=1169, Fanout min=5, mean=23.38, max=32, meandelta=47706.93
 %   0  10  20  30  40  50  60  70  80  90 100
-    0  11  14  16  18  20  23  26  29  32  32
+    0  12  16  18  21  24  27  30  32  32  32
 
-Graph level=1 size=21745, Fanout min=1, mean=23.94, max=32, meandelta=25972.27
+Graph level=1 size=37762, Fanout min=2, mean=24.07, max=32, meandelta=44886.28
 %   0  10  20  30  40  50  60  70  80  90 100
-    0  12  15  19  22  26  30  32  32  32  32
+    0  11  15  19  22  26  31  32  32  32  32
 
-Graph level=0 size=708778, Fanout min=1, mean=22.63, max=64, meandelta=24099.66
+Graph level=0 size=1244616, Fanout min=1, mean=23.54, max=64, meandelta=40996.81
 %   0  10  20  30  40  50  60  70  80  90 100
-    0   6   9  12  15  18  22  27  34  49  64
+    0   7   9  12  15  18  22  28  36  52  64
 
-Graph level=3 size=24, connectedness=1.00
-Graph level=2 size=576, connectedness=1.00
-Graph level=1 size=21745, connectedness=1.00
-Graph level=0 size=708778, connectedness=1.00
+Graph level=3 size=81, connectedness=1.00
+Graph level=2 size=1169, connectedness=1.00
+Graph level=1 size=37762, connectedness=1.00
+Graph level=0 size=1244616, connectedness=1.00
 Leaf 3 has 4 layers
-Leaf 3 has 347638 documents
-Graph level=3 size=19, Fanout min=3, mean=5.58, max=8, meandelta=26300.45
+Leaf 3 has 386351 documents
+Graph level=3 size=25, Fanout min=3, mean=5.84, max=11, meandelta=41024.26
 %   0  10  20  30  40  50  60  70  80  90 100
-    0   3   4   5   5   5   6   6   6   7   8
+    0   3   4   4   5   5   5   6   8   8  11
 
-Graph level=2 size=253, Fanout min=5, mean=16.19, max=32, meandelta=16696.80
+Graph level=2 size=338, Fanout min=5, mean=17.70, max=32, meandelta=17827.65
 %   0  10  20  30  40  50  60  70  80  90 100
-    0   9  11  12  14  15  17  19  20  24  32
+    0  10  12  14  15  17  19  20  22  26  32
 
-Graph level=1 size=10536, Fanout min=2, mean=24.36, max=32, meandelta=12533.08
-%   0  10  20  30  40  50  60  70  80  90 100
-    0  12  16  19  23  26  31  32  32  32  32
-
-Graph level=0 size=347638, Fanout min=1, mean=23.50, max=64, meandelta=11547.85
-%   0  10  20  30  40  50  60  70  80  90 100
-    0   7  10  13  16  19  23  28  35  50  64
-
-Graph level=3 size=19, connectedness=1.00
-Graph level=2 size=253, connectedness=1.00
-Graph level=1 size=10536, connectedness=1.00
-Graph level=0 size=347638, connectedness=1.00
-Leaf 4 has 4 layers
-Leaf 4 has 321358 documents
-Graph level=3 size=15, Fanout min=2, mean=4.67, max=8, meandelta=45920.03
-%   0  10  20  30  40  50  60  70  80  90 100
-    0   2   3   4   4   4   4   5   5   7   8
-
-Graph level=2 size=297, Fanout min=5, mean=16.84, max=32, meandelta=16690.41
-%   0  10  20  30  40  50  60  70  80  90 100
-    0   9  12  13  15  17  18  19  22  25  32
-
-Graph level=1 size=9992, Fanout min=3, mean=24.64, max=32, meandelta=11516.73
+Graph level=1 size=11762, Fanout min=3, mean=24.62, max=32, meandelta=13700.74
 %   0  10  20  30  40  50  60  70  80  90 100
     0  13  17  20  23  27  31  32  32  32  32
 
-Graph level=0 size=321358, Fanout min=1, mean=24.10, max=64, meandelta=10574.95
+Graph level=0 size=386351, Fanout min=1, mean=24.21, max=64, meandelta=12593.04
 %   0  10  20  30  40  50  60  70  80  90 100
-    0   7  10  13  16  19  23  28  36  51  64
+    0   7  10  13  16  19  23  29  36  52  64
 
-Graph level=3 size=15, connectedness=1.00
-Graph level=2 size=297, connectedness=1.00
-Graph level=1 size=9992, connectedness=1.00
-Graph level=0 size=321358, connectedness=1.00
-Leaf 5 has 4 layers
-Leaf 5 has 1045387 documents
-Graph level=3 size=75, Fanout min=4, mean=10.91, max=17, meandelta=83096.48
+Graph level=3 size=25, connectedness=1.00
+Graph level=2 size=338, connectedness=1.00
+Graph level=1 size=11762, connectedness=1.00
+Graph level=0 size=386351, connectedness=1.00
+Leaf 4 has 4 layers
+Leaf 4 has 953829 documents
+Graph level=3 size=49, Fanout min=3, mean=9.10, max=15, meandelta=88352.12
 %   0  10  20  30  40  50  60  70  80  90 100
-    0   7   8   9  10  11  12  13  14  15  17
+    0   5   6   8   9   9   9  10  11  13  15
 
-Graph level=2 size=987, Fanout min=5, mean=22.84, max=32, meandelta=41386.41
+Graph level=2 size=867, Fanout min=4, mean=21.92, max=32, meandelta=39181.08
 %   0  10  20  30  40  50  60  70  80  90 100
-    0  12  16  18  21  23  26  28  32  32  32
+    0  12  15  17  19  22  24  27  31  32  32
 
-Graph level=1 size=31879, Fanout min=1, mean=24.14, max=32, meandelta=37793.70
+Graph level=1 size=29042, Fanout min=2, mean=24.14, max=32, meandelta=34373.35
 %   0  10  20  30  40  50  60  70  80  90 100
     0  12  16  19  23  26  31  32  32  32  32
 
-Graph level=0 size=1045387, Fanout min=1, mean=23.82, max=64, meandelta=34417.80
+Graph level=0 size=953829, Fanout min=1, mean=23.28, max=64, meandelta=31743.43
 %   0  10  20  30  40  50  60  70  80  90 100
-    0   7  10  12  15  19  23  28  36  53  64
+    0   7   9  12  15  18  22  27  35  51  64
 
-Graph level=3 size=75, connectedness=1.00
-Graph level=2 size=987, connectedness=1.00
-Graph level=1 size=31879, connectedness=1.00
-Graph level=0 size=1045387, connectedness=1.00
+Graph level=3 size=49, connectedness=1.00
+Graph level=2 size=867, connectedness=1.00
+Graph level=1 size=29042, connectedness=1.00
+Graph level=0 size=953829, connectedness=1.00
+Leaf 5 has 4 layers
+Leaf 5 has 444425 documents
+Graph level=3 size=28, Fanout min=2, mean=6.86, max=12, meandelta=40636.64
+%   0  10  20  30  40  50  60  70  80  90 100
+    0   3   5   5   6   6   7   8   8   9  12
+
+Graph level=2 size=324, Fanout min=3, mean=16.88, max=32, meandelta=20701.37
+%   0  10  20  30  40  50  60  70  80  90 100
+    0   9  11  13  14  16  18  20  22  26  32
+
+Graph level=1 size=13362, Fanout min=3, mean=24.82, max=32, meandelta=15805.16
+%   0  10  20  30  40  50  60  70  80  90 100
+    0  13  17  20  24  28  32  32  32  32  32
+
+Graph level=0 size=444425, Fanout min=1, mean=24.78, max=64, meandelta=14290.54
+%   0  10  20  30  40  50  60  70  80  90 100
+    0   8  11  14  17  20  24  29  37  53  64
+
+Graph level=3 size=28, connectedness=1.00
+Graph level=2 size=324, connectedness=1.00
+Graph level=1 size=13362, connectedness=1.00
+Graph level=0 size=444425, connectedness=1.00
 Leaf 6 has 4 layers
-Leaf 6 has 272758 documents
-Graph level=3 size=10, Fanout min=2, mean=3.40, max=4, meandelta=32646.94
+Leaf 6 has 270488 documents
+Graph level=3 size=16, Fanout min=3, mean=4.75, max=7, meandelta=44010.03
 %   0  10  20  30  40  50  60  70  80  90 100
-    0   2   2   3   3   4   4   4   4   4   4
+    0   3   3   4   4   4   5   6   6   6   7
 
-Graph level=2 size=252, Fanout min=4, mean=15.98, max=32, meandelta=14245.34
+Graph level=2 size=254, Fanout min=5, mean=16.52, max=32, meandelta=14220.01
 %   0  10  20  30  40  50  60  70  80  90 100
-    0   9  11  12  13  15  17  19  21  24  32
+    0  10  12  13  15  16  17  19  20  24  32
 
-Graph level=1 size=8463, Fanout min=3, mean=24.84, max=32, meandelta=9753.06
+Graph level=1 size=8301, Fanout min=3, mean=24.78, max=32, meandelta=9676.71
 %   0  10  20  30  40  50  60  70  80  90 100
-    0  13  17  20  24  27  32  32  32  32  32
+    0  13  17  20  23  27  31  32  32  32  32
 
-Graph level=0 size=272758, Fanout min=1, mean=25.20, max=64, meandelta=8712.94
+Graph level=0 size=270488, Fanout min=1, mean=25.68, max=64, meandelta=8539.11
 %   0  10  20  30  40  50  60  70  80  90 100
-    0   8  11  14  17  20  25  30  38  53  64
+    0   8  11  14  17  21  25  30  39  55  64
 
-Graph level=3 size=10, connectedness=1.00
-Graph level=2 size=252, connectedness=1.00
-Graph level=1 size=8463, connectedness=1.00
-Graph level=0 size=272758, connectedness=1.00
+Graph level=3 size=16, connectedness=1.00
+Graph level=2 size=254, connectedness=1.00
+Graph level=1 size=8301, connectedness=1.00
+Graph level=0 size=270488, connectedness=1.00
 Leaf 7 has 4 layers
-Leaf 7 has 319857 documents
-Graph level=3 size=26, Fanout min=3, mean=6.46, max=13, meandelta=35057.21
+Leaf 7 has 338223 documents
+Graph level=3 size=27, Fanout min=2, mean=5.56, max=11, meandelta=37801.73
 %   0  10  20  30  40  50  60  70  80  90 100
-    0   4   5   5   5   6   6   7   7   9  13
+    0   2   3   4   5   5   6   6   7   8  11
 
-Graph level=2 size=297, Fanout min=4, mean=17.38, max=32, meandelta=15727.56
+Graph level=2 size=307, Fanout min=6, mean=17.47, max=32, meandelta=15988.13
 %   0  10  20  30  40  50  60  70  80  90 100
-    0  10  12  14  15  16  18  20  23  26  32
+    0  10  12  14  15  17  18  20  22  26  32
 
-Graph level=1 size=9797, Fanout min=3, mean=24.84, max=32, meandelta=11386.69
+Graph level=1 size=10298, Fanout min=1, mean=24.77, max=32, meandelta=12036.77
 %   0  10  20  30  40  50  60  70  80  90 100
     0  13  17  20  23  27  32  32  32  32  32
 
-Graph level=0 size=319857, Fanout min=1, mean=25.45, max=64, meandelta=10152.30
+Graph level=0 size=338223, Fanout min=1, mean=25.28, max=64, meandelta=10772.14
 %   0  10  20  30  40  50  60  70  80  90 100
-    0   8  11  14  17  21  25  30  39  55  64
+    0   8  11  14  17  20  25  30  38  54  64
 
-Graph level=3 size=26, connectedness=1.00
-Graph level=2 size=297, connectedness=1.00
-Graph level=1 size=9797, connectedness=1.00
-Graph level=0 size=319857, connectedness=1.00
+Graph level=3 size=27, connectedness=1.00
+Graph level=2 size=307, connectedness=1.00
+Graph level=1 size=10298, connectedness=1.00
+Graph level=0 size=338223, connectedness=1.00
 Leaf 8 has 4 layers
-Leaf 8 has 278742 documents
-Graph level=3 size=22, Fanout min=3, mean=5.91, max=9, meandelta=35372.21
+Leaf 8 has 268768 documents
+Graph level=3 size=17, Fanout min=3, mean=4.94, max=8, meandelta=42767.31
 %   0  10  20  30  40  50  60  70  80  90 100
-    0   4   4   5   5   6   6   6   7   8   9
+    0   3   3   4   4   4   5   5   6   7   8
 
-Graph level=2 size=266, Fanout min=4, mean=16.60, max=32, meandelta=14635.12
+Graph level=2 size=249, Fanout min=4, mean=16.22, max=32, meandelta=14421.84
 %   0  10  20  30  40  50  60  70  80  90 100
-    0  10  11  13  14  16  18  19  21  25  32
+    0   9  11  13  14  15  17  18  21  25  32
 
-Graph level=1 size=8593, Fanout min=3, mean=24.55, max=32, meandelta=10085.74
-%   0  10  20  30  40  50  60  70  80  90 100
-    0  13  17  20  23  27  31  32  32  32  32
-
-Graph level=0 size=278742, Fanout min=1, mean=25.49, max=64, meandelta=8853.35
-%   0  10  20  30  40  50  60  70  80  90 100
-    0   8  11  14  17  21  25  30  39  55  64
-
-Graph level=3 size=22, connectedness=1.00
-Graph level=2 size=266, connectedness=1.00
-Graph level=1 size=8593, connectedness=1.00
-Graph level=0 size=278742, connectedness=1.00
-Leaf 9 has 4 layers
-Leaf 9 has 216132 documents
-Graph level=3 size=10, Fanout min=2, mean=3.80, max=6, meandelta=25561.08
-%   0  10  20  30  40  50  60  70  80  90 100
-    0   2   3   3   3   3   4   4   5   5   6
-
-Graph level=2 size=194, Fanout min=5, mean=15.37, max=32, meandelta=11942.00
-%   0  10  20  30  40  50  60  70  80  90 100
-    0   9  11  12  13  14  16  18  20  23  32
-
-Graph level=1 size=6639, Fanout min=3, mean=24.88, max=32, meandelta=7728.48
+Graph level=1 size=8238, Fanout min=2, mean=24.86, max=32, meandelta=9601.97
 %   0  10  20  30  40  50  60  70  80  90 100
     0  13  17  20  24  27  32  32  32  32  32
 
-Graph level=0 size=216132, Fanout min=1, mean=25.88, max=64, meandelta=6803.27
+Graph level=0 size=268768, Fanout min=1, mean=25.49, max=64, meandelta=8547.40
+%   0  10  20  30  40  50  60  70  80  90 100
+    0   8  11  14  17  21  25  30  38  55  64
+
+Graph level=3 size=17, connectedness=1.00
+Graph level=2 size=249, connectedness=1.00
+Graph level=1 size=8238, connectedness=1.00
+Graph level=0 size=268768, connectedness=1.00
+Leaf 9 has 4 layers
+Leaf 9 has 215413 documents
+Graph level=3 size=9, Fanout min=1, mean=2.67, max=5, meandelta=18516.88
+%   0  10  20  30  40  50  60  70  80  90 100
+    0   1   1   1   2   2   3   3   3   4   5
+
+Graph level=2 size=191, Fanout min=3, mean=15.08, max=32, meandelta=12017.42
+%   0  10  20  30  40  50  60  70  80  90 100
+    0   9  11  12  13  14  15  17  19  22  32
+
+Graph level=1 size=6647, Fanout min=4, mean=25.04, max=32, meandelta=7664.14
+%   0  10  20  30  40  50  60  70  80  90 100
+    0  14  17  21  24  27  32  32  32  32  32
+
+Graph level=0 size=215413, Fanout min=1, mean=25.95, max=64, meandelta=6783.91
 %   0  10  20  30  40  50  60  70  80  90 100
     0   8  12  15  18  21  25  31  39  55  64
 
-Graph level=3 size=10, connectedness=1.00
-Graph level=2 size=194, connectedness=1.00
-Graph level=1 size=6639, connectedness=1.00
-Graph level=0 size=216132, connectedness=1.00
+Graph level=3 size=9, connectedness=1.00
+Graph level=2 size=191, connectedness=1.00
+Graph level=1 size=6647, connectedness=1.00
+Graph level=0 size=215413, connectedness=1.00
 Leaf 10 has 4 layers
-Leaf 10 has 162529 documents
-Graph level=3 size=8, Fanout min=2, mean=3.00, max=5, meandelta=30261.42
+Leaf 10 has 173554 documents
+Graph level=3 size=8, Fanout min=1, mean=3.25, max=5, meandelta=19535.50
 %   0  10  20  30  40  50  60  70  80  90 100
-    0   1   2   2   2   3   3   3   3   4   5
+    0   1   1   2   3   3   3   4   4   4   5
 
-Graph level=2 size=153, Fanout min=3, mean=12.86, max=28, meandelta=10591.58
+Graph level=2 size=163, Fanout min=4, mean=13.48, max=30, meandelta=10596.60
 %   0  10  20  30  40  50  60  70  80  90 100
-    0   7   9  10  11  12  13  15  16  19  28
+    0   8  10  11  11  13  14  16  17  20  30
 
-Graph level=1 size=5024, Fanout min=3, mean=24.71, max=32, meandelta=5888.17
+Graph level=1 size=5365, Fanout min=4, mean=24.92, max=32, meandelta=6220.48
+%   0  10  20  30  40  50  60  70  80  90 100
+    0  14  17  20  24  27  31  32  32  32  32
+
+Graph level=0 size=173554, Fanout min=1, mean=25.75, max=64, meandelta=5508.95
+%   0  10  20  30  40  50  60  70  80  90 100
+    0   8  12  15  18  21  25  30  39  55  64
+
+Graph level=3 size=8, connectedness=1.00
+Graph level=2 size=163, connectedness=1.00
+Graph level=1 size=5365, connectedness=1.00
+Graph level=0 size=173554, connectedness=1.00
+Leaf 11 has 4 layers
+Leaf 11 has 852560 documents
+Graph level=3 size=42, Fanout min=3, mean=7.29, max=14, meandelta=83182.50
+%   0  10  20  30  40  50  60  70  80  90 100
+    0   3   5   6   6   7   7   8   9  11  14
+
+Graph level=2 size=760, Fanout min=5, mean=21.91, max=32, meandelta=35473.89
+%   0  10  20  30  40  50  60  70  80  90 100
+    0  12  15  17  20  22  24  27  30  32  32
+
+Graph level=1 size=25998, Fanout min=1, mean=24.46, max=32, meandelta=30558.10
+%   0  10  20  30  40  50  60  70  80  90 100
+    0  12  16  19  23  27  32  32  32  32  32
+
+Graph level=0 size=852560, Fanout min=1, mean=24.63, max=64, meandelta=27366.26
+%   0  10  20  30  40  50  60  70  80  90 100
+    0   7  10  13  16  20  24  29  38  55  64
+
+Graph level=3 size=42, connectedness=1.00
+Graph level=2 size=760, connectedness=1.00
+Graph level=1 size=25998, connectedness=1.00
+Graph level=0 size=852560, connectedness=1.00
+Leaf 12 has 4 layers
+Leaf 12 has 155771 documents
+Graph level=3 size=8, Fanout min=2, mean=3.25, max=4, meandelta=20191.46
+%   0  10  20  30  40  50  60  70  80  90 100
+    0   1   2   3   3   3   3   3   4   4   4
+
+Graph level=2 size=143, Fanout min=4, mean=14.17, max=24, meandelta=9009.90
+%   0  10  20  30  40  50  60  70  80  90 100
+    0   8  10  12  13  14  15  16  18  21  24
+
+Graph level=1 size=4765, Fanout min=3, mean=24.70, max=32, meandelta=5646.68
 %   0  10  20  30  40  50  60  70  80  90 100
     0  13  17  20  23  27  31  32  32  32  32
 
-Graph level=0 size=162529, Fanout min=1, mean=25.82, max=64, meandelta=5161.11
+Graph level=0 size=155771, Fanout min=1, mean=25.95, max=64, meandelta=4904.41
 %   0  10  20  30  40  50  60  70  80  90 100
     0   9  12  15  18  21  25  31  39  55  64
 
 Graph level=3 size=8, connectedness=1.00
-Graph level=2 size=153, connectedness=1.00
-Graph level=1 size=5024, connectedness=1.00
-Graph level=0 size=162529, connectedness=1.00
-Leaf 11 has 4 layers
-Leaf 11 has 540482 documents
-Graph level=3 size=26, Fanout min=3, mean=5.77, max=12, meandelta=45157.55
-%   0  10  20  30  40  50  60  70  80  90 100
-    0   3   4   4   5   5   5   6   7   9  12
-
-Graph level=2 size=407, Fanout min=4, mean=18.76, max=32, meandelta=25291.79
-%   0  10  20  30  40  50  60  70  80  90 100
-    0  11  13  15  16  18  19  21  24  28  32
-
-Graph level=1 size=16298, Fanout min=2, mean=24.84, max=32, meandelta=19222.90
-%   0  10  20  30  40  50  60  70  80  90 100
-    0  13  17  20  24  27  32  32  32  32  32
-
-Graph level=0 size=540482, Fanout min=1, mean=24.92, max=64, meandelta=17270.42
-%   0  10  20  30  40  50  60  70  80  90 100
-    0   7  11  14  17  20  24  30  38  55  64
-
-Graph level=3 size=26, connectedness=1.00
-Graph level=2 size=407, connectedness=1.00
-Graph level=1 size=16298, connectedness=1.00
-Graph level=0 size=540482, connectedness=1.00
-Leaf 12 has 4 layers
-Leaf 12 has 276792 documents
-Graph level=3 size=10, Fanout min=2, mean=3.60, max=5, meandelta=28187.92
-%   0  10  20  30  40  50  60  70  80  90 100
-    0   2   3   3   3   4   4   4   4   4   5
-
-Graph level=2 size=255, Fanout min=3, mean=16.45, max=32, meandelta=14042.14
-%   0  10  20  30  40  50  60  70  80  90 100
-    0  10  12  13  15  16  17  19  21  24  32
-
-Graph level=1 size=8559, Fanout min=3, mean=24.99, max=32, meandelta=9856.82
-%   0  10  20  30  40  50  60  70  80  90 100
-    0  13  17  21  24  27  32  32  32  32  32
-
-Graph level=0 size=276792, Fanout min=1, mean=25.49, max=64, meandelta=8816.45
-%   0  10  20  30  40  50  60  70  80  90 100
-    0   8  11  14  17  21  25  30  38  54  64
-
-Graph level=3 size=10, connectedness=1.00
-Graph level=2 size=255, connectedness=1.00
-Graph level=1 size=8559, connectedness=1.00
-Graph level=0 size=276792, connectedness=1.00
+Graph level=2 size=143, connectedness=1.00
+Graph level=1 size=4765, connectedness=1.00
+Graph level=0 size=155771, connectedness=1.00
 Leaf 13 has 4 layers
-Leaf 13 has 261368 documents
-Graph level=3 size=9, Fanout min=2, mean=3.33, max=6, meandelta=31215.57
+Leaf 13 has 113388 documents
+Graph level=3 size=8, Fanout min=2, mean=3.75, max=6, meandelta=15510.93
 %   0  10  20  30  40  50  60  70  80  90 100
-    0   1   2   2   2   2   3   3   4   6   6
+    0   1   2   2   3   4   4   4   4   5   6
 
-Graph level=2 size=239, Fanout min=5, mean=16.24, max=32, meandelta=13396.23
+Graph level=2 size=104, Fanout min=4, mean=11.23, max=25, meandelta=8418.88
 %   0  10  20  30  40  50  60  70  80  90 100
-    0   9  11  12  14  15  17  19  22  23  32
+    0   6   8   9   9  10  11  12  14  17  25
 
-Graph level=1 size=8117, Fanout min=2, mean=24.90, max=32, meandelta=9347.61
+Graph level=1 size=3431, Fanout min=3, mean=24.37, max=32, meandelta=4152.61
 %   0  10  20  30  40  50  60  70  80  90 100
-    0  13  17  20  24  27  32  32  32  32  32
+    0  13  17  20  22  26  29  32  32  32  32
 
-Graph level=0 size=261368, Fanout min=1, mean=25.74, max=64, meandelta=8266.08
+Graph level=0 size=113388, Fanout min=1, mean=26.41, max=64, meandelta=3569.36
 %   0  10  20  30  40  50  60  70  80  90 100
-    0   8  11  14  18  21  25  31  39  55  64
-
-Graph level=3 size=9, connectedness=1.00
-Graph level=2 size=239, connectedness=1.00
-Graph level=1 size=8117, connectedness=1.00
-Graph level=0 size=261368, connectedness=1.00
-Leaf 14 has 4 layers
-Leaf 14 has 107290 documents
-Graph level=3 size=8, Fanout min=1, mean=2.50, max=4, meandelta=18569.15
-%   0  10  20  30  40  50  60  70  80  90 100
-    0   1   1   2   2   2   2   3   3   3   4
-
-Graph level=2 size=99, Fanout min=4, mean=11.39, max=20, meandelta=7810.00
-%   0  10  20  30  40  50  60  70  80  90 100
-    0   7   8   9  10  10  11  13  15  17  20
-
-Graph level=1 size=3262, Fanout min=5, mean=24.56, max=32, meandelta=3909.70
-%   0  10  20  30  40  50  60  70  80  90 100
-    0  14  17  20  23  26  30  32  32  32  32
-
-Graph level=0 size=107290, Fanout min=1, mean=26.55, max=64, meandelta=3353.51
-%   0  10  20  30  40  50  60  70  80  90 100
-    0   9  12  15  19  22  26  32  40  55  64
+    0   9  12  15  18  22  26  31  40  55  64
 
 Graph level=3 size=8, connectedness=1.00
-Graph level=2 size=99, connectedness=1.00
-Graph level=1 size=3262, connectedness=1.00
-Graph level=0 size=107290, connectedness=1.00
-Leaf 15 has 4 layers
-Leaf 15 has 122282 documents
-Graph level=3 size=6, Fanout min=2, mean=2.67, max=4, meandelta=24872.69
+Graph level=2 size=104, connectedness=1.00
+Graph level=1 size=3431, connectedness=1.00
+Graph level=0 size=113388, connectedness=1.00
+Leaf 14 has 4 layers
+Leaf 14 has 58206 documents
+Graph level=3 size=4, Fanout min=2, mean=2.00, max=2, meandelta=13163.50
 %   0  10  20  30  40  50  60  70  80  90 100
-    0   1   2   2   2   2   2   3   3   3   4
+    0   1   1   2   2   2   2   2   2   2   2
 
-Graph level=2 size=111, Fanout min=5, mean=12.25, max=21, meandelta=8305.17
+Graph level=2 size=54, Fanout min=3, mean=8.11, max=17, meandelta=5602.86
 %   0  10  20  30  40  50  60  70  80  90 100
-    0   7   8  10  11  12  13  14  15  17  21
+    0   4   5   6   7   8   9   9  10  12  17
 
-Graph level=1 size=3743, Fanout min=3, mean=24.89, max=32, meandelta=4381.16
+Graph level=1 size=1788, Fanout min=4, mean=23.98, max=32, meandelta=2181.86
 %   0  10  20  30  40  50  60  70  80  90 100
-    0  14  17  20  23  27  31  32  32  32  32
+    0  13  16  19  22  25  29  32  32  32  32
 
-Graph level=0 size=122282, Fanout min=1, mean=26.97, max=64, meandelta=3769.07
+Graph level=0 size=58206, Fanout min=1, mean=27.88, max=64, meandelta=1770.93
 %   0  10  20  30  40  50  60  70  80  90 100
-    0   9  13  16  19  22  27  32  41  57  64
-
-Graph level=3 size=6, connectedness=1.00
-Graph level=2 size=111, connectedness=1.00
-Graph level=1 size=3743, connectedness=1.00
-Graph level=0 size=122282, connectedness=1.00
-Leaf 16 has 4 layers
-Leaf 16 has 580605 documents
-Graph level=3 size=24, Fanout min=2, mean=5.50, max=11, meandelta=32450.66
-%   0  10  20  30  40  50  60  70  80  90 100
-    0   3   4   4   4   5   5   6   8   8  11
-
-Graph level=2 size=442, Fanout min=4, mean=19.23, max=32, meandelta=27362.85
-%   0  10  20  30  40  50  60  70  80  90 100
-    0  10  13  15  17  19  21  23  26  30  32
-
-Graph level=1 size=17578, Fanout min=2, mean=24.62, max=32, meandelta=20797.59
-%   0  10  20  30  40  50  60  70  80  90 100
-    0  13  16  20  23  27  32  32  32  32  32
-
-Graph level=0 size=580605, Fanout min=1, mean=24.91, max=64, meandelta=18491.88
-%   0  10  20  30  40  50  60  70  80  90 100
-    0   7  10  13  16  20  24  30  38  55  64
-
-Graph level=3 size=24, connectedness=1.00
-Graph level=2 size=442, connectedness=1.00
-Graph level=1 size=17578, connectedness=1.00
-Graph level=0 size=580605, connectedness=1.00
-Leaf 17 has 4 layers
-Leaf 17 has 65560 documents
-Graph level=3 size=5, Fanout min=1, mean=2.00, max=4, meandelta=9394.00
-%   0  10  20  30  40  50  60  70  80  90 100
-    0   1   1   1   1   1   2   2   2   2   4
-
-Graph level=2 size=63, Fanout min=3, mean=9.08, max=15, meandelta=5845.56
-%   0  10  20  30  40  50  60  70  80  90 100
-    0   5   6   7   8   9   9  11  12  13  15
-
-Graph level=1 size=1987, Fanout min=3, mean=24.18, max=32, meandelta=2420.56
-%   0  10  20  30  40  50  60  70  80  90 100
-    0  13  16  19  22  26  29  32  32  32  32
-
-Graph level=0 size=65560, Fanout min=1, mean=27.64, max=64, meandelta=2014.70
-%   0  10  20  30  40  50  60  70  80  90 100
-    0  10  13  16  19  23  27  33  42  58  64
-
-Graph level=3 size=5, connectedness=1.00
-Graph level=2 size=63, connectedness=1.00
-Graph level=1 size=1987, connectedness=1.00
-Graph level=0 size=65560, connectedness=1.00
-Leaf 18 has 4 layers
-Leaf 18 has 56813 documents
-Graph level=3 size=4, Fanout min=2, mean=2.50, max=3, meandelta=10530.80
-%   0  10  20  30  40  50  60  70  80  90 100
-    0   1   1   2   2   2   2   2   3   3   3
-
-Graph level=2 size=52, Fanout min=4, mean=8.50, max=17, meandelta=5025.44
-%   0  10  20  30  40  50  60  70  80  90 100
-    0   5   6   6   7   8   9  10  10  12  17
-
-Graph level=1 size=1729, Fanout min=5, mean=23.92, max=32, meandelta=2121.90
-%   0  10  20  30  40  50  60  70  80  90 100
-    0  13  16  19  22  25  28  32  32  32  32
-
-Graph level=0 size=56813, Fanout min=1, mean=27.70, max=64, meandelta=1747.05
-%   0  10  20  30  40  50  60  70  80  90 100
-    0  10  13  16  20  23  28  33  42  57  64
+    0  10  13  16  20  23  28  34  42  59  64
 
 Graph level=3 size=4, connectedness=1.00
-Graph level=2 size=52, connectedness=1.00
-Graph level=1 size=1729, connectedness=1.00
-Graph level=0 size=56813, connectedness=1.00
-  took 0:19:00.356502 to run KnnGraphTester
-result: KNNResultV0(lucene_git_rev='92e0eb8f71e2eaad8c2d18890ed3e506bbfdc5b8', luceneutil_git_rev='d615d87d19ea5f3d9cfc4959046db8ba121a7371', index_vectors_file='/lucenedata/enwiki/cohere-wikipedia-docs-768d.vec', search_vectors_file='/lucenedata/enwiki/cohere-wikipedia-queries-768d.vec', vector_dims=768, do_force_merge=False, recall=0.859, cpu_time_ms=14.747, num_docs=8000000, top_k=100, fanout=100, max_conn=32, beam_width=100, quantize_desc='7 bits', total_visited=74456, index_time_sec=853.96, index_docs_per_sec=9368.09, force_merge_time_sec=0.0, index_num_segments=19, index_size_on_disk_mb=29802.96, selectivity=1.0, pre_post_filter='post-filter', vec_disk_mb=1.0, vec_ram_mb=29327.393, graph_level_conn_p_values={3: (4, {0: 0, 10: 1, 20: 1, 30: 2, 40: 2, 50: 2, 60: 2, 70: 2, 80: 3, 90: 3, 100: 3}), 2: (52, {0: 0, 10: 5, 20: 6, 30: 6, 40: 7, 50: 8, 60: 9, 70: 10, 80: 10, 90: 12, 100: 17}), 1: (1729, {0: 0, 10: 13, 20: 16, 30: 19, 40: 22, 50: 25, 60: 28, 70: 32, 80: 32, 90: 32, 100: 32}), 0: (56813, {0: 0, 10: 10, 20: 13, 30: 16, 40: 20, 50: 23, 60: 28, 70: 33, 80: 42, 90: 57, 100: 64})}, combined_run_time=datetime.timedelta(seconds=1140, microseconds=356502))
+Graph level=2 size=54, connectedness=1.00
+Graph level=1 size=1788, connectedness=1.00
+Graph level=0 size=58206, connectedness=1.00
+  took 0:19:27.440010 to run KnnGraphTester
+result: KNNResultV0(lucene_git_rev='36b3577c17a52b2d9ae21d5976141e2da77cfab3', luceneutil_git_rev='d615d87d19ea5f3d9cfc4959046db8ba121a7371', index_vectors_file='/lucenedata/enwiki/cohere-wikipedia-docs-768d.vec', search_vectors_file='/lucenedata/enwiki/cohere-wikipedia-queries-768d.vec', vector_dims=768, do_force_merge=False, recall=0.859, cpu_time_ms=12.98, num_docs=8000000, top_k=100, fanout=100, max_conn=32, beam_width=100, quantize_desc='7 bits', total_visited=65326, index_time_sec=887.37, index_docs_per_sec=9015.41, force_merge_time_sec=0.0, index_num_segments=15, index_size_on_disk_mb=29807.54, selectivity=1.0, pre_post_filter='post-filter', vec_disk_mb=1.0, vec_ram_mb=29327.393, graph_level_conn_p_values={3: (4, {0: 0, 10: 1, 20: 1, 30: 2, 40: 2, 50: 2, 60: 2, 70: 2, 80: 2, 90: 2, 100: 2}), 2: (54, {0: 0, 10: 4, 20: 5, 30: 6, 40: 7, 50: 8, 60: 9, 70: 9, 80: 10, 90: 12, 100: 17}), 1: (1788, {0: 0, 10: 13, 20: 16, 30: 19, 40: 22, 50: 25, 60: 29, 70: 32, 80: 32, 90: 32, 100: 32}), 0: (58206, {0: 0, 10: 10, 20: 13, 30: 16, 40: 20, 50: 23, 60: 28, 70: 34, 80: 42, 90: 59, 100: 64})}, combined_run_time=datetime.timedelta(seconds=1167, microseconds=440010))
   cmd: ['/usr/lib/jvm/java-24-openjdk/bin/java', '--add-modules', 'jdk.incubator.vector', '-Xmx32g', '-Xms32g', '-server', '-XX:+UseParallelGC', '-Djava.io.tmpdir=/l/tmp', '-cp', '/l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar:/l/trunk.nightly/lucene/sandbox/build/classes/java/main:/l/trunk.nightly/lucene/misc/build/classes/java/main:/l/trunk.nightly/lucene/facet/build/classes/java/main:/l/trunk.nightly/lucene/analysis/common/build/classes/java/main:/l/trunk.nightly/lucene/analysis/icu/build/classes/java/main:/l/trunk.nightly/lucene/queryparser/build/classes/java/main:/l/trunk.nightly/lucene/grouping/build/classes/java/main:/l/trunk.nightly/lucene/suggest/build/classes/java/main:/l/trunk.nightly/lucene/highlighter/build/classes/java/main:/l/trunk.nightly/lucene/codecs/build/classes/java/main:/l/trunk.nightly/lucene/queries/build/classes/java/main:/l/trunk.nightly/lucene/join/build/classes/java/main:/l/trunk.nightly/lucene/spatial3d/build/classes/java/main:/l/util.nightly/lib/HdrHistogram.jar:/l/util.nightly/src/main/build/classes/java/main:/l/util.nightly/build:/l/util.nightly/build', '--add-modules', 'jdk.incubator.vector', '--enable-native-access=ALL-UNNAMED', 'knn.KnnGraphTester', '-maxConn', '32', '-dim', '768', '-docs', '/lucenedata/enwiki/cohere-wikipedia-docs-768d.vec', '-ndoc', '8000000', '-topK', '100', '-numIndexThreads', '8', '-beamWidthIndex', '100', '-search-and-stats', '/lucenedata/enwiki/cohere-wikipedia-queries-768d.vec', '-metric', 'mip', '-numMergeThread', '16', '-numMergeWorker', '48', '-forceMerge', '-quantize', '-quantizeBits', '7']
 WARNING: Using incubator modules: jdk.incubator.vector
 maxConn = 32
@@ -2541,49 +2426,49 @@ numDocs = 8000000
 beamWidth = 100
 similarity = MAXIMUM_INNER_PRODUCT
 Index Path = knnIndices/cohere-wikipedia-docs-768d.vec-32-100-7-8000000.index
-Seed = 960928898845362
-May 12, 2025 1:38:47 PM org.apache.lucene.internal.vectorization.PanamaVectorizationProvider <init>
+Seed = 984498025231776
+May 12, 2025 8:11:36 PM org.apache.lucene.internal.vectorization.PanamaVectorizationProvider <init>
 INFO: Java vector incubator API enabled; uses preferredBitSize=256; FMA enabled
 Force merge index in knnIndices/cohere-wikipedia-docs-768d.vec-32-100-7-8000000.index
-Force merge done in 696.07 sec
-index has 1 segments: segments_3: _15v(11.0.0):C8000000:[diagnostics={lucene.version=11.0.0, source=merge, os.arch=amd64, java.runtime.version=24.0.1, mergeFactor=19, java.vendor=Arch Linux, os=Linux, os.version=6.14.4-arch1-2, timestamp=1747071527864, mergeMaxNumSegments=1}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=cvy1ulgbja0u4cydmname1tu0
-  _15v: 29809.6 MB
+Force merge done in 678.66 sec
+index has 1 segments: segments_3: _15s(11.0.0):C8000000:[diagnostics={java.runtime.version=24.0.1, mergeFactor=15, java.vendor=Arch Linux, os=Linux, os.version=6.14.4-arch1-2, timestamp=1747095096991, mergeMaxNumSegments=1, lucene.version=11.0.0, source=merge, os.arch=amd64}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=6brjm00opbc0o56pgfmxn72ci
+  _15s: 29802.6 MB
 encodingByteSize=4 origByteSize=4
 realEncodingByteSize=1.0
-index disk usage is 29809.59 MB
+index disk usage is 29802.62 MB
 vector disk usage is 29327.39 MB
 vector RAM usage is 5889.89 MB
   read pre-cached exact match vectors from cache file "nn--hp5kni.bin"
 path=/lucenedata/enwiki/cohere-wikipedia-queries-768d.vec dim=768 vectorEncoding.byteSize=4
 1500000 query vectors in queryPath "/lucenedata/enwiki/cohere-wikipedia-queries-768d.vec"
 searching 1000 query vectors; topK=100, fanout=100
-completed 1000 searches in 2748 ms: 363 QPS CPU time=2693ms
+completed 1000 searches in 2849 ms: 351 QPS CPU time=2793ms
 checking results
-SUMMARY: 0.793	2.693	8000000	100	100	32	100	7 bits	6086	0.00	Infinity	696.07	1	29809.59	1.00	post-filter	1.000	29327.393	5889.893	HNSW
+SUMMARY: 0.791	2.793	8000000	100	100	32	100	7 bits	6045	0.00	Infinity	678.66	1	29802.62	1.00	post-filter	1.000	29327.393	5889.893	HNSW
 Leaf 0 has 4 layers
 Leaf 0 has 8000000 documents
-Graph level=3 size=272, Fanout min=5, mean=16.73, max=32, meandelta=404861.53
+Graph level=3 size=288, Fanout min=4, mean=16.89, max=32, meandelta=402371.31
 %   0  10  20  30  40  50  60  70  80  90 100
-    0   9  12  13  15  16  18  19  21  24  32
+    0  10  12  14  15  16  17  19  21  24  32
 
-Graph level=2 size=7764, Fanout min=3, mean=24.86, max=32, meandelta=289427.16
+Graph level=2 size=7692, Fanout min=2, mean=25.04, max=32, meandelta=286961.81
 %   0  10  20  30  40  50  60  70  80  90 100
-    0  13  17  20  24  27  32  32  32  32  32
+    0  13  17  21  24  27  32  32  32  32  32
 
-Graph level=1 size=247358, Fanout min=1, mean=21.80, max=32, meandelta=304910.63
+Graph level=1 size=247444, Fanout min=1, mean=21.66, max=32, meandelta=305436.53
 %   0  10  20  30  40  50  60  70  80  90 100
-    0   8  12  15  19  22  27  32  32  32  32
+    0   8  12  15  18  22  27  32  32  32  32
 
-Graph level=0 size=8000000, Fanout min=1, mean=19.72, max=64, meandelta=293970.66
+Graph level=0 size=8000000, Fanout min=1, mean=19.36, max=64, meandelta=296137.72
 %   0  10  20  30  40  50  60  70  80  90 100
-    0   4   7   9  12  15  18  23  30  45  64
+    0   4   7   9  11  14  18  22  29  44  64
 
-Graph level=3 size=272, connectedness=1.00
-Graph level=2 size=7764, connectedness=1.00
-Graph level=1 size=247358, connectedness=1.00
+Graph level=3 size=288, connectedness=1.00
+Graph level=2 size=7692, connectedness=1.00
+Graph level=1 size=247444, connectedness=1.00
 Graph level=0 size=8000000, connectedness=1.00
-  took 0:11:56.672531 to run KnnGraphTester
-result: KNNResultV0(lucene_git_rev='92e0eb8f71e2eaad8c2d18890ed3e506bbfdc5b8', luceneutil_git_rev='d615d87d19ea5f3d9cfc4959046db8ba121a7371', index_vectors_file='/lucenedata/enwiki/cohere-wikipedia-docs-768d.vec', search_vectors_file='/lucenedata/enwiki/cohere-wikipedia-queries-768d.vec', vector_dims=768, do_force_merge=True, recall=0.793, cpu_time_ms=2.693, num_docs=8000000, top_k=100, fanout=100, max_conn=32, beam_width=100, quantize_desc='7 bits', total_visited=6086, index_time_sec=0.0, index_docs_per_sec=inf, force_merge_time_sec=696.07, index_num_segments=1, index_size_on_disk_mb=29809.59, selectivity=1.0, pre_post_filter='post-filter', vec_disk_mb=1.0, vec_ram_mb=29327.393, graph_level_conn_p_values={3: (272, {0: 0, 10: 9, 20: 12, 30: 13, 40: 15, 50: 16, 60: 18, 70: 19, 80: 21, 90: 24, 100: 32}), 2: (7764, {0: 0, 10: 13, 20: 17, 30: 20, 40: 24, 50: 27, 60: 32, 70: 32, 80: 32, 90: 32, 100: 32}), 1: (247358, {0: 0, 10: 8, 20: 12, 30: 15, 40: 19, 50: 22, 60: 27, 70: 32, 80: 32, 90: 32, 100: 32}), 0: (8000000, {0: 0, 10: 4, 20: 7, 30: 9, 40: 12, 50: 15, 60: 18, 70: 23, 80: 30, 90: 45, 100: 64})}, combined_run_time=datetime.timedelta(seconds=716, microseconds=672531))
+  took 0:11:39.826694 to run KnnGraphTester
+result: KNNResultV0(lucene_git_rev='36b3577c17a52b2d9ae21d5976141e2da77cfab3', luceneutil_git_rev='d615d87d19ea5f3d9cfc4959046db8ba121a7371', index_vectors_file='/lucenedata/enwiki/cohere-wikipedia-docs-768d.vec', search_vectors_file='/lucenedata/enwiki/cohere-wikipedia-queries-768d.vec', vector_dims=768, do_force_merge=True, recall=0.791, cpu_time_ms=2.793, num_docs=8000000, top_k=100, fanout=100, max_conn=32, beam_width=100, quantize_desc='7 bits', total_visited=6045, index_time_sec=0.0, index_docs_per_sec=inf, force_merge_time_sec=678.66, index_num_segments=1, index_size_on_disk_mb=29802.62, selectivity=1.0, pre_post_filter='post-filter', vec_disk_mb=1.0, vec_ram_mb=29327.393, graph_level_conn_p_values={3: (288, {0: 0, 10: 10, 20: 12, 30: 14, 40: 15, 50: 16, 60: 17, 70: 19, 80: 21, 90: 24, 100: 32}), 2: (7692, {0: 0, 10: 13, 20: 17, 30: 21, 40: 24, 50: 27, 60: 32, 70: 32, 80: 32, 90: 32, 100: 32}), 1: (247444, {0: 0, 10: 8, 20: 12, 30: 15, 40: 18, 50: 22, 60: 27, 70: 32, 80: 32, 90: 32, 100: 32}), 0: (8000000, {0: 0, 10: 4, 20: 7, 30: 9, 40: 11, 50: 14, 60: 18, 70: 22, 80: 29, 90: 44, 100: 64})}, combined_run_time=datetime.timedelta(seconds=699, microseconds=826694))
 now remove KNN index knnIndices/cohere-wikipedia-docs-768d.vec-32-100-7-8000000.index
   cmd: ['/usr/lib/jvm/java-24-openjdk/bin/java', '--add-modules', 'jdk.incubator.vector', '-Xmx32g', '-Xms32g', '-server', '-XX:+UseParallelGC', '-Djava.io.tmpdir=/l/tmp', '-cp', '/l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar:/l/trunk.nightly/lucene/sandbox/build/classes/java/main:/l/trunk.nightly/lucene/misc/build/classes/java/main:/l/trunk.nightly/lucene/facet/build/classes/java/main:/l/trunk.nightly/lucene/analysis/common/build/classes/java/main:/l/trunk.nightly/lucene/analysis/icu/build/classes/java/main:/l/trunk.nightly/lucene/queryparser/build/classes/java/main:/l/trunk.nightly/lucene/grouping/build/classes/java/main:/l/trunk.nightly/lucene/suggest/build/classes/java/main:/l/trunk.nightly/lucene/highlighter/build/classes/java/main:/l/trunk.nightly/lucene/codecs/build/classes/java/main:/l/trunk.nightly/lucene/queries/build/classes/java/main:/l/trunk.nightly/lucene/join/build/classes/java/main:/l/trunk.nightly/lucene/spatial3d/build/classes/java/main:/l/util.nightly/lib/HdrHistogram.jar:/l/util.nightly/src/main/build/classes/java/main:/l/util.nightly/build:/l/util.nightly/build', '--add-modules', 'jdk.incubator.vector', '--enable-native-access=ALL-UNNAMED', 'knn.KnnGraphTester', '-maxConn', '32', '-dim', '768', '-docs', '/lucenedata/enwiki/cohere-wikipedia-docs-768d.vec', '-ndoc', '8000000', '-topK', '100', '-numIndexThreads', '8', '-beamWidthIndex', '100', '-search-and-stats', '/lucenedata/enwiki/cohere-wikipedia-queries-768d.vec', '-metric', 'mip', '-numMergeThread', '16', '-numMergeWorker', '48', '-reindex']
 WARNING: Using incubator modules: jdk.incubator.vector
@@ -2593,8 +2478,8 @@ numDocs = 8000000
 beamWidth = 100
 similarity = MAXIMUM_INNER_PRODUCT
 Index Path = knnIndices/cohere-wikipedia-docs-768d.vec-32-100-8000000.index
-Seed = 961647803756712
-May 12, 2025 1:50:46 PM org.apache.lucene.internal.vectorization.PanamaVectorizationProvider <init>
+Seed = 985200091881730
+May 12, 2025 8:23:18 PM org.apache.lucene.internal.vectorization.PanamaVectorizationProvider <init>
 INFO: Java vector incubator API enabled; uses preferredBitSize=256; FMA enabled
 creating index in knnIndices/cohere-wikipedia-docs-768d.vec-32-100-8000000.index
 33332620 doc vectors in docsPath "/lucenedata/enwiki/cohere-wikipedia-docs-768d.vec"
@@ -2921,29 +2806,28 @@ Done indexing 7975000 documents.
 Done indexing 8000000 documents.
 now IndexWriter.commit()
 done ConcurrentMergeScheduler.sync()
-Indexed 8000000 docs in 1881 seconds
-reindex takes 1881.22 sec
-index has 17 segments: segments_2: _4e(11.0.0):C337344:[diagnostics={mergeFactor=10, java.runtime.version=24.0.1, os.arch=amd64, source=merge, lucene.version=11.0.0, mergeMaxNumSegments=-1, timestamp=1747072303929, os.version=6.14.4-arch1-2, os=Linux, java.vendor=Arch Linux}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=d0g8fb4zo1ngzyhtrgy6q5sui _13j(11.0.0):C1374440:[diagnostics={mergeFactor=10, java.runtime.version=24.0.1, os.arch=amd64, source=merge, lucene.version=11.0.0, mergeMaxNumSegments=-1, timestamp=1747073231560, os.version=6.14.4-arch1-2, os=Linux, java.vendor=Arch Linux}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=d0g8fb4zo1ngzyhtrgy6q5vnf _ir(11.0.0):c389007:[diagnostics={mergeFactor=10, java.runtime.version=24.0.1, os.arch=amd64, source=merge, lucene.version=11.0.0, mergeMaxNumSegments=-1, timestamp=1747072567224, os.version=6.14.4-arch1-2, os=Linux, java.vendor=Arch Linux}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=d0g8fb4zo1ngzyhtrgy6q5uf1 _m7(11.0.0):c479590:[diagnostics={mergeFactor=10, java.runtime.version=24.0.1, os.arch=amd64, source=merge, lucene.version=11.0.0, mergeMaxNumSegments=-1, timestamp=1747072652833, os.version=6.14.4-arch1-2, os=Linux, java.vendor=Arch Linux}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=d0g8fb4zo1ngzyhtrgy6q5utt _nl(11.0.0):c368761:[diagnostics={mergeFactor=10, java.runtime.version=24.0.1, os.arch=amd64, source=merge, lucene.version=11.0.0, mergeMaxNumSegments=-1, timestamp=1747072689737, os.version=6.14.4-arch1-2, os=Linux, java.vendor=Arch Linux}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=d0g8fb4zo1ngzyhtrgy6q5v3s _pj(11.0.0):c439110:[diagnostics={mergeFactor=10, java.runtime.version=24.0.1, os.arch=amd64, source=merge, lucene.version=11.0.0, mergeMaxNumSegments=-1, timestamp=1747072741814, os.version=6.14.4-arch1-2, os=Linux, java.vendor=Arch Linux}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=d0g8fb4zo1ngzyhtrgy6q5vfe _yr(11.0.0):c367395:[diagnostics={mergeFactor=10, java.runtime.version=24.0.1, os.arch=amd64, source=merge, lucene.version=11.0.0, mergeMaxNumSegments=-1, timestamp=1747073047388, os.version=6.14.4-arch1-2, os=Linux, java.vendor=Arch Linux}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=d0g8fb4zo1ngzyhtrgy6q5vms _u2(11.0.0):c259383:[diagnostics={mergeFactor=10, java.runtime.version=24.0.1, os.arch=amd64, source=merge, lucene.version=11.0.0, mergeMaxNumSegments=-1, timestamp=1747072886725, os.version=6.14.4-arch1-2, os=Linux, java.vendor=Arch Linux}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=d0g8fb4zo1ngzyhtrgy6q5vmf _11t(11.0.0):c263785:[diagnostics={mergeFactor=10, java.runtime.version=24.0.1, os.arch=amd64, source=merge, lucene.version=11.0.0, mergeMaxNumSegments=-1, timestamp=1747073160452, os.version=6.14.4-arch1-2, os=Linux, java.vendor=Arch Linux}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=d0g8fb4zo1ngzyhtrgy6q5vmy _16y(11.0.0):C1094087:[diagnostics={mergeFactor=10, java.runtime.version=24.0.1, os.arch=amd64, source=merge, lucene.version=11.0.0, mergeMaxNumSegments=-1, timestamp=1747073488367, os.version=6.14.4-arch1-2, os=Linux, java.vendor=Arch Linux}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=d0g8fb4zo1ngzyhtrgy6q5vni _t8(11.0.0):c263980:[diagnostics={mergeFactor=10, java.runtime.version=24.0.1, os.arch=amd64, source=merge, lucene.version=11.0.0, mergeMaxNumSegments=-1, timestamp=1747072859850, os.version=6.14.4-arch1-2, os=Linux, java.vendor=Arch Linux}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=d0g8fb4zo1ngzyhtrgy6q5vkx _16x(11.0.0):C940690:[diagnostics={mergeFactor=10, java.runtime.version=24.0.1, os.arch=amd64, source=merge, lucene.version=11.0.0, mergeMaxNumSegments=-1, timestamp=1747073430861, os.version=6.14.4-arch1-2, os=Linux, java.vendor=Arch Linux}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=d0g8fb4zo1ngzyhtrgy6q5vnh _12o(11.0.0):c168911:[diagnostics={mergeFactor=10, java.runtime.version=24.0.1, os.arch=amd64, source=merge, lucene.version=11.0.0, mergeMaxNumSegments=-1, timestamp=1747073194387, os.version=6.14.4-arch1-2, os=Linux, java.vendor=Arch Linux}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=d0g8fb4zo1ngzyhtrgy6q5vn3 _16z(11.0.0):C941840:[diagnostics={mergeFactor=10, java.runtime.version=24.0.1, os.arch=amd64, source=merge, lucene.version=11.0.0, mergeMaxNumSegments=-1, timestamp=1747073577667, os.version=6.14.4-arch1-2, os=Linux, java.vendor=Arch Linux}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=d0g8fb4zo1ngzyhtrgy6q5vnj _16c(11.0.0):c162955:[diagnostics={mergeFactor=10, java.runtime.version=24.0.1, os.arch=amd64, source=merge, lucene.version=11.0.0, mergeMaxNumSegments=-1, timestamp=1747073343532, os.version=6.14.4-arch1-2, os=Linux, java.vendor=Arch Linux}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=d0g8fb4zo1ngzyhtrgy6q5vng _15s(11.0.0):c62103:[diagnostics={mergeFactor=11, java.runtime.version=24.0.1, os.arch=amd64, source=merge, lucene.version=11.0.0, mergeMaxNumSegments=-1, timestamp=1747073322887, os.version=6.14.4-arch1-2, os=Linux, java.vendor=Arch Linux}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=d0g8fb4zo1ngzyhtrgy6q5vnd _16w(11.0.0):c86619:[diagnostics={mergeFactor=17, java.runtime.version=24.0.1, os.arch=amd64, source=merge, lucene.version=11.0.0, mergeMaxNumSegments=-1, timestamp=1747073366376, os.version=6.14.4-arch1-2, os=Linux, java.vendor=Arch Linux}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=d0g8fb4zo1ngzyhtrgy6q5vne
-  _4e: 1006.0 MB
-  _13j: 4110.5 MB
-  _ir: 1162.4 MB
-  _m7: 1433.5 MB
-  _nl: 1102.4 MB
-  _pj: 1312.8 MB
-  _yr: 1098.6 MB
-  _u2: 775.5 MB
-  _11t: 788.4 MB
-  _16y: 3279.3 MB
-  _t8: 789.2 MB
-  _16x: 2819.1 MB
-  _12o: 504.9 MB
-  _16z: 2823.2 MB
-  _16c: 487.2 MB
-  _15s: 185.6 MB
-  _16w: 258.9 MB
+Indexed 8000000 docs in 2095 seconds
+reindex takes 2095.71 sec
+index has 16 segments: segments_2: _153(11.0.0):C1543948:[diagnostics={os.version=6.14.4-arch1-2, os=Linux, java.vendor=Arch Linux, mergeFactor=10, java.runtime.version=24.0.1, os.arch=amd64, source=merge, lucene.version=11.0.0, mergeMaxNumSegments=-1, timestamp=1747096830194}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=bz4ua4a1jq3ixg1bjpodyjvg6 _16x(11.0.0):C1640706:[diagnostics={os.version=6.14.4-arch1-2, os=Linux, java.vendor=Arch Linux, mergeFactor=3, java.runtime.version=24.0.1, os.arch=amd64, source=merge, lucene.version=11.0.0, mergeMaxNumSegments=-1, timestamp=1747097701116}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=bz4ua4a1jq3ixg1bjpodyjvgc _g6(11.0.0):c379093:[diagnostics={os.version=6.14.4-arch1-2, os=Linux, java.vendor=Arch Linux, mergeFactor=10, java.runtime.version=24.0.1, os.arch=amd64, source=merge, lucene.version=11.0.0, mergeMaxNumSegments=-1, timestamp=1747096063285}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=bz4ua4a1jq3ixg1bjpodyju01 _qz(11.0.0):c486737:[diagnostics={os.version=6.14.4-arch1-2, os=Linux, java.vendor=Arch Linux, mergeFactor=10, java.runtime.version=24.0.1, os.arch=amd64, source=merge, lucene.version=11.0.0, mergeMaxNumSegments=-1, timestamp=1747096351418}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=bz4ua4a1jq3ixg1bjpodyjuzw _uo(11.0.0):c548926:[diagnostics={os.version=6.14.4-arch1-2, os=Linux, java.vendor=Arch Linux, mergeFactor=10, java.runtime.version=24.0.1, os.arch=amd64, source=merge, lucene.version=11.0.0, mergeMaxNumSegments=-1, timestamp=1747096479701}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=bz4ua4a1jq3ixg1bjpodyjvfe _ta(11.0.0):c318517:[diagnostics={os.version=6.14.4-arch1-2, os=Linux, java.vendor=Arch Linux, mergeFactor=10, java.runtime.version=24.0.1, os.arch=amd64, source=merge, lucene.version=11.0.0, mergeMaxNumSegments=-1, timestamp=1747096431316}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=bz4ua4a1jq3ixg1bjpodyjv65 _u2(11.0.0):c274066:[diagnostics={os.version=6.14.4-arch1-2, os=Linux, java.vendor=Arch Linux, mergeFactor=10, java.runtime.version=24.0.1, os.arch=amd64, source=merge, lucene.version=11.0.0, mergeMaxNumSegments=-1, timestamp=1747096458070}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=bz4ua4a1jq3ixg1bjpodyjvck _yh(11.0.0):c266940:[diagnostics={os.version=6.14.4-arch1-2, os=Linux, java.vendor=Arch Linux, mergeFactor=10, java.runtime.version=24.0.1, os.arch=amd64, source=merge, lucene.version=11.0.0, mergeMaxNumSegments=-1, timestamp=1747096594606}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=bz4ua4a1jq3ixg1bjpodyjvfu _vu(11.0.0):c263143:[diagnostics={os.version=6.14.4-arch1-2, os=Linux, java.vendor=Arch Linux, mergeFactor=10, java.runtime.version=24.0.1, os.arch=amd64, source=merge, lucene.version=11.0.0, mergeMaxNumSegments=-1, timestamp=1747096512410}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=bz4ua4a1jq3ixg1bjpodyjvfq _vb(11.0.0):c311729:[diagnostics={os.version=6.14.4-arch1-2, os=Linux, java.vendor=Arch Linux, mergeFactor=10, java.runtime.version=24.0.1, os.arch=amd64, source=merge, lucene.version=11.0.0, mergeMaxNumSegments=-1, timestamp=1747096497773}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=bz4ua4a1jq3ixg1bjpodyjvfj _16w(11.0.0):C1390624:[diagnostics={os.version=6.14.4-arch1-2, os=Linux, java.vendor=Arch Linux, mergeFactor=10, java.runtime.version=24.0.1, os.arch=amd64, source=merge, lucene.version=11.0.0, mergeMaxNumSegments=-1, timestamp=1747097120988}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=bz4ua4a1jq3ixg1bjpodyjvg9 _11y(11.0.0):c262489:[diagnostics={os.version=6.14.4-arch1-2, os=Linux, java.vendor=Arch Linux, mergeFactor=10, java.runtime.version=24.0.1, os.arch=amd64, source=merge, lucene.version=11.0.0, mergeMaxNumSegments=-1, timestamp=1747096708555}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=bz4ua4a1jq3ixg1bjpodyjvfy _15f(11.0.0):c84738:[diagnostics={os.version=6.14.4-arch1-2, os=Linux, java.vendor=Arch Linux, mergeFactor=15, java.runtime.version=24.0.1, os.arch=amd64, source=merge, lucene.version=11.0.0, mergeMaxNumSegments=-1, timestamp=1747096845043}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=bz4ua4a1jq3ixg1bjpodyjvg2 _15u(11.0.0):c78051:[diagnostics={os.version=6.14.4-arch1-2, os=Linux, java.vendor=Arch Linux, mergeFactor=14, java.runtime.version=24.0.1, os.arch=amd64, source=merge, lucene.version=11.0.0, mergeMaxNumSegments=-1, timestamp=1747096863553}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=bz4ua4a1jq3ixg1bjpodyjvg3 _168(11.0.0):c73027:[diagnostics={os.version=6.14.4-arch1-2, os=Linux, java.vendor=Arch Linux, mergeFactor=13, java.runtime.version=24.0.1, os.arch=amd64, source=merge, lucene.version=11.0.0, mergeMaxNumSegments=-1, timestamp=1747096879435}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=bz4ua4a1jq3ixg1bjpodyjvg4 _16t(11.0.0):c77266:[diagnostics={os.version=6.14.4-arch1-2, os=Linux, java.vendor=Arch Linux, mergeFactor=16, java.runtime.version=24.0.1, os.arch=amd64, source=merge, lucene.version=11.0.0, mergeMaxNumSegments=-1, timestamp=1747096905398}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=bz4ua4a1jq3ixg1bjpodyjvg5
+  _153: 4620.2 MB
+  _16x: 4919.6 MB
+  _g6: 1132.5 MB
+  _qz: 1455.4 MB
+  _uo: 1642.0 MB
+  _ta: 952.4 MB
+  _u2: 819.1 MB
+  _yh: 798.1 MB
+  _vu: 786.8 MB
+  _vb: 932.2 MB
+  _16w: 4169.0 MB
+  _11y: 784.9 MB
+  _15f: 253.3 MB
+  _15u: 233.3 MB
+  _168: 218.2 MB
+  _16t: 230.9 MB
 encodingByteSize=4 origByteSize=4
 realEncodingByteSize=4.0
-index disk usage is 23937.53 MB
+index disk usage is 23947.80 MB
 vector disk usage is 23437.50 MB
 vector RAM usage is 23437.50 MB
   now compute brute-force exact KNN matches
@@ -2951,390 +2835,368 @@ computing true nearest neighbors of 1000 target vectors
 parentJoin = false
 now compute brute-force KNN hits for 1000 query vectors from "/lucenedata/enwiki/cohere-wikipedia-queries-768d.vec" starting at query index 0
 path=/lucenedata/enwiki/cohere-wikipedia-queries-768d.vec dim=768 vectorEncoding.byteSize=4
- 100 10 60 50 110 70 120 20 80 40 90 140 30 170 190 200 150 210 130 180 220 230 270 240 160 250 300 290 280 260 310 380 330 320 350 360 400 340 410 460 390 370 430 440 420 480 470 500 450 490 530 560 590 550 510 620 520 570 540 640 680 600 610 580 710 630 650 660 730 670 700 690 750 760 740 780 770 810 720 870 790 880 800 860 840 850 830 820 890 910 900 920 930 940 970 950 960 980 990 1000writing true nearest neighbors to cache file "nn--3v9kpw.bin"
-took 225.902 sec to compute brute-force exact matches
+ 90 10 70 30 50 20 60 100 120 110 40 80 130 140 180 190 210 150 220 240 170 270 260 160 200 230 290 280 330 350 250 310 300 390 340 360 370 320 420 470 440 380 430 410 400 460 480 520 450 500 550 510 530 590 490 540 630 620 560 570 610 640 580 600 650 700 710 680 660 770 730 670 740 690 790 810 760 720 800 820 750 890 870 780 830 880 930 940 910 950 840 860 900 850 1000 980 990 960 920 970writing true nearest neighbors to cache file "nn--3v9kpw.bin"
+took 218.308 sec to compute brute-force exact matches
 path=/lucenedata/enwiki/cohere-wikipedia-queries-768d.vec dim=768 vectorEncoding.byteSize=4
 1500000 query vectors in queryPath "/lucenedata/enwiki/cohere-wikipedia-queries-768d.vec"
 searching 1000 query vectors; topK=100, fanout=100
-completed 1000 searches in 17423 ms: 57 QPS CPU time=17033ms
+completed 1000 searches in 16240 ms: 61 QPS CPU time=15880ms
 checking results
-SUMMARY: 0.934	17.033	8000000	100	100	32	100	no	68670	1881.22	4252.56	0.00	17	23937.53	1.00	post-filter	1.000	23437.500	23437.500	HNSW
+SUMMARY: 0.931	15.880	8000000	100	100	32	100	no	64642	2095.71	3817.33	0.00	16	23947.80	1.00	post-filter	1.000	23437.500	23437.500	HNSW
 Leaf 0 has 4 layers
-Leaf 0 has 337344 documents
-Graph level=3 size=18, Fanout min=4, mean=5.22, max=9, meandelta=25783.16
+Leaf 0 has 1543948 documents
+Graph level=3 size=83, Fanout min=4, mean=10.80, max=23, meandelta=91047.76
 %   0  10  20  30  40  50  60  70  80  90 100
-    0   4   4   4   4   5   5   5   6   7   9
+    0   7   8   8   9  10  11  12  13  15  23
 
-Graph level=2 size=285, Fanout min=5, mean=16.04, max=32, meandelta=16949.90
+Graph level=2 size=1500, Fanout min=5, mean=24.51, max=32, meandelta=56947.71
 %   0  10  20  30  40  50  60  70  80  90 100
-    0   9  12  13  14  15  17  18  20  23  32
+    0  14  17  20  23  25  29  32  32  32  32
 
-Graph level=1 size=10377, Fanout min=3, mean=24.04, max=32, meandelta=12266.91
+Graph level=1 size=47609, Fanout min=2, mean=24.70, max=32, meandelta=55317.79
 %   0  10  20  30  40  50  60  70  80  90 100
-    0  13  16  19  22  25  29  32  32  32  32
+    0  13  17  20  23  27  32  32  32  32  32
 
-Graph level=0 size=337344, Fanout min=1, mean=22.05, max=64, meandelta=11863.15
+Graph level=0 size=1543948, Fanout min=1, mean=23.06, max=64, meandelta=52471.21
 %   0  10  20  30  40  50  60  70  80  90 100
-    0   7  10  12  15  18  21  26  32  44  64
+    0   7  10  13  15  18  22  27  34  49  64
 
-Graph level=3 size=18, connectedness=1.00
-Graph level=2 size=285, connectedness=1.00
-Graph level=1 size=10377, connectedness=1.00
-Graph level=0 size=337344, connectedness=1.00
+Graph level=3 size=83, connectedness=1.00
+Graph level=2 size=1500, connectedness=1.00
+Graph level=1 size=47609, connectedness=1.00
+Graph level=0 size=1543948, connectedness=1.00
 Leaf 1 has 4 layers
-Leaf 1 has 1374440 documents
-Graph level=3 size=85, Fanout min=4, mean=10.64, max=21, meandelta=89851.41
+Leaf 1 has 1640706 documents
+Graph level=3 size=96, Fanout min=5, mean=10.77, max=20, meandelta=125060.05
 %   0  10  20  30  40  50  60  70  80  90 100
-    0   6   7   8   9  10  11  12  13  16  21
+    0   7   8   9   9  10  11  12  13  15  20
 
-Graph level=2 size=1319, Fanout min=7, mean=24.09, max=32, meandelta=51690.84
+Graph level=2 size=1420, Fanout min=5, mean=24.91, max=32, meandelta=59755.07
 %   0  10  20  30  40  50  60  70  80  90 100
-    0  15  17  20  22  25  27  31  32  32  32
+    0  15  18  21  24  26  29  32  32  32  32
 
-Graph level=1 size=42024, Fanout min=2, mean=24.57, max=32, meandelta=49272.52
-%   0  10  20  30  40  50  60  70  80  90 100
-    0  13  17  20  23  27  31  32  32  32  32
-
-Graph level=0 size=1374440, Fanout min=1, mean=22.45, max=64, meandelta=47847.52
-%   0  10  20  30  40  50  60  70  80  90 100
-    0   7  10  12  15  18  21  26  33  46  64
-
-Graph level=3 size=85, connectedness=1.00
-Graph level=2 size=1319, connectedness=1.00
-Graph level=1 size=42024, connectedness=1.00
-Graph level=0 size=1374440, connectedness=1.00
-Leaf 2 has 4 layers
-Leaf 2 has 389007 documents
-Graph level=3 size=20, Fanout min=2, mean=5.00, max=8, meandelta=34565.38
-%   0  10  20  30  40  50  60  70  80  90 100
-    0   3   4   4   4   5   5   5   7   7   8
-
-Graph level=2 size=294, Fanout min=6, mean=17.72, max=32, meandelta=16824.83
-%   0  10  20  30  40  50  60  70  80  90 100
-    0  10  12  13  15  17  19  21  23  26  32
-
-Graph level=1 size=11814, Fanout min=3, mean=25.55, max=32, meandelta=13594.61
-%   0  10  20  30  40  50  60  70  80  90 100
-    0  15  18  21  24  28  32  32  32  32  32
-
-Graph level=0 size=389007, Fanout min=1, mean=24.53, max=64, meandelta=12882.00
-%   0  10  20  30  40  50  60  70  80  90 100
-    0   9  12  14  17  20  24  28  36  50  64
-
-Graph level=3 size=20, connectedness=1.00
-Graph level=2 size=294, connectedness=1.00
-Graph level=1 size=11814, connectedness=1.00
-Graph level=0 size=389007, connectedness=1.00
-Leaf 3 has 4 layers
-Leaf 3 has 479590 documents
-Graph level=3 size=22, Fanout min=2, mean=5.64, max=11, meandelta=40298.11
-%   0  10  20  30  40  50  60  70  80  90 100
-    0   2   3   4   4   5   6   6   8   9  11
-
-Graph level=2 size=357, Fanout min=5, mean=17.96, max=32, meandelta=19921.25
-%   0  10  20  30  40  50  60  70  80  90 100
-    0  11  12  14  15  17  19  21  23  27  32
-
-Graph level=1 size=14587, Fanout min=3, mean=25.41, max=32, meandelta=16810.17
-%   0  10  20  30  40  50  60  70  80  90 100
-    0  15  18  21  24  28  32  32  32  32  32
-
-Graph level=0 size=479590, Fanout min=1, mean=24.41, max=64, meandelta=15856.74
-%   0  10  20  30  40  50  60  70  80  90 100
-    0   9  12  14  17  20  24  28  35  50  64
-
-Graph level=3 size=22, connectedness=1.00
-Graph level=2 size=357, connectedness=1.00
-Graph level=1 size=14587, connectedness=1.00
-Graph level=0 size=479590, connectedness=1.00
-Leaf 4 has 4 layers
-Leaf 4 has 368761 documents
-Graph level=3 size=24, Fanout min=4, mean=6.58, max=10, meandelta=35736.18
-%   0  10  20  30  40  50  60  70  80  90 100
-    0   4   4   5   5   6   7   8   8   9  10
-
-Graph level=2 size=315, Fanout min=7, mean=17.43, max=32, meandelta=17337.72
-%   0  10  20  30  40  50  60  70  80  90 100
-    0  11  13  14  15  16  18  20  22  25  32
-
-Graph level=1 size=11163, Fanout min=4, mean=25.75, max=32, meandelta=12736.37
-%   0  10  20  30  40  50  60  70  80  90 100
-    0  15  18  22  25  28  32  32  32  32  32
-
-Graph level=0 size=368761, Fanout min=1, mean=25.33, max=64, meandelta=11929.12
-%   0  10  20  30  40  50  60  70  80  90 100
-    0   9  12  15  18  21  25  30  37  51  64
-
-Graph level=3 size=24, connectedness=1.00
-Graph level=2 size=315, connectedness=1.00
-Graph level=1 size=11163, connectedness=1.00
-Graph level=0 size=368761, connectedness=1.00
-Leaf 5 has 4 layers
-Leaf 5 has 439110 documents
-Graph level=3 size=23, Fanout min=3, mean=5.83, max=10, meandelta=39492.57
-%   0  10  20  30  40  50  60  70  80  90 100
-    0   3   4   4   5   6   6   7   7   7  10
-
-Graph level=2 size=338, Fanout min=7, mean=18.31, max=32, meandelta=17967.09
-%   0  10  20  30  40  50  60  70  80  90 100
-    0  11  13  15  16  18  19  21  24  27  32
-
-Graph level=1 size=13360, Fanout min=4, mean=25.70, max=32, meandelta=15268.53
-%   0  10  20  30  40  50  60  70  80  90 100
-    0  15  18  22  25  28  32  32  32  32  32
-
-Graph level=0 size=439110, Fanout min=1, mean=24.92, max=64, meandelta=14366.34
-%   0  10  20  30  40  50  60  70  80  90 100
-    0   9  12  15  17  20  24  29  36  50  64
-
-Graph level=3 size=23, connectedness=1.00
-Graph level=2 size=338, connectedness=1.00
-Graph level=1 size=13360, connectedness=1.00
-Graph level=0 size=439110, connectedness=1.00
-Leaf 6 has 4 layers
-Leaf 6 has 367395 documents
-Graph level=3 size=25, Fanout min=2, mean=6.32, max=12, meandelta=41479.09
-%   0  10  20  30  40  50  60  70  80  90 100
-    0   3   4   5   5   6   7   7   9  10  12
-
-Graph level=2 size=348, Fanout min=6, mean=18.69, max=32, meandelta=16949.59
-%   0  10  20  30  40  50  60  70  80  90 100
-    0  11  13  15  16  18  20  22  24  28  32
-
-Graph level=1 size=11346, Fanout min=4, mean=25.97, max=32, meandelta=12684.20
+Graph level=1 size=49609, Fanout min=3, mean=25.91, max=32, meandelta=55631.90
 %   0  10  20  30  40  50  60  70  80  90 100
     0  15  19  22  25  29  32  32  32  32  32
 
-Graph level=0 size=367395, Fanout min=1, mean=25.67, max=64, meandelta=11741.73
+Graph level=0 size=1640706, Fanout min=1, mean=25.31, max=64, meandelta=50518.94
 %   0  10  20  30  40  50  60  70  80  90 100
-    0   9  12  15  18  21  25  30  38  52  64
+    0   8  11  14  17  20  24  30  38  54  64
+
+Graph level=3 size=96, connectedness=1.00
+Graph level=2 size=1420, connectedness=1.00
+Graph level=1 size=49609, connectedness=1.00
+Graph level=0 size=1640706, connectedness=1.00
+Leaf 2 has 4 layers
+Leaf 2 has 379093 documents
+Graph level=3 size=20, Fanout min=3, mean=5.30, max=10, meandelta=38318.59
+%   0  10  20  30  40  50  60  70  80  90 100
+    0   3   3   4   4   4   5   6   7   8  10
+
+Graph level=2 size=303, Fanout min=5, mean=17.53, max=32, meandelta=16862.08
+%   0  10  20  30  40  50  60  70  80  90 100
+    0  10  12  14  15  17  19  20  22  25  32
+
+Graph level=1 size=11528, Fanout min=4, mean=25.19, max=32, meandelta=13264.62
+%   0  10  20  30  40  50  60  70  80  90 100
+    0  14  18  21  24  27  31  32  32  32  32
+
+Graph level=0 size=379093, Fanout min=1, mean=24.20, max=64, meandelta=12490.87
+%   0  10  20  30  40  50  60  70  80  90 100
+    0   9  11  14  17  20  23  28  35  49  64
+
+Graph level=3 size=20, connectedness=1.00
+Graph level=2 size=303, connectedness=1.00
+Graph level=1 size=11528, connectedness=1.00
+Graph level=0 size=379093, connectedness=1.00
+Leaf 3 has 4 layers
+Leaf 3 has 486737 documents
+Graph level=3 size=25, Fanout min=2, mean=4.88, max=13, meandelta=60380.36
+%   0  10  20  30  40  50  60  70  80  90 100
+    0   2   4   4   4   4   5   5   5   6  13
+
+Graph level=2 size=370, Fanout min=5, mean=18.30, max=32, meandelta=20234.11
+%   0  10  20  30  40  50  60  70  80  90 100
+    0  10  13  14  16  18  19  21  24  27  32
+
+Graph level=1 size=14783, Fanout min=4, mean=25.68, max=32, meandelta=16944.30
+%   0  10  20  30  40  50  60  70  80  90 100
+    0  15  18  22  25  28  32  32  32  32  32
+
+Graph level=0 size=486737, Fanout min=1, mean=24.90, max=64, meandelta=15898.91
+%   0  10  20  30  40  50  60  70  80  90 100
+    0   9  12  15  17  20  24  29  36  51  64
 
 Graph level=3 size=25, connectedness=1.00
-Graph level=2 size=348, connectedness=1.00
-Graph level=1 size=11346, connectedness=1.00
-Graph level=0 size=367395, connectedness=1.00
-Leaf 7 has 4 layers
-Leaf 7 has 259383 documents
-Graph level=3 size=9, Fanout min=2, mean=3.56, max=5, meandelta=40041.53
+Graph level=2 size=370, connectedness=1.00
+Graph level=1 size=14783, connectedness=1.00
+Graph level=0 size=486737, connectedness=1.00
+Leaf 4 has 4 layers
+Leaf 4 has 548926 documents
+Graph level=3 size=27, Fanout min=2, mean=5.93, max=12, meandelta=49674.45
 %   0  10  20  30  40  50  60  70  80  90 100
-    0   1   2   2   3   3   4   4   4   5   5
+    0   3   4   4   5   5   6   7   7   8  12
 
-Graph level=2 size=235, Fanout min=6, mean=16.89, max=32, meandelta=13246.42
+Graph level=2 size=422, Fanout min=5, mean=20.10, max=32, meandelta=22560.60
 %   0  10  20  30  40  50  60  70  80  90 100
-    0  10  12  13  15  16  18  19  21  25  32
+    0  12  14  16  18  20  21  23  26  30  32
 
-Graph level=1 size=8048, Fanout min=4, mean=26.00, max=32, meandelta=8986.11
+Graph level=1 size=16753, Fanout min=4, mean=25.68, max=32, meandelta=19098.30
+%   0  10  20  30  40  50  60  70  80  90 100
+    0  15  18  21  25  28  32  32  32  32  32
+
+Graph level=0 size=548926, Fanout min=1, mean=24.96, max=64, meandelta=17893.00
+%   0  10  20  30  40  50  60  70  80  90 100
+    0   9  12  15  17  20  24  29  36  51  64
+
+Graph level=3 size=27, connectedness=1.00
+Graph level=2 size=422, connectedness=1.00
+Graph level=1 size=16753, connectedness=1.00
+Graph level=0 size=548926, connectedness=1.00
+Leaf 5 has 4 layers
+Leaf 5 has 318517 documents
+Graph level=3 size=24, Fanout min=4, mean=6.67, max=10, meandelta=33131.87
+%   0  10  20  30  40  50  60  70  80  90 100
+    0   4   4   5   6   7   7   7   8   9  10
+
+Graph level=2 size=291, Fanout min=6, mean=17.48, max=32, meandelta=15033.95
+%   0  10  20  30  40  50  60  70  80  90 100
+    0  10  12  14  15  17  19  21  23  26  32
+
+Graph level=1 size=9821, Fanout min=5, mean=25.92, max=32, meandelta=11030.52
+%   0  10  20  30  40  50  60  70  80  90 100
+    0  15  19  22  25  29  32  32  32  32  32
+
+Graph level=0 size=318517, Fanout min=1, mean=26.05, max=64, meandelta=10106.24
+%   0  10  20  30  40  50  60  70  80  90 100
+    0  10  13  16  18  22  25  30  38  53  64
+
+Graph level=3 size=24, connectedness=1.00
+Graph level=2 size=291, connectedness=1.00
+Graph level=1 size=9821, connectedness=1.00
+Graph level=0 size=318517, connectedness=1.00
+Leaf 6 has 4 layers
+Leaf 6 has 274066 documents
+Graph level=3 size=9, Fanout min=2, mean=2.89, max=4, meandelta=39639.35
+%   0  10  20  30  40  50  60  70  80  90 100
+    0   1   2   2   2   2   3   3   4   4   4
+
+Graph level=2 size=245, Fanout min=6, mean=16.44, max=32, meandelta=14139.46
+%   0  10  20  30  40  50  60  70  80  90 100
+    0  10  12  13  14  15  17  19  21  25  32
+
+Graph level=1 size=8438, Fanout min=3, mean=25.94, max=32, meandelta=9471.37
 %   0  10  20  30  40  50  60  70  80  90 100
     0  16  19  22  25  29  32  32  32  32  32
 
-Graph level=0 size=259383, Fanout min=1, mean=26.41, max=64, meandelta=8153.81
+Graph level=0 size=274066, Fanout min=1, mean=25.75, max=64, meandelta=8788.05
+%   0  10  20  30  40  50  60  70  80  90 100
+    0   9  13  15  18  21  25  30  38  52  64
+
+Graph level=3 size=9, connectedness=1.00
+Graph level=2 size=245, connectedness=1.00
+Graph level=1 size=8438, connectedness=1.00
+Graph level=0 size=274066, connectedness=1.00
+Leaf 7 has 4 layers
+Leaf 7 has 266940 documents
+Graph level=3 size=10, Fanout min=1, mean=2.80, max=7, meandelta=50643.57
+%   0  10  20  30  40  50  60  70  80  90 100
+    0   1   1   2   2   3   3   3   3   3   7
+
+Graph level=2 size=249, Fanout min=6, mean=17.02, max=32, meandelta=13321.01
+%   0  10  20  30  40  50  60  70  80  90 100
+    0  10  12  13  15  17  18  20  22  25  32
+
+Graph level=1 size=8311, Fanout min=4, mean=26.13, max=32, meandelta=9182.76
+%   0  10  20  30  40  50  60  70  80  90 100
+    0  16  19  22  25  29  32  32  32  32  32
+
+Graph level=0 size=266940, Fanout min=1, mean=26.39, max=64, meandelta=8410.32
+%   0  10  20  30  40  50  60  70  80  90 100
+    0  10  13  16  19  22  26  31  38  53  64
+
+Graph level=3 size=10, connectedness=1.00
+Graph level=2 size=249, connectedness=1.00
+Graph level=1 size=8311, connectedness=1.00
+Graph level=0 size=266940, connectedness=1.00
+Leaf 8 has 4 layers
+Leaf 8 has 263143 documents
+Graph level=3 size=9, Fanout min=1, mean=2.89, max=7, meandelta=36816.00
+%   0  10  20  30  40  50  60  70  80  90 100
+    0   1   1   1   2   2   2   3   3   5   7
+
+Graph level=2 size=241, Fanout min=6, mean=17.24, max=32, meandelta=13043.26
+%   0  10  20  30  40  50  60  70  80  90 100
+    0  10  12  14  15  16  18  20  22  25  32
+
+Graph level=1 size=8182, Fanout min=4, mean=26.05, max=32, meandelta=9088.74
+%   0  10  20  30  40  50  60  70  80  90 100
+    0  16  19  22  25  29  32  32  32  32  32
+
+Graph level=0 size=263143, Fanout min=1, mean=26.52, max=64, meandelta=8264.11
 %   0  10  20  30  40  50  60  70  80  90 100
     0  10  13  16  19  22  26  31  39  53  64
 
 Graph level=3 size=9, connectedness=1.00
-Graph level=2 size=235, connectedness=1.00
-Graph level=1 size=8048, connectedness=1.00
-Graph level=0 size=259383, connectedness=1.00
-Leaf 8 has 4 layers
-Leaf 8 has 263785 documents
-Graph level=3 size=9, Fanout min=2, mean=2.89, max=5, meandelta=39654.77
-%   0  10  20  30  40  50  60  70  80  90 100
-    0   1   2   2   2   2   3   3   3   4   5
-
-Graph level=2 size=252, Fanout min=6, mean=17.34, max=32, meandelta=13083.44
-%   0  10  20  30  40  50  60  70  80  90 100
-    0  11  12  14  15  16  18  20  22  25  32
-
-Graph level=1 size=8225, Fanout min=5, mean=26.00, max=32, meandelta=9152.04
-%   0  10  20  30  40  50  60  70  80  90 100
-    0  16  19  22  25  29  32  32  32  32  32
-
-Graph level=0 size=263785, Fanout min=1, mean=26.02, max=64, meandelta=8413.45
-%   0  10  20  30  40  50  60  70  80  90 100
-    0  10  13  16  18  22  25  30  38  52  64
-
-Graph level=3 size=9, connectedness=1.00
-Graph level=2 size=252, connectedness=1.00
-Graph level=1 size=8225, connectedness=1.00
-Graph level=0 size=263785, connectedness=1.00
+Graph level=2 size=241, connectedness=1.00
+Graph level=1 size=8182, connectedness=1.00
+Graph level=0 size=263143, connectedness=1.00
 Leaf 9 has 4 layers
-Leaf 9 has 1094087 documents
-Graph level=3 size=71, Fanout min=3, mean=9.44, max=18, meandelta=100930.94
+Leaf 9 has 311729 documents
+Graph level=3 size=18, Fanout min=2, mean=4.89, max=8, meandelta=43022.58
 %   0  10  20  30  40  50  60  70  80  90 100
-    0   6   7   8   8   9  10  11  12  14  18
+    0   2   3   4   5   5   5   5   6   7   8
 
-Graph level=2 size=1024, Fanout min=7, mean=23.53, max=32, meandelta=42624.02
+Graph level=2 size=295, Fanout min=5, mean=17.07, max=32, meandelta=16074.86
 %   0  10  20  30  40  50  60  70  80  90 100
-    0  14  17  19  21  24  26  29  32  32  32
+    0  10  12  14  15  17  18  19  21  25  32
 
-Graph level=1 size=33406, Fanout min=3, mean=25.95, max=32, meandelta=37667.42
+Graph level=1 size=9617, Fanout min=1, mean=26.21, max=32, meandelta=10674.25
 %   0  10  20  30  40  50  60  70  80  90 100
-    0  15  19  22  25  29  32  32  32  32  32
+    0  16  19  23  26  29  32  32  32  32  32
 
-Graph level=0 size=1094087, Fanout min=1, mean=25.59, max=64, meandelta=34711.75
+Graph level=0 size=311729, Fanout min=1, mean=26.18, max=64, meandelta=9876.88
 %   0  10  20  30  40  50  60  70  80  90 100
-    0   9  12  15  18  21  25  30  38  54  64
+    0  10  13  16  18  22  25  31  38  53  64
 
-Graph level=3 size=71, connectedness=1.00
-Graph level=2 size=1024, connectedness=1.00
-Graph level=1 size=33406, connectedness=1.00
-Graph level=0 size=1094087, connectedness=1.00
+Graph level=3 size=18, connectedness=1.00
+Graph level=2 size=295, connectedness=1.00
+Graph level=1 size=9617, connectedness=1.00
+Graph level=0 size=311729, connectedness=1.00
 Leaf 10 has 4 layers
-Leaf 10 has 263980 documents
-Graph level=3 size=23, Fanout min=2, mean=5.91, max=10, meandelta=34530.42
+Leaf 10 has 1390624 documents
+Graph level=3 size=80, Fanout min=5, mean=9.85, max=23, meandelta=99391.13
 %   0  10  20  30  40  50  60  70  80  90 100
-    0   4   4   4   5   6   6   6   7   8  10
+    0   6   7   8   8   9  10  11  12  14  23
 
-Graph level=2 size=264, Fanout min=4, mean=16.93, max=32, meandelta=13618.02
+Graph level=2 size=1329, Fanout min=6, mean=24.61, max=32, meandelta=51331.08
 %   0  10  20  30  40  50  60  70  80  90 100
-    0  10  12  14  15  16  18  20  22  24  32
+    0  15  17  20  23  25  29  32  32  32  32
 
-Graph level=1 size=8143, Fanout min=5, mean=26.00, max=32, meandelta=9165.86
+Graph level=1 size=42425, Fanout min=2, mean=25.62, max=32, meandelta=48319.65
+%   0  10  20  30  40  50  60  70  80  90 100
+    0  14  18  21  25  29  32  32  32  32  32
+
+Graph level=0 size=1390624, Fanout min=1, mean=25.27, max=64, meandelta=44529.41
+%   0  10  20  30  40  50  60  70  80  90 100
+    0   8  11  14  17  20  24  30  38  54  64
+
+Graph level=3 size=80, connectedness=1.00
+Graph level=2 size=1329, connectedness=1.00
+Graph level=1 size=42425, connectedness=1.00
+Graph level=0 size=1390624, connectedness=1.00
+Leaf 11 has 4 layers
+Leaf 11 has 262489 documents
+Graph level=3 size=9, Fanout min=2, mean=3.56, max=5, meandelta=39074.28
+%   0  10  20  30  40  50  60  70  80  90 100
+    0   1   2   3   3   3   4   4   4   4   5
+
+Graph level=2 size=238, Fanout min=5, mean=16.82, max=32, meandelta=13143.24
+%   0  10  20  30  40  50  60  70  80  90 100
+    0  10  12  13  15  16  17  19  21  25  32
+
+Graph level=1 size=8079, Fanout min=5, mean=26.11, max=32, meandelta=9047.52
 %   0  10  20  30  40  50  60  70  80  90 100
     0  16  19  22  25  29  32  32  32  32  32
 
-Graph level=0 size=263980, Fanout min=1, mean=26.40, max=64, meandelta=8346.69
+Graph level=0 size=262489, Fanout min=1, mean=26.71, max=64, meandelta=8200.92
 %   0  10  20  30  40  50  60  70  80  90 100
     0  10  13  16  19  22  26  31  39  54  64
 
-Graph level=3 size=23, connectedness=1.00
-Graph level=2 size=264, connectedness=1.00
-Graph level=1 size=8143, connectedness=1.00
-Graph level=0 size=263980, connectedness=1.00
-Leaf 11 has 4 layers
-Leaf 11 has 940690 documents
-Graph level=3 size=52, Fanout min=4, mean=8.50, max=18, meandelta=92723.06
-%   0  10  20  30  40  50  60  70  80  90 100
-    0   5   6   6   7   8   9  10  11  12  18
-
-Graph level=2 size=851, Fanout min=6, mean=22.99, max=32, meandelta=36973.89
-%   0  10  20  30  40  50  60  70  80  90 100
-    0  13  16  18  21  23  25  28  32  32  32
-
-Graph level=1 size=28604, Fanout min=3, mean=26.09, max=32, meandelta=32247.92
-%   0  10  20  30  40  50  60  70  80  90 100
-    0  15  19  22  26  30  32  32  32  32  32
-
-Graph level=0 size=940690, Fanout min=1, mean=25.84, max=64, meandelta=29674.89
-%   0  10  20  30  40  50  60  70  80  90 100
-    0   9  12  15  18  21  25  30  38  55  64
-
-Graph level=3 size=52, connectedness=1.00
-Graph level=2 size=851, connectedness=1.00
-Graph level=1 size=28604, connectedness=1.00
-Graph level=0 size=940690, connectedness=1.00
+Graph level=3 size=9, connectedness=1.00
+Graph level=2 size=238, connectedness=1.00
+Graph level=1 size=8079, connectedness=1.00
+Graph level=0 size=262489, connectedness=1.00
 Leaf 12 has 4 layers
-Leaf 12 has 168911 documents
-Graph level=3 size=8, Fanout min=2, mean=3.25, max=6, meandelta=24276.65
+Leaf 12 has 84738 documents
+Graph level=3 size=4, Fanout min=1, mean=1.50, max=2, meandelta=8775.67
 %   0  10  20  30  40  50  60  70  80  90 100
-    0   1   2   2   2   3   3   3   3   5   6
+    0   1   1   1   1   1   1   1   2   2   2
 
-Graph level=2 size=159, Fanout min=4, mean=13.98, max=32, meandelta=10102.41
+Graph level=2 size=80, Fanout min=3, mean=9.95, max=18, meandelta=6567.64
 %   0  10  20  30  40  50  60  70  80  90 100
-    0   8  10  11  12  13  15  16  17  20  32
+    0   6   7   8   9  10  11  11  13  14  18
 
-Graph level=1 size=5201, Fanout min=3, mean=25.99, max=32, meandelta=5868.91
+Graph level=1 size=2599, Fanout min=7, mean=25.50, max=32, meandelta=3018.27
 %   0  10  20  30  40  50  60  70  80  90 100
-    0  16  19  22  25  29  32  32  32  32  32
+    0  15  19  21  24  27  31  32  32  32  32
 
-Graph level=0 size=168911, Fanout min=1, mean=27.21, max=64, meandelta=5224.18
+Graph level=0 size=84738, Fanout min=1, mean=28.94, max=64, meandelta=2533.75
 %   0  10  20  30  40  50  60  70  80  90 100
-    0  11  14  17  20  23  27  32  40  55  64
+    0  11  15  18  21  24  29  34  43  59  64
 
-Graph level=3 size=8, connectedness=1.00
-Graph level=2 size=159, connectedness=1.00
-Graph level=1 size=5201, connectedness=1.00
-Graph level=0 size=168911, connectedness=1.00
+Graph level=3 size=4, connectedness=1.00
+Graph level=2 size=80, connectedness=1.00
+Graph level=1 size=2599, connectedness=1.00
+Graph level=0 size=84738, connectedness=1.00
 Leaf 13 has 4 layers
-Leaf 13 has 941840 documents
-Graph level=3 size=46, Fanout min=4, mean=7.13, max=13, meandelta=102595.91
+Leaf 13 has 78051 documents
+Graph level=3 size=4, Fanout min=1, mean=2.00, max=3, meandelta=10075.25
 %   0  10  20  30  40  50  60  70  80  90 100
-    0   4   5   5   6   7   8   8   8  10  13
+    0   1   1   1   1   2   2   2   2   2   3
 
-Graph level=2 size=853, Fanout min=7, mean=23.17, max=32, meandelta=37047.33
+Graph level=2 size=77, Fanout min=5, mean=10.47, max=19, meandelta=6028.30
 %   0  10  20  30  40  50  60  70  80  90 100
-    0  14  16  19  21  23  25  29  32  32  32
+    0   7   8   9   9  10  11  11  12  15  19
 
-Graph level=1 size=28754, Fanout min=2, mean=26.05, max=32, meandelta=32352.78
+Graph level=1 size=2410, Fanout min=6, mean=25.44, max=32, meandelta=2785.92
 %   0  10  20  30  40  50  60  70  80  90 100
-    0  15  19  22  26  29  32  32  32  32  32
+    0  15  18  21  24  27  31  32  32  32  32
 
-Graph level=0 size=941840, Fanout min=1, mean=26.05, max=64, meandelta=29614.48
+Graph level=0 size=78051, Fanout min=1, mean=28.43, max=64, meandelta=2358.67
 %   0  10  20  30  40  50  60  70  80  90 100
-    0   9  12  15  18  21  25  31  39  55  64
+    0  11  15  18  21  24  28  34  42  56  64
 
-Graph level=3 size=46, connectedness=1.00
-Graph level=2 size=853, connectedness=1.00
-Graph level=1 size=28754, connectedness=1.00
-Graph level=0 size=941840, connectedness=1.00
+Graph level=3 size=4, connectedness=1.00
+Graph level=2 size=77, connectedness=1.00
+Graph level=1 size=2410, connectedness=1.00
+Graph level=0 size=78051, connectedness=1.00
 Leaf 14 has 4 layers
-Leaf 14 has 162955 documents
-Graph level=3 size=8, Fanout min=2, mean=4.00, max=6, meandelta=16850.97
+Leaf 14 has 73027 documents
+Graph level=3 size=4, Fanout min=1, mean=2.00, max=3, meandelta=10042.00
 %   0  10  20  30  40  50  60  70  80  90 100
-    0   1   2   3   4   4   4   4   4   5   6
+    0   1   1   1   1   2   2   2   2   2   3
 
-Graph level=2 size=151, Fanout min=5, mean=14.05, max=27, meandelta=9727.81
+Graph level=2 size=71, Fanout min=5, mean=9.80, max=20, meandelta=6165.03
 %   0  10  20  30  40  50  60  70  80  90 100
-    0   8  10  11  12  14  15  16  17  21  27
+    0   6   7   8   9   9  10  11  12  13  20
 
-Graph level=1 size=5006, Fanout min=6, mean=26.10, max=32, meandelta=5667.00
+Graph level=1 size=2242, Fanout min=6, mean=25.31, max=32, meandelta=2629.97
 %   0  10  20  30  40  50  60  70  80  90 100
-    0  16  19  22  25  29  32  32  32  32  32
+    0  15  18  21  24  27  30  32  32  32  32
 
-Graph level=0 size=162955, Fanout min=1, mean=27.69, max=64, meandelta=4978.58
+Graph level=0 size=73027, Fanout min=1, mean=28.39, max=64, meandelta=2221.25
 %   0  10  20  30  40  50  60  70  80  90 100
-    0  11  14  17  20  23  27  32  40  56  64
+    0  11  15  18  20  24  28  34  42  57  64
 
-Graph level=3 size=8, connectedness=1.00
-Graph level=2 size=151, connectedness=1.00
-Graph level=1 size=5006, connectedness=1.00
-Graph level=0 size=162955, connectedness=1.00
+Graph level=3 size=4, connectedness=1.00
+Graph level=2 size=71, connectedness=1.00
+Graph level=1 size=2242, connectedness=1.00
+Graph level=0 size=73027, connectedness=1.00
 Leaf 15 has 4 layers
-Leaf 15 has 62103 documents
+Leaf 15 has 77266 documents
 Graph level=3 size=4, Fanout min=2, mean=2.00, max=2, meandelta=13163.50
 %   0  10  20  30  40  50  60  70  80  90 100
     0   1   1   2   2   2   2   2   2   2   2
 
-Graph level=2 size=55, Fanout min=3, mean=8.98, max=17, meandelta=5370.53
+Graph level=2 size=76, Fanout min=3, mean=10.47, max=21, meandelta=5880.57
 %   0  10  20  30  40  50  60  70  80  90 100
-    0   5   6   7   7   9   9  10  11  14  17
+    0   6   7   8  10  10  11  12  12  14  21
 
-Graph level=1 size=1882, Fanout min=5, mean=25.22, max=32, meandelta=2219.28
+Graph level=1 size=2391, Fanout min=7, mean=25.41, max=32, meandelta=2761.88
 %   0  10  20  30  40  50  60  70  80  90 100
-    0  15  18  21  24  27  30  32  32  32  32
+    0  15  18  21  24  27  31  32  32  32  32
 
-Graph level=0 size=62103, Fanout min=1, mean=28.83, max=64, meandelta=1866.79
+Graph level=0 size=77266, Fanout min=1, mean=28.21, max=64, meandelta=2320.30
 %   0  10  20  30  40  50  60  70  80  90 100
-    0  12  15  18  21  24  29  34  42  58  64
-
-Graph level=3 size=4, connectedness=1.00
-Graph level=2 size=55, connectedness=1.00
-Graph level=1 size=1882, connectedness=1.00
-Graph level=0 size=62103, connectedness=1.00
-Leaf 16 has 4 layers
-Leaf 16 has 86619 documents
-Graph level=3 size=4, Fanout min=1, mean=2.00, max=3, meandelta=8159.13
-%   0  10  20  30  40  50  60  70  80  90 100
-    0   1   1   1   1   2   2   2   2   2   3
-
-Graph level=2 size=82, Fanout min=5, mean=10.61, max=21, meandelta=6652.04
-%   0  10  20  30  40  50  60  70  80  90 100
-    0   6   7   8   9  10  11  12  13  15  21
-
-Graph level=1 size=2669, Fanout min=5, mean=25.69, max=32, meandelta=3054.10
-%   0  10  20  30  40  50  60  70  80  90 100
-    0  16  19  22  24  28  31  32  32  32  32
-
-Graph level=0 size=86619, Fanout min=1, mean=28.23, max=64, meandelta=2609.94
-%   0  10  20  30  40  50  60  70  80  90 100
-    0  11  14  17  20  24  28  33  42  57  64
+    0  11  14  17  20  24  28  33  41  57  64
 
 Graph level=3 size=4, connectedness=1.00
-Graph level=2 size=82, connectedness=1.00
-Graph level=1 size=2669, connectedness=1.00
-Graph level=0 size=86619, connectedness=1.00
-  took 0:35:52.095145 to run KnnGraphTester
-result: KNNResultV0(lucene_git_rev='92e0eb8f71e2eaad8c2d18890ed3e506bbfdc5b8', luceneutil_git_rev='d615d87d19ea5f3d9cfc4959046db8ba121a7371', index_vectors_file='/lucenedata/enwiki/cohere-wikipedia-docs-768d.vec', search_vectors_file='/lucenedata/enwiki/cohere-wikipedia-queries-768d.vec', vector_dims=768, do_force_merge=False, recall=0.934, cpu_time_ms=17.033, num_docs=8000000, top_k=100, fanout=100, max_conn=32, beam_width=100, quantize_desc='no', total_visited=68670, index_time_sec=1881.22, index_docs_per_sec=4252.56, force_merge_time_sec=0.0, index_num_segments=17, index_size_on_disk_mb=23937.53, selectivity=1.0, pre_post_filter='post-filter', vec_disk_mb=1.0, vec_ram_mb=23437.5, graph_level_conn_p_values={3: (4, {0: 0, 10: 1, 20: 1, 30: 1, 40: 1, 50: 2, 60: 2, 70: 2, 80: 2, 90: 2, 100: 3}), 2: (82, {0: 0, 10: 6, 20: 7, 30: 8, 40: 9, 50: 10, 60: 11, 70: 12, 80: 13, 90: 15, 100: 21}), 1: (2669, {0: 0, 10: 16, 20: 19, 30: 22, 40: 24, 50: 28, 60: 31, 70: 32, 80: 32, 90: 32, 100: 32}), 0: (86619, {0: 0, 10: 11, 20: 14, 30: 17, 40: 20, 50: 24, 60: 28, 70: 33, 80: 42, 90: 57, 100: 64})}, combined_run_time=datetime.timedelta(seconds=2152, microseconds=95145))
+Graph level=2 size=76, connectedness=1.00
+Graph level=1 size=2391, connectedness=1.00
+Graph level=0 size=77266, connectedness=1.00
+  took 0:39:17.356530 to run KnnGraphTester
+result: KNNResultV0(lucene_git_rev='36b3577c17a52b2d9ae21d5976141e2da77cfab3', luceneutil_git_rev='d615d87d19ea5f3d9cfc4959046db8ba121a7371', index_vectors_file='/lucenedata/enwiki/cohere-wikipedia-docs-768d.vec', search_vectors_file='/lucenedata/enwiki/cohere-wikipedia-queries-768d.vec', vector_dims=768, do_force_merge=False, recall=0.931, cpu_time_ms=15.88, num_docs=8000000, top_k=100, fanout=100, max_conn=32, beam_width=100, quantize_desc='no', total_visited=64642, index_time_sec=2095.71, index_docs_per_sec=3817.33, force_merge_time_sec=0.0, index_num_segments=16, index_size_on_disk_mb=23947.8, selectivity=1.0, pre_post_filter='post-filter', vec_disk_mb=1.0, vec_ram_mb=23437.5, graph_level_conn_p_values={3: (4, {0: 0, 10: 1, 20: 1, 30: 2, 40: 2, 50: 2, 60: 2, 70: 2, 80: 2, 90: 2, 100: 2}), 2: (76, {0: 0, 10: 6, 20: 7, 30: 8, 40: 10, 50: 10, 60: 11, 70: 12, 80: 12, 90: 14, 100: 21}), 1: (2391, {0: 0, 10: 15, 20: 18, 30: 21, 40: 24, 50: 27, 60: 31, 70: 32, 80: 32, 90: 32, 100: 32}), 0: (77266, {0: 0, 10: 11, 20: 14, 30: 17, 40: 20, 50: 24, 60: 28, 70: 33, 80: 41, 90: 57, 100: 64})}, combined_run_time=datetime.timedelta(seconds=2357, microseconds=356530))
   cmd: ['/usr/lib/jvm/java-24-openjdk/bin/java', '--add-modules', 'jdk.incubator.vector', '-Xmx32g', '-Xms32g', '-server', '-XX:+UseParallelGC', '-Djava.io.tmpdir=/l/tmp', '-cp', '/l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar:/l/trunk.nightly/lucene/sandbox/build/classes/java/main:/l/trunk.nightly/lucene/misc/build/classes/java/main:/l/trunk.nightly/lucene/facet/build/classes/java/main:/l/trunk.nightly/lucene/analysis/common/build/classes/java/main:/l/trunk.nightly/lucene/analysis/icu/build/classes/java/main:/l/trunk.nightly/lucene/queryparser/build/classes/java/main:/l/trunk.nightly/lucene/grouping/build/classes/java/main:/l/trunk.nightly/lucene/suggest/build/classes/java/main:/l/trunk.nightly/lucene/highlighter/build/classes/java/main:/l/trunk.nightly/lucene/codecs/build/classes/java/main:/l/trunk.nightly/lucene/queries/build/classes/java/main:/l/trunk.nightly/lucene/join/build/classes/java/main:/l/trunk.nightly/lucene/spatial3d/build/classes/java/main:/l/util.nightly/lib/HdrHistogram.jar:/l/util.nightly/src/main/build/classes/java/main:/l/util.nightly/build:/l/util.nightly/build', '--add-modules', 'jdk.incubator.vector', '--enable-native-access=ALL-UNNAMED', 'knn.KnnGraphTester', '-maxConn', '32', '-dim', '768', '-docs', '/lucenedata/enwiki/cohere-wikipedia-docs-768d.vec', '-ndoc', '8000000', '-topK', '100', '-numIndexThreads', '8', '-beamWidthIndex', '100', '-search-and-stats', '/lucenedata/enwiki/cohere-wikipedia-queries-768d.vec', '-metric', 'mip', '-numMergeThread', '16', '-numMergeWorker', '48', '-forceMerge']
 WARNING: Using incubator modules: jdk.incubator.vector
 maxConn = 32
@@ -3343,61 +3205,61 @@ numDocs = 8000000
 beamWidth = 100
 similarity = MAXIMUM_INNER_PRODUCT
 Index Path = knnIndices/cohere-wikipedia-docs-768d.vec-32-100-8000000.index
-Seed = 963799899881014
-May 12, 2025 2:26:38 PM org.apache.lucene.internal.vectorization.PanamaVectorizationProvider <init>
+Seed = 987557449943932
+May 12, 2025 9:02:36 PM org.apache.lucene.internal.vectorization.PanamaVectorizationProvider <init>
 INFO: Java vector incubator API enabled; uses preferredBitSize=256; FMA enabled
 Force merge index in knnIndices/cohere-wikipedia-docs-768d.vec-32-100-8000000.index
-Force merge done in 1508.50 sec
-index has 1 segments: segments_3: _170(11.0.0):C8000000:[diagnostics={lucene.version=11.0.0, source=merge, os.arch=amd64, java.runtime.version=24.0.1, mergeFactor=17, java.vendor=Arch Linux, os=Linux, os.version=6.14.4-arch1-2, timestamp=1747074398861, mergeMaxNumSegments=1}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=2vmx4249ncrurfpe7sfrijjl1
-  _170: 23951.8 MB
+Force merge done in 1441.22 sec
+index has 1 segments: segments_3: _16y(11.0.0):C8000000:[diagnostics={lucene.version=11.0.0, source=merge, os.arch=amd64, java.runtime.version=24.0.1, mergeFactor=16, java.vendor=Arch Linux, os=Linux, os.version=6.14.4-arch1-2, timestamp=1747098156416, mergeMaxNumSegments=1}]:[attributes={Lucene90StoredFieldsFormat.mode=BEST_SPEED}] :id=40nskurc3bnk7zdiq8il6hqo5
+  _16y: 23957.4 MB
 encodingByteSize=4 origByteSize=4
 realEncodingByteSize=4.0
-index disk usage is 23951.84 MB
+index disk usage is 23957.44 MB
 vector disk usage is 23437.50 MB
 vector RAM usage is 23437.50 MB
   read pre-cached exact match vectors from cache file "nn--3v9kpw.bin"
 path=/lucenedata/enwiki/cohere-wikipedia-queries-768d.vec dim=768 vectorEncoding.byteSize=4
 1500000 query vectors in queryPath "/lucenedata/enwiki/cohere-wikipedia-queries-768d.vec"
 searching 1000 query vectors; topK=100, fanout=100
-completed 1000 searches in 3357 ms: 297 QPS CPU time=3287ms
+completed 1000 searches in 3404 ms: 293 QPS CPU time=3335ms
 checking results
-SUMMARY: 0.837	3.287	8000000	100	100	32	100	no	6095	0.00	Infinity	1508.50	1	23951.84	1.00	post-filter	1.000	23437.500	23437.500	HNSW
+SUMMARY: 0.837	3.335	8000000	100	100	32	100	no	6134	0.00	Infinity	1441.22	1	23957.44	1.00	post-filter	1.000	23437.500	23437.500	HNSW
 Leaf 0 has 4 layers
 Leaf 0 has 8000000 documents
-Graph level=3 size=272, Fanout min=5, mean=16.79, max=32, meandelta=409182.38
+Graph level=3 size=283, Fanout min=6, mean=16.94, max=32, meandelta=421507.38
 %   0  10  20  30  40  50  60  70  80  90 100
-    0  10  12  13  15  16  18  19  21  24  32
+    0  10  12  13  14  16  18  19  22  25  32
 
-Graph level=2 size=7729, Fanout min=3, mean=26.39, max=32, meandelta=276704.59
+Graph level=2 size=7453, Fanout min=5, mean=26.20, max=32, meandelta=275270.34
 %   0  10  20  30  40  50  60  70  80  90 100
-    0  16  20  23  26  30  32  32  32  32  32
+    0  16  19  22  26  29  32  32  32  32  32
 
-Graph level=1 size=247420, Fanout min=1, mean=23.56, max=32, meandelta=292293.59
+Graph level=1 size=246525, Fanout min=1, mean=23.57, max=32, meandelta=290777.03
 %   0  10  20  30  40  50  60  70  80  90 100
     0  11  15  18  21  25  30  32  32  32  32
 
-Graph level=0 size=8000000, Fanout min=1, mean=21.27, max=64, meandelta=286844.53
+Graph level=0 size=8000000, Fanout min=1, mean=21.60, max=64, meandelta=279659.84
 %   0  10  20  30  40  50  60  70  80  90 100
-    0   6   8  11  13  16  20  25  32  47  64
+    0   6   8  11  13  16  20  25  33  48  64
 
-Graph level=3 size=272, connectedness=1.00
-Graph level=2 size=7729, connectedness=1.00
-Graph level=1 size=247420, connectedness=1.00
+Graph level=3 size=283, connectedness=1.00
+Graph level=2 size=7453, connectedness=1.00
+Graph level=1 size=246525, connectedness=1.00
 Graph level=0 size=8000000, connectedness=1.00
-  took 0:25:31.297531 to run KnnGraphTester
-result: KNNResultV0(lucene_git_rev='92e0eb8f71e2eaad8c2d18890ed3e506bbfdc5b8', luceneutil_git_rev='d615d87d19ea5f3d9cfc4959046db8ba121a7371', index_vectors_file='/lucenedata/enwiki/cohere-wikipedia-docs-768d.vec', search_vectors_file='/lucenedata/enwiki/cohere-wikipedia-queries-768d.vec', vector_dims=768, do_force_merge=True, recall=0.837, cpu_time_ms=3.287, num_docs=8000000, top_k=100, fanout=100, max_conn=32, beam_width=100, quantize_desc='no', total_visited=6095, index_time_sec=0.0, index_docs_per_sec=inf, force_merge_time_sec=1508.5, index_num_segments=1, index_size_on_disk_mb=23951.84, selectivity=1.0, pre_post_filter='post-filter', vec_disk_mb=1.0, vec_ram_mb=23437.5, graph_level_conn_p_values={3: (272, {0: 0, 10: 10, 20: 12, 30: 13, 40: 15, 50: 16, 60: 18, 70: 19, 80: 21, 90: 24, 100: 32}), 2: (7729, {0: 0, 10: 16, 20: 20, 30: 23, 40: 26, 50: 30, 60: 32, 70: 32, 80: 32, 90: 32, 100: 32}), 1: (247420, {0: 0, 10: 11, 20: 15, 30: 18, 40: 21, 50: 25, 60: 30, 70: 32, 80: 32, 90: 32, 100: 32}), 0: (8000000, {0: 0, 10: 6, 20: 8, 30: 11, 40: 13, 50: 16, 60: 20, 70: 25, 80: 32, 90: 47, 100: 64})}, combined_run_time=datetime.timedelta(seconds=1531, microseconds=297531))
+  took 0:24:24.562469 to run KnnGraphTester
+result: KNNResultV0(lucene_git_rev='36b3577c17a52b2d9ae21d5976141e2da77cfab3', luceneutil_git_rev='d615d87d19ea5f3d9cfc4959046db8ba121a7371', index_vectors_file='/lucenedata/enwiki/cohere-wikipedia-docs-768d.vec', search_vectors_file='/lucenedata/enwiki/cohere-wikipedia-queries-768d.vec', vector_dims=768, do_force_merge=True, recall=0.837, cpu_time_ms=3.335, num_docs=8000000, top_k=100, fanout=100, max_conn=32, beam_width=100, quantize_desc='no', total_visited=6134, index_time_sec=0.0, index_docs_per_sec=inf, force_merge_time_sec=1441.22, index_num_segments=1, index_size_on_disk_mb=23957.44, selectivity=1.0, pre_post_filter='post-filter', vec_disk_mb=1.0, vec_ram_mb=23437.5, graph_level_conn_p_values={3: (283, {0: 0, 10: 10, 20: 12, 30: 13, 40: 14, 50: 16, 60: 18, 70: 19, 80: 22, 90: 25, 100: 32}), 2: (7453, {0: 0, 10: 16, 20: 19, 30: 22, 40: 26, 50: 29, 60: 32, 70: 32, 80: 32, 90: 32, 100: 32}), 1: (246525, {0: 0, 10: 11, 20: 15, 30: 18, 40: 21, 50: 25, 60: 30, 70: 32, 80: 32, 90: 32, 100: 32}), 0: (8000000, {0: 0, 10: 6, 20: 8, 30: 11, 40: 13, 50: 16, 60: 20, 70: 25, 80: 33, 90: 48, 100: 64})}, combined_run_time=datetime.timedelta(seconds=1464, microseconds=562469))
 now remove KNN index knnIndices/cohere-wikipedia-docs-768d.vec-32-100-8000000.index
 recall  latency(ms)     nDoc  topK  fanout  maxConn  beamWidth  quantized  index(s)  index_docs/s  force_merge(s)  num_segments  index_size(MB)  overSample  vec_disk(MB)  vec_RAM(MB)  indexType
- 0.470       15.793  8000000   100     100       32        100     4 bits    600.65      13318.90            0.00            16        26945.53       1.000     26397.705     2960.205       HNSW
- 0.464        2.959  8000000   100     100       32        100     4 bits      0.00      Infinity          624.18             1        26958.21       1.000     26397.705     2960.205       HNSW
- 0.859       14.747  8000000   100     100       32        100     7 bits    853.96       9368.09            0.00            19        29802.96       1.000     29327.393     5889.893       HNSW
- 0.793        2.693  8000000   100     100       32        100     7 bits      0.00      Infinity          696.07             1        29809.59       1.000     29327.393     5889.893       HNSW
- 0.934       17.033  8000000   100     100       32        100         no   1881.22       4252.56            0.00            17        23937.53       1.000     23437.500    23437.500       HNSW
- 0.837        3.287  8000000   100     100       32        100         no      0.00      Infinity         1508.50             1        23951.84       1.000     23437.500    23437.500       HNSW
-saving all results to /l/logs.nightly/2025.05.12.11.33.23/knn_results.pk
-done!  took 7104.5 seconds total
+ 0.470       14.823  8000000   100     100       32        100     4 bits    625.03      12799.37            0.00            15        26943.59       1.000     26397.705     2960.205       HNSW
+ 0.465        3.051  8000000   100     100       32        100     4 bits      0.00      Infinity          643.09             1        26978.71       1.000     26397.705     2960.205       HNSW
+ 0.859       12.980  8000000   100     100       32        100     7 bits    887.37       9015.41            0.00            15        29807.54       1.000     29327.393     5889.893       HNSW
+ 0.791        2.793  8000000   100     100       32        100     7 bits      0.00      Infinity          678.66             1        29802.62       1.000     29327.393     5889.893       HNSW
+ 0.931       15.880  8000000   100     100       32        100         no   2095.71       3817.33            0.00            16        23947.80       1.000     23437.500    23437.500       HNSW
+ 0.837        3.335  8000000   100     100       32        100         no      0.00      Infinity         1441.22             1        23957.44       1.000     23437.500    23437.500       HNSW
+saving all results to /l/logs.nightly/2025.05.12.18.04.01/knn_results.pk
+done!  took 7289.1 seconds total
 removing KNN indices dir /l/util.nightly/knnIndices
-[2025-05-12 14:52:11.608625] now generate KNN nightly charts
+[2025-05-12 21:27:02.407335] now generate KNN nightly charts
 got /l/logs.nightly/2024.12.31.22.04.11/knn_results.pk
 desc='4 bits'
 desc='4 bits.force_merge'
@@ -4252,7 +4114,14 @@ desc='7 bits'
 desc='7 bits.force_merge'
 desc='no'
 desc='no.force_merge'
-[2025-05-12 14:52:11.642716] build medium index (fast)
+got /l/logs.nightly/2025.05.12.18.04.01/knn_results.pk
+desc='4 bits'
+desc='4 bits.force_merge'
+desc='7 bits'
+desc='7 bits.force_merge'
+desc='no'
+desc='no.force_merge'
+[2025-05-12 21:27:02.441632] build medium index (fast)
   /l/indices/wikimedium.trunk.nightly.Lucene103.nd27.625M: now create
     cd /l/trunk.nightly/lucene/benchmark
     log /l/logs.nightly/nightly.wikimedium.trunk.nightly.Lucene103.nd27.625M.log
