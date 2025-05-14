@@ -152,3 +152,72 @@ Error resolving plugin [id: 'org.gradle.toolchains.foojay-resolver-convention', 
 
 BUILD FAILED in 3s
 + cp /l/logs.nightly/all.log /l/reports.nightly
++ echo 'clean /l/tmp'
+clean /l/tmp
++ rm -rf '/l/tmp/*'
++ echo
+
++ echo 'Now git add/commit nightly log file (all.log)'
+Now git add/commit nightly log file (all.log)
++ cd /l/lucenenightly
++ git add .
+++ date
++ git commit -m 'Wed May 14 08:06:31 AM EDT 2025: auto commit nightly benchy log file'
+[main b3363f01] Wed May 14 08:06:31 AM EDT 2025: auto commit nightly benchy log file
+ 1 file changed, 69 insertions(+)
++ git push
+To github.com:mikemccand/lucenenightly.git
+   dc1b1a1b..b3363f01  main -> main
+bash: cannot set terminal process group (3331287): Inappropriate ioctl for device
+bash: no job control in this shell
++ /bin/bash /home/mike/nightly_strict.cmd
++ export ANT_HOME=/usr/local/src/apache-ant-1.9.5
++ ANT_HOME=/usr/local/src/apache-ant-1.9.5
++ export JAVA_HOME=/usr/lib/jvm/jdk-23.0.2
++ JAVA_HOME=/usr/lib/jvm/jdk-23.0.2
++ export GRADLE_HOME=/usr/local/src/gradle-2.9
++ GRADLE_HOME=/usr/local/src/gradle-2.9
++ export PATH=/usr/local/src/apache-ant-1.9.5/bin:/usr/lib/jvm/jdk-23.0.2/bin:/usr/local/src/gradle-2.9/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
++ PATH=/usr/local/src/apache-ant-1.9.5/bin:/usr/lib/jvm/jdk-23.0.2/bin:/usr/local/src/gradle-2.9/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
+++ date
++ echo -e '\n\nWed May 14 08:06:44 AM EDT 2025: now start nightly benchmarks'
+
+
+Wed May 14 08:06:44 AM EDT 2025: now start nightly benchmarks
++ pkill java
++ true
++ pkill mencoder
++ true
++ echo 'now git pull and build Lucene JARs...'
+now git pull and build Lucene JARs...
++ cd /l/trunk.nightly/lucene
++ git checkout main
+Already on 'main'
+Your branch is up to date with 'origin/main'.
++ git pull origin main
+From https://gitbox.apache.org/repos/asf/lucene
+ * branch                    main       -> FETCH_HEAD
+Already up to date.
++ ../gradlew clean
+Starting a Gradle Daemon (subsequent builds will be faster)
+
+FAILURE: Build failed with an exception.
+
+* Where:
+Settings file '/l/trunk.nightly/settings.gradle' line: 28
+
+* What went wrong:
+Error resolving plugin [id: 'org.gradle.toolchains.foojay-resolver-convention', version: '0.10.0']
+> A problem occurred configuring project ':build-infra'.
+   > A problem occurred evaluating project ':build-infra'.
+      > A problem occurred evaluating script.
+         > At least Java 24 is required, you are running Java 23 [Java HotSpot(TM) 64-Bit Server VM 23.0.2+7-58]
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 3s
++ cp /l/logs.nightly/all.log /l/reports.nightly
