@@ -10,40 +10,20 @@ Using java from: /usr/lib/jvm/java-24-openjdk/bin/
   gradle test log: /l/logs.nightly/ant_test/2025.05.14.lucene-tests.txt
   took: 2.0 min
   gradle precommit log: /l/logs.nightly/ant_test/2025.05.14.precommit.txt
-  took: 1.0 min
+  took: 1.1 min
 + echo 'Run lucene nightly'
 Run lucene nightly
 + /usr/bin/python -uO /l/util.nightly/src/python/nightlyBench.py -run
 ***USING BIG LINE FILE***
 Using java from: /usr/lib/jvm/java-24-openjdk/bin/
 perf executable is /usr/sbin/perf; will collect aggregate CPU profiling data
-GitHub pull request counts: 243 open, 2923 closed
-Removing old JFR /l/logs.nightly/bench-search-nightly-nightly-14.jfr...
-Removing old JFR /l/logs.nightly/bench-search-nightly-nightly-13.jfr...
-Removing old JFR /l/logs.nightly/bench-search-nightly-nightly-5.jfr...
-Removing old JFR /l/logs.nightly/bench-search-nightly-nightly-0.jfr...
-Removing old JFR /l/logs.nightly/bench-search-nightly-nightly-17.jfr...
-Removing old JFR /l/logs.nightly/bench-search-nightly-nightly-19.jfr...
-Removing old JFR /l/logs.nightly/bench-search-nightly-nightly-16.jfr...
-Removing old JFR /l/logs.nightly/bench-search-nightly-nightly-11.jfr...
-Removing old JFR /l/logs.nightly/bench-search-nightly-nightly-8.jfr...
-Removing old JFR /l/logs.nightly/bench-search-nightly-nightly-18.jfr...
-Removing old JFR /l/logs.nightly/bench-search-nightly-nightly-1.jfr...
-Removing old JFR /l/logs.nightly/bench-search-nightly-nightly-7.jfr...
-Removing old JFR /l/logs.nightly/bench-search-nightly-nightly-9.jfr...
-Removing old JFR /l/logs.nightly/bench-search-nightly-nightly-2.jfr...
-Removing old JFR /l/logs.nightly/bench-search-nightly-nightly-3.jfr...
-Removing old JFR /l/logs.nightly/bench-search-nightly-nightly-6.jfr...
-Removing old JFR /l/logs.nightly/bench-search-nightly-nightly-12.jfr...
-Removing old JFR /l/logs.nightly/bench-search-nightly-nightly-4.jfr...
-Removing old JFR /l/logs.nightly/bench-search-nightly-nightly-10.jfr...
-Removing old JFR /l/logs.nightly/bench-search-nightly-nightly-15.jfr...
+GitHub pull request counts: 244 open, 2923 closed
 
 
 
 
-[2025-05-14 08:11:03.961601] start
-[2025-05-14 08:11:03.961724] log dir /l/logs.nightly/2025.05.14.08.11.03
+[2025-05-14 14:18:32.057958] start
+[2025-05-14 14:18:32.058048] log dir /l/logs.nightly/2025.05.14.14.18.32
 java full version "23.0.2+7-58"
 WARNING: Using incubator modules: jdk.incubator.vector
 java version "23.0.2" 2025-01-21
@@ -61,7 +41,7 @@ LUCENE rev is e29267031bb9a69ebcabe39d597d3d147ee237b2
 last successfull Lucene rev 0ea423e3025893fa1ce9a2633c59a7578b8478ea, luceneutil rev d615d87d19ea5f3d9cfc4959046db8ba121a7371
 run ['git', 'log', '0ea423e3025893fa1ce9a2633c59a7578b8478ea^..e29267031bb9a69ebcabe39d597d3d147ee237b2']
 No commit message asking for regold of results files
-[2025-05-14 08:11:04.114604] RUN: git clean -xfd
+[2025-05-14 14:18:32.211168] RUN: git clean -xfd
 Removing .gradle/
 Removing build-tools/build-infra/.gradle/
 Removing build-tools/build-infra/build/
@@ -111,15 +91,15 @@ Removing lucene/spatial-test-fixtures/build/
 Removing lucene/spatial3d/build/
 Removing lucene/suggest/build/
 Removing lucene/test-framework/build/
-[2025-05-14 08:11:04.362222]   took 0.2 sec
+[2025-05-14 14:18:32.467068]   took 0.3 sec
 will NOT regold results files but rather compare to last good result files
 Java command-line: /usr/lib/jvm/jdk-23.0.2/bin/java --add-modules jdk.incubator.vector -Xmx32g -Xms32g -server -XX:+UseParallelGC -Djava.io.tmpdir=/l/tmp
 transparent_hugepages: [always] madvise never
 
-[2025-05-14 08:11:04.362339] RUN: /l/trunk.nightly/gradlew clean > /l/logs.nightly/2025.05.14.08.11.03/clean-lucene.log 2>&1
-[2025-05-14 08:11:09.155212]   took 4.8 sec
-[2025-05-14 08:11:09.155256] RUN: /l/trunk.nightly/gradlew jar > /l/logs.nightly/2025.05.14.08.11.03/jar-lucene.log 2>&1
-[2025-05-14 08:11:29.810143]   took 20.7 sec
+[2025-05-14 14:18:32.467307] RUN: /l/trunk.nightly/gradlew clean > /l/logs.nightly/2025.05.14.14.18.32/clean-lucene.log 2>&1
+[2025-05-14 14:18:36.700466]   took 4.2 sec
+[2025-05-14 14:18:36.700516] RUN: /l/trunk.nightly/gradlew jar > /l/logs.nightly/2025.05.14.14.18.32/jar-lucene.log 2>&1
+[2025-05-14 14:18:57.288427]   took 20.6 sec
 
 JAVA:
 WARNING: Using incubator modules: jdk.incubator.vector
@@ -141,7 +121,7 @@ compile lucene:core...
 files ['/l/util.nightly/src/main/perf/TestContext.java', '/l/util.nightly/src/main/perf/IndexAndSearchOpenStreetMaps.java', '/l/util.nightly/src/main/perf/OpenDirectory.java', '/l/util.nightly/src/main/perf/StringFieldDocSelector.java', '/l/util.nightly/src/main/perf/SearchTaxis.java', '/l/util.nightly/src/main/perf/RemoteTaskSource.java', '/l/util.nightly/src/main/perf/SearchPerfTest.java', '/l/util.nightly/src/main/perf/KeepNoCommitsDeletionPolicy.java', '/l/util.nightly/src/main/perf/DiskUsage.java', '/l/util.nightly/src/main/perf/NRTPerfTest.java', '/l/util.nightly/src/main/perf/Indexer.java', '/l/util.nightly/src/main/perf/PKLookupWithTermStateTask.java', '/l/util.nightly/src/main/perf/IndexState.java', '/l/util.nightly/src/main/perf/VectorDictionary.java', '/l/util.nightly/src/main/perf/TaskParser.java', '/l/util.nightly/src/main/perf/IndexThreads.java', '/l/util.nightly/src/main/perf/SearchTask.java', '/l/util.nightly/src/main/perf/RespellTask.java', '/l/util.nightly/src/main/perf/TaskSource.java', '/l/util.nightly/src/main/perf/LineFileDocs.java', '/l/util.nightly/src/main/perf/CreateQueries.java', '/l/util.nightly/src/main/perf/RandomQuery.java', '/l/util.nightly/src/main/perf/PerfUtils.java', '/l/util.nightly/src/main/perf/Task.java', '/l/util.nightly/src/main/perf/LocalTaskSource.java', '/l/util.nightly/src/main/perf/IndexTaxis.java', '/l/util.nightly/src/main/perf/PointsPKLookupTask.java', '/l/util.nightly/src/main/perf/TaskThreads.java', '/l/util.nightly/src/main/perf/UnparsedTask.java', '/l/util.nightly/src/main/perf/Args.java', '/l/util.nightly/src/main/perf/TaskParserFactory.java', '/l/util.nightly/src/main/perf/StatisticsHelper.java', '/l/util.nightly/src/main/perf/BenchRearranger.java', '/l/util.nightly/src/main/perf/PKLookupTask.java', '/l/util.nightly/src/main/perf/OpenCloseIndexWriter.java']
 compile: /usr/lib/jvm/java-24-openjdk/bin/javac -g -d /l/util.nightly/build -classpath /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar:/l/trunk.nightly/lucene/sandbox/build/classes/java/main:/l/trunk.nightly/lucene/misc/build/classes/java/main:/l/trunk.nightly/lucene/facet/build/classes/java/main:/l/trunk.nightly/lucene/analysis/common/build/classes/java/main:/l/trunk.nightly/lucene/analysis/icu/build/classes/java/main:/l/trunk.nightly/lucene/queryparser/build/classes/java/main:/l/trunk.nightly/lucene/grouping/build/classes/java/main:/l/trunk.nightly/lucene/suggest/build/classes/java/main:/l/trunk.nightly/lucene/highlighter/build/classes/java/main:/l/trunk.nightly/lucene/codecs/build/classes/java/main:/l/trunk.nightly/lucene/queries/build/classes/java/main:/l/trunk.nightly/lucene/join/build/classes/java/main:/l/trunk.nightly/lucene/spatial3d/build/classes/java/main:/l/util.nightly/lib/HdrHistogram.jar:/l/util.nightly/src/main/build/classes/java/main:/l/util.nightly/build /l/util.nightly/src/main/perf/TestContext.java /l/util.nightly/src/main/perf/IndexAndSearchOpenStreetMaps.java /l/util.nightly/src/main/perf/OpenDirectory.java /l/util.nightly/src/main/perf/StringFieldDocSelector.java /l/util.nightly/src/main/perf/SearchTaxis.java /l/util.nightly/src/main/perf/RemoteTaskSource.java /l/util.nightly/src/main/perf/SearchPerfTest.java /l/util.nightly/src/main/perf/KeepNoCommitsDeletionPolicy.java /l/util.nightly/src/main/perf/DiskUsage.java /l/util.nightly/src/main/perf/NRTPerfTest.java /l/util.nightly/src/main/perf/Indexer.java /l/util.nightly/src/main/perf/PKLookupWithTermStateTask.java /l/util.nightly/src/main/perf/IndexState.java /l/util.nightly/src/main/perf/VectorDictionary.java /l/util.nightly/src/main/perf/TaskParser.java /l/util.nightly/src/main/perf/IndexThreads.java /l/util.nightly/src/main/perf/SearchTask.java /l/util.nightly/src/main/perf/RespellTask.java /l/util.nightly/src/main/perf/TaskSource.java /l/util.nightly/src/main/perf/LineFileDocs.java /l/util.nightly/src/main/perf/CreateQueries.java /l/util.nightly/src/main/perf/RandomQuery.java /l/util.nightly/src/main/perf/PerfUtils.java /l/util.nightly/src/main/perf/Task.java /l/util.nightly/src/main/perf/LocalTaskSource.java /l/util.nightly/src/main/perf/IndexTaxis.java /l/util.nightly/src/main/perf/PointsPKLookupTask.java /l/util.nightly/src/main/perf/TaskThreads.java /l/util.nightly/src/main/perf/UnparsedTask.java /l/util.nightly/src/main/perf/Args.java /l/util.nightly/src/main/perf/TaskParserFactory.java /l/util.nightly/src/main/perf/StatisticsHelper.java /l/util.nightly/src/main/perf/BenchRearranger.java /l/util.nightly/src/main/perf/PKLookupTask.java /l/util.nightly/src/main/perf/OpenCloseIndexWriter.java
     run: ['/usr/lib/jvm/java-24-openjdk/bin/javac', '-g', '-d', '/l/util.nightly/build', '-classpath', '/l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar:/l/trunk.nightly/lucene/sandbox/build/classes/java/main:/l/trunk.nightly/lucene/misc/build/classes/java/main:/l/trunk.nightly/lucene/facet/build/classes/java/main:/l/trunk.nightly/lucene/analysis/common/build/classes/java/main:/l/trunk.nightly/lucene/analysis/icu/build/classes/java/main:/l/trunk.nightly/lucene/queryparser/build/classes/java/main:/l/trunk.nightly/lucene/grouping/build/classes/java/main:/l/trunk.nightly/lucene/suggest/build/classes/java/main:/l/trunk.nightly/lucene/highlighter/build/classes/java/main:/l/trunk.nightly/lucene/codecs/build/classes/java/main:/l/trunk.nightly/lucene/queries/build/classes/java/main:/l/trunk.nightly/lucene/join/build/classes/java/main:/l/trunk.nightly/lucene/spatial3d/build/classes/java/main:/l/util.nightly/lib/HdrHistogram.jar:/l/util.nightly/src/main/build/classes/java/main:/l/util.nightly/build', '/l/util.nightly/src/main/perf/TestContext.java', '/l/util.nightly/src/main/perf/IndexAndSearchOpenStreetMaps.java', '/l/util.nightly/src/main/perf/OpenDirectory.java', '/l/util.nightly/src/main/perf/StringFieldDocSelector.java', '/l/util.nightly/src/main/perf/SearchTaxis.java', '/l/util.nightly/src/main/perf/RemoteTaskSource.java', '/l/util.nightly/src/main/perf/SearchPerfTest.java', '/l/util.nightly/src/main/perf/KeepNoCommitsDeletionPolicy.java', '/l/util.nightly/src/main/perf/DiskUsage.java', '/l/util.nightly/src/main/perf/NRTPerfTest.java', '/l/util.nightly/src/main/perf/Indexer.java', '/l/util.nightly/src/main/perf/PKLookupWithTermStateTask.java', '/l/util.nightly/src/main/perf/IndexState.java', '/l/util.nightly/src/main/perf/VectorDictionary.java', '/l/util.nightly/src/main/perf/TaskParser.java', '/l/util.nightly/src/main/perf/IndexThreads.java', '/l/util.nightly/src/main/perf/SearchTask.java', '/l/util.nightly/src/main/perf/RespellTask.java', '/l/util.nightly/src/main/perf/TaskSource.java', '/l/util.nightly/src/main/perf/LineFileDocs.java', '/l/util.nightly/src/main/perf/CreateQueries.java', '/l/util.nightly/src/main/perf/RandomQuery.java', '/l/util.nightly/src/main/perf/PerfUtils.java', '/l/util.nightly/src/main/perf/Task.java', '/l/util.nightly/src/main/perf/LocalTaskSource.java', '/l/util.nightly/src/main/perf/IndexTaxis.java', '/l/util.nightly/src/main/perf/PointsPKLookupTask.java', '/l/util.nightly/src/main/perf/TaskThreads.java', '/l/util.nightly/src/main/perf/UnparsedTask.java', '/l/util.nightly/src/main/perf/Args.java', '/l/util.nightly/src/main/perf/TaskParserFactory.java', '/l/util.nightly/src/main/perf/StatisticsHelper.java', '/l/util.nightly/src/main/perf/BenchRearranger.java', '/l/util.nightly/src/main/perf/PKLookupTask.java', '/l/util.nightly/src/main/perf/OpenCloseIndexWriter.java'], cwd=/l/trunk.nightly/lucene/benchmark
-[2025-05-14 08:11:33.663275] now run stored fields benchmark
+[2025-05-14 14:19:01.153199] now run stored fields benchmark
 RUN: javac -cp /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar -d build src/extra/perf/StoredFieldsBenchmark.java, cwd=/l/util.nightly
 Now run BEST_SPEED with doc_limit=-1:
 RUN: /usr/lib/jvm/jdk-23.0.2/bin/java --add-modules jdk.incubator.vector -Xmx32g -Xms32g -server -XX:+UseParallelGC -Djava.io.tmpdir=/l/tmp -cp /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar:build perf.StoredFieldsBenchmark /lucenedata/geonames/geonames.20160818.csv /l/indices/geonames-stored-fields BEST_SPEED -1
