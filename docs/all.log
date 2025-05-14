@@ -22,8 +22,8 @@ GitHub pull request counts: 244 open, 2923 closed
 
 
 
-[2025-05-14 14:30:24.045277] start
-[2025-05-14 14:30:24.045367] log dir /l/logs.nightly/2025.05.14.14.30.24
+[2025-05-14 14:36:09.658569] start
+[2025-05-14 14:36:09.658651] log dir /l/logs.nightly/2025.05.14.14.36.09
 java full version "23.0.2+7-58"
 WARNING: Using incubator modules: jdk.incubator.vector
 java version "23.0.2" 2025-01-21
@@ -36,12 +36,12 @@ Distributor ID:	Arch
 Description:	Arch Linux
 Release:	rolling
 Codename:	n/a
-luceneutil rev is d615d87d19ea5f3d9cfc4959046db8ba121a7371
+luceneutil rev is 2b3384e3c1112eb8d585ec50dce75c6fbd8848d5
 LUCENE rev is e29267031bb9a69ebcabe39d597d3d147ee237b2
 last successfull Lucene rev 0ea423e3025893fa1ce9a2633c59a7578b8478ea, luceneutil rev d615d87d19ea5f3d9cfc4959046db8ba121a7371
 run ['git', 'log', '0ea423e3025893fa1ce9a2633c59a7578b8478ea^..e29267031bb9a69ebcabe39d597d3d147ee237b2']
 No commit message asking for regold of results files
-[2025-05-14 14:30:24.200758] RUN: git clean -xfd
+[2025-05-14 14:36:09.812399] RUN: git clean -xfd
 Removing .gradle/
 Removing build-tools/build-infra/.gradle/
 Removing build-tools/build-infra/build/
@@ -91,15 +91,15 @@ Removing lucene/spatial-test-fixtures/build/
 Removing lucene/spatial3d/build/
 Removing lucene/suggest/build/
 Removing lucene/test-framework/build/
-[2025-05-14 14:30:24.452924]   took 0.3 sec
+[2025-05-14 14:36:10.069800]   took 0.3 sec
 will NOT regold results files but rather compare to last good result files
 Java command-line: /usr/lib/jvm/jdk-23.0.2/bin/java --add-modules jdk.incubator.vector -Xmx32g -Xms32g -server -XX:+UseParallelGC -Djava.io.tmpdir=/l/tmp
 transparent_hugepages: [always] madvise never
 
-[2025-05-14 14:30:24.453024] RUN: /l/trunk.nightly/gradlew clean > /l/logs.nightly/2025.05.14.14.30.24/clean-lucene.log 2>&1
-[2025-05-14 14:30:29.348876]   took 4.9 sec
-[2025-05-14 14:30:29.348922] RUN: /l/trunk.nightly/gradlew jar > /l/logs.nightly/2025.05.14.14.30.24/jar-lucene.log 2>&1
-[2025-05-14 14:30:49.716421]   took 20.4 sec
+[2025-05-14 14:36:10.069954] RUN: /l/trunk.nightly/gradlew clean > /l/logs.nightly/2025.05.14.14.36.09/clean-lucene.log 2>&1
+[2025-05-14 14:36:14.318435]   took 4.2 sec
+[2025-05-14 14:36:14.318482] RUN: /l/trunk.nightly/gradlew jar > /l/logs.nightly/2025.05.14.14.36.09/jar-lucene.log 2>&1
+[2025-05-14 14:36:35.116737]   took 20.8 sec
 
 JAVA:
 WARNING: Using incubator modules: jdk.incubator.vector
@@ -121,15 +121,72 @@ compile lucene:core...
 files ['/l/util.nightly/src/main/perf/TestContext.java', '/l/util.nightly/src/main/perf/IndexAndSearchOpenStreetMaps.java', '/l/util.nightly/src/main/perf/OpenDirectory.java', '/l/util.nightly/src/main/perf/StringFieldDocSelector.java', '/l/util.nightly/src/main/perf/SearchTaxis.java', '/l/util.nightly/src/main/perf/RemoteTaskSource.java', '/l/util.nightly/src/main/perf/SearchPerfTest.java', '/l/util.nightly/src/main/perf/KeepNoCommitsDeletionPolicy.java', '/l/util.nightly/src/main/perf/DiskUsage.java', '/l/util.nightly/src/main/perf/NRTPerfTest.java', '/l/util.nightly/src/main/perf/Indexer.java', '/l/util.nightly/src/main/perf/PKLookupWithTermStateTask.java', '/l/util.nightly/src/main/perf/IndexState.java', '/l/util.nightly/src/main/perf/VectorDictionary.java', '/l/util.nightly/src/main/perf/TaskParser.java', '/l/util.nightly/src/main/perf/IndexThreads.java', '/l/util.nightly/src/main/perf/SearchTask.java', '/l/util.nightly/src/main/perf/RespellTask.java', '/l/util.nightly/src/main/perf/TaskSource.java', '/l/util.nightly/src/main/perf/LineFileDocs.java', '/l/util.nightly/src/main/perf/CreateQueries.java', '/l/util.nightly/src/main/perf/RandomQuery.java', '/l/util.nightly/src/main/perf/PerfUtils.java', '/l/util.nightly/src/main/perf/Task.java', '/l/util.nightly/src/main/perf/LocalTaskSource.java', '/l/util.nightly/src/main/perf/IndexTaxis.java', '/l/util.nightly/src/main/perf/PointsPKLookupTask.java', '/l/util.nightly/src/main/perf/TaskThreads.java', '/l/util.nightly/src/main/perf/UnparsedTask.java', '/l/util.nightly/src/main/perf/Args.java', '/l/util.nightly/src/main/perf/TaskParserFactory.java', '/l/util.nightly/src/main/perf/StatisticsHelper.java', '/l/util.nightly/src/main/perf/BenchRearranger.java', '/l/util.nightly/src/main/perf/PKLookupTask.java', '/l/util.nightly/src/main/perf/OpenCloseIndexWriter.java']
 compile: /usr/lib/jvm/jdk-23.0.2/bin/javac -g -d /l/util.nightly/build -classpath /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar:/l/trunk.nightly/lucene/sandbox/build/classes/java/main:/l/trunk.nightly/lucene/misc/build/classes/java/main:/l/trunk.nightly/lucene/facet/build/classes/java/main:/l/trunk.nightly/lucene/analysis/common/build/classes/java/main:/l/trunk.nightly/lucene/analysis/icu/build/classes/java/main:/l/trunk.nightly/lucene/queryparser/build/classes/java/main:/l/trunk.nightly/lucene/grouping/build/classes/java/main:/l/trunk.nightly/lucene/suggest/build/classes/java/main:/l/trunk.nightly/lucene/highlighter/build/classes/java/main:/l/trunk.nightly/lucene/codecs/build/classes/java/main:/l/trunk.nightly/lucene/queries/build/classes/java/main:/l/trunk.nightly/lucene/join/build/classes/java/main:/l/trunk.nightly/lucene/spatial3d/build/classes/java/main:/l/util.nightly/lib/HdrHistogram.jar:/l/util.nightly/src/main/build/classes/java/main:/l/util.nightly/build /l/util.nightly/src/main/perf/TestContext.java /l/util.nightly/src/main/perf/IndexAndSearchOpenStreetMaps.java /l/util.nightly/src/main/perf/OpenDirectory.java /l/util.nightly/src/main/perf/StringFieldDocSelector.java /l/util.nightly/src/main/perf/SearchTaxis.java /l/util.nightly/src/main/perf/RemoteTaskSource.java /l/util.nightly/src/main/perf/SearchPerfTest.java /l/util.nightly/src/main/perf/KeepNoCommitsDeletionPolicy.java /l/util.nightly/src/main/perf/DiskUsage.java /l/util.nightly/src/main/perf/NRTPerfTest.java /l/util.nightly/src/main/perf/Indexer.java /l/util.nightly/src/main/perf/PKLookupWithTermStateTask.java /l/util.nightly/src/main/perf/IndexState.java /l/util.nightly/src/main/perf/VectorDictionary.java /l/util.nightly/src/main/perf/TaskParser.java /l/util.nightly/src/main/perf/IndexThreads.java /l/util.nightly/src/main/perf/SearchTask.java /l/util.nightly/src/main/perf/RespellTask.java /l/util.nightly/src/main/perf/TaskSource.java /l/util.nightly/src/main/perf/LineFileDocs.java /l/util.nightly/src/main/perf/CreateQueries.java /l/util.nightly/src/main/perf/RandomQuery.java /l/util.nightly/src/main/perf/PerfUtils.java /l/util.nightly/src/main/perf/Task.java /l/util.nightly/src/main/perf/LocalTaskSource.java /l/util.nightly/src/main/perf/IndexTaxis.java /l/util.nightly/src/main/perf/PointsPKLookupTask.java /l/util.nightly/src/main/perf/TaskThreads.java /l/util.nightly/src/main/perf/UnparsedTask.java /l/util.nightly/src/main/perf/Args.java /l/util.nightly/src/main/perf/TaskParserFactory.java /l/util.nightly/src/main/perf/StatisticsHelper.java /l/util.nightly/src/main/perf/BenchRearranger.java /l/util.nightly/src/main/perf/PKLookupTask.java /l/util.nightly/src/main/perf/OpenCloseIndexWriter.java
     run: ['/usr/lib/jvm/jdk-23.0.2/bin/javac', '-g', '-d', '/l/util.nightly/build', '-classpath', '/l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar:/l/trunk.nightly/lucene/sandbox/build/classes/java/main:/l/trunk.nightly/lucene/misc/build/classes/java/main:/l/trunk.nightly/lucene/facet/build/classes/java/main:/l/trunk.nightly/lucene/analysis/common/build/classes/java/main:/l/trunk.nightly/lucene/analysis/icu/build/classes/java/main:/l/trunk.nightly/lucene/queryparser/build/classes/java/main:/l/trunk.nightly/lucene/grouping/build/classes/java/main:/l/trunk.nightly/lucene/suggest/build/classes/java/main:/l/trunk.nightly/lucene/highlighter/build/classes/java/main:/l/trunk.nightly/lucene/codecs/build/classes/java/main:/l/trunk.nightly/lucene/queries/build/classes/java/main:/l/trunk.nightly/lucene/join/build/classes/java/main:/l/trunk.nightly/lucene/spatial3d/build/classes/java/main:/l/util.nightly/lib/HdrHistogram.jar:/l/util.nightly/src/main/build/classes/java/main:/l/util.nightly/build', '/l/util.nightly/src/main/perf/TestContext.java', '/l/util.nightly/src/main/perf/IndexAndSearchOpenStreetMaps.java', '/l/util.nightly/src/main/perf/OpenDirectory.java', '/l/util.nightly/src/main/perf/StringFieldDocSelector.java', '/l/util.nightly/src/main/perf/SearchTaxis.java', '/l/util.nightly/src/main/perf/RemoteTaskSource.java', '/l/util.nightly/src/main/perf/SearchPerfTest.java', '/l/util.nightly/src/main/perf/KeepNoCommitsDeletionPolicy.java', '/l/util.nightly/src/main/perf/DiskUsage.java', '/l/util.nightly/src/main/perf/NRTPerfTest.java', '/l/util.nightly/src/main/perf/Indexer.java', '/l/util.nightly/src/main/perf/PKLookupWithTermStateTask.java', '/l/util.nightly/src/main/perf/IndexState.java', '/l/util.nightly/src/main/perf/VectorDictionary.java', '/l/util.nightly/src/main/perf/TaskParser.java', '/l/util.nightly/src/main/perf/IndexThreads.java', '/l/util.nightly/src/main/perf/SearchTask.java', '/l/util.nightly/src/main/perf/RespellTask.java', '/l/util.nightly/src/main/perf/TaskSource.java', '/l/util.nightly/src/main/perf/LineFileDocs.java', '/l/util.nightly/src/main/perf/CreateQueries.java', '/l/util.nightly/src/main/perf/RandomQuery.java', '/l/util.nightly/src/main/perf/PerfUtils.java', '/l/util.nightly/src/main/perf/Task.java', '/l/util.nightly/src/main/perf/LocalTaskSource.java', '/l/util.nightly/src/main/perf/IndexTaxis.java', '/l/util.nightly/src/main/perf/PointsPKLookupTask.java', '/l/util.nightly/src/main/perf/TaskThreads.java', '/l/util.nightly/src/main/perf/UnparsedTask.java', '/l/util.nightly/src/main/perf/Args.java', '/l/util.nightly/src/main/perf/TaskParserFactory.java', '/l/util.nightly/src/main/perf/StatisticsHelper.java', '/l/util.nightly/src/main/perf/BenchRearranger.java', '/l/util.nightly/src/main/perf/PKLookupTask.java', '/l/util.nightly/src/main/perf/OpenCloseIndexWriter.java'], cwd=/l/trunk.nightly/lucene/benchmark
-[2025-05-14 14:30:53.605576] now run stored fields benchmark
-RUN: javac -cp /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar -d build src/extra/perf/StoredFieldsBenchmark.java, cwd=/l/util.nightly
+[2025-05-14 14:36:39.358365] now run stored fields benchmark
+RUN: /usr/lib/jvm/jdk-23.0.2/bin/javac -cp /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar -d build src/extra/perf/StoredFieldsBenchmark.java, cwd=/l/util.nightly
+warning: /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar(/org/apache/lucene/codecs/lucene103/Lucene103Codec.class): major version 68 is newer than 67, the highest major version supported by this compiler.
+  It is recommended that the compiler be upgraded.
+warning: /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar(/org/apache/lucene/document/Document.class): major version 68 is newer than 67, the highest major version supported by this compiler.
+  It is recommended that the compiler be upgraded.
+warning: /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar(/org/apache/lucene/document/Field.class): major version 68 is newer than 67, the highest major version supported by this compiler.
+  It is recommended that the compiler be upgraded.
+warning: /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar(/org/apache/lucene/document/StoredField.class): major version 68 is newer than 67, the highest major version supported by this compiler.
+  It is recommended that the compiler be upgraded.
+warning: /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar(/org/apache/lucene/index/DirectoryReader.class): major version 68 is newer than 67, the highest major version supported by this compiler.
+  It is recommended that the compiler be upgraded.
+warning: /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar(/org/apache/lucene/index/IndexReader.class): major version 68 is newer than 67, the highest major version supported by this compiler.
+  It is recommended that the compiler be upgraded.
+warning: /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar(/org/apache/lucene/index/IndexWriter.class): major version 68 is newer than 67, the highest major version supported by this compiler.
+  It is recommended that the compiler be upgraded.
+warning: /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar(/org/apache/lucene/index/IndexWriterConfig.class): major version 68 is newer than 67, the highest major version supported by this compiler.
+  It is recommended that the compiler be upgraded.
+warning: /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar(/org/apache/lucene/index/IndexWriterConfig$OpenMode.class): major version 68 is newer than 67, the highest major version supported by this compiler.
+  It is recommended that the compiler be upgraded.
+warning: /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar(/org/apache/lucene/index/SerialMergeScheduler.class): major version 68 is newer than 67, the highest major version supported by this compiler.
+  It is recommended that the compiler be upgraded.
+warning: /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar(/org/apache/lucene/index/StoredFields.class): major version 68 is newer than 67, the highest major version supported by this compiler.
+  It is recommended that the compiler be upgraded.
+warning: /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar(/org/apache/lucene/store/FSDirectory.class): major version 68 is newer than 67, the highest major version supported by this compiler.
+  It is recommended that the compiler be upgraded.
+warning: /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar(/org/apache/lucene/util/IOUtils.class): major version 68 is newer than 67, the highest major version supported by this compiler.
+  It is recommended that the compiler be upgraded.
+warning: /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar(/org/apache/lucene/codecs/lucene103/Lucene103Codec$Mode.class): major version 68 is newer than 67, the highest major version supported by this compiler.
+  It is recommended that the compiler be upgraded.
+warning: /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar(/org/apache/lucene/codecs/Codec.class): major version 68 is newer than 67, the highest major version supported by this compiler.
+  It is recommended that the compiler be upgraded.
+warning: /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar(/org/apache/lucene/util/NamedSPILoader.class): major version 68 is newer than 67, the highest major version supported by this compiler.
+  It is recommended that the compiler be upgraded.
+warning: /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar(/org/apache/lucene/util/NamedSPILoader$NamedSPI.class): major version 68 is newer than 67, the highest major version supported by this compiler.
+  It is recommended that the compiler be upgraded.
+warning: /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar(/org/apache/lucene/store/BaseDirectory.class): major version 68 is newer than 67, the highest major version supported by this compiler.
+  It is recommended that the compiler be upgraded.
+warning: /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar(/org/apache/lucene/store/Directory.class): major version 68 is newer than 67, the highest major version supported by this compiler.
+  It is recommended that the compiler be upgraded.
+warning: /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar(/org/apache/lucene/index/IndexCommit.class): major version 68 is newer than 67, the highest major version supported by this compiler.
+  It is recommended that the compiler be upgraded.
+warning: /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar(/org/apache/lucene/index/BaseCompositeReader.class): major version 68 is newer than 67, the highest major version supported by this compiler.
+  It is recommended that the compiler be upgraded.
+warning: /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar(/org/apache/lucene/index/CompositeReader.class): major version 68 is newer than 67, the highest major version supported by this compiler.
+  It is recommended that the compiler be upgraded.
+warning: /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar(/org/apache/lucene/index/LiveIndexWriterConfig.class): major version 68 is newer than 67, the highest major version supported by this compiler.
+  It is recommended that the compiler be upgraded.
+warning: /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar(/org/apache/lucene/index/StoredFieldDataInput.class): major version 68 is newer than 67, the highest major version supported by this compiler.
+  It is recommended that the compiler be upgraded.
+warning: /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar(/org/apache/lucene/util/BytesRef.class): major version 68 is newer than 67, the highest major version supported by this compiler.
+  It is recommended that the compiler be upgraded.
+warning: /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar(/org/apache/lucene/document/FieldType.class): major version 68 is newer than 67, the highest major version supported by this compiler.
+  It is recommended that the compiler be upgraded.
+warning: /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar(/org/apache/lucene/index/IndexableField.class): major version 68 is newer than 67, the highest major version supported by this compiler.
+  It is recommended that the compiler be upgraded.
+warning: /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar(/org/apache/lucene/index/MergeScheduler.class): major version 68 is newer than 67, the highest major version supported by this compiler.
+  It is recommended that the compiler be upgraded.
+28 warnings
 Now run BEST_SPEED with doc_limit=-1:
 RUN: /usr/lib/jvm/jdk-23.0.2/bin/java --add-modules jdk.incubator.vector -Xmx32g -Xms32g -server -XX:+UseParallelGC -Djava.io.tmpdir=/l/tmp -cp /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar:build perf.StoredFieldsBenchmark /lucenedata/geonames/geonames.20160818.csv /l/indices/geonames-stored-fields BEST_SPEED -1
 stdout: 
 
 stderr: WARNING: Using incubator modules: jdk.incubator.vector
-Error: LinkageError occurred while loading main class perf.StoredFieldsBenchmark
-	java.lang.UnsupportedClassVersionError: perf/StoredFieldsBenchmark has been compiled by a more recent version of the Java Runtime (class file version 68.0), this version of the Java Runtime only recognizes class file versions up to 67.0
+Error: Unable to initialize main class perf.StoredFieldsBenchmark
+Caused by: java.lang.UnsupportedClassVersionError: org/apache/lucene/store/Directory has been compiled by a more recent version of the Java Runtime (class file version 68.0), this version of the Java Runtime only recognizes class file versions up to 67.0
 
 
 Traceback (most recent call last):
