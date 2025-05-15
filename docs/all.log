@@ -331,3 +331,44 @@ NOTE: not git pulling!! -- fix me once we debug #14630
 + ../gradlew clean
 /home/mike/nightly_strict.cmd: line 74: ../gradlew: No such file or directory
 + cp /l/logs.nightly/all.log /l/reports.nightly
++ echo 'clean /l/tmp'
+clean /l/tmp
++ rm -rf '/l/tmp/*'
++ echo
+
++ echo 'Now git add/commit nightly log file (all.log)'
+Now git add/commit nightly log file (all.log)
++ cd /l/lucenenightly
++ git add .
+++ date
++ git commit -m 'Thu May 15 06:37:27 PM EDT 2025: auto commit nightly benchy log file'
+[main e0f24ae1] Thu May 15 06:37:27 PM EDT 2025: auto commit nightly benchy log file
+ 1 file changed, 40 insertions(+)
++ git push
+To github.com:mikemccand/lucenenightly.git
+   3ef1515f..e0f24ae1  main -> main
+bash: cannot set terminal process group (4149598): Inappropriate ioctl for device
+bash: no job control in this shell
++ /bin/bash /home/mike/nightly_strict.cmd
++ export ANT_HOME=/usr/local/src/apache-ant-1.9.5
++ ANT_HOME=/usr/local/src/apache-ant-1.9.5
++ export JAVA_HOME=/usr/lib/jvm/java-24-openjdk
++ JAVA_HOME=/usr/lib/jvm/java-24-openjdk
++ export GRADLE_HOME=/usr/local/src/gradle-2.9
++ GRADLE_HOME=/usr/local/src/gradle-2.9
++ export PATH=/usr/local/src/apache-ant-1.9.5/bin:/usr/lib/jvm/java-24-openjdk/bin:/usr/local/src/gradle-2.9/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
++ PATH=/usr/local/src/apache-ant-1.9.5/bin:/usr/lib/jvm/java-24-openjdk/bin:/usr/local/src/gradle-2.9/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
+++ date
++ echo -e '\n\nThu May 15 06:39:27 PM EDT 2025: now start nightly benchmarks'
+
+
+Thu May 15 06:39:27 PM EDT 2025: now start nightly benchmarks
++ pkill java
++ true
++ pkill mencoder
++ true
++ echo 'NOTE: not git pulling!! -- fix me once we debug #14630'
+NOTE: not git pulling!! -- fix me once we debug #14630
++ ../gradlew clean
+/home/mike/nightly_strict.cmd: line 74: ../gradlew: No such file or directory
++ cp /l/logs.nightly/all.log /l/reports.nightly
