@@ -2,273 +2,6 @@ start: disk usage on /l:
 + df -h /l
 Filesystem      Size  Used Avail Use% Mounted on
 /dev/nvme0n1p1  880G  254G  581G  31% /
-+ echo 'Run gradle test'
-Run gradle test
-+ /usr/bin/python3 -uO /l/util.nightly/src/python/runNightlyGradleTestPrecommit.py
-***USING BIG LINE FILE***
-Using java from: /usr/lib/jvm/java-24-openjdk/bin/
-  gradle test log: /l/logs.nightly/ant_test/2025.05.15.lucene-tests.txt
-  took: 2.0 min
-  gradle precommit log: /l/logs.nightly/ant_test/2025.05.15.precommit.txt
-  took: 1.1 min
-+ echo 'Run lucene nightly'
-Run lucene nightly
-+ /usr/bin/python -uO /l/util.nightly/src/python/nightlyBench.py -run
-***USING BIG LINE FILE***
-Using java from: /usr/lib/jvm/java-24-openjdk/bin/
-perf executable is /usr/sbin/perf; will collect aggregate CPU profiling data
-GitHub pull request counts: 247 open, 2926 closed
-
-
-
-
-[2025-05-15 18:03:57.968505] start
-[2025-05-15 18:03:57.968592] log dir /l/logs.nightly/2025.05.15.18.03.57
-java full version "23.0.2+7-58"
-WARNING: Using incubator modules: jdk.incubator.vector
-java version "23.0.2" 2025-01-21
-Java(TM) SE Runtime Environment (build 23.0.2+7-58)
-Java HotSpot(TM) 64-Bit Server VM (build 23.0.2+7-58, mixed mode, sharing)
-uname -a: Linux beast3.mikemccandless.com 6.14.4-arch1-2 #1 SMP PREEMPT_DYNAMIC Tue, 29 Apr 2025 09:23:13 +0000 x86_64 GNU/Linux
-lsb_release -a:
-LSB Version:	n/a
-Distributor ID:	Arch
-Description:	Arch Linux
-Release:	rolling
-Codename:	n/a
-luceneutil rev is 2b3384e3c1112eb8d585ec50dce75c6fbd8848d5
-LUCENE rev is 18b70d2d032f7253ae43fdf338f347875523d4d3
-last successfull Lucene rev 0ea423e3025893fa1ce9a2633c59a7578b8478ea, luceneutil rev d615d87d19ea5f3d9cfc4959046db8ba121a7371
-run ['git', 'log', '0ea423e3025893fa1ce9a2633c59a7578b8478ea^..18b70d2d032f7253ae43fdf338f347875523d4d3']
-No commit message asking for regold of results files
-[2025-05-15 18:03:58.123328] RUN: git clean -xfd
-Removing .gradle/
-Removing build-tools/build-infra/.gradle/
-Removing build-tools/build-infra/build/
-Removing build-tools/missing-doclet/.gradle/
-Removing build/
-Removing gradle.properties
-Removing gradle/wrapper/gradle-wrapper.jar
-Removing lucene/analysis.tests/build/
-Removing lucene/analysis/build/
-Removing lucene/analysis/common/build/
-Removing lucene/analysis/icu/build/
-Removing lucene/analysis/kuromoji/build/
-Removing lucene/analysis/morfologik.tests/build/
-Removing lucene/analysis/morfologik/build/
-Removing lucene/analysis/nori/build/
-Removing lucene/analysis/opennlp/build/
-Removing lucene/analysis/phonetic/build/
-Removing lucene/analysis/smartcn/build/
-Removing lucene/analysis/stempel/build/
-Removing lucene/backward-codecs/build/
-Removing lucene/benchmark-jmh/build/
-Removing lucene/benchmark/build/
-Removing lucene/build/
-Removing lucene/classification/build/
-Removing lucene/codecs/build/
-Removing lucene/core.tests/build/
-Removing lucene/core/build/
-Removing lucene/demo/build/
-Removing lucene/distribution.tests/build/
-Removing lucene/distribution/build/
-Removing lucene/documentation/build/
-Removing lucene/expressions/build/
-Removing lucene/facet/build/
-Removing lucene/grouping/build/
-Removing lucene/highlighter/build/
-Removing lucene/join/build/
-Removing lucene/luke/build/
-Removing lucene/memory/build/
-Removing lucene/misc/build/
-Removing lucene/monitor/build/
-Removing lucene/queries/build/
-Removing lucene/queryparser/build/
-Removing lucene/replicator/build/
-Removing lucene/sandbox/build/
-Removing lucene/spatial-extras/build/
-Removing lucene/spatial-test-fixtures/build/
-Removing lucene/spatial3d/build/
-Removing lucene/suggest/build/
-Removing lucene/test-framework/build/
-[2025-05-15 18:03:58.371551]   took 0.2 sec
-will NOT regold results files but rather compare to last good result files
-Java command-line: /usr/lib/jvm/jdk-23.0.2/bin/java --add-modules jdk.incubator.vector -Xmx32g -Xms32g -server -XX:+UseParallelGC -Djava.io.tmpdir=/l/tmp
-transparent_hugepages: [always] madvise never
-
-[2025-05-15 18:03:58.371657] RUN: /l/trunk.nightly/gradlew clean > /l/logs.nightly/2025.05.15.18.03.57/clean-lucene.log 2>&1
-[2025-05-15 18:04:02.525340]   took 4.2 sec
-[2025-05-15 18:04:02.525383] RUN: /l/trunk.nightly/gradlew jar > /l/logs.nightly/2025.05.15.18.03.57/jar-lucene.log 2>&1
-[2025-05-15 18:04:24.121239]   took 21.6 sec
-
-JAVA:
-WARNING: Using incubator modules: jdk.incubator.vector
-java version "23.0.2" 2025-01-21
-Java(TM) SE Runtime Environment (build 23.0.2+7-58)
-Java HotSpot(TM) 64-Bit Server VM (build 23.0.2+7-58, mixed mode, sharing)
-
-
-OS:
-Linux beast3.mikemccandless.com 6.14.4-arch1-2 #1 SMP PREEMPT_DYNAMIC Tue, 29 Apr 2025 09:23:13 +0000 x86_64 GNU/Linux
-
-
-LOGS:
-/l/logs.nightly
-Using checkout:[/l/trunk.nightly] for competitor:[nightly]
-compile lucene:core...
-    run: ['/l/trunk.nightly/gradlew', 'lucene:core:jar'], cwd=/l/trunk.nightly
-  /l/trunk.nightly/lucene/benchmark
-files ['/l/util.nightly/src/main/perf/TestContext.java', '/l/util.nightly/src/main/perf/IndexAndSearchOpenStreetMaps.java', '/l/util.nightly/src/main/perf/OpenDirectory.java', '/l/util.nightly/src/main/perf/StringFieldDocSelector.java', '/l/util.nightly/src/main/perf/SearchTaxis.java', '/l/util.nightly/src/main/perf/RemoteTaskSource.java', '/l/util.nightly/src/main/perf/SearchPerfTest.java', '/l/util.nightly/src/main/perf/KeepNoCommitsDeletionPolicy.java', '/l/util.nightly/src/main/perf/DiskUsage.java', '/l/util.nightly/src/main/perf/NRTPerfTest.java', '/l/util.nightly/src/main/perf/Indexer.java', '/l/util.nightly/src/main/perf/PKLookupWithTermStateTask.java', '/l/util.nightly/src/main/perf/IndexState.java', '/l/util.nightly/src/main/perf/VectorDictionary.java', '/l/util.nightly/src/main/perf/TaskParser.java', '/l/util.nightly/src/main/perf/IndexThreads.java', '/l/util.nightly/src/main/perf/SearchTask.java', '/l/util.nightly/src/main/perf/RespellTask.java', '/l/util.nightly/src/main/perf/TaskSource.java', '/l/util.nightly/src/main/perf/LineFileDocs.java', '/l/util.nightly/src/main/perf/CreateQueries.java', '/l/util.nightly/src/main/perf/RandomQuery.java', '/l/util.nightly/src/main/perf/PerfUtils.java', '/l/util.nightly/src/main/perf/Task.java', '/l/util.nightly/src/main/perf/LocalTaskSource.java', '/l/util.nightly/src/main/perf/IndexTaxis.java', '/l/util.nightly/src/main/perf/PointsPKLookupTask.java', '/l/util.nightly/src/main/perf/TaskThreads.java', '/l/util.nightly/src/main/perf/UnparsedTask.java', '/l/util.nightly/src/main/perf/Args.java', '/l/util.nightly/src/main/perf/TaskParserFactory.java', '/l/util.nightly/src/main/perf/StatisticsHelper.java', '/l/util.nightly/src/main/perf/BenchRearranger.java', '/l/util.nightly/src/main/perf/PKLookupTask.java', '/l/util.nightly/src/main/perf/OpenCloseIndexWriter.java']
-compile: /usr/lib/jvm/jdk-23.0.2/bin/javac -g -d /l/util.nightly/build -classpath /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar:/l/trunk.nightly/lucene/sandbox/build/classes/java/main:/l/trunk.nightly/lucene/misc/build/classes/java/main:/l/trunk.nightly/lucene/facet/build/classes/java/main:/l/trunk.nightly/lucene/analysis/common/build/classes/java/main:/l/trunk.nightly/lucene/analysis/icu/build/classes/java/main:/l/trunk.nightly/lucene/queryparser/build/classes/java/main:/l/trunk.nightly/lucene/grouping/build/classes/java/main:/l/trunk.nightly/lucene/suggest/build/classes/java/main:/l/trunk.nightly/lucene/highlighter/build/classes/java/main:/l/trunk.nightly/lucene/codecs/build/classes/java/main:/l/trunk.nightly/lucene/queries/build/classes/java/main:/l/trunk.nightly/lucene/join/build/classes/java/main:/l/trunk.nightly/lucene/spatial3d/build/classes/java/main:/l/util.nightly/lib/HdrHistogram.jar:/l/util.nightly/src/main/build/classes/java/main:/l/util.nightly/build /l/util.nightly/src/main/perf/TestContext.java /l/util.nightly/src/main/perf/IndexAndSearchOpenStreetMaps.java /l/util.nightly/src/main/perf/OpenDirectory.java /l/util.nightly/src/main/perf/StringFieldDocSelector.java /l/util.nightly/src/main/perf/SearchTaxis.java /l/util.nightly/src/main/perf/RemoteTaskSource.java /l/util.nightly/src/main/perf/SearchPerfTest.java /l/util.nightly/src/main/perf/KeepNoCommitsDeletionPolicy.java /l/util.nightly/src/main/perf/DiskUsage.java /l/util.nightly/src/main/perf/NRTPerfTest.java /l/util.nightly/src/main/perf/Indexer.java /l/util.nightly/src/main/perf/PKLookupWithTermStateTask.java /l/util.nightly/src/main/perf/IndexState.java /l/util.nightly/src/main/perf/VectorDictionary.java /l/util.nightly/src/main/perf/TaskParser.java /l/util.nightly/src/main/perf/IndexThreads.java /l/util.nightly/src/main/perf/SearchTask.java /l/util.nightly/src/main/perf/RespellTask.java /l/util.nightly/src/main/perf/TaskSource.java /l/util.nightly/src/main/perf/LineFileDocs.java /l/util.nightly/src/main/perf/CreateQueries.java /l/util.nightly/src/main/perf/RandomQuery.java /l/util.nightly/src/main/perf/PerfUtils.java /l/util.nightly/src/main/perf/Task.java /l/util.nightly/src/main/perf/LocalTaskSource.java /l/util.nightly/src/main/perf/IndexTaxis.java /l/util.nightly/src/main/perf/PointsPKLookupTask.java /l/util.nightly/src/main/perf/TaskThreads.java /l/util.nightly/src/main/perf/UnparsedTask.java /l/util.nightly/src/main/perf/Args.java /l/util.nightly/src/main/perf/TaskParserFactory.java /l/util.nightly/src/main/perf/StatisticsHelper.java /l/util.nightly/src/main/perf/BenchRearranger.java /l/util.nightly/src/main/perf/PKLookupTask.java /l/util.nightly/src/main/perf/OpenCloseIndexWriter.java
-    run: ['/usr/lib/jvm/jdk-23.0.2/bin/javac', '-g', '-d', '/l/util.nightly/build', '-classpath', '/l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar:/l/trunk.nightly/lucene/sandbox/build/classes/java/main:/l/trunk.nightly/lucene/misc/build/classes/java/main:/l/trunk.nightly/lucene/facet/build/classes/java/main:/l/trunk.nightly/lucene/analysis/common/build/classes/java/main:/l/trunk.nightly/lucene/analysis/icu/build/classes/java/main:/l/trunk.nightly/lucene/queryparser/build/classes/java/main:/l/trunk.nightly/lucene/grouping/build/classes/java/main:/l/trunk.nightly/lucene/suggest/build/classes/java/main:/l/trunk.nightly/lucene/highlighter/build/classes/java/main:/l/trunk.nightly/lucene/codecs/build/classes/java/main:/l/trunk.nightly/lucene/queries/build/classes/java/main:/l/trunk.nightly/lucene/join/build/classes/java/main:/l/trunk.nightly/lucene/spatial3d/build/classes/java/main:/l/util.nightly/lib/HdrHistogram.jar:/l/util.nightly/src/main/build/classes/java/main:/l/util.nightly/build', '/l/util.nightly/src/main/perf/TestContext.java', '/l/util.nightly/src/main/perf/IndexAndSearchOpenStreetMaps.java', '/l/util.nightly/src/main/perf/OpenDirectory.java', '/l/util.nightly/src/main/perf/StringFieldDocSelector.java', '/l/util.nightly/src/main/perf/SearchTaxis.java', '/l/util.nightly/src/main/perf/RemoteTaskSource.java', '/l/util.nightly/src/main/perf/SearchPerfTest.java', '/l/util.nightly/src/main/perf/KeepNoCommitsDeletionPolicy.java', '/l/util.nightly/src/main/perf/DiskUsage.java', '/l/util.nightly/src/main/perf/NRTPerfTest.java', '/l/util.nightly/src/main/perf/Indexer.java', '/l/util.nightly/src/main/perf/PKLookupWithTermStateTask.java', '/l/util.nightly/src/main/perf/IndexState.java', '/l/util.nightly/src/main/perf/VectorDictionary.java', '/l/util.nightly/src/main/perf/TaskParser.java', '/l/util.nightly/src/main/perf/IndexThreads.java', '/l/util.nightly/src/main/perf/SearchTask.java', '/l/util.nightly/src/main/perf/RespellTask.java', '/l/util.nightly/src/main/perf/TaskSource.java', '/l/util.nightly/src/main/perf/LineFileDocs.java', '/l/util.nightly/src/main/perf/CreateQueries.java', '/l/util.nightly/src/main/perf/RandomQuery.java', '/l/util.nightly/src/main/perf/PerfUtils.java', '/l/util.nightly/src/main/perf/Task.java', '/l/util.nightly/src/main/perf/LocalTaskSource.java', '/l/util.nightly/src/main/perf/IndexTaxis.java', '/l/util.nightly/src/main/perf/PointsPKLookupTask.java', '/l/util.nightly/src/main/perf/TaskThreads.java', '/l/util.nightly/src/main/perf/UnparsedTask.java', '/l/util.nightly/src/main/perf/Args.java', '/l/util.nightly/src/main/perf/TaskParserFactory.java', '/l/util.nightly/src/main/perf/StatisticsHelper.java', '/l/util.nightly/src/main/perf/BenchRearranger.java', '/l/util.nightly/src/main/perf/PKLookupTask.java', '/l/util.nightly/src/main/perf/OpenCloseIndexWriter.java'], cwd=/l/trunk.nightly/lucene/benchmark
-[2025-05-15 18:04:27.927524] now run stored fields benchmark
-RUN: /usr/lib/jvm/jdk-23.0.2/bin/javac -cp /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar -d build src/extra/perf/StoredFieldsBenchmark.java, cwd=/l/util.nightly
-warning: /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar(/org/apache/lucene/codecs/lucene103/Lucene103Codec.class): major version 68 is newer than 67, the highest major version supported by this compiler.
-  It is recommended that the compiler be upgraded.
-warning: /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar(/org/apache/lucene/document/Document.class): major version 68 is newer than 67, the highest major version supported by this compiler.
-  It is recommended that the compiler be upgraded.
-warning: /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar(/org/apache/lucene/document/Field.class): major version 68 is newer than 67, the highest major version supported by this compiler.
-  It is recommended that the compiler be upgraded.
-warning: /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar(/org/apache/lucene/document/StoredField.class): major version 68 is newer than 67, the highest major version supported by this compiler.
-  It is recommended that the compiler be upgraded.
-warning: /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar(/org/apache/lucene/index/DirectoryReader.class): major version 68 is newer than 67, the highest major version supported by this compiler.
-  It is recommended that the compiler be upgraded.
-warning: /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar(/org/apache/lucene/index/IndexReader.class): major version 68 is newer than 67, the highest major version supported by this compiler.
-  It is recommended that the compiler be upgraded.
-warning: /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar(/org/apache/lucene/index/IndexWriter.class): major version 68 is newer than 67, the highest major version supported by this compiler.
-  It is recommended that the compiler be upgraded.
-warning: /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar(/org/apache/lucene/index/IndexWriterConfig.class): major version 68 is newer than 67, the highest major version supported by this compiler.
-  It is recommended that the compiler be upgraded.
-warning: /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar(/org/apache/lucene/index/IndexWriterConfig$OpenMode.class): major version 68 is newer than 67, the highest major version supported by this compiler.
-  It is recommended that the compiler be upgraded.
-warning: /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar(/org/apache/lucene/index/SerialMergeScheduler.class): major version 68 is newer than 67, the highest major version supported by this compiler.
-  It is recommended that the compiler be upgraded.
-warning: /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar(/org/apache/lucene/index/StoredFields.class): major version 68 is newer than 67, the highest major version supported by this compiler.
-  It is recommended that the compiler be upgraded.
-warning: /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar(/org/apache/lucene/store/FSDirectory.class): major version 68 is newer than 67, the highest major version supported by this compiler.
-  It is recommended that the compiler be upgraded.
-warning: /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar(/org/apache/lucene/util/IOUtils.class): major version 68 is newer than 67, the highest major version supported by this compiler.
-  It is recommended that the compiler be upgraded.
-warning: /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar(/org/apache/lucene/codecs/lucene103/Lucene103Codec$Mode.class): major version 68 is newer than 67, the highest major version supported by this compiler.
-  It is recommended that the compiler be upgraded.
-warning: /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar(/org/apache/lucene/codecs/Codec.class): major version 68 is newer than 67, the highest major version supported by this compiler.
-  It is recommended that the compiler be upgraded.
-warning: /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar(/org/apache/lucene/util/NamedSPILoader.class): major version 68 is newer than 67, the highest major version supported by this compiler.
-  It is recommended that the compiler be upgraded.
-warning: /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar(/org/apache/lucene/util/NamedSPILoader$NamedSPI.class): major version 68 is newer than 67, the highest major version supported by this compiler.
-  It is recommended that the compiler be upgraded.
-warning: /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar(/org/apache/lucene/store/BaseDirectory.class): major version 68 is newer than 67, the highest major version supported by this compiler.
-  It is recommended that the compiler be upgraded.
-warning: /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar(/org/apache/lucene/store/Directory.class): major version 68 is newer than 67, the highest major version supported by this compiler.
-  It is recommended that the compiler be upgraded.
-warning: /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar(/org/apache/lucene/index/IndexCommit.class): major version 68 is newer than 67, the highest major version supported by this compiler.
-  It is recommended that the compiler be upgraded.
-warning: /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar(/org/apache/lucene/index/BaseCompositeReader.class): major version 68 is newer than 67, the highest major version supported by this compiler.
-  It is recommended that the compiler be upgraded.
-warning: /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar(/org/apache/lucene/index/CompositeReader.class): major version 68 is newer than 67, the highest major version supported by this compiler.
-  It is recommended that the compiler be upgraded.
-warning: /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar(/org/apache/lucene/index/LiveIndexWriterConfig.class): major version 68 is newer than 67, the highest major version supported by this compiler.
-  It is recommended that the compiler be upgraded.
-warning: /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar(/org/apache/lucene/index/StoredFieldDataInput.class): major version 68 is newer than 67, the highest major version supported by this compiler.
-  It is recommended that the compiler be upgraded.
-warning: /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar(/org/apache/lucene/util/BytesRef.class): major version 68 is newer than 67, the highest major version supported by this compiler.
-  It is recommended that the compiler be upgraded.
-warning: /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar(/org/apache/lucene/document/FieldType.class): major version 68 is newer than 67, the highest major version supported by this compiler.
-  It is recommended that the compiler be upgraded.
-warning: /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar(/org/apache/lucene/index/IndexableField.class): major version 68 is newer than 67, the highest major version supported by this compiler.
-  It is recommended that the compiler be upgraded.
-warning: /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar(/org/apache/lucene/index/MergeScheduler.class): major version 68 is newer than 67, the highest major version supported by this compiler.
-  It is recommended that the compiler be upgraded.
-28 warnings
-Now run BEST_SPEED with doc_limit=-1:
-RUN: /usr/lib/jvm/jdk-23.0.2/bin/java --add-modules jdk.incubator.vector -Xmx32g -Xms32g -server -XX:+UseParallelGC -Djava.io.tmpdir=/l/tmp -cp /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar:build perf.StoredFieldsBenchmark /lucenedata/geonames/geonames.20160818.csv /l/indices/geonames-stored-fields BEST_SPEED -1
-stdout: 
-
-stderr: WARNING: Using incubator modules: jdk.incubator.vector
-Error: Unable to initialize main class perf.StoredFieldsBenchmark
-Caused by: java.lang.UnsupportedClassVersionError: org/apache/lucene/store/Directory has been compiled by a more recent version of the Java Runtime (class file version 68.0), this version of the Java Runtime only recognizes class file versions up to 67.0
-
-
-Traceback (most recent call last):
-  File "/l/util.nightly/src/python/nightlyBench.py", line 2078, in <module>
-    run()
-    ~~~^^
-  File "/l/util.nightly/src/python/nightlyBench.py", line 565, in run
-    runStoredFieldsBenchmark.run_benchmark(
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-      f"{constants.BASE_DIR}/{NIGHTLY_DIR}", constants.GEONAMES_LINE_FILE_DOCS, f"{constants.INDEX_DIR_BASE}/geonames-stored-fields-nightly", runLogDir, doc_limit
-      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/l/util.nightly/src/python/runStoredFieldsBenchmark.py", line 57, in run_benchmark
-    raise RuntimeError(f"failed errorcode={results.returncode}!")
-RuntimeError: failed errorcode=1!
-Traceback (most recent call last):
-  File "/l/util.nightly/src/python/nightlyBench.py", line 2078, in <module>
-    run()
-    ~~~^^
-  File "/l/util.nightly/src/python/nightlyBench.py", line 565, in run
-    runStoredFieldsBenchmark.run_benchmark(
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-      f"{constants.BASE_DIR}/{NIGHTLY_DIR}", constants.GEONAMES_LINE_FILE_DOCS, f"{constants.INDEX_DIR_BASE}/geonames-stored-fields-nightly", runLogDir, doc_limit
-      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/l/util.nightly/src/python/runStoredFieldsBenchmark.py", line 57, in run_benchmark
-    raise RuntimeError(f"failed errorcode={results.returncode}!")
-RuntimeError: failed errorcode=1!
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/l/util.nightly/src/python/nightlyBench.py", line 2085, in <module>
-    sendEmail("mail@mikemccandless.com", "Nightly Lucene bench FAILED (%s)" % socket.gethostname(), "")
-    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/l/util.nightly/src/python/nightlyBench.py", line 2071, in sendEmail
-    p = Popen(["/usr/sbin/sendmail", "-t"], stdin=PIPE)
-  File "/usr/lib/python3.13/subprocess.py", line 1039, in __init__
-    self._execute_child(args, executable, preexec_fn, close_fds,
-    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-                        pass_fds, cwd, env,
-                        ^^^^^^^^^^^^^^^^^^^
-    ...<5 lines>...
-                        gid, gids, uid, umask,
-                        ^^^^^^^^^^^^^^^^^^^^^^
-                        start_new_session, process_group)
-                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.13/subprocess.py", line 1854, in _execute_child
-    self._posix_spawn(args, executable, env, restore_signals, close_fds,
-    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-                      p2cread, p2cwrite,
-                      ^^^^^^^^^^^^^^^^^^
-                      c2pread, c2pwrite,
-                      ^^^^^^^^^^^^^^^^^^
-                      errread, errwrite)
-                      ^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.13/subprocess.py", line 1798, in _posix_spawn
-    self.pid = os.posix_spawn(executable, args, env, **kwargs)
-               ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-FileNotFoundError: [Errno 2] No such file or directory: '/usr/sbin/sendmail'
-+ cp /l/logs.nightly/all.log /l/reports.nightly
-+ echo 'clean /l/tmp'
-clean /l/tmp
-+ rm -rf '/l/tmp/*'
-+ echo
-
-+ echo 'Now git add/commit nightly log file (all.log)'
-Now git add/commit nightly log file (all.log)
-+ cd /l/lucenenightly
-+ git add .
-++ date
-+ git commit -m 'Thu May 15 06:04:28 PM EDT 2025: auto commit nightly benchy log file'
-[main 6e56a876] Thu May 15 06:04:28 PM EDT 2025: auto commit nightly benchy log file
- 2 files changed, 15 insertions(+), 14 deletions(-)
-+ git push
-To github.com:mikemccand/lucenenightly.git
-   ce290c61..6e56a876  main -> main
-bash: cannot set terminal process group (4148150): Inappropriate ioctl for device
-bash: no job control in this shell
-+ /bin/bash /home/mike/nightly_strict.cmd
 + export ANT_HOME=/usr/local/src/apache-ant-1.9.5
 + ANT_HOME=/usr/local/src/apache-ant-1.9.5
 + export JAVA_HOME=/usr/lib/jvm/java-24-openjdk
@@ -278,97 +11,45 @@ bash: no job control in this shell
 + export PATH=/usr/local/src/apache-ant-1.9.5/bin:/usr/lib/jvm/java-24-openjdk/bin:/usr/local/src/gradle-2.9/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
 + PATH=/usr/local/src/apache-ant-1.9.5/bin:/usr/lib/jvm/java-24-openjdk/bin:/usr/local/src/gradle-2.9/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
 ++ date
-+ echo -e '\n\nThu May 15 06:36:14 PM EDT 2025: now start nightly benchmarks'
++ echo -e '\n\nThu May 15 06:44:19 PM EDT 2025: now start nightly benchmarks'
 
 
-Thu May 15 06:36:14 PM EDT 2025: now start nightly benchmarks
+Thu May 15 06:44:19 PM EDT 2025: now start nightly benchmarks
 + pkill java
 + true
 + pkill mencoder
 + true
++ cd /l/trunk.nightly/lucene
 + echo 'NOTE: not git pulling!! -- fix me once we debug #14630'
 NOTE: not git pulling!! -- fix me once we debug #14630
 + ../gradlew clean
-/home/mike/nightly_strict.cmd: line 74: ../gradlew: No such file or directory
-+ cp /l/logs.nightly/all.log /l/reports.nightly
-+ echo 'clean /l/tmp'
-clean /l/tmp
-+ rm -rf '/l/tmp/*'
-+ echo
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by net.rubygrapefruit.platform.internal.NativeLibraryLoader in an unnamed module (file:/home/mike/.gradle/wrapper/dists/gradle-8.10-bin/deqhafrv1ntovfmgh0nh3npr9/gradle-8.10/lib/native-platform-0.22-milestone-26.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
 
-+ echo 'Now git add/commit nightly log file (all.log)'
-Now git add/commit nightly log file (all.log)
-+ cd /l/lucenenightly
-+ git add .
-++ date
-+ git commit -m 'Thu May 15 06:36:15 PM EDT 2025: auto commit nightly benchy log file'
-[main 3ef1515f] Thu May 15 06:36:15 PM EDT 2025: auto commit nightly benchy log file
- 1 file changed, 41 insertions(+)
-+ git push
-To github.com:mikemccand/lucenenightly.git
-   6e56a876..3ef1515f  main -> main
-bash: cannot set terminal process group (4148926): Inappropriate ioctl for device
-bash: no job control in this shell
-+ /bin/bash /home/mike/nightly_strict.cmd
-+ export ANT_HOME=/usr/local/src/apache-ant-1.9.5
-+ ANT_HOME=/usr/local/src/apache-ant-1.9.5
-+ export JAVA_HOME=/usr/lib/jvm/java-24-openjdk
-+ JAVA_HOME=/usr/lib/jvm/java-24-openjdk
-+ export GRADLE_HOME=/usr/local/src/gradle-2.9
-+ GRADLE_HOME=/usr/local/src/gradle-2.9
-+ export PATH=/usr/local/src/apache-ant-1.9.5/bin:/usr/lib/jvm/java-24-openjdk/bin:/usr/local/src/gradle-2.9/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
-+ PATH=/usr/local/src/apache-ant-1.9.5/bin:/usr/lib/jvm/java-24-openjdk/bin:/usr/local/src/gradle-2.9/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
-++ date
-+ echo -e '\n\nThu May 15 06:37:27 PM EDT 2025: now start nightly benchmarks'
+Starting a Gradle Daemon (subsequent builds will be faster)
 
+> Task :build-infra:compileJava
+Note: /l/trunk.nightly/build-tools/build-infra/src/main/java/org/apache/lucene/gradle/Checksum.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
 
-Thu May 15 06:37:27 PM EDT 2025: now start nightly benchmarks
-+ pkill java
-+ pkill mencoder
-+ true
-+ echo 'NOTE: not git pulling!! -- fix me once we debug #14630'
-NOTE: not git pulling!! -- fix me once we debug #14630
-+ ../gradlew clean
-/home/mike/nightly_strict.cmd: line 74: ../gradlew: No such file or directory
-+ cp /l/logs.nightly/all.log /l/reports.nightly
-+ echo 'clean /l/tmp'
-clean /l/tmp
-+ rm -rf '/l/tmp/*'
-+ echo
+> Task :build-infra:pluginDescriptors
+> Task :build-infra:processResources
+> Task :build-infra:classes
+> Task :build-infra:jar
 
-+ echo 'Now git add/commit nightly log file (all.log)'
-Now git add/commit nightly log file (all.log)
-+ cd /l/lucenenightly
-+ git add .
-++ date
-+ git commit -m 'Thu May 15 06:37:27 PM EDT 2025: auto commit nightly benchy log file'
-[main e0f24ae1] Thu May 15 06:37:27 PM EDT 2025: auto commit nightly benchy log file
- 1 file changed, 40 insertions(+)
-+ git push
-To github.com:mikemccand/lucenenightly.git
-   3ef1515f..e0f24ae1  main -> main
-bash: cannot set terminal process group (4149598): Inappropriate ioctl for device
-bash: no job control in this shell
-+ /bin/bash /home/mike/nightly_strict.cmd
-+ export ANT_HOME=/usr/local/src/apache-ant-1.9.5
-+ ANT_HOME=/usr/local/src/apache-ant-1.9.5
-+ export JAVA_HOME=/usr/lib/jvm/java-24-openjdk
-+ JAVA_HOME=/usr/lib/jvm/java-24-openjdk
-+ export GRADLE_HOME=/usr/local/src/gradle-2.9
-+ GRADLE_HOME=/usr/local/src/gradle-2.9
-+ export PATH=/usr/local/src/apache-ant-1.9.5/bin:/usr/lib/jvm/java-24-openjdk/bin:/usr/local/src/gradle-2.9/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
-+ PATH=/usr/local/src/apache-ant-1.9.5/bin:/usr/lib/jvm/java-24-openjdk/bin:/usr/local/src/gradle-2.9/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
-++ date
-+ echo -e '\n\nThu May 15 06:39:27 PM EDT 2025: now start nightly benchmarks'
+FAILURE: Build failed with an exception.
 
+* What went wrong:
+BUG! exception in phase 'semantic analysis' in source unit '_BuildScript_' Unsupported class file major version 68
+> Unsupported class file major version 68
 
-Thu May 15 06:39:27 PM EDT 2025: now start nightly benchmarks
-+ pkill java
-+ true
-+ pkill mencoder
-+ true
-+ echo 'NOTE: not git pulling!! -- fix me once we debug #14630'
-NOTE: not git pulling!! -- fix me once we debug #14630
-+ ../gradlew clean
-/home/mike/nightly_strict.cmd: line 74: ../gradlew: No such file or directory
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 5s
+4 actionable tasks: 4 executed
 + cp /l/logs.nightly/all.log /l/reports.nightly
