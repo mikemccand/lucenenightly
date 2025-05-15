@@ -11,10 +11,10 @@ Filesystem      Size  Used Avail Use% Mounted on
 + export PATH=/usr/local/src/apache-ant-1.9.5/bin:/usr/lib/jvm/java-24-openjdk/bin:/usr/local/src/gradle-2.9/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
 + PATH=/usr/local/src/apache-ant-1.9.5/bin:/usr/lib/jvm/java-24-openjdk/bin:/usr/local/src/gradle-2.9/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
 ++ date
-+ echo -e '\n\nThu May 15 06:44:19 PM EDT 2025: now start nightly benchmarks'
++ echo -e '\n\nThu May 15 06:45:22 PM EDT 2025: now start nightly benchmarks'
 
 
-Thu May 15 06:44:19 PM EDT 2025: now start nightly benchmarks
+Thu May 15 06:45:22 PM EDT 2025: now start nightly benchmarks
 + pkill java
 + true
 + pkill mencoder
@@ -23,33 +23,5 @@ Thu May 15 06:44:19 PM EDT 2025: now start nightly benchmarks
 + echo 'NOTE: not git pulling!! -- fix me once we debug #14630'
 NOTE: not git pulling!! -- fix me once we debug #14630
 + ../gradlew clean
-WARNING: A restricted method in java.lang.System has been called
-WARNING: java.lang.System::load has been called by net.rubygrapefruit.platform.internal.NativeLibraryLoader in an unnamed module (file:/home/mike/.gradle/wrapper/dists/gradle-8.10-bin/deqhafrv1ntovfmgh0nh3npr9/gradle-8.10/lib/native-platform-0.22-milestone-26.jar)
-WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
-WARNING: Restricted methods will be blocked in a future release unless native access is enabled
-
-Starting a Gradle Daemon (subsequent builds will be faster)
-
-> Task :build-infra:compileJava
-Note: /l/trunk.nightly/build-tools/build-infra/src/main/java/org/apache/lucene/gradle/Checksum.java uses or overrides a deprecated API.
-Note: Recompile with -Xlint:deprecation for details.
-
-> Task :build-infra:pluginDescriptors
-> Task :build-infra:processResources
-> Task :build-infra:classes
-> Task :build-infra:jar
-
-FAILURE: Build failed with an exception.
-
-* What went wrong:
-BUG! exception in phase 'semantic analysis' in source unit '_BuildScript_' Unsupported class file major version 68
-> Unsupported class file major version 68
-
-* Try:
-> Run with --stacktrace option to get the stack trace.
-> Run with --info or --debug option to get more log output.
-> Get more help at https://help.gradle.org.
-
-BUILD FAILED in 5s
-4 actionable tasks: 4 executed
+ERROR: java version must be 23, your version: 24
 + cp /l/logs.nightly/all.log /l/reports.nightly
