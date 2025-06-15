@@ -11,10 +11,10 @@ Filesystem      Size  Used Avail Use% Mounted on
 + export PATH=/usr/local/src/apache-ant-1.9.5/bin:/usr/lib/jvm/java-24-openjdk/bin:/usr/local/src/gradle-2.9/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
 + PATH=/usr/local/src/apache-ant-1.9.5/bin:/usr/lib/jvm/java-24-openjdk/bin:/usr/local/src/gradle-2.9/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
 ++ date
-+ echo -e '\n\nSat Jun 14 06:00:05 PM EDT 2025: now start nightly benchmarks'
++ echo -e '\n\nSun Jun 15 06:00:05 PM EDT 2025: now start nightly benchmarks'
 
 
-Sat Jun 14 06:00:05 PM EDT 2025: now start nightly benchmarks
+Sun Jun 15 06:00:05 PM EDT 2025: now start nightly benchmarks
 + pkill java
 + true
 + pkill mencoder
@@ -26,380 +26,77 @@ Your branch is up to date with 'origin/main'.
 + git pull origin main
 From https://gitbox.apache.org/repos/asf/lucene
  * branch                    main       -> FETCH_HEAD
-   1584c05b27a..aca9749e902  main       -> origin/main
-Updating 1584c05b27a..aca9749e902
+   aca9749e902..c8147c9e6fa  main       -> origin/main
+Updating aca9749e902..c8147c9e6fa
 Fast-forward
- CHANGES-record.md                                  | 112 ++++
- build-options.properties                           |  16 +
- build-tools/build-infra-shadow/build.gradle        |  79 +++
- build-tools/build-infra-shadow/src/java/keep.me    |   2 +
- build-tools/build-infra/build.gradle               |  50 +-
- build-tools/build-infra/settings.gradle            |   8 +-
- .../groovy/lucene.all-projects.conventions.gradle  |  36 +-
- .../lucene.datasets.external-datasets.gradle       | 111 ++--
- .../lucene.documentation.changes-to-html.gradle    |  31 +-
- .../lucene.documentation.check-broken-links.gradle |  14 +-
- .../src/main/groovy/lucene.documentation.gradle    |  67 ++-
- .../groovy/lucene.documentation.markdown.gradle    |  74 +--
- .../lucene.documentation.render-javadoc.gradle     | 308 ++++++----
- .../groovy/lucene.hacks.downloader-retries.gradle  |  19 +-
- .../main/groovy/lucene.hacks.dummy-outputs.gradle  |  33 +-
- .../lucene.hacks.turbocharge-jvm-opts.gradle       |  75 +++
- .../groovy/lucene.hacks.wipe-gradle-temp.gradle    |  76 +++
- .../build-infra/src/main/groovy/lucene.help.gradle | 129 +++++
- .../src/main/groovy/lucene.ide.eclipse.gradle      | 153 +++++
- .../main/groovy/lucene.ide.intellij-idea.gradle    |  47 +-
- .../groovy/lucene.java-projects.conventions.gradle |  23 +-
- .../lucene.java.alternative-jdk-support.gradle     |  86 +--
- .../src/main/groovy/lucene.java.beasting.gradle    |  58 +-
- .../src/main/groovy/lucene.java.core.mrjar.gradle  |  30 +-
- .../src/main/groovy/lucene.java.coverage.gradle    |  53 +-
- .../groovy/lucene.java.fail-on-no-tests.gradle     |  56 +-
- .../main/groovy/lucene.java.folder-layout.gradle   |  36 +-
- .../main/groovy/lucene.java.jar-manifest.gradle    |  80 +++
- .../src/main/groovy/lucene.java.javac.gradle       |  88 +++
- .../src/main/groovy/lucene.java.modules.gradle     | 176 +++---
- .../lucene.java.per-project-test-summary.gradle    |  27 +-
- .../src/main/groovy/lucene.java.profiling.gradle   |  72 +++
- .../lucene.java.show-failed-tests-at-end.gradle    |  72 +++
- .../groovy/lucene.java.slowest-tests-at-end.gradle |  44 +-
- .../lucene.java.tests-and-randomization.gradle     | 342 +++++++++++
- .../groovy/lucene.misc.measure-task-times.gradle   |  71 ++-
- .../src/main/groovy/lucene.misc.pylucene.gradle    |   4 +-
- .../lucene.publications.maven-to-local-m2.gradle   |  10 +-
- ...ene.publications.maven-to-nexus-releases.gradle |  79 +++
- ...ne.publications.maven-to-nexus-snapshots.gradle |  77 +++
- .../main/groovy/lucene.publications.maven.gradle   | 120 +++-
- .../src/main/groovy/lucene.regenerate.antlr.gradle |  37 +-
- .../lucene.regenerate.extract-jdk-apis.gradle      |  21 +-
- .../main/groovy/lucene.regenerate.forUtil.gradle   | 119 ++--
- .../src/main/groovy/lucene.regenerate.gradle       | 284 ++++++++++
- .../src/main/groovy/lucene.regenerate.icu.gradle   |  94 +--
- .../main/groovy/lucene.regenerate.javacc.gradle    |  65 ++-
- .../src/main/groovy/lucene.regenerate.jflex.gradle |  97 ++--
- .../main/groovy/lucene.regenerate.kuromoji.gradle  |  42 +-
- .../src/main/groovy/lucene.regenerate.moman.gradle |  40 +-
- .../src/main/groovy/lucene.regenerate.nori.gradle  |  19 +-
- .../main/groovy/lucene.regenerate.snowball.gradle  |  37 +-
- .../lucene.regenerate.unicode-test-classes.gradle  |  32 +-
- .../lucene.root-project.check-environment.gradle   |  88 +++
- .../main/groovy/lucene.root-project.setup.gradle   | 262 +++++++++
- .../main/groovy/lucene.validation.ecj-lint.gradle  | 191 +++++++
- .../groovy/lucene.validation.error-prone.gradle    | 631 +++++++++++++++++++++
- .../groovy/lucene.validation.forbidden-apis.gradle | 181 ++++++
- ...ucene.validation.gradle-versions-cleanup.gradle |  57 ++
- ...alidation.gradlew-scripts-customizations.gradle |  35 +-
- .../groovy/lucene.validation.jar-checks.gradle     | 162 +++---
- .../main/groovy/lucene.validation.lockfile.gradle  |  70 +--
- .../src/main/groovy/lucene.validation.owasp.gradle |  40 +-
- .../groovy/lucene.validation.rat-sources.gradle    | 254 +++++++++
- .../lucene.validation.source-patterns.gradle       | 117 ++--
- .../lucene.validation.spotless-groovy.gradle       |  56 ++
- .../groovy/lucene.validation.spotless-java.gradle  | 108 ++++
- .../lucene/gradle/ErrorReportingTestListener.java  |  36 +-
- .../org/apache/lucene/gradle/ProfileResults.java   |   4 +-
- .../lucene/gradle/buildinfra/BuildInfraPlugin.java |  59 --
- build-tools/missing-doclet/build.gradle            |  31 -
- .../{settings.gradle => src/java/module-info.java} |  11 +-
- .../apache/lucene/missingdoclet/MissingDoclet.java |   4 +-
- .../apache/lucene/missingdoclet/package-info.java  |   3 +
- build.gradle                                       | 254 +++------
- dev-tools/scripts/buildAndPushRelease.py           |   2 +-
- dev-tools/scripts/releaseWizard.yaml               |   2 +-
- gradle/{ge.gradle => develocity.gradle}            |   0
- .../{java21/package-list => java-24/element-list}  |   6 +-
- .../render-javadoc/junit-4.13.2/package-list       |  20 +
- .../render-javadoc/junit/package-list              |   7 -
- gradle/generation/local-settings.gradle            |  52 --
- gradle/generation/regenerate.gradle                | 275 ---------
- gradle/globals.gradle                              | 152 -----
- gradle/hacks/hashmapAssertions.gradle              |  33 --
- gradle/hacks/turbocharge-jvm-opts.gradle           |  69 ---
- gradle/hacks/wipe-temp.gradle                      |  76 ---
- gradle/help.gradle                                 |  72 ---
- gradle/ide/eclipse.gradle                          | 141 -----
- gradle/java/folder-layout.gradle                   |  50 --
- gradle/java/jar-manifest.gradle                    |  84 ---
- gradle/java/javac.gradle                           |  89 ---
- gradle/java/modules-debugging.gradle               |  84 ---
- gradle/libs.versions.toml                          |   5 +-
- gradle/maven/maven-to-nexus-releases.gradle        |  79 ---
- gradle/maven/maven-to-nexus-snapshots.gradle       |  76 ---
- gradle/maven/publications.gradle                   |  68 ---
- gradle/maven/signing.gradle                        |  38 --
- .../extract-jdk-apis/ExtractJdkApis.java           |   0
- .../icu/GenerateCaseFolding.groovy                 |   0
- .../icu/GenerateUnicodeProps.groovy                |   0
- .../{generation => regenerate}/jflex/htmlentity.py |   0
- .../jflex/skeleton.default.txt                     |   0
- .../jflex/skeleton.disable.buffer.expansion.txt    |   0
- .../moman/createLevAutomata.py                     |   0
- .../moman/gen_BulkOperation.py                     |   0
- .../moman/gen_Packed64SingleBlock.py               |   0
- .../snowball/snowball.sh                           |   0
- gradle/template.gradle.properties                  |   8 +-
- gradle/testing/defaults-tests.gradle               | 239 --------
- gradle/testing/failed-tests-at-end.gradle          |  59 --
- .../{defaults-tests => }/logging.properties        |   0
- gradle/testing/profiling.gradle                    |  58 --
- gradle/testing/randomization.gradle                | 288 ----------
- gradle/testing/randomization/policies/tests.policy | 123 ----
- gradle/validation/check-environment.gradle         |  59 --
- gradle/validation/ecj-lint.gradle                  | 180 ------
- gradle/validation/error-prone.gradle               | 615 --------------------
- gradle/validation/forbidden-apis.gradle            | 183 ------
- gradle/validation/git-status.gradle                | 106 ----
- .../exclusions.xml                                 |   0
- gradle/validation/precommit.gradle                 |  49 --
- gradle/validation/rat-sources.gradle               | 245 --------
- gradle/validation/spotless.gradle                  | 118 ----
- gradlew                                            |   3 -
- gradlew.bat                                        |   3 -
- help/localSettings.txt                             |  37 +-
- help/publishing.txt                                |  14 +-
- help/tests.txt                                     |   8 +-
- lucene/analysis.tests/build.gradle                 |   2 -
- lucene/analysis/common/build.gradle                |  85 ++-
- .../checksums/generateClassicTokenizer.json        |   2 +-
- .../checksums/generateHTMLCharacterEntities.json   |   2 +-
- .../checksums/generateHTMLStripCharFilter.json     |   2 +-
- .../src/generated/checksums/generateTlds.json      |   4 +-
- .../checksums/generateUAX29URLEmailTokenizer.json  |   4 +-
- .../checksums/generateWikipediaTokenizer.json      |   2 +-
- .../apache/lucene/analysis/email/ASCIITLD.jflex    |   3 +-
- .../test/org/apache/lucene/analysis/email/TLDs.txt |   1 -
- lucene/analysis/icu/build.gradle                   |   2 +-
- lucene/analysis/kuromoji/build.gradle              |   2 +-
- lucene/analysis/morfologik.tests/build.gradle      |   2 +-
- lucene/analysis/morfologik/build.gradle            |   2 +-
- lucene/analysis/nori/build.gradle                  |   3 +-
- lucene/analysis/opennlp/build.gradle               |  19 +-
- lucene/analysis/phonetic/build.gradle              |   5 +-
- lucene/analysis/smartcn/build.gradle               |   4 +-
- lucene/analysis/stempel/build.gradle               |   2 +-
- lucene/backward-codecs/build.gradle                |   2 +-
- lucene/benchmark-jmh/build.gradle                  |  32 +-
- lucene/benchmark/build.gradle                      |  32 +-
- lucene/build.gradle                                |   4 -
- lucene/classification/build.gradle                 |   2 +-
- lucene/codecs/build.gradle                         |   6 +-
- lucene/core.tests/build.gradle                     |   2 +-
- lucene/core/build.gradle                           |   2 +-
- .../checksums/generateStandardTokenizer.json       |   2 +-
- .../core/src/generated/checksums/utilGenLev.json   |   2 +-
- .../src/generated/checksums/utilGenPacked.json     |   4 +-
- .../apache/lucene/index/Test2BPostingsBytes.java   |   2 +-
- .../test/org/apache/lucene/index/Test2BTerms.java  |   2 +-
- lucene/demo/build.gradle                           |   2 +-
- lucene/distribution.tests/build.gradle             |  22 +-
- lucene/distribution/binary-release.gradle          |   6 +-
- lucene/distribution/build.gradle                   |  92 ++-
- lucene/distribution/collect-maven-artifacts.gradle |   8 +-
- lucene/distribution/source-release.gradle          |  50 --
- .../documentation/src/markdown/index.template.md   |   4 +-
- lucene/expressions/build.gradle                    |   2 +-
- lucene/facet/build.gradle                          |   2 +-
- lucene/grouping/build.gradle                       |   2 +-
- lucene/highlighter/build.gradle                    |   2 +-
- lucene/join/build.gradle                           |   4 +-
- lucene/luke/build.gradle                           |  62 +-
- lucene/memory/build.gradle                         |   4 +-
- lucene/misc/build.gradle                           |   4 +-
- lucene/monitor/build.gradle                        |   2 +-
- lucene/queries/build.gradle                        |   3 +-
- lucene/queryparser/build.gradle                    |   2 +-
- .../generated/checksums/javaccParserFlexible.json  |   2 +-
- .../flexible/standard/parser/ParseException.java   |   8 +-
- lucene/replicator/build.gradle                     |   3 -
- lucene/sandbox/build.gradle                        |   2 +-
- lucene/spatial-extras/build.gradle                 |   4 +-
- lucene/spatial-test-fixtures/build.gradle          |   2 +-
- lucene/spatial3d/build.gradle                      |   2 +-
- lucene/suggest/build.gradle                        |   4 +-
- lucene/test-framework/build.gradle                 |   2 +-
- settings.gradle                                    |  21 +-
- versions.lock                                      | 144 ++---
- 190 files changed, 5602 insertions(+), 5567 deletions(-)
- create mode 100644 CHANGES-record.md
- create mode 100644 build-options.properties
- create mode 100644 build-tools/build-infra-shadow/build.gradle
- create mode 100644 build-tools/build-infra-shadow/src/java/keep.me
- rename gradle/hacks/gradle-archives.gradle => build-tools/build-infra/src/main/groovy/lucene.all-projects.conventions.gradle (51%)
- rename gradle/datasets/external-datasets.gradle => build-tools/build-infra/src/main/groovy/lucene.datasets.external-datasets.gradle (67%)
- rename gradle/documentation/changes-to-html.gradle => build-tools/build-infra/src/main/groovy/lucene.documentation.changes-to-html.gradle (79%)
- rename gradle/documentation/check-broken-links.gradle => build-tools/build-infra/src/main/groovy/lucene.documentation.check-broken-links.gradle (85%)
- rename gradle/documentation/documentation.gradle => build-tools/build-infra/src/main/groovy/lucene.documentation.gradle (53%)
- rename gradle/documentation/markdown.gradle => build-tools/build-infra/src/main/groovy/lucene.documentation.markdown.gradle (83%)
- rename gradle/documentation/render-javadoc.gradle => build-tools/build-infra/src/main/groovy/lucene.documentation.render-javadoc.gradle (62%)
- rename gradle/hacks/downloader-retries.gradle => build-tools/build-infra/src/main/groovy/lucene.hacks.downloader-retries.gradle (67%)
- rename gradle/hacks/dummy-outputs.gradle => build-tools/build-infra/src/main/groovy/lucene.hacks.dummy-outputs.gradle (68%)
- create mode 100644 build-tools/build-infra/src/main/groovy/lucene.hacks.turbocharge-jvm-opts.gradle
- create mode 100644 build-tools/build-infra/src/main/groovy/lucene.hacks.wipe-gradle-temp.gradle
- create mode 100644 build-tools/build-infra/src/main/groovy/lucene.help.gradle
- create mode 100644 build-tools/build-infra/src/main/groovy/lucene.ide.eclipse.gradle
- rename gradle/ide/intellij-idea.gradle => build-tools/build-infra/src/main/groovy/lucene.ide.intellij-idea.gradle (59%)
- rename lucene/distribution/artifact-signing.gradle => build-tools/build-infra/src/main/groovy/lucene.java-projects.conventions.gradle (61%)
- rename gradle/testing/alternative-jdk-support.gradle => build-tools/build-infra/src/main/groovy/lucene.java.alternative-jdk-support.gradle (56%)
- rename gradle/testing/beasting.gradle => build-tools/build-infra/src/main/groovy/lucene.java.beasting.gradle (64%)
- rename gradle/java/core-mrjar.gradle => build-tools/build-infra/src/main/groovy/lucene.java.core.mrjar.gradle (80%)
- rename gradle/testing/coverage.gradle => build-tools/build-infra/src/main/groovy/lucene.java.coverage.gradle (54%)
- rename gradle/testing/fail-on-no-tests.gradle => build-tools/build-infra/src/main/groovy/lucene.java.fail-on-no-tests.gradle (56%)
- rename gradle/testing/per-project-summary.gradle => build-tools/build-infra/src/main/groovy/lucene.java.folder-layout.gradle (57%)
- create mode 100644 build-tools/build-infra/src/main/groovy/lucene.java.jar-manifest.gradle
- create mode 100644 build-tools/build-infra/src/main/groovy/lucene.java.javac.gradle
- rename gradle/java/modules.gradle => build-tools/build-infra/src/main/groovy/lucene.java.modules.gradle (85%)
- rename gradle/conventions.gradle => build-tools/build-infra/src/main/groovy/lucene.java.per-project-test-summary.gradle (62%)
- create mode 100644 build-tools/build-infra/src/main/groovy/lucene.java.profiling.gradle
- create mode 100644 build-tools/build-infra/src/main/groovy/lucene.java.show-failed-tests-at-end.gradle
- rename gradle/testing/slowest-tests-at-end.gradle => build-tools/build-infra/src/main/groovy/lucene.java.slowest-tests-at-end.gradle (63%)
- create mode 100644 build-tools/build-infra/src/main/groovy/lucene.java.tests-and-randomization.gradle
- rename gradle/validation/measure-task-times.gradle => build-tools/build-infra/src/main/groovy/lucene.misc.measure-task-times.gradle (50%)
- rename gradle/pylucene/pylucene.gradle => build-tools/build-infra/src/main/groovy/lucene.misc.pylucene.gradle (96%)
- rename gradle/maven/maven-to-local-m2.gradle => build-tools/build-infra/src/main/groovy/lucene.publications.maven-to-local-m2.gradle (88%)
- create mode 100644 build-tools/build-infra/src/main/groovy/lucene.publications.maven-to-nexus-releases.gradle
- create mode 100644 build-tools/build-infra/src/main/groovy/lucene.publications.maven-to-nexus-snapshots.gradle
- rename gradle/maven/publications-maven.gradle => build-tools/build-infra/src/main/groovy/lucene.publications.maven.gradle (53%)
- rename gradle/generation/antlr.gradle => build-tools/build-infra/src/main/groovy/lucene.regenerate.antlr.gradle (79%)
- rename gradle/generation/extract-jdk-apis.gradle => build-tools/build-infra/src/main/groovy/lucene.regenerate.extract-jdk-apis.gradle (78%)
- rename gradle/generation/forUtil.gradle => build-tools/build-infra/src/main/groovy/lucene.regenerate.forUtil.gradle (73%)
- create mode 100644 build-tools/build-infra/src/main/groovy/lucene.regenerate.gradle
- rename gradle/generation/icu.gradle => build-tools/build-infra/src/main/groovy/lucene.regenerate.icu.gradle (85%)
- rename gradle/generation/javacc.gradle => build-tools/build-infra/src/main/groovy/lucene.regenerate.javacc.gradle (89%)
- rename gradle/generation/jflex.gradle => build-tools/build-infra/src/main/groovy/lucene.regenerate.jflex.gradle (84%)
- rename gradle/generation/kuromoji.gradle => build-tools/build-infra/src/main/groovy/lucene.regenerate.kuromoji.gradle (79%)
- rename gradle/generation/moman.gradle => build-tools/build-infra/src/main/groovy/lucene.regenerate.moman.gradle (80%)
- rename gradle/generation/nori.gradle => build-tools/build-infra/src/main/groovy/lucene.regenerate.nori.gradle (88%)
- rename gradle/generation/snowball.gradle => build-tools/build-infra/src/main/groovy/lucene.regenerate.snowball.gradle (84%)
- rename gradle/generation/unicode-test-classes.gradle => build-tools/build-infra/src/main/groovy/lucene.regenerate.unicode-test-classes.gradle (82%)
- create mode 100644 build-tools/build-infra/src/main/groovy/lucene.root-project.check-environment.gradle
- create mode 100644 build-tools/build-infra/src/main/groovy/lucene.root-project.setup.gradle
- create mode 100644 build-tools/build-infra/src/main/groovy/lucene.validation.ecj-lint.gradle
- create mode 100644 build-tools/build-infra/src/main/groovy/lucene.validation.error-prone.gradle
- create mode 100644 build-tools/build-infra/src/main/groovy/lucene.validation.forbidden-apis.gradle
- create mode 100644 build-tools/build-infra/src/main/groovy/lucene.validation.gradle-versions-cleanup.gradle
- rename gradle/validation/gradlew-scripts-tweaked.gradle => build-tools/build-infra/src/main/groovy/lucene.validation.gradlew-scripts-customizations.gradle (55%)
- rename gradle/validation/jar-checks.gradle => build-tools/build-infra/src/main/groovy/lucene.validation.jar-checks.gradle (74%)
- rename gradle/validation/dependencies.gradle => build-tools/build-infra/src/main/groovy/lucene.validation.lockfile.gradle (58%)
- rename gradle/validation/owasp-dependency-check.gradle => build-tools/build-infra/src/main/groovy/lucene.validation.owasp.gradle (50%)
- create mode 100644 build-tools/build-infra/src/main/groovy/lucene.validation.rat-sources.gradle
- rename gradle/validation/validate-source-patterns.gradle => build-tools/build-infra/src/main/groovy/lucene.validation.source-patterns.gradle (82%)
- create mode 100644 build-tools/build-infra/src/main/groovy/lucene.validation.spotless-groovy.gradle
- create mode 100644 build-tools/build-infra/src/main/groovy/lucene.validation.spotless-java.gradle
- delete mode 100644 build-tools/build-infra/src/main/java/org/apache/lucene/gradle/buildinfra/BuildInfraPlugin.java
- rename build-tools/missing-doclet/{settings.gradle => src/java/module-info.java} (81%)
- rename build-tools/missing-doclet/src/{main => }/java/org/apache/lucene/missingdoclet/MissingDoclet.java (99%)
- rename gradle/validation/spotless/asl-header.txt => build-tools/missing-doclet/src/java/org/apache/lucene/missingdoclet/package-info.java (88%)
- rename gradle/{ge.gradle => develocity.gradle} (100%)
- rename gradle/documentation/render-javadoc/{java21/package-list => java-24/element-list} (97%)
- create mode 100644 gradle/documentation/render-javadoc/junit-4.13.2/package-list
- delete mode 100644 gradle/documentation/render-javadoc/junit/package-list
- delete mode 100644 gradle/generation/local-settings.gradle
- delete mode 100644 gradle/generation/regenerate.gradle
- delete mode 100644 gradle/globals.gradle
- delete mode 100644 gradle/hacks/hashmapAssertions.gradle
- delete mode 100644 gradle/hacks/turbocharge-jvm-opts.gradle
- delete mode 100644 gradle/hacks/wipe-temp.gradle
- delete mode 100644 gradle/help.gradle
- delete mode 100644 gradle/ide/eclipse.gradle
- delete mode 100644 gradle/java/folder-layout.gradle
- delete mode 100644 gradle/java/jar-manifest.gradle
- delete mode 100644 gradle/java/javac.gradle
- delete mode 100644 gradle/java/modules-debugging.gradle
- delete mode 100644 gradle/maven/maven-to-nexus-releases.gradle
- delete mode 100644 gradle/maven/maven-to-nexus-snapshots.gradle
- delete mode 100644 gradle/maven/publications.gradle
- delete mode 100644 gradle/maven/signing.gradle
- rename gradle/{generation => regenerate}/extract-jdk-apis/ExtractJdkApis.java (100%)
- rename gradle/{generation => regenerate}/icu/GenerateCaseFolding.groovy (100%)
- rename gradle/{generation => regenerate}/icu/GenerateUnicodeProps.groovy (100%)
- rename gradle/{generation => regenerate}/jflex/htmlentity.py (100%)
- rename gradle/{generation => regenerate}/jflex/skeleton.default.txt (100%)
- rename gradle/{generation => regenerate}/jflex/skeleton.disable.buffer.expansion.txt (100%)
- rename gradle/{generation => regenerate}/moman/createLevAutomata.py (100%)
- rename gradle/{generation => regenerate}/moman/gen_BulkOperation.py (100%)
- rename gradle/{generation => regenerate}/moman/gen_Packed64SingleBlock.py (100%)
- rename gradle/{generation => regenerate}/snowball/snowball.sh (100%)
- delete mode 100644 gradle/testing/defaults-tests.gradle
- delete mode 100644 gradle/testing/failed-tests-at-end.gradle
- rename gradle/testing/{defaults-tests => }/logging.properties (100%)
- delete mode 100644 gradle/testing/profiling.gradle
- delete mode 100644 gradle/testing/randomization.gradle
- delete mode 100644 gradle/testing/randomization/policies/tests.policy
- delete mode 100644 gradle/validation/check-environment.gradle
- delete mode 100644 gradle/validation/ecj-lint.gradle
- delete mode 100644 gradle/validation/error-prone.gradle
- delete mode 100644 gradle/validation/forbidden-apis.gradle
- delete mode 100644 gradle/validation/git-status.gradle
- rename gradle/validation/{owasp-dependency-check => owasp}/exclusions.xml (100%)
- delete mode 100644 gradle/validation/precommit.gradle
- delete mode 100644 gradle/validation/rat-sources.gradle
- delete mode 100644 gradle/validation/spotless.gradle
- delete mode 100644 lucene/distribution/source-release.gradle
+ lucene/CHANGES.txt                                 |   3 +
+ .../lucene/search/DoubleValuesSourceRescorer.java  | 133 +++++++++++++++++
+ .../java/org/apache/lucene/search/ScoreDoc.java    |  13 ++
+ .../search/TestDoubleValuesSourceRescorer.java     | 161 +++++++++++++++++++++
+ 4 files changed, 310 insertions(+)
+ create mode 100644 lucene/core/src/java/org/apache/lucene/search/DoubleValuesSourceRescorer.java
+ create mode 100644 lucene/core/src/test/org/apache/lucene/search/TestDoubleValuesSourceRescorer.java
 + ../gradlew clean
 Starting a Gradle Daemon (subsequent builds will be faster)
-> Task :build-infra:extractPluginRequests
-> Task :build-infra:generatePluginAdapters
-
-> Task :build-infra:compileJava
-Note: /l/trunk.nightly/build-tools/build-infra/src/main/java/org/apache/lucene/gradle/Checksum.java uses or overrides a deprecated API.
-Note: Recompile with -Xlint:deprecation for details.
-
+> Task :build-infra:extractPluginRequests UP-TO-DATE
+> Task :build-infra:generatePluginAdapters UP-TO-DATE
+> Task :build-infra:compileJava UP-TO-DATE
 > Task :build-infra:compileGroovy NO-SOURCE
-> Task :build-infra:compileGroovyPlugins
-> Task :build-infra:pluginDescriptors
-> Task :build-infra:processResources
-> Task :build-infra:classes
-> Task :build-infra:jar
-> Task :lucene:build-tools:clean
-> Task :lucene:analysis:clean
-> Task :lucene:clean
+> Task :build-infra:compileGroovyPlugins UP-TO-DATE
+> Task :build-infra:pluginDescriptors UP-TO-DATE
+> Task :build-infra:processResources UP-TO-DATE
+> Task :build-infra:classes UP-TO-DATE
+> Task :build-infra:jar UP-TO-DATE
 > Task :lucene:analysis.tests:clean
-> Task :lucene:core.tests:clean
-> Task :lucene:demo:clean
 > Task :lucene:classification:clean
+> Task :lucene:benchmark:clean
+> Task :lucene:clean
+> Task :lucene:core:clean
+> Task :lucene:backward-codecs:clean
+> Task :lucene:demo:clean
+> Task :lucene:analysis:clean
+> Task :lucene:core.tests:clean
+> Task :lucene:build-tools:clean
 > Task :lucene:documentation:clean
 > Task :lucene:distribution:clean
 > Task :lucene:distribution.tests:clean
 > Task :lucene:expressions:clean
-> Task :lucene:memory:clean
-> Task :lucene:grouping:clean
-> Task :lucene:benchmark:clean
-> Task :lucene:join:clean
-> Task :lucene:codecs:clean
-> Task :lucene:benchmark-jmh:clean
-> Task :lucene:facet:clean
+> Task :lucene:luke:clean
 > Task :lucene:highlighter:clean
-> Task :lucene:replicator:clean
+> Task :lucene:grouping:clean
+> Task :lucene:facet:clean
+> Task :lucene:join:clean
+> Task :lucene:memory:clean
+> Task :lucene:queries:clean
 > Task :lucene:misc:clean
 > Task :lucene:monitor:clean
-> Task :lucene:spatial-test-fixtures:clean
-> Task :lucene:luke:clean
-> Task :lucene:analysis:icu:clean
-> Task :lucene:backward-codecs:clean
-> Task :lucene:spatial-extras:clean
-> Task :lucene:suggest:clean
-> Task :lucene:analysis:morfologik.tests:clean
-> Task :lucene:spatial3d:clean
-> Task :lucene:analysis:morfologik:clean
 > Task :lucene:sandbox:clean
+> Task :lucene:replicator:clean
 > Task :lucene:queryparser:clean
-> Task :lucene:build-tools:build-infra-shadow:clean
-> Task :lucene:build-tools:missing-doclet:clean
-> Task :lucene:analysis:phonetic:clean
-> Task :lucene:analysis:opennlp:clean
+> Task :lucene:spatial-test-fixtures:clean
+> Task :lucene:spatial-extras:clean
+> Task :lucene:spatial3d:clean
+> Task :lucene:suggest:clean
+> Task :lucene:analysis:common:clean
+> Task :lucene:test-framework:clean
+> Task :lucene:analysis:icu:clean
+> Task :lucene:analysis:morfologik:clean
 > Task :lucene:analysis:kuromoji:clean
-> Task :lucene:queries:clean
+> Task :lucene:analysis:morfologik.tests:clean
+> Task :lucene:analysis:nori:clean
+> Task :lucene:analysis:opennlp:clean
+> Task :lucene:analysis:phonetic:clean
 > Task :lucene:analysis:smartcn:clean
 > Task :lucene:analysis:stempel:clean
-> Task :lucene:analysis:nori:clean
-> Task :lucene:test-framework:clean
-> Task :lucene:analysis:common:clean
-> Task :lucene:core:clean
+> Task :lucene:build-tools:build-infra-shadow:clean
+> Task :lucene:build-tools:missing-doclet:clean
+> Task :lucene:codecs:clean
+> Task :lucene:benchmark-jmh:clean
 
 [Incubating] Problems report is available at: file:///l/trunk.nightly/build/reports/problems/problems-report.html
 
-BUILD SUCCESSFUL in 31s
-52 actionable tasks: 52 executed
+BUILD SUCCESSFUL in 8s
+52 actionable tasks: 45 executed, 7 up-to-date
 + ../gradlew jar
 + cd /l/util.nightly
 + rm -rf build
@@ -413,14 +110,14 @@ Run gradle test
 + /usr/bin/python3 -uO /l/util.nightly/src/python/runNightlyGradleTestPrecommit.py
 ***USING BIG LINE FILE***
 Using java from: /usr/lib/jvm/java-24-openjdk/bin/
-  gradle test log: /l/logs.nightly/ant_test/2025.06.14.lucene-tests.txt
-  took: 1.8 min
-  gradle precommit log: /l/logs.nightly/ant_test/2025.06.14.precommit.txt
-FAILED; see /l/logs.nightly/ant_test/2025.06.14.precommit.txt.tmp; will try again (4 attempts remain)
-FAILED; see /l/logs.nightly/ant_test/2025.06.14.precommit.txt.tmp; will try again (3 attempts remain)
-FAILED; see /l/logs.nightly/ant_test/2025.06.14.precommit.txt.tmp; will try again (2 attempts remain)
-FAILED; see /l/logs.nightly/ant_test/2025.06.14.precommit.txt.tmp; will try again (1 attempts remain)
-FAILED; see /l/logs.nightly/ant_test/2025.06.14.precommit.txt.tmp
+  gradle test log: /l/logs.nightly/ant_test/2025.06.15.lucene-tests.txt
+  took: 1.9 min
+  gradle precommit log: /l/logs.nightly/ant_test/2025.06.15.precommit.txt
+FAILED; see /l/logs.nightly/ant_test/2025.06.15.precommit.txt.tmp; will try again (4 attempts remain)
+FAILED; see /l/logs.nightly/ant_test/2025.06.15.precommit.txt.tmp; will try again (3 attempts remain)
+FAILED; see /l/logs.nightly/ant_test/2025.06.15.precommit.txt.tmp; will try again (2 attempts remain)
+FAILED; see /l/logs.nightly/ant_test/2025.06.15.precommit.txt.tmp; will try again (1 attempts remain)
+FAILED; see /l/logs.nightly/ant_test/2025.06.15.precommit.txt.tmp
 Traceback (most recent call last):
   File "/l/util.nightly/src/python/runNightlyGradleTestPrecommit.py", line 364, in <module>
     writeGraph()
