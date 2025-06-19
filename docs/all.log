@@ -11,10 +11,10 @@ Filesystem      Size  Used Avail Use% Mounted on
 + export PATH=/usr/local/src/apache-ant-1.9.5/bin:/usr/lib/jvm/java-24-openjdk/bin:/usr/local/src/gradle-2.9/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
 + PATH=/usr/local/src/apache-ant-1.9.5/bin:/usr/lib/jvm/java-24-openjdk/bin:/usr/local/src/gradle-2.9/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
 ++ date
-+ echo -e '\n\nWed Jun 18 06:00:05 PM EDT 2025: now start nightly benchmarks'
++ echo -e '\n\nThu Jun 19 06:00:05 PM EDT 2025: now start nightly benchmarks'
 
 
-Wed Jun 18 06:00:05 PM EDT 2025: now start nightly benchmarks
+Thu Jun 19 06:00:05 PM EDT 2025: now start nightly benchmarks
 + pkill java
 + true
 + pkill mencoder
@@ -26,248 +26,99 @@ Your branch is up to date with 'origin/main'.
 + git pull origin main
 From https://gitbox.apache.org/repos/asf/lucene
  * branch                    main       -> FETCH_HEAD
-   fd5ba47cb24..c78170234fa  main       -> origin/main
-Updating fd5ba47cb24..c78170234fa
+   c78170234fa..3a57b73b6dc  main       -> origin/main
+Updating c78170234fa..3a57b73b6dc
 Fast-forward
- .github/workflows/run-checks-all.yml               |   6 +
- .gitignore                                         |   1 +
- .../lucene.java.tests-and-randomization.gradle     |  14 +-
- .../main/groovy/lucene.regenerate.javacc.gradle    |   7 +-
- .../main/groovy/lucene.root-project.setup.gradle   |  12 +-
- .../main/groovy/lucene.validation.ecj-lint.gradle  |   4 +
- .../groovy/lucene.validation.error-prone.gradle    |   1 +
- .../groovy/lucene.validation.rat-sources.gradle    |  12 +-
- .../groovy/lucene.validation.spotless-java.gradle  |   7 +-
- .../gradle/plugins/astgrep/AstGrepPlugin.java      |  97 +++++++++
- .../gradle/plugins/gitinfo/GitInfoExtension.java   |  16 ++
- .../gradle/plugins/gitinfo/GitInfoPlugin.java      |  16 ++
- .../gradle/plugins/gitinfo/GitInfoValueSource.java |  16 ++
- .../plugins/help/BuildOptionGroupsPlugin.java      |  16 ++
- dev-tools/scripts/addBackcompatIndexes.py          |   2 +-
- gradle/libs.versions.toml                          |   2 +-
- gradle/validation/ast-grep/rules/.gitignore        |   0
- .../ast-grep/rules/no-wildcard-imports.sg.yaml     |  16 ++
- gradle/validation/ast-grep/sgconfig.yml            |   5 +
- gradle/validation/ast-grep/tests/.gitignore        |   0
- .../tests/test-no-wildcard-imports.sg.yaml         |   7 +
- help/formatting.txt                                |  10 +
- lucene/CHANGES.txt                                 |  14 ++
- .../lucene/analysis/ar/ArabicNormalizer.java       |   2 +-
- .../apache/lucene/analysis/ar/ArabicStemmer.java   |   2 +-
- .../lucene/analysis/bg/BulgarianStemmer.java       |   2 +-
- .../apache/lucene/analysis/cz/CzechStemmer.java    |   2 +-
- .../lucene/analysis/fa/PersianNormalizer.java      |   2 +-
- .../apache/lucene/analysis/fa/PersianStemmer.java  |   2 +-
- .../lucene/analysis/fi/FinnishLightStemmer.java    |   3 +-
- .../lucene/analysis/fr/FrenchLightStemmer.java     |   3 +-
- .../apache/lucene/analysis/hi/HindiNormalizer.java |   2 +-
- .../apache/lucene/analysis/hi/HindiStemmer.java    |   2 +-
- .../lucene/analysis/hu/HungarianLightStemmer.java  |   2 +-
- .../lucene/analysis/id/IndonesianStemmer.java      |   4 +-
- .../apache/lucene/analysis/in/IndicNormalizer.java |  12 +-
- .../apache/lucene/analysis/lv/LatvianStemmer.java  |   2 +-
- .../miscellaneous/HyphenatedWordsFilter.java       |   3 +-
- .../WordDelimiterGraphFilterFactory.java           |  18 +-
- .../lucene/analysis/no/NorwegianLightStemmer.java  |   2 +-
- .../analysis/no/NorwegianMinimalStemmer.java       |   2 +-
- .../lucene/analysis/pt/PortugueseLightStemmer.java |   2 +-
- .../apache/lucene/analysis/pt/RSLPStemmerBase.java |   2 +-
- .../lucene/analysis/ru/RussianLightStemmer.java    |   2 +-
- .../apache/lucene/analysis/sr/SerbianAnalyzer.java |   9 +-
- .../lucene/analysis/sv/SwedishLightStemmer.java    |   2 +-
- .../analysis/de/TestGermanMinimalStemFilter.java   |   2 +-
- .../lucene/analysis/de/TestGermanStemFilter.java   |   2 +-
- .../lucene/analysis/en/TestPorterStemFilter.java   |   2 +-
- .../analysis/es/TestSpanishLightStemFilter.java    |   2 +-
- .../analysis/fi/TestFinnishLightStemFilter.java    |   2 +-
- .../analysis/fr/TestFrenchLightStemFilter.java     |   2 +-
- .../analysis/fr/TestFrenchMinimalStemFilter.java   |   2 +-
- .../analysis/hu/TestHungarianLightStemFilter.java  |   2 +-
- .../analysis/it/TestItalianLightStemFilter.java    |   2 +-
- .../miscellaneous/TestCapitalizationFilter.java    |   3 +-
- .../TestScandinavianNormalizationFilter.java       |   4 +-
- .../miscellaneous/TestScandinavianNormalizer.java  |   5 +-
- .../analysis/no/TestNorwegianLightStemFilter.java  |   2 +-
- .../no/TestNorwegianMinimalStemFilter.java         |   2 +-
- .../no/TestNorwegianNormalizationFilter.java       |   4 +-
- .../analysis/pt/TestPortugueseLightStemFilter.java |   2 +-
- .../pt/TestPortugueseMinimalStemFilter.java        |   2 +-
- .../query/TestQueryAutoStopWordAnalyzer.java       |   3 +-
- .../analysis/ru/TestRussianLightStemFilter.java    |   2 +-
- .../analysis/sv/TestSwedishLightStemFilter.java    |   2 +-
- .../analysis/sv/TestSwedishMinimalStemFilter.java  |   5 +-
- .../analysis/synonym/TestSynonymGraphFilter.java   |   4 +-
- .../analysis/synonym/TestSynonymMapFilter.java     |   5 +-
- .../analysis/wikipedia/TestWikipediaTokenizer.java |  12 +-
- .../lucene/analysis/ja/JapaneseTokenizer.java      |   5 +-
- .../lucene/analysis/ja/TestJapaneseTokenizer.java  |   5 +-
- .../analysis/opennlp/OpenNLPLemmatizerFilter.java  |   5 +-
- .../backward_codecs/lucene101/ForDeltaUtil.java    |  36 +++-
- .../backward_codecs/lucene912/ForDeltaUtil.java    |  45 ++++-
- .../lucene101/Lucene101PostingsWriter.java         |   3 +-
- .../backward_codecs/lucene60/bkd/BKDWriter60.java  |  35 ++--
- .../lucene90/Lucene90RWSegmentInfoFormat.java      |  15 +-
- .../backward_index/TestGenerateBwcIndices.java     |   2 +-
- .../lucene/benchmark/jmh/RectangleBenchmark.java   |  11 +-
- .../lucene/benchmark/jmh/SloppySinBenchmark.java   |  11 +-
- .../benchmark/jmh/VectorScorerBenchmark.java       |  14 +-
- .../lucene/benchmark/jmh/VectorUtilBenchmark.java  |  13 +-
- .../lucene/benchmark/quality/trec/QueryDriver.java |   6 +-
- .../classification/utils/NearestFuzzyQuery.java    |  29 ++-
- .../simpletext/SimpleTextTermVectorsReader.java    |  17 +-
- .../sharedterms/STUniformSplitTermsWriter.java     |  51 ++---
- .../lucene/codecs/lucene103/ForDeltaUtil.java      |  36 +++-
- .../codecs/lucene103/Lucene103PostingsWriter.java  |   2 +-
- .../Lucene99ScalarQuantizedVectorsWriter.java      |   4 +-
- .../codecs/lucene99/Lucene99SegmentInfoFormat.java |  15 +-
- .../java/org/apache/lucene/index/DocIDMerger.java  |  13 +-
- .../apache/lucene/index/DocValuesFieldUpdates.java |  23 +--
- .../java/org/apache/lucene/index/MultiSorter.java  |  35 ++--
- .../apache/lucene/internal/hppc/IntHashSet.java    |  11 +-
- .../apache/lucene/internal/hppc/IntIntHashMap.java |  12 +-
- .../lucene/internal/hppc/IntLongHashMap.java       |  11 +-
- .../lucene/internal/hppc/IntObjectHashMap.java     |  12 +-
- .../apache/lucene/internal/hppc/LongHashSet.java   |  11 +-
- .../lucene/internal/hppc/LongObjectHashMap.java    |  12 +-
- .../apache/lucene/search/DisjunctionScorer.java    |   8 +-
- .../apache/lucene/search/DoubleValuesSource.java   |  17 --
- ...PrecisionFloatVectorSimilarityValuesSource.java | 147 ++++++++++++++
- .../apache/lucene/search/SloppyPhraseMatcher.java  |  20 +-
- .../org/apache/lucene/search/SynonymQuery.java     |  17 +-
- .../org/apache/lucene/search/TermInSetQuery.java   |   9 +-
- .../src/java/org/apache/lucene/util/Constants.java |  33 +---
- .../PhraseQueue.java => util/FloatComparator.java} |  37 ++--
- .../org/apache/lucene/util/MergedIterator.java     |  26 +--
- .../org/apache/lucene/util/NamedThreadFactory.java |   9 +-
- .../java/org/apache/lucene/util/PriorityQueue.java |  39 ++++
- .../org/apache/lucene/util/RamUsageEstimator.java  |  20 +-
- .../java/org/apache/lucene/util/VirtualMethod.java |   7 -
- .../java/org/apache/lucene/util/bkd/BKDWriter.java |  35 ++--
- .../vectorization/PanamaVectorizationProvider.java |  23 +--
- .../org/apache/lucene/index/TestReadOnlyIndex.java |  15 --
- .../lucene/internal/hppc/TestLongHashSet.java      |   7 +-
- ...PrecisionFloatVectorSimilarityValuesSource.java | 217 +++++++++++++++++++++
- .../org/apache/lucene/search/TestTaskExecutor.java |   9 +-
- .../search/TestVectorSimilarityValuesSource.java   |   4 +-
- .../apache/lucene/util/TestClassLoaderUtils.java   |   6 +-
- .../apache/lucene/facet/LongValueFacetCounts.java  |  13 +-
- .../facet/facetset/MatchingFacetSetsCounts.java    |   8 +-
- .../lucene/facet/range/RangeFacetCounts.java       |  15 +-
- .../rangeonrange/RangeOnRangeFacetCounts.java      |  15 +-
- .../AbstractSortedSetDocValueFacetCounts.java      |  17 +-
- .../lucene/facet/taxonomy/TaxonomyFacets.java      |  17 +-
- .../facet/facetset/TestExactFacetSetMatcher.java   |   7 +-
- .../facet/facetset/TestRangeFacetSetMatcher.java   |   7 +-
- .../lucene/search/highlight/Highlighter.java       |  20 +-
- .../lucene/search/uhighlight/PhraseHelper.java     |   9 +-
- .../highlight/TestOffsetLimitTokenFilter.java      |   2 +-
- .../search/matchhighlight/TestPassageSelector.java |   5 +-
- .../vectorhighlight/TestIndexTimeSynonym.java      |   3 +-
- .../vectorhighlight/TestSimpleFragListBuilder.java |   6 +-
- .../apache/lucene/search/join/TestBlockJoin.java   |  20 +-
- .../apache/lucene/search/join/TestJoinUtil.java    |  25 ++-
- .../join/TestParentsChildrenBlockJoinQuery.java    |  17 +-
- .../apache/lucene/index/memory/MemoryIndex.java    |  32 ++-
- .../memory/TestMemoryIndexAgainstDirectory.java    |  21 +-
- .../misc/search/DiversifiedTopDocsCollector.java   |  46 ++---
- .../lucene/misc/store/DirectIODirectory.java       |   9 +-
- .../misc/store/HardlinkCopyDirectoryWrapper.java   |  47 ++---
- .../lucene/misc/document/TestLazyDocument.java     |  17 +-
- .../lucene/misc/store/TestDirectIODirectory.java   |  12 +-
- .../intervals/DisjunctionIntervalsSource.java      |  11 +-
- .../MinimumShouldMatchIntervalsSource.java         |  21 +-
- .../intervals/UnorderedIntervalsSource.java        |  11 +-
- .../apache/lucene/queries/mlt/MoreLikeThis.java    |  16 +-
- .../apache/lucene/queries/spans/SpanOrQuery.java   |   8 +-
- .../lucene/queries/spans/SpanPositionQueue.java    |  34 ----
- .../generated/checksums/javaccParserFlexible.json  |   2 +-
- .../flexible/standard/parser/ParseException.java   |   7 +-
- .../lucene/sandbox/document/BigIntegerPoint.java   |   2 +-
- .../lucene/sandbox/document/HalfFloatPoint.java    |   2 +-
- .../lucene/sandbox/queries/FuzzyLikeThisQuery.java |  30 ++-
- .../sandbox/search/DocValuesMultiRangeQuery.java   |   3 +-
- .../SortedNumericDocValuesMultiRangeQuery.java     |  16 +-
- .../facet/utils/TestFacetOrchestrators.java        |   6 +-
- .../org/apache/lucene/tests/geo/GeoTestUtil.java   |   5 +-
- .../apache/lucene/tests/util/LuceneTestCase.java   |  38 ----
- .../apache/lucene/tests/util/RamUsageTester.java   |  82 ++++----
- .../lucene/tests/util/TestSecurityManager.java     |  94 ---------
- .../lucene/tests/util/TestReproduceMessage.java    |   4 +-
- .../util/TestRunWithRestrictedPermissions.java     |  59 ------
- 165 files changed, 1567 insertions(+), 919 deletions(-)
- create mode 100644 build-tools/build-infra/src/main/java/org/apache/lucene/gradle/plugins/astgrep/AstGrepPlugin.java
- create mode 100644 gradle/validation/ast-grep/rules/.gitignore
- create mode 100644 gradle/validation/ast-grep/rules/no-wildcard-imports.sg.yaml
- create mode 100644 gradle/validation/ast-grep/sgconfig.yml
- create mode 100644 gradle/validation/ast-grep/tests/.gitignore
- create mode 100644 gradle/validation/ast-grep/tests/test-no-wildcard-imports.sg.yaml
- create mode 100644 lucene/core/src/java/org/apache/lucene/search/FullPrecisionFloatVectorSimilarityValuesSource.java
- rename lucene/core/src/java/org/apache/lucene/{search/PhraseQueue.java => util/FloatComparator.java} (55%)
- create mode 100644 lucene/core/src/test/org/apache/lucene/search/TestFullPrecisionFloatVectorSimilarityValuesSource.java
- delete mode 100644 lucene/queries/src/java/org/apache/lucene/queries/spans/SpanPositionQueue.java
- delete mode 100644 lucene/test-framework/src/java/org/apache/lucene/tests/util/TestSecurityManager.java
- delete mode 100644 lucene/test-framework/src/test/org/apache/lucene/tests/util/TestRunWithRestrictedPermissions.java
+ .editorconfig                                      | 638 +++++++++++++++++++++
+ .../groovy/lucene.validation.error-prone.gradle    |   4 +-
+ .../lucene.validation.source-patterns.gradle       |  14 -
+ dev-tools/scripts/.editorconfig                    |   9 -
+ gradle/validation/ast-grep/rules/errorprone.yml    |  34 ++
+ gradle/validation/ast-grep/rules/java-patterns.yml |  23 +
+ .../ast-grep/rules/no-wildcard-imports.sg.yaml     |  16 -
+ gradle/validation/ast-grep/tests/errorprone.yml    |  22 +
+ gradle/validation/ast-grep/tests/java-patterns.yml |  15 +
+ .../tests/test-no-wildcard-imports.sg.yaml         |   7 -
+ gradle/validation/forbidden-apis/defaults.all.txt  |   8 +
+ lucene/CHANGES.txt                                 |   2 +
+ .../org/apache/lucene/index/FieldTermIterator.java |   5 -
+ .../apache/lucene/index/FrozenBufferedUpdates.java |   1 -
+ .../org/apache/lucene/index/PrefixCodedTerms.java  |  22 +-
+ .../lucene/search/AbstractKnnVectorQuery.java      |   4 +
+ .../java/org/apache/lucene/util/PriorityQueue.java |   4 +-
+ .../lucene/search/BaseKnnVectorQueryTestCase.java  |   7 +
+ .../lucene/expressions/js/JavascriptCompiler.java  |   2 +
+ .../lucene/luke/models/analysis/AnalysisImpl.java  |   1 -
+ 20 files changed, 762 insertions(+), 76 deletions(-)
+ create mode 100644 .editorconfig
+ delete mode 100644 dev-tools/scripts/.editorconfig
+ create mode 100644 gradle/validation/ast-grep/rules/errorprone.yml
+ create mode 100644 gradle/validation/ast-grep/rules/java-patterns.yml
+ delete mode 100644 gradle/validation/ast-grep/rules/no-wildcard-imports.sg.yaml
+ create mode 100644 gradle/validation/ast-grep/tests/errorprone.yml
+ create mode 100644 gradle/validation/ast-grep/tests/java-patterns.yml
+ delete mode 100644 gradle/validation/ast-grep/tests/test-no-wildcard-imports.sg.yaml
 + ../gradlew clean
 Starting a Gradle Daemon (subsequent builds will be faster)
 > Task :build-infra:extractPluginRequests
 > Task :build-infra:generatePluginAdapters UP-TO-DATE
-> Task :build-infra:compileJava
+> Task :build-infra:compileJava UP-TO-DATE
 > Task :build-infra:compileGroovy NO-SOURCE
 > Task :build-infra:compileGroovyPlugins
 > Task :build-infra:pluginDescriptors UP-TO-DATE
 > Task :build-infra:processResources UP-TO-DATE
 > Task :build-infra:classes
 > Task :build-infra:jar
-> Task :lucene:clean
-> Task :lucene:codecs:clean
-> Task :lucene:analysis:clean
-> Task :lucene:benchmark-jmh:clean
-> Task :lucene:classification:clean
-> Task :lucene:core.tests:clean
-> Task :lucene:benchmark:clean
 > Task :lucene:build-tools:clean
-> Task :lucene:analysis.tests:clean
+> Task :lucene:clean
+> Task :lucene:analysis:clean
 > Task :lucene:demo:clean
-> Task :lucene:core:clean
-> Task :lucene:backward-codecs:clean
+> Task :lucene:classification:clean
 > Task :lucene:distribution:clean
 > Task :lucene:documentation:clean
-> Task :lucene:expressions:clean
+> Task :lucene:analysis.tests:clean
+> Task :lucene:core.tests:clean
 > Task :lucene:distribution.tests:clean
-> Task :lucene:misc:clean
-> Task :lucene:join:clean
-> Task :lucene:highlighter:clean
-> Task :lucene:facet:clean
+> Task :lucene:expressions:clean
 > Task :lucene:grouping:clean
-> Task :lucene:monitor:clean
 > Task :lucene:memory:clean
-> Task :lucene:luke:clean
-> Task :lucene:queryparser:clean
-> Task :lucene:queries:clean
-> Task :lucene:sandbox:clean
+> Task :lucene:benchmark:clean
+> Task :lucene:benchmark-jmh:clean
+> Task :lucene:codecs:clean
+> Task :lucene:join:clean
+> Task :lucene:facet:clean
+> Task :lucene:misc:clean
 > Task :lucene:replicator:clean
-> Task :lucene:spatial-extras:clean
-> Task :lucene:spatial3d:clean
-> Task :lucene:suggest:clean
-> Task :lucene:analysis:common:clean
+> Task :lucene:monitor:clean
+> Task :lucene:highlighter:clean
 > Task :lucene:spatial-test-fixtures:clean
+> Task :lucene:spatial-extras:clean
 > Task :lucene:analysis:icu:clean
-> Task :lucene:analysis:kuromoji:clean
+> Task :lucene:luke:clean
+> Task :lucene:suggest:clean
+> Task :lucene:spatial3d:clean
+> Task :lucene:sandbox:clean
+> Task :lucene:backward-codecs:clean
+> Task :lucene:queryparser:clean
 > Task :lucene:analysis:morfologik:clean
-> Task :lucene:test-framework:clean
-> Task :lucene:analysis:nori:clean
 > Task :lucene:analysis:morfologik.tests:clean
 > Task :lucene:analysis:opennlp:clean
-> Task :lucene:analysis:smartcn:clean
-> Task :lucene:analysis:phonetic:clean
-> Task :lucene:analysis:stempel:clean
 > Task :lucene:build-tools:build-infra-shadow:clean
+> Task :lucene:analysis:phonetic:clean
 > Task :lucene:build-tools:missing-doclet:clean
+> Task :lucene:queries:clean
+> Task :lucene:analysis:stempel:clean
+> Task :lucene:analysis:kuromoji:clean
+> Task :lucene:analysis:smartcn:clean
+> Task :lucene:analysis:nori:clean
+> Task :lucene:test-framework:clean
+> Task :lucene:analysis:common:clean
+> Task :lucene:core:clean
 
 [Incubating] Problems report is available at: file:///l/trunk.nightly/build/reports/problems/problems-report.html
 
-BUILD SUCCESSFUL in 23s
-52 actionable tasks: 49 executed, 3 up-to-date
+BUILD SUCCESSFUL in 20s
+52 actionable tasks: 48 executed, 4 up-to-date
 + ../gradlew jar
 + cd /l/util.nightly
 + rm -rf build
@@ -281,14 +132,14 @@ Run gradle test
 + /usr/bin/python3 -uO /l/util.nightly/src/python/runNightlyGradleTestPrecommit.py
 ***USING BIG LINE FILE***
 Using java from: /usr/lib/jvm/java-24-openjdk/bin/
-  gradle test log: /l/logs.nightly/ant_test/2025.06.18.lucene-tests.txt
-  took: 2.2 min
-  gradle precommit log: /l/logs.nightly/ant_test/2025.06.18.precommit.txt
-FAILED; see /l/logs.nightly/ant_test/2025.06.18.precommit.txt.tmp; will try again (4 attempts remain)
-FAILED; see /l/logs.nightly/ant_test/2025.06.18.precommit.txt.tmp; will try again (3 attempts remain)
-FAILED; see /l/logs.nightly/ant_test/2025.06.18.precommit.txt.tmp; will try again (2 attempts remain)
-FAILED; see /l/logs.nightly/ant_test/2025.06.18.precommit.txt.tmp; will try again (1 attempts remain)
-FAILED; see /l/logs.nightly/ant_test/2025.06.18.precommit.txt.tmp
+  gradle test log: /l/logs.nightly/ant_test/2025.06.19.lucene-tests.txt
+  took: 1.8 min
+  gradle precommit log: /l/logs.nightly/ant_test/2025.06.19.precommit.txt
+FAILED; see /l/logs.nightly/ant_test/2025.06.19.precommit.txt.tmp; will try again (4 attempts remain)
+FAILED; see /l/logs.nightly/ant_test/2025.06.19.precommit.txt.tmp; will try again (3 attempts remain)
+FAILED; see /l/logs.nightly/ant_test/2025.06.19.precommit.txt.tmp; will try again (2 attempts remain)
+FAILED; see /l/logs.nightly/ant_test/2025.06.19.precommit.txt.tmp; will try again (1 attempts remain)
+FAILED; see /l/logs.nightly/ant_test/2025.06.19.precommit.txt.tmp
 Traceback (most recent call last):
   File "/l/util.nightly/src/python/runNightlyGradleTestPrecommit.py", line 364, in <module>
     writeGraph()
