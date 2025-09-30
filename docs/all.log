@@ -11,10 +11,10 @@ Filesystem      Size  Used Avail Use% Mounted on
 + export PATH=/usr/local/src/apache-ant-1.9.5/bin:/usr/lib/jvm/java-24-openjdk/bin:/usr/local/src/gradle-2.9/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
 + PATH=/usr/local/src/apache-ant-1.9.5/bin:/usr/lib/jvm/java-24-openjdk/bin:/usr/local/src/gradle-2.9/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
 ++ date
-+ echo -e '\n\nMon Sep 29 06:00:05 PM EDT 2025: now start nightly benchmarks'
++ echo -e '\n\nTue Sep 30 06:00:05 PM EDT 2025: now start nightly benchmarks'
 
 
-Mon Sep 29 06:00:05 PM EDT 2025: now start nightly benchmarks
+Tue Sep 30 06:00:05 PM EDT 2025: now start nightly benchmarks
 + pkill java
 + true
 + pkill mencoder
@@ -26,106 +26,32 @@ Your branch is up to date with 'origin/main'.
 + git pull origin main
 From https://gitbox.apache.org/repos/asf/lucene
  * branch                    main       -> FETCH_HEAD
-   8901ee51b1c..63ac5aca53f  main       -> origin/main
-Updating 8901ee51b1c..63ac5aca53f
+   63ac5aca53f..c5d82423934  main       -> origin/main
+Updating 63ac5aca53f..c5d82423934
 Fast-forward
- .github/actionlint.yaml                            |    24 +
- .github/actions/prepare-for-build/action.yml       |     2 +-
- .github/codeql-config.yml                          |    10 +
- .github/workflows/actions.yml                      |    52 +
- .github/workflows/auto-format.yml                  |   167 +-
- .github/workflows/codeql.yml                       |    55 +
- .github/workflows/label-pull-request.yml           |     2 +
- .github/workflows/run-checks-all.yml               |     4 +-
- .github/workflows/run-checks-gradle-upgrade.yml    |     3 +-
- .github/workflows/run-nightly-smoketester.yml      |     2 +-
- .github/workflows/run-special-checks-sandbox.yml   |     2 +-
- README.md                                          |     6 +-
- build-tools/build-infra-shadow/build.gradle        |     2 +
- build-tools/build-infra/build.gradle               |     2 +
- build-tools/build-infra/ecj-source.gradle          |    45 +
- .../src/main/groovy/lucene.regenerate.icu.gradle   |    24 +-
- .../main/groovy/lucene.regenerate.javacc.gradle    |    22 +-
- .../src/main/groovy/lucene.regenerate.jflex.gradle |    24 +-
- .../apache/lucene/gradle/WrapperDownloader.java    |     4 +-
- .../gradle/plugins/ide/EclipseSupportPlugin.java   |    71 +-
- .../lucene/gradle/plugins/java/EcjLintPlugin.java  |     6 -
- .../lucene/gradle/plugins/misc/QuietExec.java      |     2 +-
- .../gradle/plugins/mrjar/ExtractJdkApis.java       |     6 +-
- build.gradle                                       |    11 +-
- dev-tools/scripts/smokeTestRelease.py              |     2 +-
- .../{java-24 => java-25}/element-list              |     1 +
- gradle/libs.versions.toml                          |     6 +-
- gradle/template.gradle.properties                  |     2 +-
- gradle/wrapper/gradle-wrapper.jar.sha256           |     2 +-
- gradle/wrapper/gradle-wrapper.jar.version          |     2 +-
- gradle/wrapper/gradle-wrapper.properties           |     2 +-
- lucene/CHANGES.txt                                 |     7 +
- lucene/SYSTEM_REQUIREMENTS.md                      |     2 +-
- .../src/generated/checksums/generateTlds.json      |     4 +-
- .../checksums/generateUAX29URLEmailTokenizer.json  |     4 +-
- .../apache/lucene/analysis/email/ASCIITLD.jflex    |     3 +-
- .../analysis/email/UAX29URLEmailTokenizerImpl.java | 29553 +++++++++----------
- .../test/org/apache/lucene/analysis/email/TLDs.txt |     1 -
- .../Lucene99ScalarQuantizedVectorsWriter.java      |     5 +-
- .../TestLucene99HnswQuantizedVectorsFormat.java    |     5 +-
- ...stLucene99HnswScalarQuantizedVectorsFormat.java |     5 +-
- .../TestLucene99ScalarQuantizedVectorScorer.java   |     5 +-
- .../TestLucene99ScalarQuantizedVectorsFormat.java  |     9 +-
- .../BackwardsCompatibilityTestBase.java            |    15 +-
- .../TestInt7HnswBackwardsCompatibility.java        |    10 +-
- lucene/core/build.gradle                           |     2 +-
- lucene/core/src/generated/jdk/README.md            |     4 +-
- lucene/core/src/generated/jdk/jdk24-api.jar        |   Bin 42641 -> 0 bytes
- lucene/core/src/generated/jdk/jdk25-api.jar        |   Bin 0 -> 43715 bytes
- .../org/apache/lucene/codecs/KnnVectorsReader.java |     8 +
- .../Lucene102BinaryQuantizedVectorsWriter.java     |     5 +-
- .../Lucene104ScalarQuantizedVectorsWriter.java     |     5 +-
- .../codecs/perfield/PerFieldKnnVectorsFormat.java  |    17 +-
- .../java/org/apache/lucene/index/CheckIndex.java   |    16 +-
- .../org/apache/lucene/index/IndexingChain.java     |    10 +-
- .../lucene/index/SlowCodecReaderWrapper.java       |     5 +-
- .../java/org/apache/lucene/util/hnsw/HnswUtil.java |     4 +-
- .../Lucene99MemorySegmentByteVectorScorer.java     |     0
- ...ene99MemorySegmentByteVectorScorerSupplier.java |     0
- .../Lucene99MemorySegmentFlatVectorsScorer.java    |     0
- .../Lucene99MemorySegmentFloatVectorScorer.java    |     0
- ...ne99MemorySegmentFloatVectorScorerSupplier.java |     0
- ...99MemorySegmentScalarQuantizedVectorScorer.java |     0
- .../vectorization/MemorySegmentBulkVectorOps.java  |     0
- .../MemorySegmentPostingDecodingUtil.java          |     0
- .../vectorization/PanamaVectorConstants.java       |     0
- .../vectorization/PanamaVectorUtilSupport.java     |     0
- .../vectorization/PanamaVectorizationProvider.java |     0
- ...tLucene102HnswBinaryQuantizedVectorsFormat.java |     5 +-
- ...tLucene104HnswScalarQuantizedVectorsFormat.java |     5 +-
- .../lucene99/TestLucene99HnswVectorsFormat.java    |     5 +-
- .../org/apache/lucene/index/TestIndexSorting.java  |    63 +
- .../test/org/apache/lucene/index/TestKnnGraph.java |    16 +-
- .../apache/lucene/util/hnsw/HnswGraphTestCase.java |     5 +-
- lucene/documentation/build.gradle                  |     1 -
- .../tests/index/BaseKnnVectorsFormatTestCase.java  |     4 +-
- settings.gradle                                    |     5 +
- 77 files changed, 15309 insertions(+), 15069 deletions(-)
- create mode 100644 .github/actionlint.yaml
- create mode 100644 .github/codeql-config.yml
- create mode 100644 .github/workflows/actions.yml
- create mode 100644 .github/workflows/codeql.yml
- create mode 100644 build-tools/build-infra/ecj-source.gradle
- rename gradle/documentation/render-javadoc/{java-24 => java-25}/element-list (99%)
- delete mode 100644 lucene/core/src/generated/jdk/jdk24-api.jar
- create mode 100644 lucene/core/src/generated/jdk/jdk25-api.jar
- rename lucene/core/src/{java24 => java25}/org/apache/lucene/internal/vectorization/Lucene99MemorySegmentByteVectorScorer.java (100%)
- rename lucene/core/src/{java24 => java25}/org/apache/lucene/internal/vectorization/Lucene99MemorySegmentByteVectorScorerSupplier.java (100%)
- rename lucene/core/src/{java24 => java25}/org/apache/lucene/internal/vectorization/Lucene99MemorySegmentFlatVectorsScorer.java (100%)
- rename lucene/core/src/{java24 => java25}/org/apache/lucene/internal/vectorization/Lucene99MemorySegmentFloatVectorScorer.java (100%)
- rename lucene/core/src/{java24 => java25}/org/apache/lucene/internal/vectorization/Lucene99MemorySegmentFloatVectorScorerSupplier.java (100%)
- rename lucene/core/src/{java24 => java25}/org/apache/lucene/internal/vectorization/Lucene99MemorySegmentScalarQuantizedVectorScorer.java (100%)
- rename lucene/core/src/{java24 => java25}/org/apache/lucene/internal/vectorization/MemorySegmentBulkVectorOps.java (100%)
- rename lucene/core/src/{java24 => java25}/org/apache/lucene/internal/vectorization/MemorySegmentPostingDecodingUtil.java (100%)
- rename lucene/core/src/{java24 => java25}/org/apache/lucene/internal/vectorization/PanamaVectorConstants.java (100%)
- rename lucene/core/src/{java24 => java25}/org/apache/lucene/internal/vectorization/PanamaVectorUtilSupport.java (100%)
- rename lucene/core/src/{java24 => java25}/org/apache/lucene/internal/vectorization/PanamaVectorizationProvider.java (100%)
+ .asf.yaml                                          |  27 ++++++++++++++++
+ .github/workflows/dependency-submission.yml        |  35 +++++++++++++++++++++
+ .github/workflows/label-pull-request.yml           |  10 ++++--
+ .github/workflows/mark-stale-PRs.yml               |   8 +++--
+ .github/workflows/run-checks-all.yml               |  20 +++++++++---
+ .../run-checks-mod-analysis-common-hunspell.yml    |  11 +++++--
+ .../run-checks-mod-distribution.tests.yml          |  12 +++++--
+ .github/workflows/run-checks-python.yml            |   8 ++++-
+ .github/workflows/run-nightly-smoketester.yml      |   2 +-
+ .github/workflows/run-scheduled-hunspell.yml       |  11 +++++--
+ .../workflows/run-scheduled-spotless-groovy.yml    |  15 ++++++---
+ .github/workflows/run-special-checks-sandbox.yml   |   8 ++++-
+ dev-tools/scripts/releaseWizard.py                 |   2 +-
+ .../backward_index/unsupported.9.12.3-cfs.zip      | Bin 0 -> 17363 bytes
+ .../backward_index/unsupported.9.12.3-nocfs.zip    | Bin 0 -> 17367 bytes
+ .../unsupported.int7_hnsw.9.12.3.zip               | Bin 0 -> 5443 bytes
+ .../backward_index/unsupported.sorted.9.12.3.zip   | Bin 0 -> 137005 bytes
+ 17 files changed, 146 insertions(+), 23 deletions(-)
+ create mode 100644 .github/workflows/dependency-submission.yml
+ create mode 100644 lucene/backward-codecs/src/test/org/apache/lucene/backward_index/unsupported.9.12.3-cfs.zip
+ create mode 100644 lucene/backward-codecs/src/test/org/apache/lucene/backward_index/unsupported.9.12.3-nocfs.zip
+ create mode 100644 lucene/backward-codecs/src/test/org/apache/lucene/backward_index/unsupported.int7_hnsw.9.12.3.zip
+ create mode 100644 lucene/backward-codecs/src/test/org/apache/lucene/backward_index/unsupported.sorted.9.12.3.zip
 + ../gradlew clean
 ERROR: java version must be 25, your version: 24
 + cp /l/logs.nightly/all.log /l/reports.nightly
