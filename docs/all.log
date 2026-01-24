@@ -11,10 +11,10 @@ Filesystem      Size  Used Avail Use% Mounted on
 + export PATH=/usr/local/src/apache-ant-1.9.5/bin:/usr/lib/jvm/java-25-openjdk/bin:/usr/local/src/gradle-2.9/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
 + PATH=/usr/local/src/apache-ant-1.9.5/bin:/usr/lib/jvm/java-25-openjdk/bin:/usr/local/src/gradle-2.9/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
 ++ date
-+ echo -e '\n\nFri Jan 23 06:00:05 PM EST 2026: now start nightly benchmarks'
++ echo -e '\n\nSat Jan 24 06:00:05 PM EST 2026: now start nightly benchmarks'
 
 
-Fri Jan 23 06:00:05 PM EST 2026: now start nightly benchmarks
+Sat Jan 24 06:00:05 PM EST 2026: now start nightly benchmarks
 + pkill java
 + true
 + pkill mencoder
@@ -26,91 +26,15 @@ Your branch is up to date with 'origin/main'.
 + git pull origin main
 From https://gitbox.apache.org/repos/asf/lucene
  * branch                    main       -> FETCH_HEAD
-   2f9aa8ae26d..6643a5dbe1e  main       -> origin/main
-Updating 2f9aa8ae26d..6643a5dbe1e
+   6643a5dbe1e..3e077fdc076  main       -> origin/main
+Updating 6643a5dbe1e..3e077fdc076
 Fast-forward
- lucene/CHANGES.txt                                 |   6 +-
- .../BaseLucene80DocValuesFormatTestCase.java       |   9 +-
- .../TestBasicBackwardsCompatibility.java           |   9 +-
- .../TestIndexSortBackwardsCompatibility.java       |   4 +-
- .../TestMoreTermsBackwardsCompatibility.java       |   4 +-
- .../benchmark/byTask/tasks/CreateIndexTask.java    |   2 +-
- .../benchmark/byTask/TestPerfTasksLogic.java       |   2 +-
- .../org/apache/lucene/codecs/CompoundFormat.java   | 145 ++++++++
- .../org/apache/lucene/index/FilterMergePolicy.java |  26 +-
- .../java/org/apache/lucene/index/IndexWriter.java  |  16 +-
- .../apache/lucene/index/LiveIndexWriterConfig.java |   6 +-
- .../org/apache/lucene/index/LogDocMergePolicy.java |   5 +
- .../org/apache/lucene/index/LogMergePolicy.java    |  14 +-
- .../java/org/apache/lucene/index/MergePolicy.java  | 114 +-----
- .../org/apache/lucene/index/NoMergePolicy.java     |  25 +-
- .../java/org/apache/lucene/index/SegmentOrder.java | 182 ++++++++++
- .../org/apache/lucene/index/TieredMergePolicy.java |  14 +-
- .../src/test/org/apache/lucene/TestSearch.java     |   4 +-
- .../org/apache/lucene/TestSearchForDuplicates.java |   4 +-
- .../apache/lucene/codecs/TestCompoundFormat.java   | 172 +++++++++
- .../org/apache/lucene/codecs/TestMinimalCodec.java |   6 +-
- .../lucene90/TestLucene90DocValuesFormat.java      |   9 +-
- .../perfield/TestPerFieldPostingsFormat2.java      |   4 +-
- .../lucene/document/TestFeatureDoubleValues.java   |  20 +-
- .../apache/lucene/document/TestFeatureField.java   |  50 ++-
- .../apache/lucene/document/TestFeatureSort.java    |  20 +-
- .../TestLatLonPointDistanceFeatureQuery.java       |  31 +-
- .../document/TestLongDistanceFeatureQuery.java     |  25 +-
- .../apache/lucene/index/Test2BBinaryDocValues.java |   6 +-
- .../test/org/apache/lucene/index/Test2BDocs.java   |   4 +-
- .../lucene/index/Test2BNumericDocValues.java       |   4 +-
- .../test/org/apache/lucene/index/Test2BPoints.java |   7 +-
- .../org/apache/lucene/index/Test2BPositions.java   |   4 +-
- .../org/apache/lucene/index/Test2BPostings.java    |   3 +-
- .../apache/lucene/index/Test2BPostingsBytes.java   |   3 +-
- .../index/Test2BSortedDocValuesFixedSorted.java    |   3 +-
- .../lucene/index/Test2BSortedDocValuesOrds.java    |   3 +-
- .../test/org/apache/lucene/index/Test2BTerms.java  |   3 +-
- .../apache/lucene/index/Test4GBStoredFields.java   |   3 +-
- .../org/apache/lucene/index/TestAddIndexes.java    |  30 +-
- .../lucene/index/TestAllFilesCheckIndexHeader.java |   2 +-
- .../TestAllFilesDetectMismatchedChecksum.java      |   2 +-
- .../lucene/index/TestAllFilesDetectTruncation.java |   2 +-
- .../index/TestDefaultCodecParallelizesIO.java      |   3 +-
- .../apache/lucene/index/TestDeletionPolicy.java    |  27 +-
- .../lucene/index/TestDemoParallelLeafReader.java   |   7 -
- .../org/apache/lucene/index/TestFieldsReader.java  |   2 +-
- .../apache/lucene/index/TestIndexFileDeleter.java  |  11 +-
- .../org/apache/lucene/index/TestIndexWriter.java   |  11 +-
- .../apache/lucene/index/TestIndexWriterConfig.java |  10 +-
- .../apache/lucene/index/TestIndexWriterDelete.java |   3 -
- .../lucene/index/TestIndexWriterExceptions.java    |   7 +-
- .../lucene/index/TestIndexWriterMergePolicy.java   |  28 --
- .../lucene/index/TestIndexWriterOnDiskFull.java    |   6 +-
- .../lucene/index/TestNRTReaderWithThreads.java     |   3 +-
- .../org/apache/lucene/index/TestOmitNorms.java     |   2 +-
- .../org/apache/lucene/index/TestOmitPositions.java |   2 +-
- .../test/org/apache/lucene/index/TestOmitTf.java   |   2 +-
- .../apache/lucene/index/TestPerSegmentDeletes.java |  14 +-
- .../apache/lucene/index/TestStressIndexing2.java   |   4 +-
- .../apache/lucene/index/TestSwappedIndexFiles.java |   4 +-
- .../apache/lucene/index/TestTermVectorsReader.java |   3 +-
- .../apache/lucene/index/TestTieredMergePolicy.java |  19 -
- .../lucene/search/TestConstantScoreScorer.java     |  11 +-
- .../apache/lucene/search/TestReqOptSumScorer.java  |   3 +-
- .../lucene/search/TestSegmentReordering.java       | 389 +++++++++++++++++++++
- .../lucene/store/TestFileSwitchDirectory.java      |   3 +-
- .../search/join/TestBlockJoinBulkScorer.java       |  23 +-
- .../lucene/search/join/TestBlockJoinScorer.java    |  10 +-
- .../lucene/misc/index/TestBPIndexReorderer.java    |  13 +-
- .../lucene/misc/index/TestIndexSplitter.java       |   4 +-
- .../sandbox/index/TestMergeOnFlushMergePolicy.java |   2 -
- .../BaseCompressingDocValuesFormatTestCase.java    |   3 +
- .../tests/index/BaseIndexFileFormatTestCase.java   |   4 +-
- .../tests/index/BaseMergePolicyTestCase.java       |   2 +-
- .../lucene/tests/index/MockRandomMergePolicy.java  |   8 -
- .../apache/lucene/tests/util/LuceneTestCase.java   |  34 +-
- .../org/apache/lucene/tests/util/TestUtil.java     |  12 +-
- 78 files changed, 1205 insertions(+), 491 deletions(-)
- create mode 100644 lucene/core/src/java/org/apache/lucene/index/SegmentOrder.java
- create mode 100644 lucene/core/src/test/org/apache/lucene/codecs/TestCompoundFormat.java
- create mode 100644 lucene/core/src/test/org/apache/lucene/search/TestSegmentReordering.java
+ lucene/CHANGES.txt                                 |  3 ++
+ .../java/org/apache/lucene/index/TermStates.java   | 10 +++++
+ .../java/org/apache/lucene/search/TermQuery.java   |  9 +++-
+ .../lucene/search/TestMultiTermQueryRewrites.java  | 52 +++++++++++++++++++++-
+ .../org/apache/lucene/search/TestTermQuery.java    |  2 +-
+ 5 files changed, 71 insertions(+), 5 deletions(-)
 + ../gradlew clean
 Starting a Gradle Daemon (subsequent builds will be faster)
 > Task :build-infra:compileJava UP-TO-DATE
@@ -121,50 +45,50 @@ Starting a Gradle Daemon (subsequent builds will be faster)
 The ast-grep tool location is not set ('lucene.tool.ast-grep' option), will not apply ast-grep rules.
 The eclint tool location is not set ('lucene.tool.eclint' option), will not apply eclint checks.
 The eclint tool location is not set ('lucene.tool.eclint' option), will not apply eclint checks.
-> Task :lucene:analysis.tests:clean
-> Task :lucene:distribution:clean UP-TO-DATE
+> Task :lucene:demo:clean
 > Task :lucene:clean UP-TO-DATE
+> Task :lucene:distribution:clean UP-TO-DATE
 > Task :lucene:classification:clean
 > Task :lucene:analysis:clean UP-TO-DATE
-> Task :lucene:demo:clean
+> Task :lucene:analysis.tests:clean
 > Task :lucene:core.tests:clean
-> Task :lucene:benchmark:clean
 > Task :lucene:documentation:clean UP-TO-DATE
 > Task :lucene:distribution.tests:clean
+> Task :lucene:benchmark:clean
 > Task :lucene:codecs:clean
-> Task :lucene:memory:clean
 > Task :lucene:grouping:clean
 > Task :lucene:expressions:clean
-> Task :lucene:misc:clean
+> Task :lucene:memory:clean
 > Task :lucene:join:clean
-> Task :lucene:replicator:clean
+> Task :lucene:misc:clean
 > Task :lucene:highlighter:clean
-> Task :lucene:facet:clean
+> Task :lucene:replicator:clean
 > Task :lucene:monitor:clean
 > Task :lucene:spatial-test-fixtures:clean
+> Task :lucene:facet:clean
 > Task :lucene:backward-codecs:clean
 > Task :lucene:benchmark-jmh:clean
-> Task :lucene:luke:clean
 > Task :lucene:spatial-extras:clean
-> Task :lucene:spatial3d:clean
-> Task :lucene:analysis:morfologik.tests:clean
 > Task :lucene:suggest:clean
+> Task :lucene:spatial3d:clean
 > Task :lucene:queryparser:clean
+> Task :lucene:analysis:morfologik.tests:clean
+> Task :lucene:luke:clean
+> Task :lucene:sandbox:clean
 > Task :lucene:analysis:morfologik:clean
 > Task :lucene:analysis:icu:clean
 > Task :lucene:analysis:phonetic:clean
-> Task :lucene:analysis:kuromoji:clean
-> Task :lucene:analysis:opennlp:clean
-> Task :lucene:sandbox:clean
 > Task :lucene:queries:clean
-> Task :lucene:analysis:smartcn:clean
+> Task :lucene:analysis:opennlp:clean
 > Task :lucene:analysis:stempel:clean
+> Task :lucene:analysis:smartcn:clean
+> Task :lucene:analysis:kuromoji:clean
 > Task :lucene:analysis:nori:clean
 > Task :lucene:test-framework:clean
 > Task :lucene:analysis:common:clean
 > Task :lucene:core:clean
 
-BUILD SUCCESSFUL in 5s
+BUILD SUCCESSFUL in 6s
 46 actionable tasks: 38 executed, 8 up-to-date
 Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.2.1/userguide/configuration_cache_enabling.html
 + ../gradlew jar
@@ -180,9 +104,9 @@ Run gradle test
 + /usr/bin/python3 -u /l/util.nightly/src/python/runNightlyGradleTestPrecommit.py
 ***USING BIG LINE FILE***
 Using java from: /usr/lib/jvm/java-25-openjdk/bin/
-  gradle test log: /l/logs.nightly/ant_test/2026.01.23.lucene-tests.txt
+  gradle test log: /l/logs.nightly/ant_test/2026.01.24.lucene-tests.txt
   took: 1.3 min
-  gradle precommit log: /l/logs.nightly/ant_test/2026.01.23.precommit.txt
+  gradle precommit log: /l/logs.nightly/ant_test/2026.01.24.precommit.txt
   took: 0.5 min
 + echo 'Run lucene nightly'
 Run lucene nightly
@@ -190,33 +114,13 @@ Run lucene nightly
 ***USING BIG LINE FILE***
 Using java from: /usr/lib/jvm/java-25-openjdk/bin/
 perf executable is /usr/sbin/perf; will collect aggregate CPU profiling data
-GitHub pull request counts: 278 open, 3600 closed
-Removing old JFR /l/logs.nightly/bench-search-nightly-nightly-14.jfr...
-Removing old JFR /l/logs.nightly/bench-search-nightly-nightly-13.jfr...
-Removing old JFR /l/logs.nightly/bench-search-nightly-nightly-5.jfr...
-Removing old JFR /l/logs.nightly/bench-search-nightly-nightly-0.jfr...
-Removing old JFR /l/logs.nightly/bench-search-nightly-nightly-17.jfr...
-Removing old JFR /l/logs.nightly/bench-search-nightly-nightly-19.jfr...
-Removing old JFR /l/logs.nightly/bench-search-nightly-nightly-16.jfr...
-Removing old JFR /l/logs.nightly/bench-search-nightly-nightly-11.jfr...
-Removing old JFR /l/logs.nightly/bench-search-nightly-nightly-8.jfr...
-Removing old JFR /l/logs.nightly/bench-search-nightly-nightly-18.jfr...
-Removing old JFR /l/logs.nightly/bench-search-nightly-nightly-1.jfr...
-Removing old JFR /l/logs.nightly/bench-search-nightly-nightly-7.jfr...
-Removing old JFR /l/logs.nightly/bench-search-nightly-nightly-9.jfr...
-Removing old JFR /l/logs.nightly/bench-search-nightly-nightly-2.jfr...
-Removing old JFR /l/logs.nightly/bench-search-nightly-nightly-3.jfr...
-Removing old JFR /l/logs.nightly/bench-search-nightly-nightly-6.jfr...
-Removing old JFR /l/logs.nightly/bench-search-nightly-nightly-12.jfr...
-Removing old JFR /l/logs.nightly/bench-search-nightly-nightly-4.jfr...
-Removing old JFR /l/logs.nightly/bench-search-nightly-nightly-10.jfr...
-Removing old JFR /l/logs.nightly/bench-search-nightly-nightly-15.jfr...
+GitHub pull request counts: 277 open, 3601 closed
 
 
 
 
-[2026-01-23 18:03:53.199392] start
-[2026-01-23 18:03:53.199514] log dir /l/logs.nightly/2026.01.23.18.03.53
+[2026-01-24 18:02:32.957754] start
+[2026-01-24 18:02:32.957839] log dir /l/logs.nightly/2026.01.24.18.02.32
 openjdk full version "25.0.1"
 WARNING: Using incubator modules: jdk.incubator.vector
 openjdk version "25.0.1" 2025-09-16
@@ -904,11 +808,11 @@ zlib 1:1.3.1-2
 zlib-ng 2.2.5-1
 zstd 1.5.7-2
 luceneutil rev is 0bde7ae6e313552df711ece845463984e184d5f9
-LUCENE rev is 6643a5dbe1ed6d3a4b933c90beed60cfe44b5992
+LUCENE rev is 3e077fdc076db88872d8cb6955e21907e8fe0c39
 last successfull Lucene rev 2f9aa8ae26d6c1087884c734e1b3d137bd8c6601, luceneutil rev 0bde7ae6e313552df711ece845463984e184d5f9
-run ['git', 'log', '2f9aa8ae26d6c1087884c734e1b3d137bd8c6601^..6643a5dbe1ed6d3a4b933c90beed60cfe44b5992']
+run ['git', 'log', '2f9aa8ae26d6c1087884c734e1b3d137bd8c6601^..3e077fdc076db88872d8cb6955e21907e8fe0c39']
 No commit message asking for regold of results files
-[2026-01-23 18:03:53.326389] RUN: git clean -xfd
+[2026-01-24 18:02:33.081925] RUN: git clean -xfd
 Removing .gradle/
 Removing build-tools/build-infra-shadow/build/
 Removing build-tools/build-infra/.gradle/
@@ -960,15 +864,15 @@ Removing lucene/spatial-test-fixtures/build/
 Removing lucene/spatial3d/build/
 Removing lucene/suggest/build/
 Removing lucene/test-framework/build/
-[2026-01-23 18:03:53.575627]   took 0.2 sec
+[2026-01-24 18:02:33.316020]   took 0.2 sec
 will NOT regold results files but rather compare to last good result files
 Java command-line: /usr/lib/jvm/java-25-openjdk/bin/java --add-modules jdk.incubator.vector -Xmx32g -Xms32g -server -XX:+UseParallelGC -Djava.io.tmpdir=/l/tmp --enable-native-access=ALL-UNNAMED
 transparent_hugepages: [always] madvise never
 
-[2026-01-23 18:03:53.575726] RUN: /l/trunk.nightly/gradlew --stacktrace clean > /l/logs.nightly/2026.01.23.18.03.53/clean-lucene.log 2>&1
-[2026-01-23 18:03:57.709633]   took 4.1 sec
-[2026-01-23 18:03:57.709678] RUN: /l/trunk.nightly/gradlew jar > /l/logs.nightly/2026.01.23.18.03.53/jar-lucene.log 2>&1
-[2026-01-23 18:04:11.490839]   took 13.8 sec
+[2026-01-24 18:02:33.316122] RUN: /l/trunk.nightly/gradlew --stacktrace clean > /l/logs.nightly/2026.01.24.18.02.32/clean-lucene.log 2>&1
+[2026-01-24 18:02:37.416673]   took 4.1 sec
+[2026-01-24 18:02:37.416715] RUN: /l/trunk.nightly/gradlew jar > /l/logs.nightly/2026.01.24.18.02.32/jar-lucene.log 2>&1
+[2026-01-24 18:02:51.208351]   took 13.8 sec
 
 JAVA:
 WARNING: Using incubator modules: jdk.incubator.vector
