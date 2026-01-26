@@ -11,10 +11,10 @@ Filesystem      Size  Used Avail Use% Mounted on
 + export PATH=/usr/local/src/apache-ant-1.9.5/bin:/usr/lib/jvm/java-25-openjdk/bin:/usr/local/src/gradle-2.9/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
 + PATH=/usr/local/src/apache-ant-1.9.5/bin:/usr/lib/jvm/java-25-openjdk/bin:/usr/local/src/gradle-2.9/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
 ++ date
-+ echo -e '\n\nSun Jan 25 06:00:05 PM EST 2026: now start nightly benchmarks'
++ echo -e '\n\nMon Jan 26 06:00:05 PM EST 2026: now start nightly benchmarks'
 
 
-Sun Jan 25 06:00:05 PM EST 2026: now start nightly benchmarks
+Mon Jan 26 06:00:05 PM EST 2026: now start nightly benchmarks
 + pkill java
 + true
 + pkill mencoder
@@ -37,44 +37,44 @@ Starting a Gradle Daemon (subsequent builds will be faster)
 The ast-grep tool location is not set ('lucene.tool.ast-grep' option), will not apply ast-grep rules.
 The eclint tool location is not set ('lucene.tool.eclint' option), will not apply eclint checks.
 The eclint tool location is not set ('lucene.tool.eclint' option), will not apply eclint checks.
-> Task :lucene:classification:clean
-> Task :lucene:analysis.tests:clean
 > Task :lucene:distribution:clean UP-TO-DATE
-> Task :lucene:demo:clean
-> Task :lucene:clean UP-TO-DATE
-> Task :lucene:analysis:clean UP-TO-DATE
 > Task :lucene:core.tests:clean
+> Task :lucene:clean UP-TO-DATE
+> Task :lucene:demo:clean
+> Task :lucene:analysis:clean UP-TO-DATE
+> Task :lucene:analysis.tests:clean
+> Task :lucene:classification:clean
 > Task :lucene:documentation:clean UP-TO-DATE
 > Task :lucene:distribution.tests:clean
 > Task :lucene:benchmark:clean
+> Task :lucene:codecs:clean
 > Task :lucene:expressions:clean
 > Task :lucene:memory:clean
 > Task :lucene:grouping:clean
-> Task :lucene:codecs:clean
 > Task :lucene:join:clean
 > Task :lucene:misc:clean
 > Task :lucene:replicator:clean
-> Task :lucene:highlighter:clean
 > Task :lucene:monitor:clean
+> Task :lucene:highlighter:clean
 > Task :lucene:facet:clean
 > Task :lucene:spatial-test-fixtures:clean
-> Task :lucene:benchmark-jmh:clean
 > Task :lucene:backward-codecs:clean
+> Task :lucene:benchmark-jmh:clean
+> Task :lucene:luke:clean
 > Task :lucene:spatial-extras:clean
 > Task :lucene:spatial3d:clean
-> Task :lucene:luke:clean
-> Task :lucene:analysis:icu:clean
+> Task :lucene:queryparser:clean
 > Task :lucene:suggest:clean
+> Task :lucene:analysis:icu:clean
 > Task :lucene:analysis:morfologik.tests:clean
 > Task :lucene:sandbox:clean
 > Task :lucene:analysis:morfologik:clean
-> Task :lucene:queryparser:clean
-> Task :lucene:analysis:phonetic:clean
 > Task :lucene:queries:clean
 > Task :lucene:analysis:opennlp:clean
-> Task :lucene:analysis:smartcn:clean
+> Task :lucene:analysis:phonetic:clean
 > Task :lucene:analysis:stempel:clean
 > Task :lucene:analysis:kuromoji:clean
+> Task :lucene:analysis:smartcn:clean
 > Task :lucene:analysis:nori:clean
 > Task :lucene:test-framework:clean
 > Task :lucene:analysis:common:clean
@@ -96,9 +96,9 @@ Run gradle test
 + /usr/bin/python3 -u /l/util.nightly/src/python/runNightlyGradleTestPrecommit.py
 ***USING BIG LINE FILE***
 Using java from: /usr/lib/jvm/java-25-openjdk/bin/
-  gradle test log: /l/logs.nightly/ant_test/2026.01.25.lucene-tests.txt
-  took: 1.3 min
-  gradle precommit log: /l/logs.nightly/ant_test/2026.01.25.precommit.txt
+  gradle test log: /l/logs.nightly/ant_test/2026.01.26.lucene-tests.txt
+  took: 1.4 min
+  gradle precommit log: /l/logs.nightly/ant_test/2026.01.26.precommit.txt
   took: 0.5 min
 + echo 'Run lucene nightly'
 Run lucene nightly
@@ -106,13 +106,13 @@ Run lucene nightly
 ***USING BIG LINE FILE***
 Using java from: /usr/lib/jvm/java-25-openjdk/bin/
 perf executable is /usr/sbin/perf; will collect aggregate CPU profiling data
-GitHub pull request counts: 278 open, 3601 closed
+GitHub pull request counts: 283 open, 3602 closed
 
 
 
 
-[2026-01-25 18:02:41.049905] start
-[2026-01-25 18:02:41.049986] log dir /l/logs.nightly/2026.01.25.18.02.41
+[2026-01-26 18:02:44.906533] start
+[2026-01-26 18:02:44.906620] log dir /l/logs.nightly/2026.01.26.18.02.44
 openjdk full version "25.0.1"
 WARNING: Using incubator modules: jdk.incubator.vector
 openjdk version "25.0.1" 2025-09-16
@@ -804,7 +804,7 @@ LUCENE rev is 3e077fdc076db88872d8cb6955e21907e8fe0c39
 last successfull Lucene rev 2f9aa8ae26d6c1087884c734e1b3d137bd8c6601, luceneutil rev 0bde7ae6e313552df711ece845463984e184d5f9
 run ['git', 'log', '2f9aa8ae26d6c1087884c734e1b3d137bd8c6601^..3e077fdc076db88872d8cb6955e21907e8fe0c39']
 No commit message asking for regold of results files
-[2026-01-25 18:02:41.174298] RUN: git clean -xfd
+[2026-01-26 18:02:45.032445] RUN: git clean -xfd
 Removing .gradle/
 Removing build-tools/build-infra-shadow/build/
 Removing build-tools/build-infra/.gradle/
@@ -856,15 +856,15 @@ Removing lucene/spatial-test-fixtures/build/
 Removing lucene/spatial3d/build/
 Removing lucene/suggest/build/
 Removing lucene/test-framework/build/
-[2026-01-25 18:02:41.421107]   took 0.2 sec
+[2026-01-26 18:02:45.269398]   took 0.2 sec
 will NOT regold results files but rather compare to last good result files
 Java command-line: /usr/lib/jvm/java-25-openjdk/bin/java --add-modules jdk.incubator.vector -Xmx32g -Xms32g -server -XX:+UseParallelGC -Djava.io.tmpdir=/l/tmp --enable-native-access=ALL-UNNAMED
 transparent_hugepages: [always] madvise never
 
-[2026-01-25 18:02:41.421213] RUN: /l/trunk.nightly/gradlew --stacktrace clean > /l/logs.nightly/2026.01.25.18.02.41/clean-lucene.log 2>&1
-[2026-01-25 18:02:45.510402]   took 4.1 sec
-[2026-01-25 18:02:45.510441] RUN: /l/trunk.nightly/gradlew jar > /l/logs.nightly/2026.01.25.18.02.41/jar-lucene.log 2>&1
-[2026-01-25 18:02:59.373483]   took 13.9 sec
+[2026-01-26 18:02:45.269508] RUN: /l/trunk.nightly/gradlew --stacktrace clean > /l/logs.nightly/2026.01.26.18.02.44/clean-lucene.log 2>&1
+[2026-01-26 18:02:49.356860]   took 4.1 sec
+[2026-01-26 18:02:49.356897] RUN: /l/trunk.nightly/gradlew jar > /l/logs.nightly/2026.01.26.18.02.44/jar-lucene.log 2>&1
+[2026-01-26 18:03:03.263765]   took 13.9 sec
 
 JAVA:
 WARNING: Using incubator modules: jdk.incubator.vector
