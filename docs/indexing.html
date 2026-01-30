@@ -4580,7 +4580,8 @@
     "2026-01-19 18:03:41,931.3\n" +
     "2026-01-20 18:03:43,915.7\n" +
     "2026-01-21 18:03:42,956.3\n" +
-    "2026-01-22 18:03:42,933.5\n",
+    "2026-01-22 18:03:42,933.5\n" +
+    "2026-01-29 14:59:00,928.0\n",
     {title: "~1 KB Wikipedia English docs", xlabel: "Date", colors: ["#218559", "#192823", "#B0A691", "#06A2CB", "#EBB035", "#DD1E2F"], ylabel: "Plain text GB/hour", labelsKMB: true, labelsSeparateLines: true, clickCallback: doClick, labelsDivStyles: {'background-color': 'transparent'}, showRoller: false}
   );
   g_MedIndexTime.setAnnotations([
@@ -7952,7 +7953,8 @@
     "2026-01-19 18:03:41,12.4\n" +
     "2026-01-20 18:03:43,12.3\n" +
     "2026-01-21 18:03:42,12.4\n" +
-    "2026-01-22 18:03:42,12.3\n",
+    "2026-01-22 18:03:42,12.3\n" +
+    "2026-01-29 14:59:00,12.3\n",
     {title: "~1 KB Wikipedia English docs, with KNN Vectors", xlabel: "Date", colors: ["#218559", "#192823", "#B0A691", "#06A2CB", "#EBB035", "#DD1E2F"], ylabel: "Plain text GB/hour", labelsKMB: true, labelsSeparateLines: true, clickCallback: doClick, labelsDivStyles: {'background-color': 'transparent'}, showRoller: false}
   );
   g_MedVectorsIndexTime.setAnnotations([
@@ -9695,7 +9697,8 @@
     "2026-01-19 18:03:41,18.4\n" +
     "2026-01-20 18:03:43,18.3\n" +
     "2026-01-21 18:03:42,18.3\n" +
-    "2026-01-22 18:03:42,18.3\n",
+    "2026-01-22 18:03:42,18.3\n" +
+    "2026-01-29 14:59:00,18.4\n",
     {title: "~1 KB Wikipedia English docs, with KNN Scalar Quantized Vectors", xlabel: "Date", colors: ["#218559", "#192823", "#B0A691", "#06A2CB", "#EBB035", "#DD1E2F"], ylabel: "Plain text GB/hour", labelsKMB: true, labelsSeparateLines: true, clickCallback: doClick, labelsDivStyles: {'background-color': 'transparent'}, showRoller: false}
   );
   g_MedQuantizedVectorsIndexTime.setAnnotations([
@@ -14933,7 +14936,8 @@
     "2026-01-19 18:03:41,1096.8\n" +
     "2026-01-20 18:03:43,1115.0\n" +
     "2026-01-21 18:03:42,1121.3\n" +
-    "2026-01-22 18:03:42,1137.8\n",
+    "2026-01-22 18:03:42,1137.8\n" +
+    "2026-01-29 14:59:00,1114.1\n",
     {title: "~4 KB Wikipedia English docs", xlabel: "Date", colors: ["#218559", "#192823", "#B0A691", "#06A2CB", "#EBB035", "#DD1E2F"], ylabel: "Plain text GB/hour", labelsKMB: true, labelsSeparateLines: true, clickCallback: doClick, labelsDivStyles: {'background-color': 'transparent'}, showRoller: false}
   );
   g_BigIndexTime.setAnnotations([
@@ -21396,7 +21400,8 @@
     "2026-01-19 18:03:41,23.1150,5.6950,0.2400\n" +
     "2026-01-20 18:03:43,24.8140,5.6500,0.2480\n" +
     "2026-01-21 18:03:42,25.1520,5.7740,0.2450\n" +
-    "2026-01-22 18:03:42,25.0920,5.6460,0.2420\n",
+    "2026-01-22 18:03:42,25.0920,5.6460,0.2420\n" +
+    "2026-01-29 14:59:00,29.8680,5.8360,0.2580\n",
     {title: "JIT/GC times indexing ~1 KB docs", xlabel: "Date", colors: ["#218559", "#192823", "#B0A691", "#06A2CB", "#EBB035", "#DD1E2F"], ylabel: "Seconds", labelsKMB: true, labelsSeparateLines: true, clickCallback: doClick, labelsDivStyles: {'background-color': 'transparent'}, showRoller: false}
   );
   g_GCTimes.setAnnotations([
@@ -27530,7 +27535,8 @@
     "2026-01-19 18:03:41,122.0063671875\n" +
     "2026-01-20 18:03:43,122.00664160156248\n" +
     "2026-01-21 18:03:42,122.00638867187499\n" +
-    "2026-01-22 18:03:42,122.0066669921875\n",
+    "2026-01-22 18:03:42,122.0066669921875\n" +
+    "2026-01-29 14:59:00,122.00661230468751\n",
     {title: "Disk usage of fixed search index", xlabel: "Date", colors: ["#218559", "#192823", "#B0A691", "#06A2CB", "#EBB035", "#DD1E2F"], ylabel: "GB", labelsKMB: true, labelsSeparateLines: true, clickCallback: doClick, labelsDivStyles: {'background-color': 'transparent'}, showRoller: false}
   );
   g_FixedIndexSize.setAnnotations([
@@ -29449,9 +29455,9 @@
   <li> Test does <b>not wait for merges on close</b> (calls <tt>IW.close(false)</tt>)  <li> Analyzer is <tt>StandardAnalyzer</tt>, but we <b>index all stop words</b>  <li> Test indexes full <a href="http://en.wikipedia.org/wiki/Wikipedia:Database_download">Wikipedia English XML export</a> (1/15/2011), from a pre-created line file (one document per line), on a different drive from the one that stores the index  <li> 36 indexing threads
   <li> 2048 MB RAM buffer
   <li> Java command-line: <tt>/usr/lib/jvm/java-25-openjdk/bin/java --add-modules jdk.incubator.vector -Xmx32g -Xms32g -server -XX:+UseParallelGC -Djava.io.tmpdir=/l/tmp --enable-native-access=ALL-UNNAMED</tt>
-  <li> Java version: <tt>openjdk version "25.0.1" 2025-09-16
-OpenJDK Runtime Environment (build 25.0.1)
-OpenJDK 64-Bit Server VM (build 25.0.1, mixed mode, sharing)</tt>
-  <li> OS: <tt>Linux beast3.mikemccandless.com 6.15.2-arch1-1 #1 SMP PREEMPT_DYNAMIC Tue, 10 Jun 2025 21:32:33 +0000 x86_64 GNU/Linux</tt>
+  <li> Java version: <tt>openjdk version "25.0.2" 2026-01-20
+OpenJDK Runtime Environment (build 25.0.2)
+OpenJDK 64-Bit Server VM (build 25.0.2, mixed mode, sharing)</tt>
+  <li> OS: <tt>Linux beast3.mikemccandless.com 6.18.7-arch1-1 #1 SMP PREEMPT_DYNAMIC Sat, 24 Jan 2026 00:47:39 +0000 x86_64 GNU/Linux</tt>
   <li> CPU: 2 Xeon X5680, overclocked @ 4.0 Ghz (total 24 cores = 2 CPU * 6 core * 2 hyperthreads)
-  <li> IO: index stored on 240 GB <a href="http://www.ocztechnology.com/ocz-vertex-3-sata-iii-2-5-ssd.html">OCZ Vertex 3</a>, starting on 4/25 (previously on traditional spinning-magnets hard drive (Western Digital Caviar Green, 1TB))  <li> Source code: <a href="https://github.com/mikemccand/luceneutil/blob/main/src/main/perf/Indexer.java"><tt>Indexer.java</tt></a>  <li> All graphs are interactive <a href="http://dygraphs.com">Dygraphs</a></ul><br><a href="index.html">Back to all results</a><br><br><em>[last updated: 2026-01-23 16:44:36.836778; send questions to <a href="mailto:lucene@mikemccandless.com">Mike McCandless</a>]</em></div></body></html>
+  <li> IO: index stored on 240 GB <a href="http://www.ocztechnology.com/ocz-vertex-3-sata-iii-2-5-ssd.html">OCZ Vertex 3</a>, starting on 4/25 (previously on traditional spinning-magnets hard drive (Western Digital Caviar Green, 1TB))  <li> Source code: <a href="https://github.com/mikemccand/luceneutil/blob/main/src/main/perf/Indexer.java"><tt>Indexer.java</tt></a>  <li> All graphs are interactive <a href="http://dygraphs.com">Dygraphs</a></ul><br><a href="index.html">Back to all results</a><br><br><em>[last updated: 2026-01-30 13:38:32.923611; send questions to <a href="mailto:lucene@mikemccandless.com">Mike McCandless</a>]</em></div></body></html>
