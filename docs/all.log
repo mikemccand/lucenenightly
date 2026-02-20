@@ -1,7 +1,7 @@
 start: disk usage on /l:
 + df -h /l
 Filesystem      Size  Used Avail Use% Mounted on
-/dev/nvme2n1p1  880G  307G  528G  37% /
+/dev/nvme0n1p1  880G  319G  516G  39% /
 + export ANT_HOME=/usr/local/src/apache-ant-1.9.5
 + ANT_HOME=/usr/local/src/apache-ant-1.9.5
 + export JAVA_HOME=/usr/lib/jvm/java-25-openjdk
@@ -11,84 +11,497 @@ Filesystem      Size  Used Avail Use% Mounted on
 + export PATH=/usr/local/src/apache-ant-1.9.5/bin:/usr/lib/jvm/java-25-openjdk/bin:/usr/local/src/gradle-2.9/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
 + PATH=/usr/local/src/apache-ant-1.9.5/bin:/usr/lib/jvm/java-25-openjdk/bin:/usr/local/src/gradle-2.9/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
 ++ date
-+ echo -e '\n\nWed Feb  4 05:55:31 AM EST 2026: now start nightly benchmarks'
++ echo -e '\n\nFri Feb 20 05:48:07 AM EST 2026: now start nightly benchmarks'
 
 
-Wed Feb  4 05:55:31 AM EST 2026: now start nightly benchmarks
+Fri Feb 20 05:48:07 AM EST 2026: now start nightly benchmarks
 + pkill java
 + true
 + pkill mencoder
 + true
 + cd /l/trunk.nightly/lucene
 + git checkout main
-Already on 'main'
+Previous HEAD position was 2f9aa8ae26d Optimize DocIdSetIteratorAcceptDocs#cost (#15592)
+Switched to branch 'main'
 Your branch is up to date with 'origin/main'.
 + git pull origin main
 From https://gitbox.apache.org/repos/asf/lucene
  * branch                    main       -> FETCH_HEAD
-   ca88182f528..052a2c2998d  main       -> origin/main
-Updating ca88182f528..052a2c2998d
+   052a2c2998d..e1879e450b7  main       -> origin/main
+Updating 052a2c2998d..e1879e450b7
 Fast-forward
- gradle/libs.versions.toml                          |  2 +-
- lucene/CHANGES.txt                                 |  4 ++++
- .../search/vectorhighlight/FieldPhraseList.java    |  1 +
- .../vectorhighlight/TestFieldPhraseList.java       | 24 ++++++++++++++++++++++
- 4 files changed, 30 insertions(+), 1 deletion(-)
+ .github/workflows/actions.yml                      |    2 +-
+ .github/workflows/activity-report.yml              |    2 +-
+ .github/workflows/auto-format.yml                  |    2 +-
+ .github/workflows/codeql.yml                       |    2 +-
+ .github/workflows/dependency-submission.yml        |    2 +-
+ .github/workflows/run-checks-all.yml               |    6 +-
+ .github/workflows/run-checks-gradle-upgrade.yml    |    6 +-
+ .../run-checks-mod-analysis-common-hunspell.yml    |    2 +-
+ .../run-checks-mod-distribution.tests.yml          |    2 +-
+ .github/workflows/run-checks-python.yml            |    2 +-
+ .github/workflows/run-nightly-smoketester.yml      |    4 +-
+ .github/workflows/run-scheduled-hunspell.yml       |    2 +-
+ .../workflows/run-scheduled-spotless-groovy.yml    |    2 +-
+ .github/workflows/run-special-checks-sandbox.yml   |    2 +-
+ .../verify-changelog-and-set-milestone.yml         |    2 +-
+ .../apache/lucene/gradle/WrapperDownloader.java    |   27 +-
+ .../gradle/plugins/ide/EclipseSupportPlugin.java   |    8 +-
+ .../gradle/plugins/java/CodeCoveragePlugin.java    |   27 +-
+ .../gradle/plugins/java/ErrorPronePlugin.java      |    3 +
+ .../plugins/java/TestsAndRandomizationPlugin.java  |  143 +-
+ gradle/libs.versions.toml                          |   14 +-
+ gradle/validation/forbidden-apis/all/defaults.txt  |    8 +-
+ gradle/wrapper/gradle-wrapper.jar.sha256           |    2 +-
+ gradle/wrapper/gradle-wrapper.jar.version          |    1 -
+ gradle/wrapper/gradle-wrapper.properties           |    2 +-
+ gradlew                                            |    5 +-
+ gradlew.bat                                        |    6 +-
+ lucene/CHANGES.txt                                 |   37 +-
+ lucene/MIGRATE.md                                  |   59 +
+ .../compound/CompoundWordTokenFilterBase.java      |    9 +-
+ .../lucene/analysis/custom/CustomAnalyzer.java     |    4 +-
+ .../analysis/query/QueryAutoStopWordAnalyzer.java  |    2 +-
+ .../lucene/analysis/synonym/SolrSynonymParser.java |    2 +-
+ .../generated/checksums/regenerateForUtil84.json   |    4 -
+ lucene/backward-codecs/src/java/module-info.java   |   14 -
+ .../lucene40/blocktree/CompressionAlgorithm.java   |   74 -
+ .../lucene40/blocktree/FieldReader.java            |  219 --
+ .../lucene40/blocktree/IntersectTermsEnum.java     |  577 -----
+ .../blocktree/IntersectTermsEnumFrame.java         |  357 ---
+ .../blocktree/Lucene40BlockTreeTermsReader.java    |  378 ----
+ .../lucene40/blocktree/SegmentTermsEnum.java       | 1177 ----------
+ .../lucene40/blocktree/SegmentTermsEnumFrame.java  |  794 -------
+ .../backward_codecs/lucene40/blocktree/Stats.java  |  276 ---
+ .../lucene40/blocktree/package-info.java           |   28 -
+ .../lucene/backward_codecs/lucene50/ForUtil.java   |  239 --
+ .../lucene50/Lucene50CompoundFormat.java           |   88 -
+ .../lucene50/Lucene50CompoundReader.java           |  215 --
+ .../lucene50/Lucene50LiveDocsFormat.java           |  171 --
+ .../lucene50/Lucene50PostingsFormat.java           |  474 ----
+ .../lucene50/Lucene50PostingsReader.java           | 1866 ----------------
+ .../lucene50/Lucene50ScoreSkipReader.java          |  139 --
+ .../lucene50/Lucene50SkipReader.java               |  214 --
+ .../lucene50/Lucene50StoredFieldsFormat.java       |  235 --
+ .../lucene50/Lucene50TermVectorsFormat.java        |  158 --
+ .../lucene50/compressing/FieldsIndex.java          |   32 -
+ .../lucene50/compressing/FieldsIndexReader.java    |  142 --
+ .../compressing/LegacyFieldsIndexReader.java       |  185 --
+ .../Lucene50CompressingStoredFieldsFormat.java     |  167 --
+ .../Lucene50CompressingStoredFieldsReader.java     |  765 -------
+ .../Lucene50CompressingTermVectorsFormat.java      |  130 --
+ .../Lucene50CompressingTermVectorsReader.java      | 1303 -----------
+ .../lucene50/compressing/package-info.java         |   19 -
+ .../backward_codecs/lucene50/package-info.java     |   19 -
+ .../lucene60/Lucene60FieldInfosFormat.java         |  372 ----
+ .../lucene60/Lucene60PointsFormat.java             |  107 -
+ .../lucene60/Lucene60PointsReader.java             |  146 --
+ .../backward_codecs/lucene60/package-info.java     |   19 -
+ .../lucene70/Lucene70SegmentInfoFormat.java        |  323 ---
+ .../backward_codecs/lucene70/package-info.java     |   22 -
+ .../backward_codecs/lucene80/Lucene80Codec.java    |  135 --
+ .../lucene80/Lucene80NormsFormat.java              |  105 -
+ .../lucene80/Lucene80NormsProducer.java            |  489 -----
+ .../backward_codecs/lucene84/ForDeltaUtil.java     |   86 -
+ .../lucene/backward_codecs/lucene84/ForUtil.java   | 1159 ----------
+ .../backward_codecs/lucene84/Lucene84Codec.java    |  179 --
+ .../lucene84/Lucene84PostingsFormat.java           |  474 ----
+ .../lucene84/Lucene84PostingsReader.java           | 2092 ------------------
+ .../lucene84/Lucene84ScoreSkipReader.java          |  135 --
+ .../lucene84/Lucene84SkipReader.java               |  206 --
+ .../lucene/backward_codecs/lucene84/PForUtil.java  |  123 --
+ .../lucene/backward_codecs/lucene84/gen_ForUtil.py |  582 -----
+ .../backward_codecs/lucene84/package-info.java     |   19 -
+ .../backward_codecs/lucene86/Lucene86Codec.java    |  178 --
+ .../lucene86/Lucene86PointsFormat.java             |   76 -
+ .../lucene86/Lucene86PointsReader.java             |  157 --
+ .../lucene86/Lucene86SegmentInfoFormat.java        |  181 --
+ .../backward_codecs/lucene86/package-info.java     |   19 -
+ .../DeflateWithPresetDictCompressionMode.java      |  228 --
+ .../lucene87/LZ4WithPresetDictCompressionMode.java |  201 --
+ .../backward_codecs/lucene87/Lucene87Codec.java    |  203 --
+ .../lucene87/Lucene87StoredFieldsFormat.java       |  176 --
+ .../backward_codecs/lucene87/package-info.java     |   19 -
+ .../services/org.apache.lucene.codecs.Codec        |    4 -
+ .../org.apache.lucene.codecs.PostingsFormat        |    2 -
+ .../blocktree/Lucene40BlockTreeTermsWriter.java    | 1164 ----------
+ .../blocktree/Lucene40BlockTreeTermsWriterV5.java  | 1096 ----------
+ .../lucene50/Lucene50PostingsWriter.java           |  529 -----
+ .../lucene50/Lucene50RWCompoundFormat.java         |  142 --
+ .../lucene50/Lucene50RWPostingsFormat.java         |   47 -
+ .../lucene50/Lucene50RWStoredFieldsFormat.java     |   72 -
+ .../lucene50/Lucene50RWTermVectorsFormat.java      |   28 -
+ .../lucene50/Lucene50SkipWriter.java               |  237 --
+ .../lucene50/TestBlockPostingsFormat.java          |  138 --
+ .../lucene50/TestBlockPostingsFormat2.java         |  135 --
+ .../lucene50/TestBlockPostingsFormat3.java         |  493 -----
+ .../backward_codecs/lucene50/TestForUtil.java      |   98 -
+ .../lucene50/TestLucene50CompoundFormat.java       |   31 -
+ .../lucene50/TestLucene50LiveDocsFormat.java       |   31 -
+ .../lucene50/TestLucene50StoredFieldsFormat.java   |   30 -
+ ...tLucene50StoredFieldsFormatHighCompression.java |   86 -
+ ...estLucene50StoredFieldsFormatMergeInstance.java |   29 -
+ .../lucene50/TestLucene50TermVectorsFormat.java    |   31 -
+ .../lucene50/compressing/FieldsIndexWriter.java    |  210 --
+ .../Lucene50CompressingStoredFieldsWriter.java     |  507 -----
+ .../Lucene50CompressingTermVectorsWriter.java      |  809 -------
+ .../Lucene50RWCompressingStoredFieldsFormat.java   |   52 -
+ .../Lucene50RWCompressingTermVectorsFormat.java    |   54 -
+ .../lucene60/Lucene60PointsWriter.java             |  286 ---
+ .../lucene60/Lucene60RWPointsFormat.java           |   33 -
+ .../lucene60/TestLucene60FieldInfosFormat.java     |   35 -
+ .../lucene60/TestLucene60PointsFormat.java         |  320 ---
+ .../backward_codecs/lucene60/bkd/BKDWriter60.java  | 2291 --------------------
+ .../backward_codecs/lucene60/bkd/DocIdsWriter.java |   85 -
+ .../lucene70/Lucene70RWSegmentInfoFormat.java      |  226 --
+ .../lucene70/TestLucene70SegmentInfoFormat.java    |   43 -
+ .../BaseLucene80DocValuesFormatTestCase.java       |  872 --------
+ .../lucene80/Lucene80NormsConsumer.java            |  177 --
+ .../lucene80/Lucene80RWNormsFormat.java            |   30 -
+ ...TestBestCompressionLucene80DocValuesFormat.java |   35 -
+ .../TestBestSpeedLucene80DocValuesFormat.java      |   34 -
+ .../lucene80/TestDocValuesCompression.java         |  320 ---
+ .../backward_codecs/lucene80/TestIndexedDISI.java  |  588 -----
+ .../lucene80/TestLucene80NormsFormat.java          |   33 -
+ .../TestLucene80NormsFormatMergeInstance.java      |   29 -
+ .../lucene84/Lucene84PostingsWriter.java           |  549 -----
+ .../backward_codecs/lucene84/Lucene84RWCodec.java  |   81 -
+ .../lucene84/Lucene84RWPostingsFormat.java         |   46 -
+ .../lucene84/Lucene84SkipWriter.java               |  237 --
+ .../backward_codecs/lucene84/TestForDeltaUtil.java |   96 -
+ .../backward_codecs/lucene84/TestForUtil.java      |   97 -
+ .../lucene84/TestLucene84PostingsFormat.java       |  137 --
+ .../backward_codecs/lucene84/TestPForUtil.java     |  103 -
+ .../lucene86/Lucene86PointsWriter.java             |  304 ---
+ .../backward_codecs/lucene86/Lucene86RWCodec.java  |   92 -
+ .../lucene86/Lucene86RWPointsFormat.java           |   33 -
+ .../lucene86/Lucene86RWSegmentInfoFormat.java      |  107 -
+ .../lucene86/TestLucene86PointsFormat.java         |  361 ---
+ .../lucene86/TestLucene86SegmentInfoFormat.java    |   43 -
+ .../backward_codecs/lucene87/Lucene87RWCodec.java  |   91 -
+ .../lucene87/Lucene87RWStoredFieldsFormat.java     |   69 -
+ .../lucene87/TestLucene87StoredFieldsFormat.java   |   29 -
+ ...tLucene87StoredFieldsFormatHighCompression.java |   85 -
+ ...estLucene87StoredFieldsFormatMergeInstance.java |   29 -
+ .../TestAncientIndicesCompatibility.java           |    2 +-
+ .../lucene/benchmark/jmh/VectorUtilBenchmark.java  |    7 +
+ .../byTask/tasks/SearchTravRetHighlightTask.java   |    2 +-
+ .../lucene/benchmark/byTask/utils/Config.java      |    2 +-
+ .../codecs/bloom/BloomFilteringPostingsFormat.java |    7 +
+ .../simpletext/SimpleTextCompoundFormat.java       |    2 +-
+ .../core/tests/TestComparatorSubclassing.java      |  102 +
+ lucene/core/build.gradle                           |    3 -
+ lucene/core/src/java/module-info.java              |    2 +
+ .../apache/lucene/codecs/DocValuesConsumer.java    |    2 +-
+ .../org/apache/lucene/codecs/FieldsConsumer.java   |    3 +-
+ .../lucene103/blocktree/SegmentTermsEnumFrame.java |   24 +-
+ .../codecs/lucene90/Lucene90CompoundReader.java    |    2 +-
+ .../java/org/apache/lucene/document/Document.java  |   26 +-
+ .../lucene/geo/SimpleGeoJSONPolygonParser.java     |    4 +-
+ .../apache/lucene/geo/SimpleWKTShapeParser.java    |    8 +-
+ .../java/org/apache/lucene/geo/Tessellator.java    |   76 +-
+ .../java/org/apache/lucene/index/FieldInfos.java   |    2 +-
+ .../src/java/org/apache/lucene/index/Fields.java   |    3 -
+ .../apache/lucene/index/FrozenBufferedUpdates.java |    2 +-
+ .../java/org/apache/lucene/index/IndexWriter.java  |    2 +-
+ .../java/org/apache/lucene/index/MultiFields.java  |    4 +-
+ .../java/org/apache/lucene/index/MultiTerms.java   |    6 +-
+ .../java/org/apache/lucene/index/ReaderSlice.java  |    6 +-
+ .../org/apache/lucene/index/ReadersAndUpdates.java |    2 +-
+ .../index/SoftDeletesDirectoryReaderWrapper.java   |    2 +-
+ .../lucene/index/StandardDirectoryReader.java      |   18 +-
+ .../src/java/org/apache/lucene/index/Terms.java    |    3 -
+ .../java/org/apache/lucene/index/TermsEnum.java    |   16 +-
+ .../org/apache/lucene/index/TermsEnumIndex.java    |    2 -
+ .../vectorization/DefaultVectorUtilSupport.java    |   11 +-
+ .../vectorization/VectorizationProvider.java       |   54 +-
+ .../java/org/apache/lucene/search/AcceptDocs.java  |   12 +-
+ .../lucene/search/BlockMaxConjunctionScorer.java   |    4 +-
+ .../apache/lucene/search/ExactPhraseMatcher.java   |    2 +-
+ .../org/apache/lucene/search/IndexSearcher.java    |    2 +-
+ .../org/apache/lucene/search/LRUQueryCache.java    |   30 +-
+ .../org/apache/lucene/search/MultiCollector.java   |    2 +-
+ .../org/apache/lucene/search/MultiPhraseQuery.java |    6 +-
+ .../java/org/apache/lucene/search/PhraseQuery.java |    2 +-
+ .../org/apache/lucene/search/SynonymQuery.java     |    2 +-
+ .../search/comparators/NumericComparator.java      |  107 +-
+ .../search/comparators/TermOrdValComparator.java   |  144 +-
+ .../lucene/search/knn/MultiLeafKnnCollector.java   |  139 --
+ .../java/org/apache/lucene/store/FSDirectory.java  |    2 +-
+ .../apache/lucene/store/FileSwitchDirectory.java   |    2 +-
+ .../apache/lucene/store/NRTCachingDirectory.java   |    2 +-
+ .../org/apache/lucene/util/AttributeSource.java    |    2 +-
+ .../java/org/apache/lucene/util/BytesRefHash.java  |    2 +-
+ .../src/java/org/apache/lucene/util/Constants.java |   12 +
+ .../java/org/apache/lucene/util/QueryBuilder.java  |    8 +-
+ .../java/org/apache/lucene/util/VectorUtil.java    |    8 +-
+ .../apache/lucene/util/hnsw/BlockingFloatHeap.java |  193 --
+ .../org/apache/lucene/util/hnsw/NeighborArray.java |    7 +-
+ .../java/org/apache/lucene/util/package-info.java  |   20 +-
+ .../Lucene99MemorySegmentByteVectorScorer.java     |   29 +-
+ ...ene99MemorySegmentByteVectorScorerSupplier.java |   46 +-
+ ...99MemorySegmentScalarQuantizedVectorScorer.java |   92 +-
+ .../vectorization/NativeVectorUtilSupport.java     |  590 +++++
+ .../vectorization/NativeVectorizationProvider.java |   79 +
+ .../vectorization/PanamaVectorUtilSupport.java     |   10 +-
+ .../lucene/codecs/hnsw/TestFlatVectorScorer.java   |    2 +-
+ .../org/apache/lucene/geo/TestTessellator.java     |    6 +
+ .../lucene/index/TestFrozenBufferedUpdates.java    |   37 +-
+ .../apache/lucene/index/TestMaxTermFrequency.java  |    2 +-
+ .../apache/lucene/index/TestSwappedIndexFiles.java |    3 +-
+ .../apache/lucene/index/TestTieredMergePolicy.java |    4 +-
+ .../vectorization/BaseVectorizationTestCase.java   |    7 +-
+ .../vectorization/TestVectorUtilSupport.java       |   61 +-
+ .../lucene/search/BaseKnnVectorQueryTestCase.java  |   18 +-
+ .../apache/lucene/search/TestLRUQueryCache.java    |  197 ++
+ .../org/apache/lucene/search/TestPointQueries.java |    2 +-
+ .../apache/lucene/search/TestSortOptimization.java |   12 +-
+ .../TestTermOrdValComparatorAdaptiveSkipping.java  |  253 +++
+ .../search/knn/TestMultiLeafKnnCollector.java      |   62 -
+ .../org/apache/lucene/util/TestVectorUtil.java     |    2 +-
+ .../util/automaton/TestCompiledAutomaton.java      |    2 +-
+ .../lucene/util/hnsw/TestBlockingFloatHeap.java    |  100 -
+ .../lucene/distribution/TestModularLayer.java      |    7 +-
+ .../grouping/TestDistinctValuesCollector.java      |    5 +-
+ .../lucene/search/grouping/TestGrouping.java       |    4 +-
+ .../highlight/WeightedSpanTermExtractor.java       |   13 +-
+ .../search/uhighlight/UnifiedHighlighter.java      |    2 +-
+ .../vectorhighlight/BaseFragmentsBuilder.java      |    2 +-
+ .../lucene/search/highlight/TestHighlighter.java   |   18 +
+ .../highlight/custom/TestHighlightCustomQuery.java |   25 +
+ .../uhighlight/TestUnifiedHighlighterTermVec.java  |    2 +-
+ .../apache/lucene/search/join/TestJoinUtil.java    |    4 +-
+ lucene/licenses/commons-codec-1.20.0.jar.sha1      |    1 -
+ lucene/licenses/commons-codec-1.21.0.jar.sha1      |    1 +
+ .../randomizedtesting-runner-2.8.3.jar.sha1        |    1 -
+ .../randomizedtesting-runner-2.8.4.jar.sha1        |    1 +
+ .../lucene/luke/models/search/MLTConfig.java       |    2 +-
+ lucene/misc/src/c/dotProduct.c                     |  241 ++
+ lucene/misc/src/c/dotProduct.h                     |   18 +
+ .../apache/lucene/queries/mlt/MoreLikeThis.java    |    4 +-
+ .../complexPhrase/ComplexPhraseQueryParser.java    |    6 +-
+ .../idversion/TestIDVersionPostingsFormat.java     |    2 +-
+ .../checksums/regenerateEmojiTokenizationTest.json |    4 +-
+ .../regenerateJavaUnicodeWordBreakTest.json        |    2 +-
+ .../tests/analysis/BaseTokenStreamTestCase.java    |   16 +-
+ .../EmojiTokenizationTestUnicode_12_1.java         |    4 +-
+ .../standard/WordBreakTestUnicode_12_1_0.java      |    2 +-
+ .../standard/generateEmojiTokenizationTest.pl      |    5 +-
+ .../standard/generateJavaUnicodeWordBreakTest.pl   |    3 +-
+ .../tests/index/BaseTermVectorsFormatTestCase.java |    4 +-
+ .../apache/lucene/tests/util/LuceneTestCase.java   |   26 +-
+ .../lucene/tests/geo/github-15695.geojson.gz       |  Bin 0 -> 1516 bytes
+ versions.lock                                      |   16 +-
+ 262 files changed, 2629 insertions(+), 33695 deletions(-)
+ delete mode 100644 gradle/wrapper/gradle-wrapper.jar.version
+ delete mode 100644 lucene/backward-codecs/src/generated/checksums/regenerateForUtil84.json
+ delete mode 100644 lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/lucene40/blocktree/CompressionAlgorithm.java
+ delete mode 100644 lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/lucene40/blocktree/FieldReader.java
+ delete mode 100644 lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/lucene40/blocktree/IntersectTermsEnum.java
+ delete mode 100644 lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/lucene40/blocktree/IntersectTermsEnumFrame.java
+ delete mode 100644 lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/lucene40/blocktree/Lucene40BlockTreeTermsReader.java
+ delete mode 100644 lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/lucene40/blocktree/SegmentTermsEnum.java
+ delete mode 100644 lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/lucene40/blocktree/SegmentTermsEnumFrame.java
+ delete mode 100644 lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/lucene40/blocktree/Stats.java
+ delete mode 100644 lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/lucene40/blocktree/package-info.java
+ delete mode 100644 lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/lucene50/ForUtil.java
+ delete mode 100644 lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/lucene50/Lucene50CompoundFormat.java
+ delete mode 100644 lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/lucene50/Lucene50CompoundReader.java
+ delete mode 100644 lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/lucene50/Lucene50LiveDocsFormat.java
+ delete mode 100644 lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/lucene50/Lucene50PostingsFormat.java
+ delete mode 100644 lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/lucene50/Lucene50PostingsReader.java
+ delete mode 100644 lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/lucene50/Lucene50ScoreSkipReader.java
+ delete mode 100644 lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/lucene50/Lucene50SkipReader.java
+ delete mode 100644 lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/lucene50/Lucene50StoredFieldsFormat.java
+ delete mode 100644 lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/lucene50/Lucene50TermVectorsFormat.java
+ delete mode 100644 lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/lucene50/compressing/FieldsIndex.java
+ delete mode 100644 lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/lucene50/compressing/FieldsIndexReader.java
+ delete mode 100644 lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/lucene50/compressing/LegacyFieldsIndexReader.java
+ delete mode 100644 lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/lucene50/compressing/Lucene50CompressingStoredFieldsFormat.java
+ delete mode 100644 lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/lucene50/compressing/Lucene50CompressingStoredFieldsReader.java
+ delete mode 100644 lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/lucene50/compressing/Lucene50CompressingTermVectorsFormat.java
+ delete mode 100644 lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/lucene50/compressing/Lucene50CompressingTermVectorsReader.java
+ delete mode 100644 lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/lucene50/compressing/package-info.java
+ delete mode 100644 lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/lucene50/package-info.java
+ delete mode 100644 lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/lucene60/Lucene60FieldInfosFormat.java
+ delete mode 100644 lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/lucene60/Lucene60PointsFormat.java
+ delete mode 100644 lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/lucene60/Lucene60PointsReader.java
+ delete mode 100644 lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/lucene60/package-info.java
+ delete mode 100644 lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/lucene70/Lucene70SegmentInfoFormat.java
+ delete mode 100644 lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/lucene70/package-info.java
+ delete mode 100644 lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/lucene80/Lucene80Codec.java
+ delete mode 100644 lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/lucene80/Lucene80NormsFormat.java
+ delete mode 100644 lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/lucene80/Lucene80NormsProducer.java
+ delete mode 100644 lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/lucene84/ForDeltaUtil.java
+ delete mode 100644 lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/lucene84/ForUtil.java
+ delete mode 100644 lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/lucene84/Lucene84Codec.java
+ delete mode 100644 lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/lucene84/Lucene84PostingsFormat.java
+ delete mode 100644 lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/lucene84/Lucene84PostingsReader.java
+ delete mode 100644 lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/lucene84/Lucene84ScoreSkipReader.java
+ delete mode 100644 lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/lucene84/Lucene84SkipReader.java
+ delete mode 100644 lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/lucene84/PForUtil.java
+ delete mode 100644 lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/lucene84/gen_ForUtil.py
+ delete mode 100644 lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/lucene84/package-info.java
+ delete mode 100644 lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/lucene86/Lucene86Codec.java
+ delete mode 100644 lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/lucene86/Lucene86PointsFormat.java
+ delete mode 100644 lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/lucene86/Lucene86PointsReader.java
+ delete mode 100644 lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/lucene86/Lucene86SegmentInfoFormat.java
+ delete mode 100644 lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/lucene86/package-info.java
+ delete mode 100644 lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/lucene87/DeflateWithPresetDictCompressionMode.java
+ delete mode 100644 lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/lucene87/LZ4WithPresetDictCompressionMode.java
+ delete mode 100644 lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/lucene87/Lucene87Codec.java
+ delete mode 100644 lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/lucene87/Lucene87StoredFieldsFormat.java
+ delete mode 100644 lucene/backward-codecs/src/java/org/apache/lucene/backward_codecs/lucene87/package-info.java
+ delete mode 100644 lucene/backward-codecs/src/test/org/apache/lucene/backward_codecs/lucene40/blocktree/Lucene40BlockTreeTermsWriter.java
+ delete mode 100644 lucene/backward-codecs/src/test/org/apache/lucene/backward_codecs/lucene40/blocktree/Lucene40BlockTreeTermsWriterV5.java
+ delete mode 100644 lucene/backward-codecs/src/test/org/apache/lucene/backward_codecs/lucene50/Lucene50PostingsWriter.java
+ delete mode 100644 lucene/backward-codecs/src/test/org/apache/lucene/backward_codecs/lucene50/Lucene50RWCompoundFormat.java
+ delete mode 100644 lucene/backward-codecs/src/test/org/apache/lucene/backward_codecs/lucene50/Lucene50RWPostingsFormat.java
+ delete mode 100644 lucene/backward-codecs/src/test/org/apache/lucene/backward_codecs/lucene50/Lucene50RWStoredFieldsFormat.java
+ delete mode 100644 lucene/backward-codecs/src/test/org/apache/lucene/backward_codecs/lucene50/Lucene50RWTermVectorsFormat.java
+ delete mode 100644 lucene/backward-codecs/src/test/org/apache/lucene/backward_codecs/lucene50/Lucene50SkipWriter.java
+ delete mode 100644 lucene/backward-codecs/src/test/org/apache/lucene/backward_codecs/lucene50/TestBlockPostingsFormat.java
+ delete mode 100644 lucene/backward-codecs/src/test/org/apache/lucene/backward_codecs/lucene50/TestBlockPostingsFormat2.java
+ delete mode 100644 lucene/backward-codecs/src/test/org/apache/lucene/backward_codecs/lucene50/TestBlockPostingsFormat3.java
+ delete mode 100644 lucene/backward-codecs/src/test/org/apache/lucene/backward_codecs/lucene50/TestForUtil.java
+ delete mode 100644 lucene/backward-codecs/src/test/org/apache/lucene/backward_codecs/lucene50/TestLucene50CompoundFormat.java
+ delete mode 100644 lucene/backward-codecs/src/test/org/apache/lucene/backward_codecs/lucene50/TestLucene50LiveDocsFormat.java
+ delete mode 100644 lucene/backward-codecs/src/test/org/apache/lucene/backward_codecs/lucene50/TestLucene50StoredFieldsFormat.java
+ delete mode 100644 lucene/backward-codecs/src/test/org/apache/lucene/backward_codecs/lucene50/TestLucene50StoredFieldsFormatHighCompression.java
+ delete mode 100644 lucene/backward-codecs/src/test/org/apache/lucene/backward_codecs/lucene50/TestLucene50StoredFieldsFormatMergeInstance.java
+ delete mode 100644 lucene/backward-codecs/src/test/org/apache/lucene/backward_codecs/lucene50/TestLucene50TermVectorsFormat.java
+ delete mode 100644 lucene/backward-codecs/src/test/org/apache/lucene/backward_codecs/lucene50/compressing/FieldsIndexWriter.java
+ delete mode 100644 lucene/backward-codecs/src/test/org/apache/lucene/backward_codecs/lucene50/compressing/Lucene50CompressingStoredFieldsWriter.java
+ delete mode 100644 lucene/backward-codecs/src/test/org/apache/lucene/backward_codecs/lucene50/compressing/Lucene50CompressingTermVectorsWriter.java
+ delete mode 100644 lucene/backward-codecs/src/test/org/apache/lucene/backward_codecs/lucene50/compressing/Lucene50RWCompressingStoredFieldsFormat.java
+ delete mode 100644 lucene/backward-codecs/src/test/org/apache/lucene/backward_codecs/lucene50/compressing/Lucene50RWCompressingTermVectorsFormat.java
+ delete mode 100644 lucene/backward-codecs/src/test/org/apache/lucene/backward_codecs/lucene60/Lucene60PointsWriter.java
+ delete mode 100644 lucene/backward-codecs/src/test/org/apache/lucene/backward_codecs/lucene60/Lucene60RWPointsFormat.java
+ delete mode 100644 lucene/backward-codecs/src/test/org/apache/lucene/backward_codecs/lucene60/TestLucene60FieldInfosFormat.java
+ delete mode 100644 lucene/backward-codecs/src/test/org/apache/lucene/backward_codecs/lucene60/TestLucene60PointsFormat.java
+ delete mode 100644 lucene/backward-codecs/src/test/org/apache/lucene/backward_codecs/lucene60/bkd/BKDWriter60.java
+ delete mode 100644 lucene/backward-codecs/src/test/org/apache/lucene/backward_codecs/lucene60/bkd/DocIdsWriter.java
+ delete mode 100644 lucene/backward-codecs/src/test/org/apache/lucene/backward_codecs/lucene70/Lucene70RWSegmentInfoFormat.java
+ delete mode 100644 lucene/backward-codecs/src/test/org/apache/lucene/backward_codecs/lucene70/TestLucene70SegmentInfoFormat.java
+ delete mode 100644 lucene/backward-codecs/src/test/org/apache/lucene/backward_codecs/lucene80/BaseLucene80DocValuesFormatTestCase.java
+ delete mode 100644 lucene/backward-codecs/src/test/org/apache/lucene/backward_codecs/lucene80/Lucene80NormsConsumer.java
+ delete mode 100644 lucene/backward-codecs/src/test/org/apache/lucene/backward_codecs/lucene80/Lucene80RWNormsFormat.java
+ delete mode 100644 lucene/backward-codecs/src/test/org/apache/lucene/backward_codecs/lucene80/TestBestCompressionLucene80DocValuesFormat.java
+ delete mode 100644 lucene/backward-codecs/src/test/org/apache/lucene/backward_codecs/lucene80/TestBestSpeedLucene80DocValuesFormat.java
+ delete mode 100644 lucene/backward-codecs/src/test/org/apache/lucene/backward_codecs/lucene80/TestDocValuesCompression.java
+ delete mode 100644 lucene/backward-codecs/src/test/org/apache/lucene/backward_codecs/lucene80/TestIndexedDISI.java
+ delete mode 100644 lucene/backward-codecs/src/test/org/apache/lucene/backward_codecs/lucene80/TestLucene80NormsFormat.java
+ delete mode 100644 lucene/backward-codecs/src/test/org/apache/lucene/backward_codecs/lucene80/TestLucene80NormsFormatMergeInstance.java
+ delete mode 100644 lucene/backward-codecs/src/test/org/apache/lucene/backward_codecs/lucene84/Lucene84PostingsWriter.java
+ delete mode 100644 lucene/backward-codecs/src/test/org/apache/lucene/backward_codecs/lucene84/Lucene84RWCodec.java
+ delete mode 100644 lucene/backward-codecs/src/test/org/apache/lucene/backward_codecs/lucene84/Lucene84RWPostingsFormat.java
+ delete mode 100644 lucene/backward-codecs/src/test/org/apache/lucene/backward_codecs/lucene84/Lucene84SkipWriter.java
+ delete mode 100644 lucene/backward-codecs/src/test/org/apache/lucene/backward_codecs/lucene84/TestForDeltaUtil.java
+ delete mode 100644 lucene/backward-codecs/src/test/org/apache/lucene/backward_codecs/lucene84/TestForUtil.java
+ delete mode 100644 lucene/backward-codecs/src/test/org/apache/lucene/backward_codecs/lucene84/TestLucene84PostingsFormat.java
+ delete mode 100644 lucene/backward-codecs/src/test/org/apache/lucene/backward_codecs/lucene84/TestPForUtil.java
+ delete mode 100644 lucene/backward-codecs/src/test/org/apache/lucene/backward_codecs/lucene86/Lucene86PointsWriter.java
+ delete mode 100644 lucene/backward-codecs/src/test/org/apache/lucene/backward_codecs/lucene86/Lucene86RWCodec.java
+ delete mode 100644 lucene/backward-codecs/src/test/org/apache/lucene/backward_codecs/lucene86/Lucene86RWPointsFormat.java
+ delete mode 100644 lucene/backward-codecs/src/test/org/apache/lucene/backward_codecs/lucene86/Lucene86RWSegmentInfoFormat.java
+ delete mode 100644 lucene/backward-codecs/src/test/org/apache/lucene/backward_codecs/lucene86/TestLucene86PointsFormat.java
+ delete mode 100644 lucene/backward-codecs/src/test/org/apache/lucene/backward_codecs/lucene86/TestLucene86SegmentInfoFormat.java
+ delete mode 100644 lucene/backward-codecs/src/test/org/apache/lucene/backward_codecs/lucene87/Lucene87RWCodec.java
+ delete mode 100644 lucene/backward-codecs/src/test/org/apache/lucene/backward_codecs/lucene87/Lucene87RWStoredFieldsFormat.java
+ delete mode 100644 lucene/backward-codecs/src/test/org/apache/lucene/backward_codecs/lucene87/TestLucene87StoredFieldsFormat.java
+ delete mode 100644 lucene/backward-codecs/src/test/org/apache/lucene/backward_codecs/lucene87/TestLucene87StoredFieldsFormatHighCompression.java
+ delete mode 100644 lucene/backward-codecs/src/test/org/apache/lucene/backward_codecs/lucene87/TestLucene87StoredFieldsFormatMergeInstance.java
+ create mode 100644 lucene/core.tests/src/test/org/apache/lucene/core/tests/TestComparatorSubclassing.java
+ delete mode 100644 lucene/core/src/java/org/apache/lucene/search/knn/MultiLeafKnnCollector.java
+ delete mode 100644 lucene/core/src/java/org/apache/lucene/util/hnsw/BlockingFloatHeap.java
+ create mode 100644 lucene/core/src/java25/org/apache/lucene/internal/vectorization/NativeVectorUtilSupport.java
+ create mode 100644 lucene/core/src/java25/org/apache/lucene/internal/vectorization/NativeVectorizationProvider.java
+ create mode 100644 lucene/core/src/test/org/apache/lucene/search/comparators/TestTermOrdValComparatorAdaptiveSkipping.java
+ delete mode 100644 lucene/core/src/test/org/apache/lucene/search/knn/TestMultiLeafKnnCollector.java
+ delete mode 100644 lucene/core/src/test/org/apache/lucene/util/hnsw/TestBlockingFloatHeap.java
+ delete mode 100644 lucene/licenses/commons-codec-1.20.0.jar.sha1
+ create mode 100644 lucene/licenses/commons-codec-1.21.0.jar.sha1
+ delete mode 100644 lucene/licenses/randomizedtesting-runner-2.8.3.jar.sha1
+ create mode 100644 lucene/licenses/randomizedtesting-runner-2.8.4.jar.sha1
+ create mode 100644 lucene/misc/src/c/dotProduct.c
+ create mode 100644 lucene/misc/src/c/dotProduct.h
+ create mode 100644 lucene/test-framework/src/resources/org/apache/lucene/tests/geo/github-15695.geojson.gz
 + ../gradlew clean
+Checksum mismatch, will attempt to re-download gradle-wrapper.jar
+/l/trunk.nightly/gradle/wrapper/gradle-wrapper.jar
+Downloading gradle-wrapper.jar from https://raw.githubusercontent.com/gradle/gradle/v9.3.1/gradle/wrapper/gradle-wrapper.jar
+Downloading https://services.gradle.org/distributions/gradle-9.3.1-bin.zip
+.............10%.............20%.............30%.............40%.............50%.............60%.............70%.............80%.............90%.............100%
+
+Welcome to Gradle 9.3.1!
+
+Here are the highlights of this release:
+ - Test reporting improvements
+ - Error and warning improvements
+ - Build authoring improvements
+
+For more details see https://docs.gradle.org/9.3.1/release-notes.html
+
 Starting a Gradle Daemon (subsequent builds will be faster)
+
 > Task :build-infra:compileJava
-> Task :build-infra:pluginDescriptors UP-TO-DATE
-> Task :build-infra:processResources UP-TO-DATE
+Note: /l/trunk.nightly/build-tools/build-infra/src/main/java/org/apache/lucene/gradle/Checksum.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+
+> Task :build-infra:pluginDescriptors
+> Task :build-infra:processResources
 > Task :build-infra:classes
-> Task :build-infra:jar UP-TO-DATE
+> Task :build-infra:jar
 The eclint tool location is not set ('lucene.tool.eclint' option), will not apply eclint checks.
 The eclint tool location is not set ('lucene.tool.eclint' option), will not apply eclint checks.
-> Task :lucene:clean
-> Task :lucene:distribution:clean
-> Task :lucene:analysis:clean
-> Task :lucene:documentation:clean
-> Task :lucene:distribution.tests:clean
+> Task :lucene:analysis:clean UP-TO-DATE
+> Task :lucene:clean UP-TO-DATE
+> Task :lucene:distribution:clean UP-TO-DATE
 > Task :lucene:analysis.tests:clean
 > Task :lucene:core.tests:clean
 > Task :lucene:classification:clean
+> Task :lucene:documentation:clean UP-TO-DATE
+> Task :lucene:distribution.tests:clean
 > Task :lucene:demo:clean
-> Task :lucene:grouping:clean
 > Task :lucene:expressions:clean
+> Task :lucene:grouping:clean
 > Task :lucene:memory:clean
-> Task :lucene:codecs:clean
 > Task :lucene:benchmark:clean
-> Task :lucene:misc:clean
 > Task :lucene:join:clean
-> Task :lucene:monitor:clean
+> Task :lucene:codecs:clean
+> Task :lucene:misc:clean
+> Task :lucene:highlighter:clean
 > Task :lucene:facet:clean
+> Task :lucene:monitor:clean
 > Task :lucene:replicator:clean
 > Task :lucene:spatial-test-fixtures:clean
-> Task :lucene:benchmark-jmh:clean
-> Task :lucene:highlighter:clean
 > Task :lucene:luke:clean
-> Task :lucene:sandbox:clean
-> Task :lucene:spatial3d:clean
-> Task :lucene:spatial-extras:clean
-> Task :lucene:analysis:morfologik:clean
+> Task :lucene:benchmark-jmh:clean
 > Task :lucene:suggest:clean
+> Task :lucene:spatial-extras:clean
+> Task :lucene:backward-codecs:clean
+> Task :lucene:spatial3d:clean
 > Task :lucene:analysis:morfologik.tests:clean
 > Task :lucene:analysis:icu:clean
+> Task :lucene:queryparser:clean
 > Task :lucene:queries:clean
+> Task :lucene:sandbox:clean
+> Task :lucene:analysis:morfologik:clean
 > Task :lucene:analysis:opennlp:clean
 > Task :lucene:analysis:phonetic:clean
-> Task :lucene:queryparser:clean
-> Task :lucene:analysis:kuromoji:clean
 > Task :lucene:analysis:stempel:clean
 > Task :lucene:analysis:smartcn:clean
+> Task :lucene:analysis:kuromoji:clean
 > Task :lucene:analysis:nori:clean
-> Task :lucene:backward-codecs:clean
 > Task :lucene:test-framework:clean
 > Task :lucene:analysis:common:clean
 > Task :lucene:core:clean
 
-BUILD SUCCESSFUL in 10s
-46 actionable tasks: 43 executed, 3 up-to-date
-Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.2.1/userguide/configuration_cache_enabling.html
+[Incubating] Problems report is available at: file:///l/trunk.nightly/build/reports/problems/problems-report.html
+
+BUILD SUCCESSFUL in 36s
+46 actionable tasks: 42 executed, 4 up-to-date
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.3.1/userguide/configuration_cache_enabling.html
 + ../gradlew jar
 + cd /l/util.nightly
 + rm -rf build
@@ -102,15 +515,1069 @@ Run gradle test
 + /usr/bin/python3 -u /l/util.nightly/src/python/runNightlyGradleTestPrecommit.py
 ***USING BIG LINE FILE***
 Using java from: /usr/lib/jvm/java-25-openjdk/bin/
-  gradle test log: /l/logs.nightly/ant_test/2026.02.04.lucene-tests.txt
+  gradle test log: /l/logs.nightly/ant_test/2026.02.20.lucene-tests.txt
   took: 1.3 min
-  gradle precommit log: /l/logs.nightly/ant_test/2026.02.04.precommit.txt
+  gradle precommit log: /l/logs.nightly/ant_test/2026.02.20.precommit.txt
   took: 0.5 min
++ echo 'Run lucene nightly'
+Run lucene nightly
++ /usr/bin/python -uO /l/util.nightly/src/python/nightlyBench.py -run
+***USING BIG LINE FILE***
+Using java from: /usr/lib/jvm/java-25-openjdk/bin/
+NOTE: perf executable is /usr/sbin/perf; will collect aggregate CPU profiling data
+NOTE: vmstat executable is /usr/sbin/vmstat; will collect system-wide CPU/IO telemetry
+NOTE: gnuplot executable is /usr/sbin/gnuplot; will generate system-wide CPU/IO graphs from vmstat
+GitHub pull request counts: 299 open, 3681 closed
+
+
+
+
+[2026-02-20 05:52:26.487626] start
+[2026-02-20 05:52:26.487714] log dir /l/logs.nightly/2026.02.20.05.52.26
+openjdk full version "25.0.1"
+WARNING: Using incubator modules: jdk.incubator.vector
+openjdk version "25.0.1" 2025-09-16
+OpenJDK Runtime Environment (build 25.0.1)
+OpenJDK 64-Bit Server VM (build 25.0.1, mixed mode, sharing)
+uname -a: Linux beast3.mikemccandless.com 6.15.2-arch1-1 #1 SMP PREEMPT_DYNAMIC Tue, 10 Jun 2025 21:32:33 +0000 x86_64 GNU/Linux
+/proc/version: Linux version 6.15.2-arch1-1 (linux@archlinux) (gcc (GCC) 15.1.1 20250425, GNU ld (GNU Binutils) 2.44.0) #1 SMP PREEMPT_DYNAMIC Tue, 10 Jun 2025 21:32:33 +0000
+/proc/cmdline (kernel boot CLI): BOOT_IMAGE=/boot/vmlinuz-linux root=UUID=d43378d5-fd9f-488a-a69b-73d83768f2d1 rw nowatchdog mitigations=off random.trust_cpu=1 nokaslr norandmaps loglevel=3 acpi_enforce_resources=lax
+lsmod (kernel modules):
+Module                  Size  Used by
+k10temp                16384  0
+nf_conntrack_netlink    61440  0
+xt_nat                 12288  19
+xt_tcpudp              16384  22
+iptable_raw            12288  1
+veth                   40960  0
+nfsv3                  81920  1
+rpcsec_gss_krb5        36864  0
+nfsv4                1306624  0
+dns_resolver           16384  1 nfsv4
+xt_conntrack           12288  2
+xt_MASQUERADE          16384  2
+nfs                   651264  6 nfsv4,nfsv3
+bridge                450560  0
+netfs                 606208  1 nfs
+stp                    12288  1 bridge
+llc                    16384  2 bridge,stp
+ip6table_nat           12288  1
+ip6table_filter        12288  1
+ip6_tables             36864  2 ip6table_filter,ip6table_nat
+xt_set                 24576  0
+ip_set                 69632  1 xt_set
+iptable_nat            12288  5
+nf_nat                 61440  4 ip6table_nat,xt_nat,iptable_nat,xt_MASQUERADE
+nf_conntrack          204800  5 xt_conntrack,nf_nat,xt_nat,nf_conntrack_netlink,xt_MASQUERADE
+nf_defrag_ipv6         24576  1 nf_conntrack
+nf_defrag_ipv4         12288  1 nf_conntrack
+xt_addrtype            12288  4
+iptable_filter         12288  1
+xfrm_user              69632  1
+xfrm_algo              16384  1 xfrm_user
+rpcrdma               466944  2
+rdma_cm               155648  1 rpcrdma
+iw_cm                  65536  1 rdma_cm
+ib_cm                 155648  1 rdma_cm
+ib_core               540672  4 rdma_cm,rpcrdma,iw_cm,ib_cm
+overlay               237568  4
+nct6775                40960  0
+nct6775_core           81920  1 nct6775
+hwmon_vid              12288  1 nct6775
+amd_atl                57344  1
+intel_rapl_msr         20480  0
+intel_rapl_common      53248  1 intel_rapl_msr
+amd64_edac             69632  0
+kvm_amd               237568  0
+kvm                  1388544  1 kvm_amd
+snd_hda_codec_hdmi     90112  1
+irqbypass              12288  1 kvm
+polyval_clmulni        12288  0
+polyval_generic        12288  1 polyval_clmulni
+snd_usb_audio         573440  0
+ghash_clmulni_intel    16384  0
+snd_hda_intel          69632  0
+btusb                  81920  0
+sha512_ssse3           53248  0
+raid1                  61440  1
+snd_intel_dspcfg       40960  1 snd_hda_intel
+btrtl                  32768  1 btusb
+snd_usbmidi_lib        49152  1 snd_usb_audio
+sha256_ssse3           36864  1
+eeepc_wmi              12288  0
+snd_intel_sdw_acpi     16384  1 snd_intel_dspcfg
+btintel                73728  1 btusb
+sha1_ssse3             32768  0
+snd_ump                40960  1 snd_usb_audio
+btbcm                  24576  1 btusb
+asus_wmi              110592  1 eeepc_wmi
+snd_hda_codec         217088  2 snd_hda_codec_hdmi,snd_hda_intel
+ixgbe                 528384  0
+aesni_intel           106496  0
+btmtk                  32768  1 btusb
+snd_rawmidi            53248  2 snd_usbmidi_lib,snd_ump
+jc42                   12288  0
+atlantic              323584  0
+platform_profile       16384  1 asus_wmi
+snd_hda_core          143360  3 snd_hda_codec_hdmi,snd_hda_intel,snd_hda_codec
+crypto_simd            16384  1 aesni_intel
+mdio_devres            12288  1 ixgbe
+snd_seq_device         16384  2 snd_ump,snd_rawmidi
+bluetooth            1101824  6 btrtl,btmtk,btintel,btbcm,btusb
+ee1004                 16384  0
+asus_ec_sensors        28672  0
+cryptd                 28672  2 crypto_simd,ghash_clmulni_intel
+sparse_keymap          12288  1 asus_wmi
+igb                   348160  0
+libphy                233472  2 mdio_devres,ixgbe
+macsec                 69632  1 atlantic
+snd_hwdep              24576  2 snd_usb_audio,snd_hda_codec
+joydev                 24576  0
+mc                     90112  1 snd_usb_audio
+md_mod                237568  2 raid1
+rfkill                 45056  3 asus_wmi,bluetooth
+rapl                   20480  0
+snd_pcm               212992  5 snd_hda_codec_hdmi,snd_hda_intel,snd_usb_audio,snd_hda_codec,snd_hda_core
+wmi_bmof               12288  0
+ptp                    49152  3 atlantic,igb,ixgbe
+pps_core               32768  1 ptp
+snd_timer              57344  1 snd_pcm
+mdio                   12288  1 ixgbe
+acpi_cpufreq           32768  0
+pcspkr                 12288  0
+dca                    16384  2 igb,ixgbe
+snd                   155648  11 snd_seq_device,snd_hda_codec_hdmi,snd_hwdep,snd_hda_intel,snd_usb_audio,snd_usbmidi_lib,snd_hda_codec,snd_timer,snd_ump,snd_pcm,snd_rawmidi
+sp5100_tco             20480  0
+ccp                   184320  1 kvm_amd
+soundcore              16384  1 snd
+mac_hid                12288  0
+i2c_piix4              36864  0
+i2c_smbus              20480  1 i2c_piix4
+nfsd                 1032192  5
+auth_rpcgss           192512  2 nfsd,rpcsec_gss_krb5
+nfs_acl                12288  2 nfsd,nfsv3
+lockd                 192512  3 nfsd,nfsv3,nfs
+grace                  12288  2 nfsd,lockd
+nfs_localio            36864  2 nfsd,nfs
+sunrpc                888832  36 nfs_localio,nfsd,rpcrdma,nfsv4,auth_rpcgss,lockd,nfsv3,rpcsec_gss_krb5,nfs_acl,nfs
+dm_mod                229376  0
+loop                   40960  0
+nfnetlink              20480  4 nf_conntrack_netlink,ip_set
+ip_tables              36864  3 iptable_filter,iptable_raw,iptable_nat
+x_tables               65536  13 ip6table_filter,xt_conntrack,iptable_filter,ip6table_nat,xt_tcpudp,xt_addrtype,xt_nat,xt_set,ip6_tables,iptable_raw,ip_tables,iptable_nat,xt_MASQUERADE
+nouveau              3649536  0
+drm_ttm_helper         16384  2 nouveau
+ttm                   118784  2 drm_ttm_helper,nouveau
+video                  81920  2 asus_wmi,nouveau
+gpu_sched              65536  1 nouveau
+i2c_algo_bit           24576  2 igb,nouveau
+drm_gpuvm              45056  1 nouveau
+drm_exec               12288  2 drm_gpuvm,nouveau
+nvme                   65536  3
+mxm_wmi                12288  1 nouveau
+drm_display_helper    270336  1 nouveau
+nvme_core             266240  4 nvme
+nvme_keyring           20480  1 nvme_core
+cec                    90112  1 drm_display_helper
+nvme_auth              32768  1 nvme_core
+wmi                    32768  5 video,asus_wmi,wmi_bmof,mxm_wmi,nouveau
+Preempt mode: none voluntary (full) lazy
+lsb_release -a:
+LSB Version:	n/a
+Distributor ID:	Arch
+Description:	Arch Linux
+Release:	rolling
+Codename:	n/a
+
+installed packages (pacman -Q):
+7zip 25.01-1
+acl 2.3.2-1
+adobe-source-code-pro-fonts 2.042u+1.062i+1.026vf-2
+adwaita-cursors 49.0-1
+adwaita-fonts 49.0-2
+adwaita-icon-theme 49.0-1
+adwaita-icon-theme-legacy 46.2-3
+alsa-lib 1.2.14-1
+alsa-topology-conf 1.2.5.1-4
+alsa-ucm-conf 1.2.14-2
+amd-ucode 20250917-1
+aom 3.13.1-1
+apparmor 4.1.2-1
+apr 1.7.6-1
+apr-util 1.6.3-2
+archlinux-keyring 20250929-1
+argon2 20190702-6
+at-spi2-core 2.58.0-1
+atop 2.12.1-1
+attr 2.5.2-1
+audit 4.0.5-1
+autoconf 2.72-1
+automake 1.18.1-1
+avahi 1:0.9rc2-1
+base 3-2
+bash 5.3.3-2
+bash-completion 2.16.0-1
+bcc 0.33.0-3
+bcc-tools 0.33.0-3
+binutils 2.45+r29+g2b2e51a31ec7-1
+bison 3.8.2-8
+bridge-utils 1.7.1-2
+brotli 1.1.0-3
+btop 1.4.5-1
+bubblewrap 0.11.0-1
+bzip2 1.0.8-6
+ca-certificates 20240618-1
+ca-certificates-mozilla 3.116-1
+ca-certificates-utils 20240618-1
+cairo 1.18.4-1
+cantarell-fonts 1:0.303.1-2
+celt 0.11.3-4
+clang 20.1.8-1
+cmake 4.1.1-1
+colord 1.4.8-1
+compiler-rt 20.1.8-1
+containerd 2.1.4-1
+coreutils 9.8-2
+cppdap 1.58.0-2
+cpupower 6.16-1
+cracklib 2.10.3-1
+cryptsetup 2.8.1-1
+curl 8.16.0-1
+cython 3.1.4-1
+dav1d 1.5.1-1
+db 6.2.32-1
+db5.3 5.3.28-5
+dbus 1.16.2-1
+dbus-broker 37-2
+dbus-broker-units 37-2
+dconf 0.49.0-1
+debugedit 5.2-1
+default-cursors 3-1
+desktop-file-utils 0.28-1
+device-mapper 2.03.35-1
+diffutils 3.12-2
+ding-libs 0.6.2-2
+dkms 3.2.2-1
+dmidecode 3.6-1
+dnssec-anchors 20250524-1
+docker 1:28.4.0-1
+docker-compose 2.39.4-1
+double-conversion 3.3.1-1
+downgrade 11.8.0-1
+duktape 2.7.0-7
+e2fsprogs 1.47.3-1
+elfutils 0.193-5
+emacs 30.2-1
+emacs-python-mode 6.3.0-1
+ethtool 1:6.15-1
+exiv2 0.28.7-1
+expat 2.7.3-1
+fakeroot 1.37.1.2-1
+ffmpeg 2:7.1.1-5
+fftw 3.3.10-7
+file 5.46-5
+filesystem 2025.05.03-1
+findutils 4.10.0-3
+flac 1.5.0-1
+flex 2.6.4-5
+fontconfig 2:2.17.1-1
+freeglut 3.6.0-2
+freetype2 2.14.1-1
+fribidi 1.0.16-2
+fzf 0.65.2-1
+gawk 5.3.2-1
+gc 8.2.8-2
+gcc 15.2.1+r22+gc4e96a094636-1
+gcc-libs 15.2.1+r22+gc4e96a094636-1
+gd 2.3.3-9
+gdbm 1.26-1
+gdk-pixbuf2 2.44.3-1
+geoip 1.6.12-3
+geoip-database 20250129-1
+gettext 0.26-1
+ghostscript 10.06.0-1
+giflib 5.2.2-2
+git 2.51.0-1
+glib-networking 1:2.80.1-1
+glib2 2.86.0-2
+glibc 2.42+r17+gd7274d718e6f-1
+glslang 1:1.4.321.0-1
+glu 9.0.3-2
+glycin 2.0.2-1
+gmp 6.3.0-2
+gnu-netcat 0.7.1-10
+gnulib-l10n 20241231-1
+gnupg 2.4.8-1
+gnuplot 6.0.3-1
+gnutls 3.8.10-1
+gobject-introspection-runtime 1.86.0-1
+google-chrome 113.0.5672.63-1
+gpac 1:2.4.0-1
+gperftools 2.17.2-1
+gpgme 2.0.1-1
+gpm 1.20.7.r38.ge82d1a6-6
+gradle 9.1.0-1
+graphene 1.10.8-2
+graphite 1:1.3.14-5
+graphviz 14.0.0-1
+grep 3.12-2
+groff 1.23.0-7
+grub 2:2.12.r359.g19c698d12-1
+gsettings-desktop-schemas 49.0-1
+gsettings-system-schemas 49.0-1
+gsfonts 20200910-5
+gsm 1.0.22-2
+gssdp 1.6.4-1
+gssproxy 0.9.2-2
+gst-plugins-bad-libs 1.26.6-2
+gst-plugins-base-libs 1.26.6-2
+gstreamer 1.26.6-2
+gtest 1.17.0-1
+gtk-update-icon-cache 1:4.20.1-1
+gtk3 1:3.24.51-1
+gts 0.7.6.121130-5
+guile 3.0.10-1
+gupnp 1:1.6.9-1
+gupnp-igd 1.6.0-2
+gzip 1.14-2
+harfbuzz 12.0.0-1
+hddtemp 0.3.beta15.53-4
+hdf5 1.14.6-5
+hicolor-icon-theme 0.18-1
+hidapi 0.15.0-1
+highway 1.3.0-1
+htop 3.4.1-1
+http-parser 2.9.4-2
+hwdata 0.399-1
+hwloc 2.12.2-1
+iana-etc 20250612-1
+icu 76.1-1
+ijs 0.35-6
+imath 3.2.1-1
+imlib2 1.12.5-1
+inetutils 2.6-1
+iotop 0.6-12
+iproute2 6.17.0-1
+iptables 1:1.8.11-2
+iputils 20250605-1
+iso-codes 4.18.0-1
+jack2 1.9.22-1
+jansson 2.14.1-1
+java-environment-common 3-6
+java-openjdk-bin 20.u36-1
+java-runtime-common 3-6
+jbig2dec 0.20-1
+jbigkit 2.1-8
+jc 1.25.5-1
+jdk-openjdk 25.u36-1
+jdk17-openjdk 17.0.16.u8-1
+jdk21-openjdk 21.0.8.u9-1
+jemalloc 1:5.3.0-5
+jitterentropy 3.6.3-1
+js60 60.9.0-2
+js78 78.15.0-4
+json-c 0.18-2
+json-glib 1.10.8-1
+jsoncpp 1.9.6-3
+judy 1.0.5-9
+kbd 2.8.0-1
+keyutils 1.6.3-3
+kmod 34.2-1
+krb5 1.21.3-2
+l-smash 2.14.5-4
+lame 3.100-6
+lcms2 2.17-1
+ldns 1.8.4-1
+leancrypto 1.5.1-1
+less 1:679-1
+libaec 1.1.4-2
+libaio 0.3.113-3
+libarchive 3.8.1-1
+libass 0.17.4-1
+libassuan 3.0.0-1
+libasyncns 1:0.8+r3+g68cd5af-3
+libatasmart 0.19-7
+libavc1394 0.5.4-7
+libavif 1.3.0-1
+libb2 0.98.1-3
+libblockdev 3.3.1-1
+libblockdev-crypto 3.3.1-1
+libblockdev-fs 3.3.1-1
+libblockdev-loop 3.3.1-1
+libblockdev-mdraid 3.3.1-1
+libblockdev-nvme 3.3.1-1
+libblockdev-part 3.3.1-1
+libblockdev-smart 3.3.1-1
+libblockdev-swap 3.3.1-1
+libbluray 1.3.4-3
+libbpf 1.5.1-1
+libbs2b 3.1.0-9
+libbsd 0.12.2-2
+libbytesize 2.11-1
+libcaca 0.99.beta20-5
+libcanberra 1:0.30+r2+gc0620e4-4
+libcap 2.76-1
+libcap-ng 0.8.5-3
+libcerf 1:3.2-1
+libcloudproviders 0.3.6-2
+libcolord 1.4.8-1
+libcroco 0.6.13-2
+libcups 2:2.4.14-1
+libdaemon 0.14-6
+libdatrie 0.2.13-4
+libde265 1.0.16-1
+libdeflate 1.24-1
+libdovi 3.3.2-1
+libdrm 2.4.125-1
+libdvdnav 6.1.1-2
+libdvdread 6.1.3-2
+libedit 20250104_3.1-1
+libei 1.5.0-1
+libelf 0.193-5
+libepoxy 1.5.10-3
+libevdev 1.13.4-1
+libevent 2.1.12-4
+libfabric 2.2.0-1
+libffi 3.5.2-1
+libgccjit 15.2.1+r22+gc4e96a094636-1
+libgcrypt 1.11.2-1
+libgexiv2 0.14.6-1
+libgirepository 1.86.0-1
+libgit2 1:1.9.1-1
+libglvnd 1.7.0-3
+libgpg-error 1.55-1
+libgudev 238-3
+libgusb 0.4.9-2
+libheif 1.20.2-1
+libibus 1.5.32-1
+libice 1.1.2-1
+libid3tag 0.16.3-2
+libidn 1.43-1
+libidn2 2.3.7-1
+libiec61883 1.2.0-9
+libimagequant 4.4.0-1
+libinih 61-1
+libinput 1.29.1-1
+libisl 0.27-1
+libjpeg-turbo 3.1.2-1
+libjxl 0.11.1-4
+libksba 1.6.7-2
+libldap 2.6.10-2
+liblqr 0.4.3-1
+libmagick6 6.9.11.38-1
+libmakepkg-dropins 18-1
+libmd 1.1.0-2
+libmfx 23.2.2-5
+libmicrohttpd 1.0.2-1
+libmnl 1.0.5-2
+libmodplug 0.8.9.0-6
+libmpc 1.3.1-2
+libmspack 1:1.11-1
+libnet 2:1.3-1
+libnetfilter_conntrack 1.0.9-2
+libnfnetlink 1.0.2-2
+libnftnl 1.3.0-1
+libnghttp2 1.67.1-1
+libnghttp3 1.12.0-1
+libngtcp2 1.16.0-1
+libnice 0.1.22-2
+libnl 3.11.0-1
+libnotify 0.8.7-1
+libnsl 2.0.1-1
+libnvme 1.15-1
+libogg 1.3.6-1
+libomxil-bellagio 0.9.3-5
+libopenmpt 0.8.3-1
+libotf 0.9.16-6
+libp11 0.4.16-1
+libp11-kit 0.25.9-1
+libpaper 2.2.6-1
+libpcap 1.10.5-3
+libpciaccess 0.18.1-2
+libpfm 4.13.0+r83+g91970fe-1
+libpgm 5.3.128-3
+libpipeline 1.5.8-1
+libplacebo 7.351.0-2
+libpng 1.6.50-1
+libproxy 0.5.11-1
+libpsl 0.21.5-2
+libpulse 17.0+r43+g3e2bb8a1e-1
+libraqm 0.10.3-1
+libraw1394 2.1.2-4
+librsvg 2:2.61.1-1
+libsamplerate 0.2.2-3
+libsasl 2.1.28-5
+libseccomp 2.5.6-1
+libsecret 0.21.7-1
+libsm 1.2.6-1
+libsndfile 1.2.2-3
+libsodium 1.0.20-1
+libsoup 2.74.3-4
+libsoup3 3.6.5-1
+libsoxr 0.1.3-4
+libssh 0.11.3-1
+libssh2 1.11.1-1
+libstemmer 3.0.1-1
+libsysprof-capture 49.0-1
+libtasn1 4.20.0-1
+libthai 0.1.29-3
+libtheora 1.2.0-1
+libtiff 4.7.1-1
+libtirpc 1.3.7-1
+libtool 2.6.0-1
+libtraceevent 1:1.8.4-1
+libunibreak 6.1-1
+libunistring 1.3-1
+libunwind 1.8.2-1
+liburing 2.12-1
+libusb 1.0.29-1
+libutempter 1.2.3-1
+libutf8proc 2.10.0-2
+libuv 1.51.0-1
+libva 2.22.0-1
+libvdpau 1.5-3
+libverto 0.3.2-5
+libvorbis 1.3.7-4
+libvpl 2.15.0-1
+libvpx 1.15.0-1
+libwacom 2.16.1-1
+libwebp 1.6.0-2
+libx11 1.8.12-1
+libxau 1.0.12-1
+libxaw 1.0.16-1
+libxcb 1.17.0-1
+libxcomposite 0.4.6-2
+libxcrypt 4.4.38-1
+libxcursor 1.2.3-1
+libxdamage 1.1.6-2
+libxdmcp 1.1.5-1
+libxext 1.3.6-1
+libxfixes 6.0.2-1
+libxft 2.3.9-1
+libxi 1.8.2-1
+libxinerama 1.1.5-2
+libxkbcommon 1.11.0-1
+libxkbcommon-x11 1.11.0-1
+libxml2 2.15.0-1
+libxmu 1.2.1-1
+libxpm 3.5.17-2
+libxrandr 1.5.4-1
+libxrender 0.9.12-1
+libxshmfence 1.3.3-1
+libxss 1.2.5-1
+libxt 1.3.1-1
+libxtst 1.2.5-1
+libxv 1.0.13-1
+libxxf86vm 1.1.6-1
+libyaml 0.2.5-3
+libyuv r2426+464c51a03-1
+licenses 20240728-1
+linux 6.15.2.arch1-1
+linux-api-headers 6.16-2
+linux-firmware 20250917-1
+linux-firmware-amdgpu 20250917-1
+linux-firmware-atheros 20250917-1
+linux-firmware-broadcom 20250917-1
+linux-firmware-cirrus 20250917-1
+linux-firmware-intel 20250917-1
+linux-firmware-mediatek 20250917-1
+linux-firmware-nvidia 20250917-1
+linux-firmware-other 20250917-1
+linux-firmware-radeon 20250917-1
+linux-firmware-realtek 20250917-1
+linux-firmware-whence 20250917-1
+linux-lts 6.12.49-1
+lksctp-tools 1.0.21-1
+llhttp 9.2.1-2
+llvm 20.1.8-1
+llvm-libs 20.1.8-1
+lm_sensors 1:3.6.2-1
+lmdb 0.9.33-1
+lsb-release 2.0.r55.a25a4fc-1
+lshw B.02.20-1
+lsof 4.99.5-2
+lua 5.4.8-2
+luajit 2.1.1753364724-1
+lynis 3.1.5-1
+lz4 1:1.10.0-2
+lzo 2.10-5
+m17n-db 1.8.8-1
+m17n-lib 1.8.5-1
+m4 1.4.20-1
+mailcap 2.1.54-2
+make 4.4.1-2
+man-db 2.13.1-1
+man-pages 6.15-1
+mariadb 12.0.2-1
+mariadb-clients 12.0.2-1
+mariadb-libs 12.0.2-1
+mbedtls2 2.28.10-1
+md4c 0.5.2-1
+mdadm 4.4-2
+mesa 1:25.2.3-2
+meson 1.9.1-1
+mkinitcpio 39.2-5
+mkinitcpio-busybox 1.36.1-1
+mpdecimal 4.0.1-1
+mpfr 4.2.2-1
+mpg123 1.33.2-1
+msr-tools 1.3-4
+mtdev 1.1.7-1
+ncurses 6.5-4
+net-tools 2.10-3
+netctl 1.29-2
+netpbm 10.86.48-1
+nettle 3.10.2-1
+nfs-utils 2.8.4-1
+nfsidmap 2.8.4-1
+nftables 1:1.1.5-1
+nginx 1.28.0-4
+ninja 1.12.1-2
+nload 0.7.4-9
+npth 1.8-1
+nspr 4.37-1
+nss 3.116-1
+ntp 4.2.8.p18-4
+numactl 2.0.19-1
+nvme-cli 2.15-1
+ocl-icd 2.3.3-1
+opencore-amr 0.1.6-2
+openexr 3.4.0-1
+openh264 2.6.0-1
+openjpeg2 2.5.4-1
+openmpi 5.0.8-5
+openpmix 5.0.9-1
+openresolv 3.17.0-1
+openssh 10.0p1-5
+openssl 3.5.3-1
+openucx 1.19.0-2
+opus 1.5.2-1
+orc 0.4.41-1
+p11-kit 0.25.9-1
+pacman 7.0.0.r6.gc685ae6-6
+pacman-contrib 1.13.0-1
+pacman-mirrorlist 20250702-2
+pam 1.7.1-1
+pambase 20250719-1
+pango 1:1.57.0-2
+parted 3.6-2
+patch 2.8-1
+pciutils 3.14.0-1
+pcre 8.45-4
+pcre2 10.46-1
+perf 6.16-1
+perl 5.42.0-1
+perl-dbd-sqlite 1.76-2
+perl-dbi 1.647-2
+perl-error 0.17030-2
+perl-mailtools 2.22-2
+perl-timedate 2.33-8
+pinentry 1.3.2-2
+pixman 0.46.4-1
+pkgconf 2.5.1-1
+pkgfile 25-1
+polkit 126-2
+poppler-data 0.4.12-2
+popt 1.19-2
+portaudio 1:19.7.0-3
+postgresql-libs 17.6-1
+powertop 2.15-2
+procps-ng 4.0.5-3
+prrte 3.0.12-1
+psmisc 23.7-1
+pv 1.9.34-1
+python 3.13.7-1
+python-annotated-types 0.7.0-2
+python-appdirs 1.4.4-11
+python-asn1crypto 1.5.1-5
+python-attrs 25.3.0-1
+python-autocommand 2.2.2-7
+python-bcc 0.33.0-3
+python-bcrypt 4.3.0-1
+python-cachecontrol 1:0.14.3-1
+python-cached-property 1.5.2-7
+python-cffi 1.17.1-2
+python-chardet 5.2.0-6
+python-charset-normalizer 3.4.3-1
+python-click 8.2.1-1
+python-colorama 0.4.6-5
+python-contextlib2 21.6.0-2
+python-cryptography 46.0.1-1
+python-dateutil 2.9.0-6
+python-deprecated 1.2.18-1
+python-distlib 0.4.0-1
+python-distro 1.9.0-3
+python-dnslib 0.9.26-1
+python-docker 7.1.0-3
+python-docker-pycreds 0.4.0-10
+python-dockerpty 0.4.1-11
+python-docopt 0.6.2-14
+python-dotenv 1.1.1-1
+python-fastjsonschema 2.21.2-1
+python-filelock 3.19.1-1
+python-fluidity 0.2.1-6
+python-github3py 4.0.1-3
+python-gobject 3.54.3-1
+python-html5lib 1.1-15
+python-idna 3.10-2
+python-importlib-metadata 8.7.0-1
+python-inflect 7.5.0-1
+python-invoke 2.2.0-4
+python-jaraco.collections 5.1.0-1
+python-jaraco.context 6.0.1-1
+python-jaraco.functools 4.1.0-1
+python-jaraco.text 4.0.0-2
+python-jsonschema 4.25.1-1
+python-jsonschema-specifications 2025.9.1-1
+python-jwcrypto 1.5.6-3
+python-legacy-cgi 2.6.3-2
+python-lexicon 3.0.0-1
+python-more-itertools 10.8.0-1
+python-msgpack 1.0.5-3
+python-mysqlclient 2.2.7-1
+python-nspektr 0.5.0-3
+python-ordered-set 4.1.0-7
+python-packaging 25.0-1
+python-paramiko 3.5.1-1
+python-pep517 0.13.0-1
+python-pillow 11.3.0-4
+python-pip 25.2-1
+python-platformdirs 4.4.0-1
+python-ply 3.11-15
+python-progress 1.6-5
+python-psutil 7.1.0-1
+python-pycparser 2.23-1
+python-pydantic 2.11.9-1
+python-pydantic-core 3:2.33.2-1
+python-pygments 2.19.2-1
+python-pyjwt 2.10.1-1
+python-pynacl 1.6.0-1
+python-pyopenssl 25.3.0-1
+python-pyparsing 3.2.5-1
+python-pyrsistent 0.19.3-4
+python-pytoml 0.1.21-8
+python-referencing 0.36.2-1
+python-requests 2.32.5-1
+python-resolvelib 1.2.0-2
+python-retrying 1.3.4-4
+python-rpds-py 0.27.1-1
+python-ruamel-yaml 0.18.10-1
+python-ruamel.yaml.clib 0.2.14-1
+python-setuptools 1:80.9.0-2
+python-six 1.17.0-1
+python-texttable 1.7.0-3
+python-toml 0.10.2-12
+python-tomli 2.2.1-1
+python-tqdm 4.67.1-2
+python-trove-classifiers 2025.9.11.17-1
+python-typeguard 4.4.4-1
+python-typing-inspection 0.4.1-1
+python-typing_extensions 4.15.0-1
+python-uritemplate 4.2.0-1
+python-urllib3 2.5.0-1
+python-urwid 3.0.3-1
+python-validate-pyproject 0.24.1-1
+python-wcwidth 0.2.14-1
+python-webencodings 0.5.1-12
+python-websocket-client 1.8.0-2
+python-wheel 0.45.1-1
+python-wrapt 1.17.3-1
+python-xmltodict 1.0.2-1
+python-yaml 6.0.3-1
+python-zipp 3.21.0-2
+python2 2.7.18-5
+qt5-base 5.15.17+kde+r123-2
+qt5-svg 5.15.17+kde+r5-1
+qt5-translations 5.15.17-1
+qt6-5compat 6.9.2-1
+qt6-base 6.9.2-1
+qt6-shadertools 6.9.2-1
+qt6-svg 6.9.2-1
+qt6-translations 6.9.2-1
+rasdaemon 0.8.2-1
+rasdaemon-debug 0.8.2-1
+rav1e 0.7.1-1
+readline 8.3.001-1
+rhash 1.4.4-1
+rng-tools 6.17-3
+rpcbind 1.2.8-1
+rsync 3.4.1-2
+rtl-sdr 1:2.0.2-1
+rubberband 4.0.0-1
+run-parts 5.23.1-1
+runc 1.3.1-1
+s-tui 1.2.0-1
+sdl2-compat 2.32.56-2
+sdl3 3.2.22-1
+sed 4.9-3
+serf 1.3.10-2
+shaderc 2025.3-1
+shadow 4.18.0-1
+shared-mime-info 2.4-2
+slang 2.3.3-4
+smartmontools 7.5-1
+snappy 1.2.2-2
+sound-theme-freedesktop 0.8-6
+speex 1.2.1-2
+speexdsp 1.2.1-2
+spirv-tools 1:1.4.321.0-1
+sqlite 3.50.4-2
+squid 7.1-1
+srt 1.5.4-1
+strace 6.16-1
+stress 1.0.7-3
+stress-ng 0.19.04-1
+subversion 1.14.5-4
+sudo 1.9.17.p1-1
+svt-av1 3.1.2-1
+sysbench 1.0.20-2
+sysfsutils 2.1.1-2
+sysstat 12.7.7-1
+systemd 258-4
+systemd-libs 258-4
+systemd-sysvcompat 258-4
+tar 1.35-2
+tdb 1.4.14-1
+texinfo 7.2-1
+tinysparql 3.10.0-1
+tmux 3.5_a-1
+tpm2-tss 4.1.3-1
+traceroute 2.1.6-1
+tree-sitter 0.25.10-1
+tslib 1.23-1
+ttf-liberation 2.1.5-2
+turbostat 6.16-1
+tzdata 2025b-1
+udisks2 2.10.2-1
+unzip 6.0-23
+usbutils 018-1
+util-linux 2.41.2-1
+util-linux-libs 2.41.2-1
+v4l-utils 1.30.1-1
+vapoursynth 72-1
+vid.stab 1.1.1-2
+vim 9.1.1734-1
+vim-runtime 9.1.1734-1
+vmaf 3.0.0-1
+volume_key 0.3.12-11
+vsftpd 3.0.5-1
+vulkan-headers 1:1.4.321.0-1
+vulkan-icd-loader 1.4.321.0-1
+wayland 1.24.0-1
+wayland-protocols 1.45-1
+wget 1.25.0-2
+which 2.23-1
+wxwidgets-common 3.2.8.1-2
+wxwidgets-gtk3 3.2.8.1-2
+x264 3:0.164.r3108.31e19f9-3
+x265 4.1-1
+xcb-proto 1.17.0-3
+xcb-util 0.4.1-2
+xcb-util-cursor 0.1.6-1
+xcb-util-image 0.4.1-3
+xcb-util-keysyms 0.4.1-5
+xcb-util-renderutil 0.3.10-2
+xcb-util-wm 0.4.2-2
+xdg-utils 1.2.1-1
+xkeyboard-config 2.45-1
+xorg-xprop 1.2.8-1
+xorg-xset 1.2.5-2
+xorgproto 2024.1-2
+xvidcore 1.3.7-3
+xxhash 0.8.3-1
+xz 5.8.1-1
+youtube-dl 2021.12.17-2
+zenpower3-dkms 0.2.0-9
+zeromq 4.3.5-2
+zimg 3.0.5-1
+zip 3.0-11
+zita-alsa-pcmi 0.6.1-2
+zita-resampler 1.11.2-2
+zlib 1:1.3.1-2
+zlib-ng 2.2.5-1
+zstd 1.5.7-2
+luceneutil rev is 492dc4f7a46ea9d9e27636e8a846eeb86a861083
+LUCENE rev is e1879e450b75b3a58fde2b0dad77ae6b499504dd
+last successful Lucene rev 2f9aa8ae26d6c1087884c734e1b3d137bd8c6601, luceneutil rev 29bbacb7e78792b241e73f56c5cb67c72a741d37
+run ['git', 'log', '2f9aa8ae26d6c1087884c734e1b3d137bd8c6601^..e1879e450b75b3a58fde2b0dad77ae6b499504dd']
+No commit message asking for regold of results files
+[2026-02-20 05:52:26.636730] RUN: git clean -xfd
+Removing .gradle/
+Removing build-tools/build-infra-shadow/build/
+Removing build-tools/build-infra/.gradle/
+Removing build-tools/build-infra/build/
+Removing build-tools/build/
+Removing build-tools/missing-doclet/build/
+Removing build/
+Removing gradle.properties
+Removing gradle/wrapper/gradle-wrapper.jar
+Removing lucene/analysis.tests/build/
+Removing lucene/analysis/build/
+Removing lucene/analysis/common/build/
+Removing lucene/analysis/icu/build/
+Removing lucene/analysis/kuromoji/build/
+Removing lucene/analysis/morfologik.tests/build/
+Removing lucene/analysis/morfologik/build/
+Removing lucene/analysis/nori/build/
+Removing lucene/analysis/opennlp/build/
+Removing lucene/analysis/phonetic/build/
+Removing lucene/analysis/smartcn/build/
+Removing lucene/analysis/stempel/build/
+Removing lucene/backward-codecs/build/
+Removing lucene/benchmark-jmh/build/
+Removing lucene/benchmark/build/
+Removing lucene/build/
+Removing lucene/classification/build/
+Removing lucene/codecs/build/
+Removing lucene/core.tests/build/
+Removing lucene/core/build/
+Removing lucene/demo/build/
+Removing lucene/distribution.tests/build/
+Removing lucene/distribution/build/
+Removing lucene/documentation/build/
+Removing lucene/expressions/build/
+Removing lucene/facet/build/
+Removing lucene/grouping/build/
+Removing lucene/highlighter/build/
+Removing lucene/join/build/
+Removing lucene/luke/build/
+Removing lucene/memory/build/
+Removing lucene/misc/build/
+Removing lucene/monitor/build/
+Removing lucene/queries/build/
+Removing lucene/queryparser/build/
+Removing lucene/replicator/build/
+Removing lucene/sandbox/build/
+Removing lucene/spatial-extras/build/
+Removing lucene/spatial-test-fixtures/build/
+Removing lucene/spatial3d/build/
+Removing lucene/suggest/build/
+Removing lucene/test-framework/build/
+Removing out.png
+[2026-02-20 05:52:26.872722]   took 0.2 sec
+will NOT regold results files but rather compare to last good result files
+Java command-line: /usr/lib/jvm/java-25-openjdk/bin/java --add-modules jdk.incubator.vector -Xmx32g -Xms32g -server -XX:+UseParallelGC -Djava.io.tmpdir=/l/tmp --enable-native-access=ALL-UNNAMED
+transparent_hugepages: [always] madvise never
+
+[2026-02-20 05:52:26.872915] RUN: /l/trunk.nightly/gradlew --stacktrace clean > /l/logs.nightly/2026.02.20.05.52.26/clean-lucene.log 2>&1
+[2026-02-20 05:52:30.621126]   took 3.7 sec
+[2026-02-20 05:52:30.621169] RUN: /l/trunk.nightly/gradlew jar > /l/logs.nightly/2026.02.20.05.52.26/jar-lucene.log 2>&1
+[2026-02-20 05:52:44.417390]   took 13.8 sec
+
+JAVA:
+WARNING: Using incubator modules: jdk.incubator.vector
+openjdk version "25.0.1" 2025-09-16
+OpenJDK Runtime Environment (build 25.0.1)
+OpenJDK 64-Bit Server VM (build 25.0.1, mixed mode, sharing)
+
+
+OS:
+Linux beast3.mikemccandless.com 6.15.2-arch1-1 #1 SMP PREEMPT_DYNAMIC Tue, 10 Jun 2025 21:32:33 +0000 x86_64 GNU/Linux
+
+
+LOGS:
+/l/logs.nightly
+NOTE: now delete old leftover ginormous index /l/indices/wikimedium.trunk.nightly.facets.taxonomy:Date.taxonomy:Month.taxonomy:DayOfYear.sortedset:Month.sortedset:DayOfYear.sortedset:Date.taxonomy:RandomLabel.sortedset:RandomLabel.Lucene90.Lucene104.dvfields.vectors=1024.nd27.625M
+Using checkout:[/l/trunk.nightly] for competitor:[nightly]
+compile lucene:core...
+    run: ['/l/trunk.nightly/gradlew', 'lucene:core:jar'], cwd=/l/trunk.nightly vmstatLogFile=None topLogFile=None
+  /l/trunk.nightly/lucene/benchmark
+files ['/l/util.nightly/src/main/perf/TestContext.java', '/l/util.nightly/src/main/perf/IndexAndSearchOpenStreetMaps.java', '/l/util.nightly/src/main/perf/TypePolluter.java', '/l/util.nightly/src/main/perf/OpenDirectory.java', '/l/util.nightly/src/main/perf/StringFieldDocSelector.java', '/l/util.nightly/src/main/perf/SearchTaxis.java', '/l/util.nightly/src/main/perf/RemoteTaskSource.java', '/l/util.nightly/src/main/perf/SearchPerfTest.java', '/l/util.nightly/src/main/perf/KeepNoCommitsDeletionPolicy.java', '/l/util.nightly/src/main/perf/DiskUsage.java', '/l/util.nightly/src/main/perf/NRTPerfTest.java', '/l/util.nightly/src/main/perf/Indexer.java', '/l/util.nightly/src/main/perf/PKLookupWithTermStateTask.java', '/l/util.nightly/src/main/perf/IndexState.java', '/l/util.nightly/src/main/perf/VectorDictionary.java', '/l/util.nightly/src/main/perf/TaskParser.java', '/l/util.nightly/src/main/perf/IndexThreads.java', '/l/util.nightly/src/main/perf/SearchTask.java', '/l/util.nightly/src/main/perf/RespellTask.java', '/l/util.nightly/src/main/perf/TaskSource.java', '/l/util.nightly/src/main/perf/LineFileDocs.java', '/l/util.nightly/src/main/perf/CreateQueries.java', '/l/util.nightly/src/main/perf/RandomQuery.java', '/l/util.nightly/src/main/perf/PerfUtils.java', '/l/util.nightly/src/main/perf/Task.java', '/l/util.nightly/src/main/perf/LocalTaskSource.java', '/l/util.nightly/src/main/perf/IndexTaxis.java', '/l/util.nightly/src/main/perf/PointsPKLookupTask.java', '/l/util.nightly/src/main/perf/TaskThreads.java', '/l/util.nightly/src/main/perf/UnparsedTask.java', '/l/util.nightly/src/main/perf/Args.java', '/l/util.nightly/src/main/perf/TaskParserFactory.java', '/l/util.nightly/src/main/perf/StatisticsHelper.java', '/l/util.nightly/src/main/perf/BenchRearranger.java', '/l/util.nightly/src/main/perf/PKLookupTask.java', '/l/util.nightly/src/main/perf/OpenCloseIndexWriter.java']
+compile: /usr/lib/jvm/java-25-openjdk/bin/javac -g -d /l/util.nightly/build -classpath /l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar:/l/trunk.nightly/lucene/sandbox/build/classes/java/main:/l/trunk.nightly/lucene/misc/build/classes/java/main:/l/trunk.nightly/lucene/facet/build/classes/java/main:/l/trunk.nightly/lucene/analysis/common/build/classes/java/main:/l/trunk.nightly/lucene/analysis/icu/build/classes/java/main:/l/trunk.nightly/lucene/queryparser/build/classes/java/main:/l/trunk.nightly/lucene/grouping/build/classes/java/main:/l/trunk.nightly/lucene/suggest/build/classes/java/main:/l/trunk.nightly/lucene/highlighter/build/classes/java/main:/l/trunk.nightly/lucene/codecs/build/classes/java/main:/l/trunk.nightly/lucene/queries/build/classes/java/main:/l/trunk.nightly/lucene/join/build/classes/java/main:/l/trunk.nightly/lucene/spatial3d/build/classes/java/main:/l/util.nightly/lib/HdrHistogram.jar:/l/util.nightly/src/main/build/classes/java/main:/l/util.nightly/build /l/util.nightly/src/main/perf/TestContext.java /l/util.nightly/src/main/perf/IndexAndSearchOpenStreetMaps.java /l/util.nightly/src/main/perf/TypePolluter.java /l/util.nightly/src/main/perf/OpenDirectory.java /l/util.nightly/src/main/perf/StringFieldDocSelector.java /l/util.nightly/src/main/perf/SearchTaxis.java /l/util.nightly/src/main/perf/RemoteTaskSource.java /l/util.nightly/src/main/perf/SearchPerfTest.java /l/util.nightly/src/main/perf/KeepNoCommitsDeletionPolicy.java /l/util.nightly/src/main/perf/DiskUsage.java /l/util.nightly/src/main/perf/NRTPerfTest.java /l/util.nightly/src/main/perf/Indexer.java /l/util.nightly/src/main/perf/PKLookupWithTermStateTask.java /l/util.nightly/src/main/perf/IndexState.java /l/util.nightly/src/main/perf/VectorDictionary.java /l/util.nightly/src/main/perf/TaskParser.java /l/util.nightly/src/main/perf/IndexThreads.java /l/util.nightly/src/main/perf/SearchTask.java /l/util.nightly/src/main/perf/RespellTask.java /l/util.nightly/src/main/perf/TaskSource.java /l/util.nightly/src/main/perf/LineFileDocs.java /l/util.nightly/src/main/perf/CreateQueries.java /l/util.nightly/src/main/perf/RandomQuery.java /l/util.nightly/src/main/perf/PerfUtils.java /l/util.nightly/src/main/perf/Task.java /l/util.nightly/src/main/perf/LocalTaskSource.java /l/util.nightly/src/main/perf/IndexTaxis.java /l/util.nightly/src/main/perf/PointsPKLookupTask.java /l/util.nightly/src/main/perf/TaskThreads.java /l/util.nightly/src/main/perf/UnparsedTask.java /l/util.nightly/src/main/perf/Args.java /l/util.nightly/src/main/perf/TaskParserFactory.java /l/util.nightly/src/main/perf/StatisticsHelper.java /l/util.nightly/src/main/perf/BenchRearranger.java /l/util.nightly/src/main/perf/PKLookupTask.java /l/util.nightly/src/main/perf/OpenCloseIndexWriter.java
+    run: ['/usr/lib/jvm/java-25-openjdk/bin/javac', '-g', '-d', '/l/util.nightly/build', '-classpath', '/l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar:/l/trunk.nightly/lucene/sandbox/build/classes/java/main:/l/trunk.nightly/lucene/misc/build/classes/java/main:/l/trunk.nightly/lucene/facet/build/classes/java/main:/l/trunk.nightly/lucene/analysis/common/build/classes/java/main:/l/trunk.nightly/lucene/analysis/icu/build/classes/java/main:/l/trunk.nightly/lucene/queryparser/build/classes/java/main:/l/trunk.nightly/lucene/grouping/build/classes/java/main:/l/trunk.nightly/lucene/suggest/build/classes/java/main:/l/trunk.nightly/lucene/highlighter/build/classes/java/main:/l/trunk.nightly/lucene/codecs/build/classes/java/main:/l/trunk.nightly/lucene/queries/build/classes/java/main:/l/trunk.nightly/lucene/join/build/classes/java/main:/l/trunk.nightly/lucene/spatial3d/build/classes/java/main:/l/util.nightly/lib/HdrHistogram.jar:/l/util.nightly/src/main/build/classes/java/main:/l/util.nightly/build', '/l/util.nightly/src/main/perf/TestContext.java', '/l/util.nightly/src/main/perf/IndexAndSearchOpenStreetMaps.java', '/l/util.nightly/src/main/perf/TypePolluter.java', '/l/util.nightly/src/main/perf/OpenDirectory.java', '/l/util.nightly/src/main/perf/StringFieldDocSelector.java', '/l/util.nightly/src/main/perf/SearchTaxis.java', '/l/util.nightly/src/main/perf/RemoteTaskSource.java', '/l/util.nightly/src/main/perf/SearchPerfTest.java', '/l/util.nightly/src/main/perf/KeepNoCommitsDeletionPolicy.java', '/l/util.nightly/src/main/perf/DiskUsage.java', '/l/util.nightly/src/main/perf/NRTPerfTest.java', '/l/util.nightly/src/main/perf/Indexer.java', '/l/util.nightly/src/main/perf/PKLookupWithTermStateTask.java', '/l/util.nightly/src/main/perf/IndexState.java', '/l/util.nightly/src/main/perf/VectorDictionary.java', '/l/util.nightly/src/main/perf/TaskParser.java', '/l/util.nightly/src/main/perf/IndexThreads.java', '/l/util.nightly/src/main/perf/SearchTask.java', '/l/util.nightly/src/main/perf/RespellTask.java', '/l/util.nightly/src/main/perf/TaskSource.java', '/l/util.nightly/src/main/perf/LineFileDocs.java', '/l/util.nightly/src/main/perf/CreateQueries.java', '/l/util.nightly/src/main/perf/RandomQuery.java', '/l/util.nightly/src/main/perf/PerfUtils.java', '/l/util.nightly/src/main/perf/Task.java', '/l/util.nightly/src/main/perf/LocalTaskSource.java', '/l/util.nightly/src/main/perf/IndexTaxis.java', '/l/util.nightly/src/main/perf/PointsPKLookupTask.java', '/l/util.nightly/src/main/perf/TaskThreads.java', '/l/util.nightly/src/main/perf/UnparsedTask.java', '/l/util.nightly/src/main/perf/Args.java', '/l/util.nightly/src/main/perf/TaskParserFactory.java', '/l/util.nightly/src/main/perf/StatisticsHelper.java', '/l/util.nightly/src/main/perf/BenchRearranger.java', '/l/util.nightly/src/main/perf/PKLookupTask.java', '/l/util.nightly/src/main/perf/OpenCloseIndexWriter.java'], cwd=/l/trunk.nightly/lucene/benchmark vmstatLogFile=None topLogFile=None
+/l/util.nightly/src/main/perf/SearchPerfTest.java:431: error: cannot find symbol
+      ((TieredMergePolicy) iwc.getMergePolicy()).setNoCFSRatio(useCFS ? 1.0 : 0.0);
+                                                ^
+  symbol:   method setNoCFSRatio(double)
+  location: class TieredMergePolicy
+/l/util.nightly/src/main/perf/NRTPerfTest.java:330: error: cannot find symbol
+    tmp.setNoCFSRatio(0.0);
+       ^
+  symbol:   method setNoCFSRatio(double)
+  location: variable tmp of type TieredMergePolicy
+/l/util.nightly/src/main/perf/Indexer.java:133: error: cannot find symbol
+      mp.setNoCFSRatio(useCFS ? 1.0 : 0.0);
+        ^
+  symbol:   method setNoCFSRatio(double)
+  location: variable mp of type MergePolicy
+/l/util.nightly/src/main/perf/Indexer.java:136: error: cannot find symbol
+      mp.setNoCFSRatio(useCFS ? 1.0 : 0.0);
+        ^
+  symbol:   method setNoCFSRatio(double)
+  location: variable mp of type MergePolicy
+/l/util.nightly/src/main/perf/Indexer.java:142: error: cannot find symbol
+      tmp.setNoCFSRatio(useCFS ? 1.0 : 0.0);
+         ^
+  symbol:   method setNoCFSRatio(double)
+  location: variable tmp of type TieredMergePolicy
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: /l/util.nightly/src/main/perf/SearchTask.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+5 errors
+
 Traceback (most recent call last):
-  File "/l/util.nightly/src/python/runNightlyGradleTestPrecommit.py", line 364, in <module>
-    writeGraph()
-    ~~~~~~~~~~^^
-  File "/l/util.nightly/src/python/runNightlyGradleTestPrecommit.py", line 135, in writeGraph
-    raise RuntimeError(f'could not understand log file "{LOGS_DIR}/{logFile}"')
-RuntimeError: could not understand log file "/l/logs.nightly/ant_test/.#2026.02.03.lucene-tests.txt"
+  File "/l/util.nightly/src/python/nightlyBench.py", line 2213, in <module>
+    run()
+    ~~~^^
+  File "/l/util.nightly/src/python/nightlyBench.py", line 649, in run
+    r.compile(c)
+    ~~~~~~~~~^^^
+  File "/l/util.nightly/src/python/benchUtil.py", line 1147, in compile
+    competitor.compile(cp)
+    ~~~~~~~~~~~~~~~~~~^^^^
+  File "/l/util.nightly/src/python/competition.py", line 425, in compile
+    benchUtil.run(cmd, os.path.join(constants.LOGS_DIR, "compile.log"))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/l/util.nightly/src/python/benchUtil.py", line 893, in run
+    raise RuntimeError("failed: %s [wd %s]; see logFile %s" % (cmd, os.getcwd(), logFile))
+RuntimeError: failed: ['/usr/lib/jvm/java-25-openjdk/bin/javac', '-g', '-d', '/l/util.nightly/build', '-classpath', '/l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar:/l/trunk.nightly/lucene/sandbox/build/classes/java/main:/l/trunk.nightly/lucene/misc/build/classes/java/main:/l/trunk.nightly/lucene/facet/build/classes/java/main:/l/trunk.nightly/lucene/analysis/common/build/classes/java/main:/l/trunk.nightly/lucene/analysis/icu/build/classes/java/main:/l/trunk.nightly/lucene/queryparser/build/classes/java/main:/l/trunk.nightly/lucene/grouping/build/classes/java/main:/l/trunk.nightly/lucene/suggest/build/classes/java/main:/l/trunk.nightly/lucene/highlighter/build/classes/java/main:/l/trunk.nightly/lucene/codecs/build/classes/java/main:/l/trunk.nightly/lucene/queries/build/classes/java/main:/l/trunk.nightly/lucene/join/build/classes/java/main:/l/trunk.nightly/lucene/spatial3d/build/classes/java/main:/l/util.nightly/lib/HdrHistogram.jar:/l/util.nightly/src/main/build/classes/java/main:/l/util.nightly/build', '/l/util.nightly/src/main/perf/TestContext.java', '/l/util.nightly/src/main/perf/IndexAndSearchOpenStreetMaps.java', '/l/util.nightly/src/main/perf/TypePolluter.java', '/l/util.nightly/src/main/perf/OpenDirectory.java', '/l/util.nightly/src/main/perf/StringFieldDocSelector.java', '/l/util.nightly/src/main/perf/SearchTaxis.java', '/l/util.nightly/src/main/perf/RemoteTaskSource.java', '/l/util.nightly/src/main/perf/SearchPerfTest.java', '/l/util.nightly/src/main/perf/KeepNoCommitsDeletionPolicy.java', '/l/util.nightly/src/main/perf/DiskUsage.java', '/l/util.nightly/src/main/perf/NRTPerfTest.java', '/l/util.nightly/src/main/perf/Indexer.java', '/l/util.nightly/src/main/perf/PKLookupWithTermStateTask.java', '/l/util.nightly/src/main/perf/IndexState.java', '/l/util.nightly/src/main/perf/VectorDictionary.java', '/l/util.nightly/src/main/perf/TaskParser.java', '/l/util.nightly/src/main/perf/IndexThreads.java', '/l/util.nightly/src/main/perf/SearchTask.java', '/l/util.nightly/src/main/perf/RespellTask.java', '/l/util.nightly/src/main/perf/TaskSource.java', '/l/util.nightly/src/main/perf/LineFileDocs.java', '/l/util.nightly/src/main/perf/CreateQueries.java', '/l/util.nightly/src/main/perf/RandomQuery.java', '/l/util.nightly/src/main/perf/PerfUtils.java', '/l/util.nightly/src/main/perf/Task.java', '/l/util.nightly/src/main/perf/LocalTaskSource.java', '/l/util.nightly/src/main/perf/IndexTaxis.java', '/l/util.nightly/src/main/perf/PointsPKLookupTask.java', '/l/util.nightly/src/main/perf/TaskThreads.java', '/l/util.nightly/src/main/perf/UnparsedTask.java', '/l/util.nightly/src/main/perf/Args.java', '/l/util.nightly/src/main/perf/TaskParserFactory.java', '/l/util.nightly/src/main/perf/StatisticsHelper.java', '/l/util.nightly/src/main/perf/BenchRearranger.java', '/l/util.nightly/src/main/perf/PKLookupTask.java', '/l/util.nightly/src/main/perf/OpenCloseIndexWriter.java'] [wd /l/trunk.nightly/lucene/benchmark]; see logFile /l/logs.nightly/compile.log
+Traceback (most recent call last):
+  File "/l/util.nightly/src/python/nightlyBench.py", line 2213, in <module>
+    run()
+    ~~~^^
+  File "/l/util.nightly/src/python/nightlyBench.py", line 649, in run
+    r.compile(c)
+    ~~~~~~~~~^^^
+  File "/l/util.nightly/src/python/benchUtil.py", line 1147, in compile
+    competitor.compile(cp)
+    ~~~~~~~~~~~~~~~~~~^^^^
+  File "/l/util.nightly/src/python/competition.py", line 425, in compile
+    benchUtil.run(cmd, os.path.join(constants.LOGS_DIR, "compile.log"))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/l/util.nightly/src/python/benchUtil.py", line 893, in run
+    raise RuntimeError("failed: %s [wd %s]; see logFile %s" % (cmd, os.getcwd(), logFile))
+RuntimeError: failed: ['/usr/lib/jvm/java-25-openjdk/bin/javac', '-g', '-d', '/l/util.nightly/build', '-classpath', '/l/trunk.nightly/lucene/core/build/libs/lucene-core-11.0.0-SNAPSHOT.jar:/l/trunk.nightly/lucene/sandbox/build/classes/java/main:/l/trunk.nightly/lucene/misc/build/classes/java/main:/l/trunk.nightly/lucene/facet/build/classes/java/main:/l/trunk.nightly/lucene/analysis/common/build/classes/java/main:/l/trunk.nightly/lucene/analysis/icu/build/classes/java/main:/l/trunk.nightly/lucene/queryparser/build/classes/java/main:/l/trunk.nightly/lucene/grouping/build/classes/java/main:/l/trunk.nightly/lucene/suggest/build/classes/java/main:/l/trunk.nightly/lucene/highlighter/build/classes/java/main:/l/trunk.nightly/lucene/codecs/build/classes/java/main:/l/trunk.nightly/lucene/queries/build/classes/java/main:/l/trunk.nightly/lucene/join/build/classes/java/main:/l/trunk.nightly/lucene/spatial3d/build/classes/java/main:/l/util.nightly/lib/HdrHistogram.jar:/l/util.nightly/src/main/build/classes/java/main:/l/util.nightly/build', '/l/util.nightly/src/main/perf/TestContext.java', '/l/util.nightly/src/main/perf/IndexAndSearchOpenStreetMaps.java', '/l/util.nightly/src/main/perf/TypePolluter.java', '/l/util.nightly/src/main/perf/OpenDirectory.java', '/l/util.nightly/src/main/perf/StringFieldDocSelector.java', '/l/util.nightly/src/main/perf/SearchTaxis.java', '/l/util.nightly/src/main/perf/RemoteTaskSource.java', '/l/util.nightly/src/main/perf/SearchPerfTest.java', '/l/util.nightly/src/main/perf/KeepNoCommitsDeletionPolicy.java', '/l/util.nightly/src/main/perf/DiskUsage.java', '/l/util.nightly/src/main/perf/NRTPerfTest.java', '/l/util.nightly/src/main/perf/Indexer.java', '/l/util.nightly/src/main/perf/PKLookupWithTermStateTask.java', '/l/util.nightly/src/main/perf/IndexState.java', '/l/util.nightly/src/main/perf/VectorDictionary.java', '/l/util.nightly/src/main/perf/TaskParser.java', '/l/util.nightly/src/main/perf/IndexThreads.java', '/l/util.nightly/src/main/perf/SearchTask.java', '/l/util.nightly/src/main/perf/RespellTask.java', '/l/util.nightly/src/main/perf/TaskSource.java', '/l/util.nightly/src/main/perf/LineFileDocs.java', '/l/util.nightly/src/main/perf/CreateQueries.java', '/l/util.nightly/src/main/perf/RandomQuery.java', '/l/util.nightly/src/main/perf/PerfUtils.java', '/l/util.nightly/src/main/perf/Task.java', '/l/util.nightly/src/main/perf/LocalTaskSource.java', '/l/util.nightly/src/main/perf/IndexTaxis.java', '/l/util.nightly/src/main/perf/PointsPKLookupTask.java', '/l/util.nightly/src/main/perf/TaskThreads.java', '/l/util.nightly/src/main/perf/UnparsedTask.java', '/l/util.nightly/src/main/perf/Args.java', '/l/util.nightly/src/main/perf/TaskParserFactory.java', '/l/util.nightly/src/main/perf/StatisticsHelper.java', '/l/util.nightly/src/main/perf/BenchRearranger.java', '/l/util.nightly/src/main/perf/PKLookupTask.java', '/l/util.nightly/src/main/perf/OpenCloseIndexWriter.java'] [wd /l/trunk.nightly/lucene/benchmark]; see logFile /l/logs.nightly/compile.log
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/l/util.nightly/src/python/nightlyBench.py", line 2220, in <module>
+    sendEmail("mail@mikemccandless.com", "Nightly Lucene bench FAILED (%s)" % socket.gethostname(), "")
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/l/util.nightly/src/python/nightlyBench.py", line 2206, in sendEmail
+    p = Popen(["/usr/sbin/sendmail", "-t"], stdin=PIPE)
+  File "/usr/lib/python3.13/subprocess.py", line 1039, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                        pass_fds, cwd, env,
+                        ^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+                        gid, gids, uid, umask,
+                        ^^^^^^^^^^^^^^^^^^^^^^
+                        start_new_session, process_group)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/subprocess.py", line 1857, in _execute_child
+    self._posix_spawn(args, executable, env, restore_signals, close_fds,
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                      p2cread, p2cwrite,
+                      ^^^^^^^^^^^^^^^^^^
+                      c2pread, c2pwrite,
+                      ^^^^^^^^^^^^^^^^^^
+                      errread, errwrite)
+                      ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/subprocess.py", line 1801, in _posix_spawn
+    self.pid = os.posix_spawn(executable, args, env, **kwargs)
+               ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/usr/sbin/sendmail'
 + cp /l/logs.nightly/all.log /l/reports.nightly
