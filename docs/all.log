@@ -11,10 +11,10 @@ Filesystem      Size  Used Avail Use% Mounted on
 + export PATH=/usr/local/src/apache-ant-1.9.5/bin:/usr/lib/jvm/java-25-openjdk/bin:/usr/local/src/gradle-2.9/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
 + PATH=/usr/local/src/apache-ant-1.9.5/bin:/usr/lib/jvm/java-25-openjdk/bin:/usr/local/src/gradle-2.9/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
 ++ date
-+ echo -e '\n\nSun Mar  1 06:22:08 PM EST 2026: now start nightly benchmarks'
++ echo -e '\n\nSun Mar  1 06:39:39 PM EST 2026: now start nightly benchmarks'
 
 
-Sun Mar  1 06:22:08 PM EST 2026: now start nightly benchmarks
+Sun Mar  1 06:39:39 PM EST 2026: now start nightly benchmarks
 + pkill java
 + true
 + pkill mencoder
@@ -36,43 +36,43 @@ Starting a Gradle Daemon (subsequent builds will be faster)
 > Task :build-infra:jar UP-TO-DATE
 The eclint tool location is not set ('lucene.tool.eclint' option), will not apply eclint checks.
 The eclint tool location is not set ('lucene.tool.eclint' option), will not apply eclint checks.
+> Task :lucene:clean
 > Task :lucene:demo:clean
 > Task :lucene:classification:clean
-> Task :lucene:core.tests:clean
-> Task :lucene:analysis:clean UP-TO-DATE
-> Task :lucene:clean UP-TO-DATE
-> Task :lucene:distribution:clean UP-TO-DATE
 > Task :lucene:analysis.tests:clean
+> Task :lucene:distribution:clean
+> Task :lucene:analysis:clean
+> Task :lucene:core.tests:clean
+> Task :lucene:documentation:clean
 > Task :lucene:benchmark:clean
-> Task :lucene:documentation:clean UP-TO-DATE
 > Task :lucene:distribution.tests:clean
 > Task :lucene:codecs:clean
-> Task :lucene:grouping:clean
-> Task :lucene:memory:clean
 > Task :lucene:expressions:clean
-> Task :lucene:monitor:clean
-> Task :lucene:misc:clean
-> Task :lucene:join:clean
-> Task :lucene:replicator:clean
-> Task :lucene:backward-codecs:clean
-> Task :lucene:highlighter:clean
-> Task :lucene:facet:clean
-> Task :lucene:spatial-test-fixtures:clean
+> Task :lucene:memory:clean
+> Task :lucene:grouping:clean
 > Task :lucene:benchmark-jmh:clean
-> Task :lucene:analysis:icu:clean
+> Task :lucene:join:clean
+> Task :lucene:misc:clean
+> Task :lucene:replicator:clean
+> Task :lucene:monitor:clean
+> Task :lucene:spatial-test-fixtures:clean
+> Task :lucene:facet:clean
+> Task :lucene:highlighter:clean
 > Task :lucene:luke:clean
 > Task :lucene:spatial-extras:clean
 > Task :lucene:spatial3d:clean
-> Task :lucene:analysis:morfologik.tests:clean
-> Task :lucene:suggest:clean
-> Task :lucene:analysis:morfologik:clean
+> Task :lucene:backward-codecs:clean
+> Task :lucene:analysis:icu:clean
 > Task :lucene:queryparser:clean
 > Task :lucene:sandbox:clean
+> Task :lucene:queries:clean
+> Task :lucene:suggest:clean
+> Task :lucene:analysis:morfologik.tests:clean
+> Task :lucene:analysis:morfologik:clean
+> Task :lucene:analysis:kuromoji:clean
 > Task :lucene:analysis:phonetic:clean
 > Task :lucene:analysis:opennlp:clean
-> Task :lucene:queries:clean
 > Task :lucene:analysis:stempel:clean
-> Task :lucene:analysis:kuromoji:clean
 > Task :lucene:analysis:smartcn:clean
 > Task :lucene:analysis:nori:clean
 > Task :lucene:test-framework:clean
@@ -80,7 +80,7 @@ The eclint tool location is not set ('lucene.tool.eclint' option), will not appl
 > Task :lucene:core:clean
 
 BUILD SUCCESSFUL in 6s
-46 actionable tasks: 38 executed, 8 up-to-date
+46 actionable tasks: 42 executed, 4 up-to-date
 Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.3.1/userguide/configuration_cache_enabling.html
 + ../gradlew jar
 + cd /l/util.nightly
@@ -115,31 +115,6 @@ make: Nothing to be done for 'env'.
 + rm -rf build
 + mkdir build
 + git pull origin main
-From github.com:mikemccand/luceneutil
- * branch            main       -> FETCH_HEAD
-Already up to date.
-+ echo 'Run gradle test'
-Run gradle test
-+ /usr/bin/python3 -u /l/util.nightly/src/python/runNightlyGradleTestPrecommit.py
-***USING BIG LINE FILE***
-Using java from: /usr/lib/jvm/java-25-openjdk/bin/
-  gradle test log: /l/logs.nightly/ant_test/2026.03.01.lucene-tests.txt
-  took: 1.4 min
-  gradle precommit log: /l/logs.nightly/ant_test/2026.03.01.precommit.txt
-  took: 0.5 min
-+ echo 'Run lucene nightly'
-Run lucene nightly
-+ /usr/bin/python -uO /l/util.nightly/src/python/nightlyBench.py -run
-***USING BIG LINE FILE***
-Using java from: /usr/lib/jvm/java-25-openjdk/bin/
-NOTE: perf executable is /usr/sbin/perf; will collect aggregate CPU profiling data
-NOTE: vmstat executable is /usr/sbin/vmstat; will collect system-wide CPU/IO telemetry
-NOTE: gnuplot executable is /usr/sbin/gnuplot; will generate system-wide CPU/IO graphs from vmstat
-Traceback (most recent call last):
-  File "/l/util.nightly/src/python/nightlyBench.py", line 42, in <module>
-    import runNightlyKnn
-  File "/l/util.nightly/src/python/runNightlyKnn.py", line 678
-    cmd = [PERF_EXE, "stat", "-dd","-e", ",".join(PERF_STATS)]] + cmd
-                                                              ^
-SyntaxError: unmatched ']'
+error: cannot pull with rebase: Your index contains uncommitted changes.
+error: Please commit or stash them.
 + cp /l/logs.nightly/all.log /l/reports.nightly
