@@ -11,10 +11,10 @@ Filesystem      Size  Used Avail Use% Mounted on
 + export PATH=/usr/local/src/apache-ant-1.9.5/bin:/usr/lib/jvm/java-26-openjdk/bin:/usr/local/src/gradle-2.9/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
 + PATH=/usr/local/src/apache-ant-1.9.5/bin:/usr/lib/jvm/java-26-openjdk/bin:/usr/local/src/gradle-2.9/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
 ++ date
-+ echo -e '\n\nTue Sep 29 06:00:04 PM EDT 2026: now start nightly benchmarks'
++ echo -e '\n\nWed Sep 30 06:00:02 PM EDT 2026: now start nightly benchmarks'
 
 
-Tue Sep 29 06:00:04 PM EDT 2026: now start nightly benchmarks
+Wed Sep 30 06:00:02 PM EDT 2026: now start nightly benchmarks
 + pkill java
 + true
 + pkill mencoder
@@ -26,91 +26,71 @@ Your branch is up to date with 'origin/main'.
 + git pull origin main
 From https://gitbox.apache.org/repos/asf/lucene
  * branch                    main       -> FETCH_HEAD
-   55fd2e75fb2..fadd63e0eb4  main       -> origin/main
-Updating 55fd2e75fb2..fadd63e0eb4
+   fadd63e0eb4..f67d5374ce0  main       -> origin/main
+Updating fadd63e0eb4..f67d5374ce0
 Fast-forward
- .github/actionlint.yaml                            |   4 +-
- .github/workflows/actions.yml                      |   2 +-
- .github/workflows/activity-report.yml              |   2 +-
- .github/workflows/backport.yml                     |   6 +-
- .github/workflows/codeql.yml                       |   2 +-
- .github/workflows/dependency-submission.yml        |   2 +-
- .github/workflows/mark-stale-PRs.yml               |   2 +-
- .github/workflows/run-checks-all.yml               |   4 +-
- .github/workflows/run-checks-gradle-upgrade.yml    |   6 +-
- .../run-checks-mod-analysis-common-hunspell.yml    |   2 +-
- .github/workflows/run-checks-python.yml            |   4 +-
- .github/workflows/run-nightly-smoketester.yml      |   2 +-
- .github/workflows/run-scheduled-hunspell.yml       |   2 +-
- .../workflows/run-scheduled-spotless-groovy.yml    |   2 +-
- .../verify-changelog-and-set-milestone.disabled    |   2 +-
- lucene/CHANGES.txt                                 |  17 ++
- .../apache/lucene/analysis/th/ThaiTokenizer.java   |   3 +-
- .../lucene/analysis/th/TestThaiTokenizer.java      |   9 +
- .../benchmark/jmh/LRUQueryCacheBenchmark.java      |  59 +++-
- .../org/apache/lucene/search/DocAndScoreQuery.java |  31 ++-
- .../search/Float16VectorSimilarityQuery.java       | 171 ++++++++++++
- .../org/apache/lucene/search/LRUQueryCache.java    | 180 +++++++++---
- .../java/org/apache/lucene/util/compress/LZ4.java  |   5 +
- .../org/apache/lucene/util/fst/FSTCompiler.java    |   3 +
- .../apache/lucene/util/fst/FSTSuffixNodeCache.java |  26 +-
- .../search/TestFloat16VectorSimilarityQuery.java   |  91 ++++++
- .../search/TestHnswQueueSaturationCollector.java   |  29 +-
- .../apache/lucene/search/TestLRUQueryCache.java    | 122 +++++++++
- .../lucene/util/compress/TestDecompressLZ4.java    |  66 +++++
- .../facet/cutters/ranges/IntervalTracker.java      |  11 +
- .../facet/cutters/ranges/LongRangeFacetCutter.java | 262 +++++++++++++-----
- .../ranges/NonOverlappingLongRangeFacetCutter.java |  30 +-
- .../ranges/OverlappingLongRangeFacetCutter.java    |  44 ++-
- .../facet/utils/RangeFacetBuilderFactory.java      |   4 +-
- .../lucene/sandbox/facet/TestRangeFacet.java       | 305 +++++++++++++++++++++
- 35 files changed, 1370 insertions(+), 142 deletions(-)
- create mode 100644 lucene/core/src/java/org/apache/lucene/search/Float16VectorSimilarityQuery.java
- create mode 100644 lucene/core/src/test/org/apache/lucene/search/TestFloat16VectorSimilarityQuery.java
+ .../lucene/gradle/GradleWrapperDownloader.java     |   4 +-
+ lucene/CHANGES.txt                                 |  10 ++
+ .../org/apache/lucene/search/BooleanQuery.java     |  18 ++-
+ .../apache/lucene/util/hnsw/HnswGraphBuilder.java  |  13 ++
+ .../TestLucene104ScalarQuantizedMergeScorer.java   | 164 ---------------------
+ .../apache/lucene/search/TestBooleanRewrites.java  |  36 +++++
+ .../codecs/dedup/DedupFlatFieldVectorsWriter.java  |   8 +
+ .../codecs/dedup/DedupFlatVectorsFormat.java       |   1 +
+ .../codecs/dedup/DedupFlatVectorsReader.java       |   9 +-
+ .../sandbox/codecs/dedup/DedupFlushContext.java    |   1 +
+ .../sandbox/codecs/dedup/DedupMergeContext.java    |  38 ++++-
+ .../dedup/DedupScalarQuantizedVectorValues.java    |   9 +-
+ .../dedup/DedupScalarQuantizedVectorsReader.java   |  12 +-
+ .../lucene/sandbox/codecs/dedup/DedupUtil.java     |  19 ++-
+ .../sandbox/codecs/dedup/DedupVectorValues.java    |  48 ++++--
+ .../codecs/dedup/TestDedupFlatVectorsFormat.java   |  62 +++++++-
+ .../lucene/tests/util/LuceneTestCaseParent.java    |  53 ++++---
+ 17 files changed, 281 insertions(+), 224 deletions(-)
 + ../gradlew clean
 Starting a Gradle Daemon (subsequent builds will be faster)
-> Task :build-infra:compileJava UP-TO-DATE
+> Task :build-infra:compileJava
 > Task :build-infra:pluginDescriptors UP-TO-DATE
 > Task :build-infra:processResources UP-TO-DATE
-> Task :build-infra:classes UP-TO-DATE
-> Task :build-infra:jar UP-TO-DATE
+> Task :build-infra:classes
+> Task :build-infra:jar
 The eclint tool location is not set ('lucene.tool.eclint' option), will not apply eclint checks.
 The eclint tool location is not set ('lucene.tool.eclint' option), will not apply eclint checks.
-> Task :lucene:distribution:clean UP-TO-DATE
 > Task :lucene:clean UP-TO-DATE
-> Task :lucene:demo:clean
 > Task :lucene:analysis:clean UP-TO-DATE
+> Task :lucene:distribution:clean UP-TO-DATE
 > Task :lucene:analysis.tests:clean
-> Task :lucene:core.tests:clean
-> Task :lucene:classification:clean
-> Task :lucene:benchmark:clean
 > Task :lucene:documentation:clean UP-TO-DATE
 > Task :lucene:distribution.tests:clean
-> Task :lucene:codecs:clean
+> Task :lucene:core.tests:clean
+> Task :lucene:classification:clean
+> Task :lucene:demo:clean
 > Task :lucene:expressions:clean
 > Task :lucene:grouping:clean
 > Task :lucene:memory:clean
-> Task :lucene:backward-codecs:clean
-> Task :lucene:monitor:clean
-> Task :lucene:misc:clean
+> Task :lucene:benchmark:clean
 > Task :lucene:join:clean
-> Task :lucene:replicator:clean
+> Task :lucene:misc:clean
 > Task :lucene:facet:clean
+> Task :lucene:codecs:clean
 > Task :lucene:highlighter:clean
+> Task :lucene:monitor:clean
+> Task :lucene:replicator:clean
 > Task :lucene:spatial-test-fixtures:clean
-> Task :lucene:analysis:icu:clean
+> Task :lucene:backward-codecs:clean
 > Task :lucene:luke:clean
 > Task :lucene:spatial-extras:clean
+> Task :lucene:analysis:icu:clean
 > Task :lucene:suggest:clean
 > Task :lucene:spatial3d:clean
 > Task :lucene:analysis:morfologik.tests:clean
-> Task :lucene:queryparser:clean
 > Task :lucene:analysis:morfologik:clean
-> Task :lucene:analysis:opennlp:clean
+> Task :lucene:queryparser:clean
 > Task :lucene:analysis:phonetic:clean
+> Task :lucene:analysis:opennlp:clean
 > Task :lucene:sandbox:clean
-> Task :lucene:queries:clean
 > Task :lucene:analysis:kuromoji:clean
+> Task :lucene:queries:clean
 > Task :lucene:analysis:smartcn:clean
 > Task :lucene:analysis:stempel:clean
 > Task :lucene:analysis:nori:clean
@@ -119,8 +99,8 @@ The eclint tool location is not set ('lucene.tool.eclint' option), will not appl
 > Task :lucene:analysis:common:clean
 > Task :lucene:core:clean
 
-BUILD SUCCESSFUL in 7s
-46 actionable tasks: 38 executed, 8 up-to-date
+BUILD SUCCESSFUL in 9s
+46 actionable tasks: 40 executed, 6 up-to-date
 Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.8.0/userguide/configuration_cache_enabling.html
 + ../gradlew jar
 + cd /l/util.nightly
