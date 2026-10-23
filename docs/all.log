@@ -11,10 +11,10 @@ Filesystem      Size  Used Avail Use% Mounted on
 + export PATH=/usr/local/src/apache-ant-1.9.5/bin:/usr/lib/jvm/java-26-openjdk/bin:/usr/local/src/gradle-2.9/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
 + PATH=/usr/local/src/apache-ant-1.9.5/bin:/usr/lib/jvm/java-26-openjdk/bin:/usr/local/src/gradle-2.9/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
 ++ date
-+ echo -e '\n\nWed Oct 14 06:00:34 PM EDT 2026: now start nightly benchmarks'
++ echo -e '\n\nFri Oct 23 05:16:20 AM EDT 2026: now start nightly benchmarks'
 
 
-Wed Oct 14 06:00:34 PM EDT 2026: now start nightly benchmarks
+Fri Oct 23 05:16:20 AM EDT 2026: now start nightly benchmarks
 + pkill java
 + true
 + pkill mencoder
@@ -26,91 +26,292 @@ Your branch is up to date with 'origin/main'.
 + git pull origin main
 From https://gitbox.apache.org/repos/asf/lucene
  * branch                    main       -> FETCH_HEAD
-   2eb462541b1..5cdce7bfce4  main       -> origin/main
-Updating 2eb462541b1..5cdce7bfce4
+   5cdce7bfce4..b83101cdd2c  main       -> origin/main
+Updating 5cdce7bfce4..b83101cdd2c
 Fast-forward
- lucene/CHANGES.txt                                 |  34 +++
- lucene/MIGRATE.md                                  |  16 ++
- .../benchmark/jmh/VectorUtilMixingBenchmark.java   | 154 +++++++++++
- .../OffHeapScalarQuantizedVectorValues.java        |   3 +-
- .../lucene95/OrdToDocDISIReaderConfiguration.java  |   7 +
- .../org/apache/lucene/search/PointRangeQuery.java  |   5 +
- .../lucene/search/TopFieldCollectorManager.java    |  26 +-
- .../lucene/search/TopScoreDocCollectorManager.java |  31 +--
- .../org/apache/lucene/util/DocIdSetBuilder.java    |  14 +
- .../src/java/org/apache/lucene/util/Version.java   |   7 +
- .../apache/lucene/util/fst/ForwardBytesReader.java |  56 ----
- .../apache/lucene/util/TestDocIdSetBuilder.java    |  17 ++
- .../sandbox/codecs/dedup/DedupFlushContext.java    |  17 +-
- .../sandbox/codecs/dedup/DedupMergeContext.java    |  40 ++-
- .../sandbox/codecs/dedup/DedupQuantizer.java       |   7 +-
- .../dedup/DedupScalarQuantizedVectorValues.java    | 153 +++++++++--
- .../dedup/DedupScalarQuantizedVectorsFormat.java   |  13 +-
- .../dedup/DedupScalarQuantizedVectorsReader.java   | 103 ++++++--
- .../dedup/DedupScalarQuantizedVectorsScorer.java   |  10 +-
- .../lucene/sandbox/codecs/dedup/DedupUtil.java     |  13 +
- .../sandbox/codecs/dedup/DedupVectorValues.java    |   3 +-
- .../lucene/sandbox/codecs/dedup/package-info.java  |   4 +-
- .../TestDedupHnswScalarQuantizedVectorsFormat.java |   5 +-
- .../TestDedupScalarQuantizedVectorsFormat.java     | 286 ++++++++++++++++++++-
- 24 files changed, 856 insertions(+), 168 deletions(-)
- create mode 100644 lucene/benchmark-jmh/src/java/org/apache/lucene/benchmark/jmh/VectorUtilMixingBenchmark.java
- delete mode 100644 lucene/core/src/java/org/apache/lucene/util/fst/ForwardBytesReader.java
+ .asf.yaml                                          |   3 +
+ gradle/libs.versions.toml                          |   8 +-
+ gradle/wrapper/gradle-wrapper.properties           |   4 +-
+ gradlew                                            |   2 +-
+ lucene/CHANGES.txt                                 |  88 ++--
+ lucene/MIGRATE.md                                  |  23 +-
+ .../BackwardsCompatibilityTestBase.java            |  68 ++-
+ .../TestAncientIndicesCompatibility.java           |  21 +-
+ .../TestBasicBackwardsCompatibility.java           |  18 +-
+ .../TestBinaryBackwardsCompatibility.java          |  86 ----
+ .../TestDVUpdateBackwardsCompatibility.java        |  12 +-
+ .../TestEmptyIndexBackwardsCompatibility.java      |  14 +-
+ ...estMinSupportedMajorBackwardsCompatibility.java |   2 +-
+ .../TestMoreTermsBackwardsCompatibility.java       |   8 +-
+ ...ted.dvupdates.9.0.0.zip => dvupdates.9.0.0.zip} | Bin
+ ...unsupported.empty.9.0.0.zip => empty.9.0.0.zip} | Bin
+ ...supported.9.0.0-cfs.zip => index.9.0.0-cfs.zip} | Bin
+ ...orted.9.0.0-nocfs.zip => index.9.0.0-nocfs.zip} | Bin
+ ...supported.9.1.0-cfs.zip => index.9.1.0-cfs.zip} | Bin
+ ...orted.9.1.0-nocfs.zip => index.9.1.0-nocfs.zip} | Bin
+ ...pported.9.10.0-cfs.zip => index.9.10.0-cfs.zip} | Bin
+ ...ted.9.10.0-nocfs.zip => index.9.10.0-nocfs.zip} | Bin
+ ...pported.9.11.0-cfs.zip => index.9.11.0-cfs.zip} | Bin
+ ...ted.9.11.0-nocfs.zip => index.9.11.0-nocfs.zip} | Bin
+ ...pported.9.11.1-cfs.zip => index.9.11.1-cfs.zip} | Bin
+ ...ted.9.11.1-nocfs.zip => index.9.11.1-nocfs.zip} | Bin
+ ...pported.9.12.0-cfs.zip => index.9.12.0-cfs.zip} | Bin
+ ...ted.9.12.0-nocfs.zip => index.9.12.0-nocfs.zip} | Bin
+ ...pported.9.12.1-cfs.zip => index.9.12.1-cfs.zip} | Bin
+ ...ted.9.12.1-nocfs.zip => index.9.12.1-nocfs.zip} | Bin
+ ...pported.9.12.2-cfs.zip => index.9.12.2-cfs.zip} | Bin
+ ...ted.9.12.2-nocfs.zip => index.9.12.2-nocfs.zip} | Bin
+ ...pported.9.12.3-cfs.zip => index.9.12.3-cfs.zip} | Bin
+ ...ted.9.12.3-nocfs.zip => index.9.12.3-nocfs.zip} | Bin
+ ...supported.9.2.0-cfs.zip => index.9.2.0-cfs.zip} | Bin
+ ...orted.9.2.0-nocfs.zip => index.9.2.0-nocfs.zip} | Bin
+ ...supported.9.3.0-cfs.zip => index.9.3.0-cfs.zip} | Bin
+ ...orted.9.3.0-nocfs.zip => index.9.3.0-nocfs.zip} | Bin
+ ...supported.9.4.0-cfs.zip => index.9.4.0-cfs.zip} | Bin
+ ...orted.9.4.0-nocfs.zip => index.9.4.0-nocfs.zip} | Bin
+ ...supported.9.4.1-cfs.zip => index.9.4.1-cfs.zip} | Bin
+ ...orted.9.4.1-nocfs.zip => index.9.4.1-nocfs.zip} | Bin
+ ...supported.9.4.2-cfs.zip => index.9.4.2-cfs.zip} | Bin
+ ...orted.9.4.2-nocfs.zip => index.9.4.2-nocfs.zip} | Bin
+ ...supported.9.5.0-cfs.zip => index.9.5.0-cfs.zip} | Bin
+ ...orted.9.5.0-nocfs.zip => index.9.5.0-nocfs.zip} | Bin
+ ...supported.9.6.0-cfs.zip => index.9.6.0-cfs.zip} | Bin
+ ...orted.9.6.0-nocfs.zip => index.9.6.0-nocfs.zip} | Bin
+ ...supported.9.7.0-cfs.zip => index.9.7.0-cfs.zip} | Bin
+ ...orted.9.7.0-nocfs.zip => index.9.7.0-nocfs.zip} | Bin
+ ...supported.9.8.0-cfs.zip => index.9.8.0-cfs.zip} | Bin
+ ...orted.9.8.0-nocfs.zip => index.9.8.0-nocfs.zip} | Bin
+ ...supported.9.9.0-cfs.zip => index.9.9.0-cfs.zip} | Bin
+ ...orted.9.9.0-nocfs.zip => index.9.9.0-nocfs.zip} | Bin
+ ...supported.9.9.1-cfs.zip => index.9.9.1-cfs.zip} | Bin
+ ...orted.9.9.1-nocfs.zip => index.9.9.1-nocfs.zip} | Bin
+ ...supported.9.9.2-cfs.zip => index.9.9.2-cfs.zip} | Bin
+ ...orted.9.9.2-nocfs.zip => index.9.9.2-nocfs.zip} | Bin
+ ...d.int7_hnsw.9.10.0.zip => int7_hnsw.9.10.0.zip} | Bin
+ ...d.int7_hnsw.9.11.0.zip => int7_hnsw.9.11.0.zip} | Bin
+ ...d.int7_hnsw.9.11.1.zip => int7_hnsw.9.11.1.zip} | Bin
+ ...d.int7_hnsw.9.12.0.zip => int7_hnsw.9.12.0.zip} | Bin
+ ...d.int7_hnsw.9.12.1.zip => int7_hnsw.9.12.1.zip} | Bin
+ ...d.int7_hnsw.9.12.2.zip => int7_hnsw.9.12.2.zip} | Bin
+ ...d.int7_hnsw.9.12.3.zip => int7_hnsw.9.12.3.zip} | Bin
+ ...ted.moreterms.9.0.0.zip => moreterms.9.0.0.zip} | Bin
+ ...supported.sorted.9.0.0.zip => sorted.9.0.0.zip} | Bin
+ ...supported.sorted.9.1.0.zip => sorted.9.1.0.zip} | Bin
+ ...pported.sorted.9.10.0.zip => sorted.9.10.0.zip} | Bin
+ ...pported.sorted.9.11.0.zip => sorted.9.11.0.zip} | Bin
+ ...pported.sorted.9.11.1.zip => sorted.9.11.1.zip} | Bin
+ ...pported.sorted.9.12.0.zip => sorted.9.12.0.zip} | Bin
+ ...pported.sorted.9.12.1.zip => sorted.9.12.1.zip} | Bin
+ ...pported.sorted.9.12.2.zip => sorted.9.12.2.zip} | Bin
+ ...pported.sorted.9.12.3.zip => sorted.9.12.3.zip} | Bin
+ ...supported.sorted.9.2.0.zip => sorted.9.2.0.zip} | Bin
+ ...supported.sorted.9.3.0.zip => sorted.9.3.0.zip} | Bin
+ ...supported.sorted.9.4.0.zip => sorted.9.4.0.zip} | Bin
+ ...supported.sorted.9.4.1.zip => sorted.9.4.1.zip} | Bin
+ ...supported.sorted.9.4.2.zip => sorted.9.4.2.zip} | Bin
+ ...supported.sorted.9.5.0.zip => sorted.9.5.0.zip} | Bin
+ ...supported.sorted.9.6.0.zip => sorted.9.6.0.zip} | Bin
+ ...supported.sorted.9.7.0.zip => sorted.9.7.0.zip} | Bin
+ ...supported.sorted.9.8.0.zip => sorted.9.8.0.zip} | Bin
+ ...supported.sorted.9.9.0.zip => sorted.9.9.0.zip} | Bin
+ ...supported.sorted.9.9.1.zip => sorted.9.9.1.zip} | Bin
+ ...supported.sorted.9.9.2.zip => sorted.9.9.2.zip} | Bin
+ .../lucene/backward_index/unsupported_versions.txt |  18 -
+ .../org/apache/lucene/backward_index/versions.txt  |   2 +
+ lucene/benchmark-jmh/build.gradle                  |   1 +
+ lucene/benchmark-jmh/src/java/module-info.java     |   1 +
+ .../benchmark/jmh/AbstractReadIOBenchmark.java     | 491 +++++++++++++++++++++
+ .../benchmark/jmh/DenseFilterRunEndBenchmark.java  | 209 +++++++++
+ .../benchmark/jmh/RandomReadIOBenchmark.java       | 322 ++++++++++++++
+ .../benchmark/jmh/SequentialReadIOBenchmark.java   | 172 ++++++++
+ .../Lucene90CompressingStoredFieldsReader.java     |  18 +-
+ .../codecs/lucene99/Lucene99FlatVectorsFormat.java |  12 +-
+ .../codecs/lucene99/Lucene99FlatVectorsWriter.java |  21 +-
+ .../java/org/apache/lucene/index/BitsSlice.java    |  50 ---
+ .../org/apache/lucene/index/DirectoryReader.java   |  24 +-
+ .../org/apache/lucene/index/IndexWriterConfig.java |  12 +-
+ .../java/org/apache/lucene/index/SegmentInfos.java |  12 +-
+ .../org/apache/lucene/util/BitSetIterator.java     |  25 +-
+ .../src/java/org/apache/lucene/util/Version.java   | 123 +++++-
+ .../util/hnsw/IncrementalHnswGraphMerger.java      |  16 +-
+ .../TestCompressingStoredFieldsFormat.java         |  29 ++
+ .../org/apache/lucene/index/TestCheckIndex.java    |  61 +++
+ .../org/apache/lucene/index/TestIndexWriter.java   |  14 +-
+ .../org/apache/lucene/index/TestTransactions.java  |   5 +-
+ .../search/TestDenseConjunctionBulkScorer.java     | 118 +++++
+ .../apache/lucene/search/TestLRUQueryCache.java    |   8 +-
+ .../org/apache/lucene/util/TestBitSetIterator.java |  60 ++-
+ ...estIncrementalHnswGraphMergerBaseSelection.java | 198 +++++++++
+ lucene/licenses/commons-codec-1.22.1.jar.sha1      |   1 -
+ lucene/licenses/commons-codec-1.23.0.jar.sha1      |   1 +
+ .../checksums/regenerateClassicQueryParser.json    |   4 +-
+ .../queryparser/classic/MultiFieldQueryParser.java |  33 +-
+ .../lucene/queryparser/classic/QueryParser.java    |   2 +-
+ .../lucene/queryparser/classic/QueryParser.jj      |   2 +-
+ .../queryparser/classic/QueryParserBase.java       |  41 --
+ .../classic/TestMultiFieldQueryParser.java         |  64 +++
+ .../TestMultiFieldQueryParserBoostAndOperator.java | 105 +++++
+ .../queryparser/classic/TestQueryParser.java       |  51 ++-
+ .../queryparser/util/QueryParserTestBase.java      |  17 +-
+ .../TestDedupScalarQuantizedVectorsFormat.java     |  28 +-
+ settings.gradle                                    |   2 +-
+ versions.lock                                      |   4 +-
+ 127 files changed, 2308 insertions(+), 426 deletions(-)
+ delete mode 100644 lucene/backward-codecs/src/test/org/apache/lucene/backward_index/TestBinaryBackwardsCompatibility.java
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.dvupdates.9.0.0.zip => dvupdates.9.0.0.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.empty.9.0.0.zip => empty.9.0.0.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.9.0.0-cfs.zip => index.9.0.0-cfs.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.9.0.0-nocfs.zip => index.9.0.0-nocfs.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.9.1.0-cfs.zip => index.9.1.0-cfs.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.9.1.0-nocfs.zip => index.9.1.0-nocfs.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.9.10.0-cfs.zip => index.9.10.0-cfs.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.9.10.0-nocfs.zip => index.9.10.0-nocfs.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.9.11.0-cfs.zip => index.9.11.0-cfs.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.9.11.0-nocfs.zip => index.9.11.0-nocfs.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.9.11.1-cfs.zip => index.9.11.1-cfs.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.9.11.1-nocfs.zip => index.9.11.1-nocfs.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.9.12.0-cfs.zip => index.9.12.0-cfs.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.9.12.0-nocfs.zip => index.9.12.0-nocfs.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.9.12.1-cfs.zip => index.9.12.1-cfs.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.9.12.1-nocfs.zip => index.9.12.1-nocfs.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.9.12.2-cfs.zip => index.9.12.2-cfs.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.9.12.2-nocfs.zip => index.9.12.2-nocfs.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.9.12.3-cfs.zip => index.9.12.3-cfs.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.9.12.3-nocfs.zip => index.9.12.3-nocfs.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.9.2.0-cfs.zip => index.9.2.0-cfs.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.9.2.0-nocfs.zip => index.9.2.0-nocfs.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.9.3.0-cfs.zip => index.9.3.0-cfs.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.9.3.0-nocfs.zip => index.9.3.0-nocfs.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.9.4.0-cfs.zip => index.9.4.0-cfs.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.9.4.0-nocfs.zip => index.9.4.0-nocfs.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.9.4.1-cfs.zip => index.9.4.1-cfs.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.9.4.1-nocfs.zip => index.9.4.1-nocfs.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.9.4.2-cfs.zip => index.9.4.2-cfs.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.9.4.2-nocfs.zip => index.9.4.2-nocfs.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.9.5.0-cfs.zip => index.9.5.0-cfs.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.9.5.0-nocfs.zip => index.9.5.0-nocfs.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.9.6.0-cfs.zip => index.9.6.0-cfs.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.9.6.0-nocfs.zip => index.9.6.0-nocfs.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.9.7.0-cfs.zip => index.9.7.0-cfs.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.9.7.0-nocfs.zip => index.9.7.0-nocfs.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.9.8.0-cfs.zip => index.9.8.0-cfs.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.9.8.0-nocfs.zip => index.9.8.0-nocfs.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.9.9.0-cfs.zip => index.9.9.0-cfs.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.9.9.0-nocfs.zip => index.9.9.0-nocfs.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.9.9.1-cfs.zip => index.9.9.1-cfs.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.9.9.1-nocfs.zip => index.9.9.1-nocfs.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.9.9.2-cfs.zip => index.9.9.2-cfs.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.9.9.2-nocfs.zip => index.9.9.2-nocfs.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.int7_hnsw.9.10.0.zip => int7_hnsw.9.10.0.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.int7_hnsw.9.11.0.zip => int7_hnsw.9.11.0.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.int7_hnsw.9.11.1.zip => int7_hnsw.9.11.1.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.int7_hnsw.9.12.0.zip => int7_hnsw.9.12.0.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.int7_hnsw.9.12.1.zip => int7_hnsw.9.12.1.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.int7_hnsw.9.12.2.zip => int7_hnsw.9.12.2.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.int7_hnsw.9.12.3.zip => int7_hnsw.9.12.3.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.moreterms.9.0.0.zip => moreterms.9.0.0.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.sorted.9.0.0.zip => sorted.9.0.0.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.sorted.9.1.0.zip => sorted.9.1.0.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.sorted.9.10.0.zip => sorted.9.10.0.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.sorted.9.11.0.zip => sorted.9.11.0.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.sorted.9.11.1.zip => sorted.9.11.1.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.sorted.9.12.0.zip => sorted.9.12.0.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.sorted.9.12.1.zip => sorted.9.12.1.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.sorted.9.12.2.zip => sorted.9.12.2.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.sorted.9.12.3.zip => sorted.9.12.3.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.sorted.9.2.0.zip => sorted.9.2.0.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.sorted.9.3.0.zip => sorted.9.3.0.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.sorted.9.4.0.zip => sorted.9.4.0.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.sorted.9.4.1.zip => sorted.9.4.1.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.sorted.9.4.2.zip => sorted.9.4.2.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.sorted.9.5.0.zip => sorted.9.5.0.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.sorted.9.6.0.zip => sorted.9.6.0.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.sorted.9.7.0.zip => sorted.9.7.0.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.sorted.9.8.0.zip => sorted.9.8.0.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.sorted.9.9.0.zip => sorted.9.9.0.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.sorted.9.9.1.zip => sorted.9.9.1.zip} (100%)
+ rename lucene/backward-codecs/src/test/org/apache/lucene/backward_index/{unsupported.sorted.9.9.2.zip => sorted.9.9.2.zip} (100%)
+ create mode 100644 lucene/benchmark-jmh/src/java/org/apache/lucene/benchmark/jmh/AbstractReadIOBenchmark.java
+ create mode 100644 lucene/benchmark-jmh/src/java/org/apache/lucene/benchmark/jmh/DenseFilterRunEndBenchmark.java
+ create mode 100644 lucene/benchmark-jmh/src/java/org/apache/lucene/benchmark/jmh/RandomReadIOBenchmark.java
+ create mode 100644 lucene/benchmark-jmh/src/java/org/apache/lucene/benchmark/jmh/SequentialReadIOBenchmark.java
+ delete mode 100644 lucene/core/src/java/org/apache/lucene/index/BitsSlice.java
+ create mode 100644 lucene/core/src/test/org/apache/lucene/util/hnsw/TestIncrementalHnswGraphMergerBaseSelection.java
+ delete mode 100644 lucene/licenses/commons-codec-1.22.1.jar.sha1
+ create mode 100644 lucene/licenses/commons-codec-1.23.0.jar.sha1
+ create mode 100644 lucene/queryparser/src/test/org/apache/lucene/queryparser/classic/TestMultiFieldQueryParserBoostAndOperator.java
 + ../gradlew clean
+Fetching distribution.
+Downloading https://services.gradle.org/distributions/gradle-9.8.1-bin.zip
+..............10%..............20%...............30%..............40%...............50%..............60%...............70%..............80%...............90%..............100%
+
+Welcome to Gradle 9.8.1!
+
+Here are the highlights of this release:
+ - Java 27 support
+ - Maven mirror settings reuse
+ - Linked problem locations in build output
+
+For more details see https://docs.gradle.org/9.8.1/release-notes.html
+
 Starting a Gradle Daemon (subsequent builds will be faster)
-> Task :build-infra:compileJava UP-TO-DATE
-> Task :build-infra:pluginDescriptors UP-TO-DATE
-> Task :build-infra:processResources UP-TO-DATE
-> Task :build-infra:classes UP-TO-DATE
-> Task :build-infra:jar UP-TO-DATE
+
+> Task :build-infra:compileJava
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+
+> Task :build-infra:pluginDescriptors
+> Task :build-infra:processResources
+> Task :build-infra:classes
+> Task :build-infra:jar
 The eclint tool location is not set ('lucene.tool.eclint' option), will not apply eclint checks.
 The eclint tool location is not set ('lucene.tool.eclint' option), will not apply eclint checks.
-> Task :lucene:demo:clean
-> Task :lucene:analysis.tests:clean
-> Task :lucene:classification:clean
-> Task :lucene:core.tests:clean
+> Task :lucene:analysis:clean UP-TO-DATE
 > Task :lucene:clean UP-TO-DATE
 > Task :lucene:distribution:clean UP-TO-DATE
-> Task :lucene:analysis:clean UP-TO-DATE
-> Task :lucene:benchmark:clean
-> Task :lucene:distribution.tests:clean
+> Task :lucene:analysis.tests:clean
+> Task :lucene:core.tests:clean
 > Task :lucene:documentation:clean UP-TO-DATE
-> Task :lucene:codecs:clean
+> Task :lucene:demo:clean
+> Task :lucene:distribution.tests:clean
+> Task :lucene:classification:clean
 > Task :lucene:expressions:clean
 > Task :lucene:grouping:clean
+> Task :lucene:benchmark:clean
 > Task :lucene:memory:clean
-> Task :lucene:monitor:clean
+> Task :lucene:codecs:clean
+> Task :lucene:facet:clean
 > Task :lucene:misc:clean
+> Task :lucene:monitor:clean
 > Task :lucene:join:clean
+> Task :lucene:highlighter:clean
 > Task :lucene:replicator:clean
 > Task :lucene:backward-codecs:clean
-> Task :lucene:highlighter:clean
-> Task :lucene:facet:clean
 > Task :lucene:spatial-test-fixtures:clean
-> Task :lucene:analysis:icu:clean
-> Task :lucene:spatial-extras:clean
-> Task :lucene:suggest:clean
 > Task :lucene:luke:clean
+> Task :lucene:analysis:icu:clean
 > Task :lucene:spatial3d:clean
+> Task :lucene:suggest:clean
+> Task :lucene:spatial-extras:clean
 > Task :lucene:analysis:morfologik.tests:clean
 > Task :lucene:queryparser:clean
-> Task :lucene:analysis:morfologik:clean
-> Task :lucene:analysis:phonetic:clean
-> Task :lucene:analysis:opennlp:clean
 > Task :lucene:queries:clean
 > Task :lucene:sandbox:clean
-> Task :lucene:analysis:kuromoji:clean
-> Task :lucene:analysis:stempel:clean
-> Task :lucene:analysis:smartcn:clean
-> Task :lucene:benchmark-jmh:clean
+> Task :lucene:analysis:morfologik:clean
+> Task :lucene:analysis:opennlp:clean
+> Task :lucene:analysis:phonetic:clean
 > Task :lucene:analysis:nori:clean
+> Task :lucene:analysis:kuromoji:clean
+> Task :lucene:analysis:smartcn:clean
+> Task :lucene:analysis:stempel:clean
+> Task :lucene:benchmark-jmh:clean
 > Task :lucene:test-framework:clean
 > Task :lucene:analysis:common:clean
 > Task :lucene:core:clean
 
-BUILD SUCCESSFUL in 6s
-46 actionable tasks: 38 executed, 8 up-to-date
-Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.8.0/userguide/configuration_cache_enabling.html
+BUILD SUCCESSFUL in 32s
+46 actionable tasks: 42 executed, 4 up-to-date
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.8.1/userguide/configuration_cache_enabling.html
 + ../gradlew jar
 + cd /l/util.nightly
 + echo 'activate luceneutil venv'
