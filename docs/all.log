@@ -11,10 +11,10 @@ Filesystem      Size  Used Avail Use% Mounted on
 + export PATH=/usr/local/src/apache-ant-1.9.5/bin:/usr/lib/jvm/java-26-openjdk/bin:/usr/local/src/gradle-2.9/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
 + PATH=/usr/local/src/apache-ant-1.9.5/bin:/usr/lib/jvm/java-26-openjdk/bin:/usr/local/src/gradle-2.9/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
 ++ date
-+ echo -e '\n\nSun Oct 25 06:00:28 PM EDT 2026: now start nightly benchmarks'
++ echo -e '\n\nMon Oct 26 06:00:15 PM EDT 2026: now start nightly benchmarks'
 
 
-Sun Oct 25 06:00:28 PM EDT 2026: now start nightly benchmarks
+Mon Oct 26 06:00:15 PM EDT 2026: now start nightly benchmarks
 + pkill java
 + true
 + pkill mencoder
@@ -26,7 +26,52 @@ Your branch is up to date with 'origin/main'.
 + git pull origin main
 From https://gitbox.apache.org/repos/asf/lucene
  * branch                    main       -> FETCH_HEAD
-Already up to date.
+   ea57360912e..a95c754ee00  main       -> origin/main
+Updating ea57360912e..a95c754ee00
+Fast-forward
+ lucene/CHANGES.txt                                 |  28 ++
+ .../lucene/codecs/KnnFieldVectorsWriter.java       |  26 ++
+ .../lucene/codecs/hnsw/HnswGraphProvider.java      |   3 +
+ .../Lucene104ScalarQuantizedVectorsWriter.java     |  38 ++-
+ .../Lucene90CompressingStoredFieldsReader.java     |  55 ++--
+ .../codecs/lucene99/Lucene99FlatVectorsReader.java |  84 +++--
+ .../codecs/lucene99/Lucene99FlatVectorsWriter.java |  45 +++
+ .../codecs/lucene99/Lucene99HnswVectorsWriter.java |  27 ++
+ .../document/SortedNumericDocValuesRangeQuery.java |   6 +
+ .../document/SortedSetDocValuesRangeQuery.java     |   6 +
+ .../lucene/document/column/ColumnValidation.java   |  84 ++++-
+ .../column/ValidatingVectorValuesCursor.java       | 160 +++++++++
+ .../lucene/document/column/VectorColumn.java       |  34 +-
+ .../lucene/document/column/VectorValuesCursor.java | 105 ++++++
+ .../lucene/document/column/package-info.java       |   9 +-
+ .../java/org/apache/lucene/index/CodecReader.java  |  23 +-
+ .../lucene/index/ExitableDirectoryReader.java      |  11 +
+ .../org/apache/lucene/index/IndexingChain.java     |  67 +++-
+ .../java/org/apache/lucene/index/LeafReader.java   |  15 +
+ .../lucene/index/SlowCodecReaderWrapper.java       |   7 +
+ .../search/BlockMaxConjunctionBulkScorer.java      |   1 +
+ .../IndexSortSortedNumericDocValuesRangeQuery.java |  16 +-
+ .../java/org/apache/lucene/store/IOContext.java    |   5 +
+ .../lucene/util/hnsw/ConcurrentHnswMerger.java     | 131 ++------
+ .../util/hnsw/HnswConcurrentMergeBuilder.java      | 300 ++++++++++++++++-
+ .../util/hnsw/IncrementalHnswGraphMerger.java      |  40 ++-
+ .../lucene99/TestVectorsMergeReadAdvice.java       | 204 +++++++++++-
+ .../document/column/ColumnBatchTestUtil.java       |  76 +++++
+ .../column/TestColumnBatchVectorColumn.java        | 155 ++++++++-
+ .../lucene/index/TestColumnBatchIndexing.java      |  57 +++-
+ .../index/TestStoredFieldsMergeReadAdvice.java     |   1 +
+ .../search/TestBlockMaxConjunctionBulkScorer.java  | 183 +++++++++++
+ .../apache/lucene/search/TestDocValuesQueries.java | 131 ++++++++
+ ...tIndexSortSortedNumericDocValuesRangeQuery.java | 142 ++++++++
+ .../org/apache/lucene/store/TestIOContext.java     |  23 ++
+ .../apache/lucene/util/hnsw/HnswGraphTestCase.java | 358 +++++++++++++++++++++
+ .../apache/lucene/queries/intervals/Intervals.java |  38 +--
+ .../intervals/MultiTermIntervalsSource.java        |  18 +-
+ .../lucene/queries/intervals/TestIntervals.java    |  28 +-
+ 39 files changed, 2461 insertions(+), 279 deletions(-)
+ create mode 100644 lucene/core/src/java/org/apache/lucene/document/column/ValidatingVectorValuesCursor.java
+ create mode 100644 lucene/core/src/java/org/apache/lucene/document/column/VectorValuesCursor.java
+ create mode 100644 lucene/core/src/test/org/apache/lucene/search/TestBlockMaxConjunctionBulkScorer.java
 + ../gradlew clean
 Starting a Gradle Daemon (subsequent builds will be faster)
 > Task :build-infra:compileJava UP-TO-DATE
@@ -36,11 +81,11 @@ Starting a Gradle Daemon (subsequent builds will be faster)
 > Task :build-infra:jar UP-TO-DATE
 The eclint tool location is not set ('lucene.tool.eclint' option), will not apply eclint checks.
 The eclint tool location is not set ('lucene.tool.eclint' option), will not apply eclint checks.
-> Task :lucene:clean UP-TO-DATE
-> Task :lucene:classification:clean
-> Task :lucene:core.tests:clean
 > Task :lucene:analysis.tests:clean
+> Task :lucene:classification:clean
 > Task :lucene:distribution:clean UP-TO-DATE
+> Task :lucene:clean UP-TO-DATE
+> Task :lucene:core.tests:clean
 > Task :lucene:demo:clean
 > Task :lucene:analysis:clean UP-TO-DATE
 > Task :lucene:documentation:clean UP-TO-DATE
@@ -48,30 +93,30 @@ The eclint tool location is not set ('lucene.tool.eclint' option), will not appl
 > Task :lucene:benchmark:clean
 > Task :lucene:codecs:clean
 > Task :lucene:expressions:clean
-> Task :lucene:memory:clean
 > Task :lucene:grouping:clean
-> Task :lucene:misc:clean
-> Task :lucene:join:clean
+> Task :lucene:memory:clean
 > Task :lucene:replicator:clean
+> Task :lucene:join:clean
+> Task :lucene:misc:clean
 > Task :lucene:highlighter:clean
+> Task :lucene:monitor:clean
 > Task :lucene:backward-codecs:clean
 > Task :lucene:facet:clean
-> Task :lucene:monitor:clean
 > Task :lucene:spatial-test-fixtures:clean
 > Task :lucene:analysis:icu:clean
-> Task :lucene:spatial-extras:clean
 > Task :lucene:luke:clean
 > Task :lucene:suggest:clean
 > Task :lucene:spatial3d:clean
-> Task :lucene:analysis:morfologik:clean
-> Task :lucene:analysis:morfologik.tests:clean
+> Task :lucene:spatial-extras:clean
 > Task :lucene:queryparser:clean
+> Task :lucene:analysis:morfologik.tests:clean
 > Task :lucene:queries:clean
+> Task :lucene:analysis:morfologik:clean
 > Task :lucene:analysis:phonetic:clean
 > Task :lucene:analysis:opennlp:clean
 > Task :lucene:sandbox:clean
-> Task :lucene:analysis:kuromoji:clean
 > Task :lucene:analysis:stempel:clean
+> Task :lucene:analysis:kuromoji:clean
 > Task :lucene:analysis:smartcn:clean
 > Task :lucene:analysis:nori:clean
 > Task :lucene:benchmark-jmh:clean
@@ -79,7 +124,7 @@ The eclint tool location is not set ('lucene.tool.eclint' option), will not appl
 > Task :lucene:analysis:common:clean
 > Task :lucene:core:clean
 
-BUILD SUCCESSFUL in 7s
+BUILD SUCCESSFUL in 6s
 46 actionable tasks: 38 executed, 8 up-to-date
 Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.8.1/userguide/configuration_cache_enabling.html
 + ../gradlew jar
