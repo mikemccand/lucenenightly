@@ -11,10 +11,10 @@ Filesystem      Size  Used Avail Use% Mounted on
 + export PATH=/usr/local/src/apache-ant-1.9.5/bin:/usr/lib/jvm/java-26-openjdk/bin:/usr/local/src/gradle-2.9/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
 + PATH=/usr/local/src/apache-ant-1.9.5/bin:/usr/lib/jvm/java-26-openjdk/bin:/usr/local/src/gradle-2.9/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
 ++ date
-+ echo -e '\n\nThu Nov  5 06:00:18 PM EST 2026: now start nightly benchmarks'
++ echo -e '\n\nFri Nov  6 06:00:01 PM EST 2026: now start nightly benchmarks'
 
 
-Thu Nov  5 06:00:18 PM EST 2026: now start nightly benchmarks
+Fri Nov  6 06:00:01 PM EST 2026: now start nightly benchmarks
 + pkill java
 + true
 + pkill mencoder
@@ -26,22 +26,26 @@ Your branch is up to date with 'origin/main'.
 + git pull origin main
 From https://gitbox.apache.org/repos/asf/lucene
  * branch                    main       -> FETCH_HEAD
-   aa366ae209a..238efb3101e  main       -> origin/main
-Updating aa366ae209a..238efb3101e
+   238efb3101e..f794ff5a505  main       -> origin/main
+Updating 238efb3101e..f794ff5a505
 Fast-forward
- lucene/CHANGES.txt                                 |   4 +
- lucene/MIGRATE.md                                  |   7 +
- .../java/org/apache/lucene/index/IndexWriter.java  |   2 -
- .../lucene/index/TestIndexWriterMergePolicy.java   |  10 +-
- .../test/org/apache/lucene/util/bkd/TestBKD.java   |  12 +-
- .../search/uhighlight/UnifiedHighlighter.java      | 169 ++-------------------
- .../codecs/dedup/DedupFlatVectorsFormat.java       |  12 +-
- .../codecs/dedup/DedupFlatVectorsReader.java       |   9 +-
- .../sandbox/codecs/dedup/DedupFlushContext.java    |   4 +-
- .../sandbox/codecs/dedup/DedupMergeContext.java    |   4 +-
- .../dedup/DedupScalarQuantizedVectorsReader.java   |   9 +-
- .../lucene/sandbox/codecs/dedup/DedupUtil.java     |  15 +-
- 12 files changed, 60 insertions(+), 197 deletions(-)
+ lucene/CHANGES.txt                                 |  10 ++
+ lucene/MIGRATE.md                                  |  27 ++++
+ .../miscellaneous/ProtectedTermFilterFactory.java  |   4 +-
+ .../miscellaneous/TruncateTokenFilter.java         |  13 --
+ .../miscellaneous/TruncateTokenFilterFactory.java  |  24 ++--
+ .../TestProtectedTermFilterFactory.java            |  21 +--
+ .../TestTruncateTokenFilterFactory.java            |  13 +-
+ .../lucene/util/ArrayInPlaceMergeSorter.java       |  46 -------
+ .../org/apache/lucene/util/ArrayIntroSorter.java   |   2 +-
+ .../org/apache/lucene/util/SorterBenchmark.java    |  15 +-
+ .../apache/lucene/util/TestInPlaceMergeSorter.java |  17 ++-
+ .../lucene/search/highlight/TokenSources.java      | 152 ---------------------
+ .../highlight/TokenStreamFromTermVector.java       |   2 +-
+ .../lucene/search/highlight/package-info.java      |  13 +-
+ .../lucene/search/highlight/TestHighlighter.java   |   3 +-
+ 15 files changed, 106 insertions(+), 256 deletions(-)
+ delete mode 100644 lucene/core/src/java/org/apache/lucene/util/ArrayInPlaceMergeSorter.java
 + ../gradlew clean
 Starting a Gradle Daemon (subsequent builds will be faster)
 > Task :build-infra:compileJava UP-TO-DATE
@@ -51,15 +55,15 @@ Starting a Gradle Daemon (subsequent builds will be faster)
 > Task :build-infra:jar UP-TO-DATE
 The eclint tool location is not set ('lucene.tool.eclint' option), will not apply eclint checks.
 The eclint tool location is not set ('lucene.tool.eclint' option), will not apply eclint checks.
+> Task :lucene:analysis:clean UP-TO-DATE
+> Task :lucene:demo:clean
+> Task :lucene:analysis.tests:clean
 > Task :lucene:core.tests:clean
 > Task :lucene:distribution:clean UP-TO-DATE
-> Task :lucene:analysis.tests:clean
-> Task :lucene:classification:clean
-> Task :lucene:demo:clean
 > Task :lucene:clean UP-TO-DATE
-> Task :lucene:analysis:clean UP-TO-DATE
-> Task :lucene:benchmark:clean
+> Task :lucene:classification:clean
 > Task :lucene:documentation:clean UP-TO-DATE
+> Task :lucene:benchmark:clean
 > Task :lucene:distribution.tests:clean
 > Task :lucene:codecs:clean
 > Task :lucene:expressions:clean
@@ -67,11 +71,11 @@ The eclint tool location is not set ('lucene.tool.eclint' option), will not appl
 > Task :lucene:memory:clean
 > Task :lucene:join:clean
 > Task :lucene:misc:clean
-> Task :lucene:replicator:clean
 > Task :lucene:monitor:clean
+> Task :lucene:replicator:clean
+> Task :lucene:highlighter:clean
 > Task :lucene:backward-codecs:clean
 > Task :lucene:facet:clean
-> Task :lucene:highlighter:clean
 > Task :lucene:spatial-test-fixtures:clean
 > Task :lucene:analysis:icu:clean
 > Task :lucene:luke:clean
@@ -80,14 +84,14 @@ The eclint tool location is not set ('lucene.tool.eclint' option), will not appl
 > Task :lucene:spatial3d:clean
 > Task :lucene:analysis:morfologik.tests:clean
 > Task :lucene:queryparser:clean
-> Task :lucene:queries:clean
 > Task :lucene:analysis:morfologik:clean
+> Task :lucene:queries:clean
 > Task :lucene:analysis:opennlp:clean
 > Task :lucene:analysis:phonetic:clean
 > Task :lucene:analysis:kuromoji:clean
 > Task :lucene:sandbox:clean
-> Task :lucene:analysis:smartcn:clean
 > Task :lucene:analysis:stempel:clean
+> Task :lucene:analysis:smartcn:clean
 > Task :lucene:analysis:nori:clean
 > Task :lucene:benchmark-jmh:clean
 > Task :lucene:test-framework:clean
@@ -139,9 +143,9 @@ Run gradle test
 ***USING BIG LINE FILE***
 Using java from: /usr/lib/jvm/java-26-openjdk/bin/
 use java command /usr/lib/jvm/java-26-openjdk/bin/java -server -Xms2g -Xmx2g --add-modules jdk.incubator.vector -XX:+HeapDumpOnOutOfMemoryError -XX:+UseParallelGC
-  gradle test log: /l/logs.nightly/ant_test/2026.11.05.lucene-tests.txt
+  gradle test log: /l/logs.nightly/ant_test/2026.11.06.lucene-tests.txt
   took: 1.7 min
-  gradle precommit log: /l/logs.nightly/ant_test/2026.11.05.precommit.txt
+  gradle precommit log: /l/logs.nightly/ant_test/2026.11.06.precommit.txt
   took: 0.6 min
 + echo 'Run lucene nightly'
 Run lucene nightly
@@ -159,11 +163,11 @@ GitHub pull request counts: None open, None closed
 
 
 
-[2026-11-05 18:03:24.924013] start
-[2026-11-05 18:03:24.924112] log dir /l/logs.nightly/2026.11.05.18.03.24
+[2026-11-06 18:04:07.939699] start
+[2026-11-06 18:04:07.939785] log dir /l/logs.nightly/2026.11.06.18.04.07
 
 
-Java version (see also /l/logs.nightly/2026.11.05.18.03.24/java_version.txt): cmd='/usr/lib/jvm/java-26-openjdk/bin/java --add-modules jdk.incubator.vector -Xmx32g -Xms32g -server -XX:+UseParallelGC -Djava.io.tmpdir=/l/tmp --enable-native-access=ALL-UNNAMED -version 2>&1'
+Java version (see also /l/logs.nightly/2026.11.06.18.04.07/java_version.txt): cmd='/usr/lib/jvm/java-26-openjdk/bin/java --add-modules jdk.incubator.vector -Xmx32g -Xms32g -server -XX:+UseParallelGC -Djava.io.tmpdir=/l/tmp --enable-native-access=ALL-UNNAMED -version 2>&1'
 WARNING: Using incubator modules: jdk.incubator.vector
 openjdk version "26.0.1" 2026-04-21
 OpenJDK Runtime Environment (build 26.0.1)
@@ -174,10 +178,10 @@ OpenJDK Runtime Environment (build 26.0.1)
 OpenJDK 64-Bit Server VM (build 26.0.1, mixed mode, sharing)
 
 
-Java full version (see also /l/logs.nightly/2026.11.05.18.03.24/java_full_version.txt): cmd='/usr/lib/jvm/java-26-openjdk/bin/java --add-modules jdk.incubator.vector -Xmx32g -Xms32g -server -XX:+UseParallelGC -Djava.io.tmpdir=/l/tmp --enable-native-access=ALL-UNNAMED -fullversion 2>&1' openjdk full version "26.0.1"
+Java full version (see also /l/logs.nightly/2026.11.06.18.04.07/java_full_version.txt): cmd='/usr/lib/jvm/java-26-openjdk/bin/java --add-modules jdk.incubator.vector -Xmx32g -Xms32g -server -XX:+UseParallelGC -Djava.io.tmpdir=/l/tmp --enable-native-access=ALL-UNNAMED -fullversion 2>&1' openjdk full version "26.0.1"
 
 
-Java version & all flags (see also /l/logs.nightly/2026.11.05.18.03.24/java_final_flags.txt): cmd='/usr/lib/jvm/java-26-openjdk/bin/java --add-modules jdk.incubator.vector -Xmx32g -Xms32g -server -XX:+UseParallelGC -Djava.io.tmpdir=/l/tmp --enable-native-access=ALL-UNNAMED -XX:+PrintFlagsFinal -version'
+Java version & all flags (see also /l/logs.nightly/2026.11.06.18.04.07/java_final_flags.txt): cmd='/usr/lib/jvm/java-26-openjdk/bin/java --add-modules jdk.incubator.vector -Xmx32g -Xms32g -server -XX:+UseParallelGC -Djava.io.tmpdir=/l/tmp --enable-native-access=ALL-UNNAMED -XX:+PrintFlagsFinal -version'
 [Global flags]
      bool AOTAdapterCaching                        = false                                  {diagnostic} {ergonomic}
     ccstr AOTCache                                 =                                           {product} {default}
@@ -710,7 +714,7 @@ ccstrlist OnOutOfMemoryError                       =                            
      intx ServiceThreadCleanupInterval             = 1000                                   {diagnostic} {default}
     ccstr SharedArchiveConfigFile                  =                                           {product} {default}
     ccstr SharedArchiveFile                        =                                           {product} {default}
-   size_t SharedBaseAddress                        = 738197504                                 {product} {default}
+   size_t SharedBaseAddress                        = 687865856                                 {product} {default}
     ccstr SharedClassListFile                      =                                           {product} {default}
      uint SharedSymbolTableBucketSize              = 4                                         {product} {default}
    double ShenandoahAdaptiveDecayFactor            = 0.500000                             {experimental} {default}
@@ -1101,14 +1105,14 @@ OpenJDK Runtime Environment (build 26.0.1)
 OpenJDK 64-Bit Server VM (build 26.0.1, mixed mode, sharing)
 
 
-Linux kernel version (see also /l/logs.nightly/2026.11.05.18.03.24/uname.txt): cmd='uname -a 2>&1' Linux beast3.mikemccandless.com 7.0.10-arch1-1 #1 SMP PREEMPT_DYNAMIC Sat, 23 May 2026 14:21:20 +0000 x86_64 GNU/Linux
+Linux kernel version (see also /l/logs.nightly/2026.11.06.18.04.07/uname.txt): cmd='uname -a 2>&1' Linux beast3.mikemccandless.com 7.0.10-arch1-1 #1 SMP PREEMPT_DYNAMIC Sat, 23 May 2026 14:21:20 +0000 x86_64 GNU/Linux
 
 
-CPU governor/scaling/frequency (see also /l/logs.nightly/2026.11.05.18.03.24/cpu_frequency_info.txt): cmd='cpupower frequency-info'
-analyzing CPU 60:
+CPU governor/scaling/frequency (see also /l/logs.nightly/2026.11.06.18.04.07/cpu_frequency_info.txt): cmd='cpupower frequency-info'
+analyzing CPU 50:
   driver: amd-pstate-epp
-  CPUs which run at the same hardware frequency: 60
-  CPUs which need to have their frequency coordinated by software: 60
+  CPUs which run at the same hardware frequency: 50
+  CPUs which need to have their frequency coordinated by software: 50
   energy performance preference: performance
   hardware limits: 554 MHz - 4.38 GHz
   available cpufreq governors: performance powersave
@@ -1125,10 +1129,10 @@ analyzing CPU 60:
     Nominal Performance: 110. Nominal Frequency: 2.90 GHz.
     Lowest Non-linear Performance: 66. Lowest Non-linear Frequency: 1.74 GHz.
     Lowest Performance: 21. Lowest Frequency: 550 MHz.
-    Preferred Core Support: 1. Preferred Core Ranking: 226.
+    Preferred Core Support: 1. Preferred Core Ranking: 166.
 
 
-CPU specifics (see also /l/logs.nightly/2026.11.05.18.03.24/lscpu.txt): cmd='lscpu'
+CPU specifics (see also /l/logs.nightly/2026.11.06.18.04.07/lscpu.txt): cmd='lscpu'
 Architecture:                            x86_64
 CPU op-mode(s):                          32-bit, 64-bit
 Address sizes:                           43 bits physical, 48 bits virtual
@@ -1145,7 +1149,7 @@ Socket(s):                               1
 Stepping:                                0
 Microcode version:                       0x830107d
 Frequency boost:                         enabled
-CPU(s) scaling MHz:                      47%
+CPU(s) scaling MHz:                      48%
 CPU max MHz:                             4377.8730
 CPU min MHz:                             553.8280
 BogoMIPS:                                5834.83
@@ -1193,13 +1197,13 @@ Vulnerability Tsx async abort:           Not affected
 Vulnerability Vmscape:                   Vulnerable
 
 
-Full Linux version (see also /l/logs.nightly/2026.11.05.18.03.24/proc_version.txt): cmd='cat /proc/version' Linux version 7.0.10-arch1-1 (linux@archlinux) (gcc (GCC) 16.1.1 20260430, GNU ld (GNU Binutils) 2.46.0) #1 SMP PREEMPT_DYNAMIC Sat, 23 May 2026 14:21:20 +0000
+Full Linux version (see also /l/logs.nightly/2026.11.06.18.04.07/proc_version.txt): cmd='cat /proc/version' Linux version 7.0.10-arch1-1 (linux@archlinux) (gcc (GCC) 16.1.1 20260430, GNU ld (GNU Binutils) 2.46.0) #1 SMP PREEMPT_DYNAMIC Sat, 23 May 2026 14:21:20 +0000
 
 
-Kernel boot command-line (see also /l/logs.nightly/2026.11.05.18.03.24/proc_cmdline.txt): cmd='cat /proc/cmdline' BOOT_IMAGE=/boot/vmlinuz-linux root=UUID=d43378d5-fd9f-488a-a69b-73d83768f2d1 rw nowatchdog mitigations=off random.trust_cpu=1 nokaslr norandmaps loglevel=3 acpi_enforce_resources=lax amd_pstate=active cpufreq.default_governor=performance
+Kernel boot command-line (see also /l/logs.nightly/2026.11.06.18.04.07/proc_cmdline.txt): cmd='cat /proc/cmdline' BOOT_IMAGE=/boot/vmlinuz-linux root=UUID=d43378d5-fd9f-488a-a69b-73d83768f2d1 rw nowatchdog mitigations=off random.trust_cpu=1 nokaslr norandmaps loglevel=3 acpi_enforce_resources=lax amd_pstate=active cpufreq.default_governor=performance
 
 
-Loaded kernel modules (see also /l/logs.nightly/2026.11.05.18.03.24/lsmod.txt): cmd='lsmod'
+Loaded kernel modules (see also /l/logs.nightly/2026.11.06.18.04.07/lsmod.txt): cmd='lsmod'
 Module                  Size  Used by
 veth                   40960  0
 nf_conntrack_netlink    61440  0
@@ -1335,10 +1339,10 @@ hkdf                   12288  1 nvme_auth
 wmi                    36864  5 video,asus_wmi,wmi_bmof,mxm_wmi,nouveau
 
 
-Preempt mode (see also /l/logs.nightly/2026.11.05.18.03.24/preempt.txt): cmd='sudo cat /sys/kernel/debug/sched/preempt' (full) lazy
+Preempt mode (see also /l/logs.nightly/2026.11.06.18.04.07/preempt.txt): cmd='sudo cat /sys/kernel/debug/sched/preempt' (full) lazy
 
 
-Linux standard base version (see also /l/logs.nightly/2026.11.05.18.03.24/lsb.txt): cmd='lsb_release -a'
+Linux standard base version (see also /l/logs.nightly/2026.11.06.18.04.07/lsb.txt): cmd='lsb_release -a'
 LSB Version:	n/a
 Distributor ID:	Arch
 Description:	Arch Linux
@@ -1346,7 +1350,7 @@ Release:	rolling
 Codename:	n/a
 
 
-All installed packages&versions (see also /l/logs.nightly/2026.11.05.18.03.24/pacman.txt): cmd='pacman -Q'
+All installed packages&versions (see also /l/logs.nightly/2026.11.06.18.04.07/pacman.txt): cmd='pacman -Q'
 7zip 26.01-1
 abseil-cpp 20260107.1-1
 acl 2.3.2-2
@@ -2088,11 +2092,11 @@ zlib 1:1.3.2-3
 zlib-ng 2.3.3-1
 zstd 1.5.7-3
 luceneutil rev is 0258e1b95e752f775f8c19cff49bc166153fa2ef
-LUCENE rev is 238efb3101e9a5d973702afb940d255ea777e5a4
+LUCENE rev is f794ff5a505c53a3793695620906b8a8a20c0f62
 last successful Lucene rev 1c2072f028431da10c80b1d2307c6f56f9297aee, luceneutil rev 0258e1b95e752f775f8c19cff49bc166153fa2ef
-run ['git', 'log', '1c2072f028431da10c80b1d2307c6f56f9297aee^..238efb3101e9a5d973702afb940d255ea777e5a4']
+run ['git', 'log', '1c2072f028431da10c80b1d2307c6f56f9297aee^..f794ff5a505c53a3793695620906b8a8a20c0f62']
 No commit message asking for regold of results files
-[2026-11-05 18:03:25.144712] RUN: git clean -xfd
+[2026-11-06 18:04:08.160006] RUN: git clean -xfd
 Removing .gradle/
 Removing build-tools/build-infra-shadow/build/
 Removing build-tools/build-infra/.gradle/
@@ -2144,15 +2148,15 @@ Removing lucene/spatial-test-fixtures/build/
 Removing lucene/spatial3d/build/
 Removing lucene/suggest/build/
 Removing lucene/test-framework/build/
-[2026-11-05 18:03:25.377810]   took 0.2 sec
+[2026-11-06 18:04:08.395002]   took 0.2 sec
 will NOT regold results files but rather compare to last good result files
 Java command-line: /usr/lib/jvm/java-26-openjdk/bin/java --add-modules jdk.incubator.vector -Xmx32g -Xms32g -server -XX:+UseParallelGC -Djava.io.tmpdir=/l/tmp --enable-native-access=ALL-UNNAMED
 transparent_hugepages: [always] madvise never
 
-[2026-11-05 18:03:25.377899] RUN: /l/trunk.nightly/gradlew --stacktrace clean > /l/logs.nightly/2026.11.05.18.03.24/clean-lucene.log 2>&1
-[2026-11-05 18:03:29.683774]   took 4.3 sec
-[2026-11-05 18:03:29.683821] RUN: /l/trunk.nightly/gradlew jar > /l/logs.nightly/2026.11.05.18.03.24/jar-lucene.log 2>&1
-[2026-11-05 18:03:46.993046]   took 17.3 sec
+[2026-11-06 18:04:08.395171] RUN: /l/trunk.nightly/gradlew --stacktrace clean > /l/logs.nightly/2026.11.06.18.04.07/clean-lucene.log 2>&1
+[2026-11-06 18:04:12.840583]   took 4.4 sec
+[2026-11-06 18:04:12.840629] RUN: /l/trunk.nightly/gradlew jar > /l/logs.nightly/2026.11.06.18.04.07/jar-lucene.log 2>&1
+[2026-11-06 18:04:30.481609]   took 17.6 sec
 
 JAVA:
 WARNING: Using incubator modules: jdk.incubator.vector
@@ -2174,60 +2178,67 @@ compile lucene:core...
 files ['/l/util.nightly/src/main/perf/TestContext.java', '/l/util.nightly/src/main/perf/IndexAndSearchOpenStreetMaps.java', '/l/util.nightly/src/main/perf/TypePolluter.java', '/l/util.nightly/src/main/perf/OpenDirectory.java', '/l/util.nightly/src/main/perf/StringFieldDocSelector.java', '/l/util.nightly/src/main/perf/SearchTaxis.java', '/l/util.nightly/src/main/perf/RemoteTaskSource.java', '/l/util.nightly/src/main/perf/SearchPerfTest.java', '/l/util.nightly/src/main/perf/KeepNoCommitsDeletionPolicy.java', '/l/util.nightly/src/main/perf/DiskUsage.java', '/l/util.nightly/src/main/perf/BatchPKLookup.java', '/l/util.nightly/src/main/perf/NRTPerfTest.java', '/l/util.nightly/src/main/perf/Indexer.java', '/l/util.nightly/src/main/perf/PKLookupWithTermStateTask.java', '/l/util.nightly/src/main/perf/IndexState.java', '/l/util.nightly/src/main/perf/VectorDictionary.java', '/l/util.nightly/src/main/perf/TaskParser.java', '/l/util.nightly/src/main/perf/IndexThreads.java', '/l/util.nightly/src/main/perf/SearchTask.java', '/l/util.nightly/src/main/perf/BenchDoc.java', '/l/util.nightly/src/main/perf/RespellTask.java', '/l/util.nightly/src/main/perf/TaskSource.java', '/l/util.nightly/src/main/perf/LineFileDocs.java', '/l/util.nightly/src/main/perf/CreateQueries.java', '/l/util.nightly/src/main/perf/RandomQuery.java', '/l/util.nightly/src/main/perf/PerfUtils.java', '/l/util.nightly/src/main/perf/Task.java', '/l/util.nightly/src/main/perf/LocalTaskSource.java', '/l/util.nightly/src/main/perf/IndexTaxis.java', '/l/util.nightly/src/main/perf/PointsPKLookupTask.java', '/l/util.nightly/src/main/perf/TaskThreads.java', '/l/util.nightly/src/main/perf/UnparsedTask.java', '/l/util.nightly/src/main/perf/Args.java', '/l/util.nightly/src/main/perf/TaskParserFactory.java', '/l/util.nightly/src/main/perf/StatisticsHelper.java', '/l/util.nightly/src/main/perf/BenchRearranger.java', '/l/util.nightly/src/main/perf/OpenCloseIndexWriter.java']
 compile: /usr/lib/jvm/java-26-openjdk/bin/javac -g -d /l/util.nightly/build -classpath /l/trunk.nightly/lucene/core/build/libs/lucene-core-12.0.0-SNAPSHOT.jar:/l/trunk.nightly/lucene/sandbox/build/classes/java/main:/l/trunk.nightly/lucene/misc/build/classes/java/main:/l/trunk.nightly/lucene/facet/build/classes/java/main:/l/trunk.nightly/lucene/analysis/common/build/classes/java/main:/l/trunk.nightly/lucene/analysis/icu/build/classes/java/main:/l/trunk.nightly/lucene/queryparser/build/classes/java/main:/l/trunk.nightly/lucene/grouping/build/classes/java/main:/l/trunk.nightly/lucene/suggest/build/classes/java/main:/l/trunk.nightly/lucene/highlighter/build/classes/java/main:/l/trunk.nightly/lucene/codecs/build/classes/java/main:/l/trunk.nightly/lucene/queries/build/classes/java/main:/l/trunk.nightly/lucene/join/build/classes/java/main:/l/trunk.nightly/lucene/spatial3d/build/classes/java/main:/l/util.nightly/lib/HdrHistogram.jar:/l/util.nightly/src/main/build/classes/java/main:/l/util.nightly/build /l/util.nightly/src/main/perf/TestContext.java /l/util.nightly/src/main/perf/IndexAndSearchOpenStreetMaps.java /l/util.nightly/src/main/perf/TypePolluter.java /l/util.nightly/src/main/perf/OpenDirectory.java /l/util.nightly/src/main/perf/StringFieldDocSelector.java /l/util.nightly/src/main/perf/SearchTaxis.java /l/util.nightly/src/main/perf/RemoteTaskSource.java /l/util.nightly/src/main/perf/SearchPerfTest.java /l/util.nightly/src/main/perf/KeepNoCommitsDeletionPolicy.java /l/util.nightly/src/main/perf/DiskUsage.java /l/util.nightly/src/main/perf/BatchPKLookup.java /l/util.nightly/src/main/perf/NRTPerfTest.java /l/util.nightly/src/main/perf/Indexer.java /l/util.nightly/src/main/perf/PKLookupWithTermStateTask.java /l/util.nightly/src/main/perf/IndexState.java /l/util.nightly/src/main/perf/VectorDictionary.java /l/util.nightly/src/main/perf/TaskParser.java /l/util.nightly/src/main/perf/IndexThreads.java /l/util.nightly/src/main/perf/SearchTask.java /l/util.nightly/src/main/perf/BenchDoc.java /l/util.nightly/src/main/perf/RespellTask.java /l/util.nightly/src/main/perf/TaskSource.java /l/util.nightly/src/main/perf/LineFileDocs.java /l/util.nightly/src/main/perf/CreateQueries.java /l/util.nightly/src/main/perf/RandomQuery.java /l/util.nightly/src/main/perf/PerfUtils.java /l/util.nightly/src/main/perf/Task.java /l/util.nightly/src/main/perf/LocalTaskSource.java /l/util.nightly/src/main/perf/IndexTaxis.java /l/util.nightly/src/main/perf/PointsPKLookupTask.java /l/util.nightly/src/main/perf/TaskThreads.java /l/util.nightly/src/main/perf/UnparsedTask.java /l/util.nightly/src/main/perf/Args.java /l/util.nightly/src/main/perf/TaskParserFactory.java /l/util.nightly/src/main/perf/StatisticsHelper.java /l/util.nightly/src/main/perf/BenchRearranger.java /l/util.nightly/src/main/perf/OpenCloseIndexWriter.java
     run: ['/usr/lib/jvm/java-26-openjdk/bin/javac', '-g', '-d', '/l/util.nightly/build', '-classpath', '/l/trunk.nightly/lucene/core/build/libs/lucene-core-12.0.0-SNAPSHOT.jar:/l/trunk.nightly/lucene/sandbox/build/classes/java/main:/l/trunk.nightly/lucene/misc/build/classes/java/main:/l/trunk.nightly/lucene/facet/build/classes/java/main:/l/trunk.nightly/lucene/analysis/common/build/classes/java/main:/l/trunk.nightly/lucene/analysis/icu/build/classes/java/main:/l/trunk.nightly/lucene/queryparser/build/classes/java/main:/l/trunk.nightly/lucene/grouping/build/classes/java/main:/l/trunk.nightly/lucene/suggest/build/classes/java/main:/l/trunk.nightly/lucene/highlighter/build/classes/java/main:/l/trunk.nightly/lucene/codecs/build/classes/java/main:/l/trunk.nightly/lucene/queries/build/classes/java/main:/l/trunk.nightly/lucene/join/build/classes/java/main:/l/trunk.nightly/lucene/spatial3d/build/classes/java/main:/l/util.nightly/lib/HdrHistogram.jar:/l/util.nightly/src/main/build/classes/java/main:/l/util.nightly/build', '/l/util.nightly/src/main/perf/TestContext.java', '/l/util.nightly/src/main/perf/IndexAndSearchOpenStreetMaps.java', '/l/util.nightly/src/main/perf/TypePolluter.java', '/l/util.nightly/src/main/perf/OpenDirectory.java', '/l/util.nightly/src/main/perf/StringFieldDocSelector.java', '/l/util.nightly/src/main/perf/SearchTaxis.java', '/l/util.nightly/src/main/perf/RemoteTaskSource.java', '/l/util.nightly/src/main/perf/SearchPerfTest.java', '/l/util.nightly/src/main/perf/KeepNoCommitsDeletionPolicy.java', '/l/util.nightly/src/main/perf/DiskUsage.java', '/l/util.nightly/src/main/perf/BatchPKLookup.java', '/l/util.nightly/src/main/perf/NRTPerfTest.java', '/l/util.nightly/src/main/perf/Indexer.java', '/l/util.nightly/src/main/perf/PKLookupWithTermStateTask.java', '/l/util.nightly/src/main/perf/IndexState.java', '/l/util.nightly/src/main/perf/VectorDictionary.java', '/l/util.nightly/src/main/perf/TaskParser.java', '/l/util.nightly/src/main/perf/IndexThreads.java', '/l/util.nightly/src/main/perf/SearchTask.java', '/l/util.nightly/src/main/perf/BenchDoc.java', '/l/util.nightly/src/main/perf/RespellTask.java', '/l/util.nightly/src/main/perf/TaskSource.java', '/l/util.nightly/src/main/perf/LineFileDocs.java', '/l/util.nightly/src/main/perf/CreateQueries.java', '/l/util.nightly/src/main/perf/RandomQuery.java', '/l/util.nightly/src/main/perf/PerfUtils.java', '/l/util.nightly/src/main/perf/Task.java', '/l/util.nightly/src/main/perf/LocalTaskSource.java', '/l/util.nightly/src/main/perf/IndexTaxis.java', '/l/util.nightly/src/main/perf/PointsPKLookupTask.java', '/l/util.nightly/src/main/perf/TaskThreads.java', '/l/util.nightly/src/main/perf/UnparsedTask.java', '/l/util.nightly/src/main/perf/Args.java', '/l/util.nightly/src/main/perf/TaskParserFactory.java', '/l/util.nightly/src/main/perf/StatisticsHelper.java', '/l/util.nightly/src/main/perf/BenchRearranger.java', '/l/util.nightly/src/main/perf/OpenCloseIndexWriter.java'], cwd=/l/trunk.nightly/lucene/benchmark vmstatLogFile=None topLogFile=None
-[2026-11-05 18:03:49.648225] now run stored fields benchmark
-RUN: /usr/lib/jvm/java-26-openjdk/bin/javac -cp /l/trunk.nightly/lucene/core/build/libs/lucene-core-12.0.0-SNAPSHOT.jar -d build src/extra/perf/StoredFieldsBenchmark.java, cwd=/l/util.nightly
-Now run BEST_SPEED with doc_limit=-1:
-RUN: /usr/lib/jvm/java-26-openjdk/bin/java --add-modules jdk.incubator.vector -Xmx32g -Xms32g -server -XX:+UseParallelGC -Djava.io.tmpdir=/l/tmp --enable-native-access=ALL-UNNAMED -cp /l/trunk.nightly/lucene/core/build/libs/lucene-core-12.0.0-SNAPSHOT.jar:build perf.StoredFieldsBenchmark /lucenedata/geonames/geonames.20160818.csv /l/indices/geonames-stored-fields BEST_SPEED -1
-Mode: BEST_SPEED
-  indexing_time_msec: 140784.00
-  stored_field_size_mb: 624.38
-  retrieved_time_msec: 171.17
-Now run BEST_COMPRESSION with doc_limit=-1:
-RUN: /usr/lib/jvm/java-26-openjdk/bin/java --add-modules jdk.incubator.vector -Xmx32g -Xms32g -server -XX:+UseParallelGC -Djava.io.tmpdir=/l/tmp --enable-native-access=ALL-UNNAMED -cp /l/trunk.nightly/lucene/core/build/libs/lucene-core-12.0.0-SNAPSHOT.jar:build perf.StoredFieldsBenchmark /lucenedata/geonames/geonames.20160818.csv /l/indices/geonames-stored-fields BEST_COMPRESSION -1
-Mode: BEST_COMPRESSION
-  indexing_time_msec: 348722.00
-  stored_field_size_mb: 385.76
-  retrieved_time_msec: 1357.17
-Done: took 1012.15 seconds, saved to /l/logs.nightly/2026.11.05.18.03.24/geonames-stored-fields-benchmark-results.pk
-[2026-11-05 18:20:42.272007] done run stored fields benchmark
-[2026-11-05 18:20:42.272030] now run NAD facets benchmark
-RUN: /usr/lib/jvm/java-26-openjdk/bin/javac -cp /l/trunk.nightly/lucene/core/build/libs/lucene-core-12.0.0-SNAPSHOT.jar:/l/trunk.nightly/lucene/facet/build/libs/lucene-facet-12.0.0-SNAPSHOT.jar:build -d build src/main/perf/facets/IndexFacets.java, cwd=/l/util.nightly
-RUN: /usr/lib/jvm/java-26-openjdk/bin/javac -cp /l/trunk.nightly/lucene/core/build/libs/lucene-core-12.0.0-SNAPSHOT.jar:/l/trunk.nightly/lucene/facet/build/libs/lucene-facet-12.0.0-SNAPSHOT.jar:build -d build src/main/perf/facets/BenchmarkFacets.java, cwd=/l/util.nightly
-src/main/perf/facets/BenchmarkFacets.java:100: error: MatchAllDocsQuery() has private access in MatchAllDocsQuery
-                s.search(new MatchAllDocsQuery(), c);
-                         ^
-src/main/perf/facets/BenchmarkFacets.java:131: error: MatchAllDocsQuery() has private access in MatchAllDocsQuery
-                s.search(new MatchAllDocsQuery(), c);
-                         ^
-Note: src/main/perf/facets/BenchmarkFacets.java uses or overrides a deprecated API.
+/l/util.nightly/src/main/perf/SearchTask.java:540: error: cannot find symbol
+      TokenStream tokenStream = TokenSources.getAnyTokenStream(searcher.getIndexReader(), docID, indexState.textFieldName, null);
+                                            ^
+  symbol:   method getAnyTokenStream(IndexReader,int,String,<null>)
+  location: class TokenSources
+Note: /l/util.nightly/src/main/perf/StatisticsHelper.java uses or overrides a deprecated API.
 Note: Recompile with -Xlint:deprecation for details.
-2 errors
+1 error
+
 Traceback (most recent call last):
   File "/l/util.nightly/src/python/nightlyBench.py", line 2366, in <module>
     run()
     ~~~^^
-  File "/l/util.nightly/src/python/nightlyBench.py", line 766, in run
-    runFacetsBenchmark.run_benchmark(f"{constants.BASE_DIR}/{NIGHTLY_DIR}", index_dir_name, f"{constants.BASE_DIR}/data", runLogDir, doc_limit, num_iters)
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/l/util.nightly/src/python/runFacetsBenchmark.py", line 52, in run_benchmark
-    subprocess.check_call(searcher_compile_cmd, shell=True)
-    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.14/subprocess.py", line 420, in check_call
-    raise CalledProcessError(retcode, cmd)
-subprocess.CalledProcessError: Command '/usr/lib/jvm/java-26-openjdk/bin/javac -cp /l/trunk.nightly/lucene/core/build/libs/lucene-core-12.0.0-SNAPSHOT.jar:/l/trunk.nightly/lucene/facet/build/libs/lucene-facet-12.0.0-SNAPSHOT.jar:build -d build src/main/perf/facets/BenchmarkFacets.java' returned non-zero exit status 1.
+  File "/l/util.nightly/src/python/nightlyBench.py", line 736, in run
+    r.compile(c)
+    ~~~~~~~~~^^^
+  File "/l/util.nightly/src/python/benchUtil.py", line 1188, in compile
+    competitor.compile(cp)
+    ~~~~~~~~~~~~~~~~~~^^^^
+  File "/l/util.nightly/src/python/competition.py", line 437, in compile
+    benchUtil.run(cmd, os.path.join(constants.LOGS_DIR, "compile.log"))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/l/util.nightly/src/python/benchUtil.py", line 934, in run
+    raise RuntimeError("failed: %s [wd %s]; see logFile %s\n\n%s" % (cmd, os.getcwd(), logFile, msg))
+RuntimeError: failed: ['/usr/lib/jvm/java-26-openjdk/bin/javac', '-g', '-d', '/l/util.nightly/build', '-classpath', '/l/trunk.nightly/lucene/core/build/libs/lucene-core-12.0.0-SNAPSHOT.jar:/l/trunk.nightly/lucene/sandbox/build/classes/java/main:/l/trunk.nightly/lucene/misc/build/classes/java/main:/l/trunk.nightly/lucene/facet/build/classes/java/main:/l/trunk.nightly/lucene/analysis/common/build/classes/java/main:/l/trunk.nightly/lucene/analysis/icu/build/classes/java/main:/l/trunk.nightly/lucene/queryparser/build/classes/java/main:/l/trunk.nightly/lucene/grouping/build/classes/java/main:/l/trunk.nightly/lucene/suggest/build/classes/java/main:/l/trunk.nightly/lucene/highlighter/build/classes/java/main:/l/trunk.nightly/lucene/codecs/build/classes/java/main:/l/trunk.nightly/lucene/queries/build/classes/java/main:/l/trunk.nightly/lucene/join/build/classes/java/main:/l/trunk.nightly/lucene/spatial3d/build/classes/java/main:/l/util.nightly/lib/HdrHistogram.jar:/l/util.nightly/src/main/build/classes/java/main:/l/util.nightly/build', '/l/util.nightly/src/main/perf/TestContext.java', '/l/util.nightly/src/main/perf/IndexAndSearchOpenStreetMaps.java', '/l/util.nightly/src/main/perf/TypePolluter.java', '/l/util.nightly/src/main/perf/OpenDirectory.java', '/l/util.nightly/src/main/perf/StringFieldDocSelector.java', '/l/util.nightly/src/main/perf/SearchTaxis.java', '/l/util.nightly/src/main/perf/RemoteTaskSource.java', '/l/util.nightly/src/main/perf/SearchPerfTest.java', '/l/util.nightly/src/main/perf/KeepNoCommitsDeletionPolicy.java', '/l/util.nightly/src/main/perf/DiskUsage.java', '/l/util.nightly/src/main/perf/BatchPKLookup.java', '/l/util.nightly/src/main/perf/NRTPerfTest.java', '/l/util.nightly/src/main/perf/Indexer.java', '/l/util.nightly/src/main/perf/PKLookupWithTermStateTask.java', '/l/util.nightly/src/main/perf/IndexState.java', '/l/util.nightly/src/main/perf/VectorDictionary.java', '/l/util.nightly/src/main/perf/TaskParser.java', '/l/util.nightly/src/main/perf/IndexThreads.java', '/l/util.nightly/src/main/perf/SearchTask.java', '/l/util.nightly/src/main/perf/BenchDoc.java', '/l/util.nightly/src/main/perf/RespellTask.java', '/l/util.nightly/src/main/perf/TaskSource.java', '/l/util.nightly/src/main/perf/LineFileDocs.java', '/l/util.nightly/src/main/perf/CreateQueries.java', '/l/util.nightly/src/main/perf/RandomQuery.java', '/l/util.nightly/src/main/perf/PerfUtils.java', '/l/util.nightly/src/main/perf/Task.java', '/l/util.nightly/src/main/perf/LocalTaskSource.java', '/l/util.nightly/src/main/perf/IndexTaxis.java', '/l/util.nightly/src/main/perf/PointsPKLookupTask.java', '/l/util.nightly/src/main/perf/TaskThreads.java', '/l/util.nightly/src/main/perf/UnparsedTask.java', '/l/util.nightly/src/main/perf/Args.java', '/l/util.nightly/src/main/perf/TaskParserFactory.java', '/l/util.nightly/src/main/perf/StatisticsHelper.java', '/l/util.nightly/src/main/perf/BenchRearranger.java', '/l/util.nightly/src/main/perf/OpenCloseIndexWriter.java'] [wd /l/trunk.nightly/lucene/benchmark]; see logFile /l/logs.nightly/compile.log
+
+/l/util.nightly/src/main/perf/SearchTask.java:540: error: cannot find symbol
+      TokenStream tokenStream = TokenSources.getAnyTokenStream(searcher.getIndexReader(), docID, indexState.textFieldName, null);
+                                            ^
+  symbol:   method getAnyTokenStream(IndexReader,int,String,<null>)
+  location: class TokenSources
+Note: /l/util.nightly/src/main/perf/StatisticsHelper.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+1 error
+
 Traceback (most recent call last):
   File "/l/util.nightly/src/python/nightlyBench.py", line 2366, in <module>
     run()
     ~~~^^
-  File "/l/util.nightly/src/python/nightlyBench.py", line 766, in run
-    runFacetsBenchmark.run_benchmark(f"{constants.BASE_DIR}/{NIGHTLY_DIR}", index_dir_name, f"{constants.BASE_DIR}/data", runLogDir, doc_limit, num_iters)
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/l/util.nightly/src/python/runFacetsBenchmark.py", line 52, in run_benchmark
-    subprocess.check_call(searcher_compile_cmd, shell=True)
-    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.14/subprocess.py", line 420, in check_call
-    raise CalledProcessError(retcode, cmd)
-subprocess.CalledProcessError: Command '/usr/lib/jvm/java-26-openjdk/bin/javac -cp /l/trunk.nightly/lucene/core/build/libs/lucene-core-12.0.0-SNAPSHOT.jar:/l/trunk.nightly/lucene/facet/build/libs/lucene-facet-12.0.0-SNAPSHOT.jar:build -d build src/main/perf/facets/BenchmarkFacets.java' returned non-zero exit status 1.
+  File "/l/util.nightly/src/python/nightlyBench.py", line 736, in run
+    r.compile(c)
+    ~~~~~~~~~^^^
+  File "/l/util.nightly/src/python/benchUtil.py", line 1188, in compile
+    competitor.compile(cp)
+    ~~~~~~~~~~~~~~~~~~^^^^
+  File "/l/util.nightly/src/python/competition.py", line 437, in compile
+    benchUtil.run(cmd, os.path.join(constants.LOGS_DIR, "compile.log"))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/l/util.nightly/src/python/benchUtil.py", line 934, in run
+    raise RuntimeError("failed: %s [wd %s]; see logFile %s\n\n%s" % (cmd, os.getcwd(), logFile, msg))
+RuntimeError: failed: ['/usr/lib/jvm/java-26-openjdk/bin/javac', '-g', '-d', '/l/util.nightly/build', '-classpath', '/l/trunk.nightly/lucene/core/build/libs/lucene-core-12.0.0-SNAPSHOT.jar:/l/trunk.nightly/lucene/sandbox/build/classes/java/main:/l/trunk.nightly/lucene/misc/build/classes/java/main:/l/trunk.nightly/lucene/facet/build/classes/java/main:/l/trunk.nightly/lucene/analysis/common/build/classes/java/main:/l/trunk.nightly/lucene/analysis/icu/build/classes/java/main:/l/trunk.nightly/lucene/queryparser/build/classes/java/main:/l/trunk.nightly/lucene/grouping/build/classes/java/main:/l/trunk.nightly/lucene/suggest/build/classes/java/main:/l/trunk.nightly/lucene/highlighter/build/classes/java/main:/l/trunk.nightly/lucene/codecs/build/classes/java/main:/l/trunk.nightly/lucene/queries/build/classes/java/main:/l/trunk.nightly/lucene/join/build/classes/java/main:/l/trunk.nightly/lucene/spatial3d/build/classes/java/main:/l/util.nightly/lib/HdrHistogram.jar:/l/util.nightly/src/main/build/classes/java/main:/l/util.nightly/build', '/l/util.nightly/src/main/perf/TestContext.java', '/l/util.nightly/src/main/perf/IndexAndSearchOpenStreetMaps.java', '/l/util.nightly/src/main/perf/TypePolluter.java', '/l/util.nightly/src/main/perf/OpenDirectory.java', '/l/util.nightly/src/main/perf/StringFieldDocSelector.java', '/l/util.nightly/src/main/perf/SearchTaxis.java', '/l/util.nightly/src/main/perf/RemoteTaskSource.java', '/l/util.nightly/src/main/perf/SearchPerfTest.java', '/l/util.nightly/src/main/perf/KeepNoCommitsDeletionPolicy.java', '/l/util.nightly/src/main/perf/DiskUsage.java', '/l/util.nightly/src/main/perf/BatchPKLookup.java', '/l/util.nightly/src/main/perf/NRTPerfTest.java', '/l/util.nightly/src/main/perf/Indexer.java', '/l/util.nightly/src/main/perf/PKLookupWithTermStateTask.java', '/l/util.nightly/src/main/perf/IndexState.java', '/l/util.nightly/src/main/perf/VectorDictionary.java', '/l/util.nightly/src/main/perf/TaskParser.java', '/l/util.nightly/src/main/perf/IndexThreads.java', '/l/util.nightly/src/main/perf/SearchTask.java', '/l/util.nightly/src/main/perf/BenchDoc.java', '/l/util.nightly/src/main/perf/RespellTask.java', '/l/util.nightly/src/main/perf/TaskSource.java', '/l/util.nightly/src/main/perf/LineFileDocs.java', '/l/util.nightly/src/main/perf/CreateQueries.java', '/l/util.nightly/src/main/perf/RandomQuery.java', '/l/util.nightly/src/main/perf/PerfUtils.java', '/l/util.nightly/src/main/perf/Task.java', '/l/util.nightly/src/main/perf/LocalTaskSource.java', '/l/util.nightly/src/main/perf/IndexTaxis.java', '/l/util.nightly/src/main/perf/PointsPKLookupTask.java', '/l/util.nightly/src/main/perf/TaskThreads.java', '/l/util.nightly/src/main/perf/UnparsedTask.java', '/l/util.nightly/src/main/perf/Args.java', '/l/util.nightly/src/main/perf/TaskParserFactory.java', '/l/util.nightly/src/main/perf/StatisticsHelper.java', '/l/util.nightly/src/main/perf/BenchRearranger.java', '/l/util.nightly/src/main/perf/OpenCloseIndexWriter.java'] [wd /l/trunk.nightly/lucene/benchmark]; see logFile /l/logs.nightly/compile.log
+
+/l/util.nightly/src/main/perf/SearchTask.java:540: error: cannot find symbol
+      TokenStream tokenStream = TokenSources.getAnyTokenStream(searcher.getIndexReader(), docID, indexState.textFieldName, null);
+                                            ^
+  symbol:   method getAnyTokenStream(IndexReader,int,String,<null>)
+  location: class TokenSources
+Note: /l/util.nightly/src/main/perf/StatisticsHelper.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+1 error
+
 
 During handling of the above exception, another exception occurred:
 
