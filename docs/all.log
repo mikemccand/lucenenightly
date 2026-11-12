@@ -11,10 +11,10 @@ Filesystem      Size  Used Avail Use% Mounted on
 + export PATH=/usr/local/src/apache-ant-1.9.5/bin:/usr/lib/jvm/java-26-openjdk/bin:/usr/local/src/gradle-2.9/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
 + PATH=/usr/local/src/apache-ant-1.9.5/bin:/usr/lib/jvm/java-26-openjdk/bin:/usr/local/src/gradle-2.9/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
 ++ date
-+ echo -e '\n\nWed Nov 11 06:00:28 PM EST 2026: now start nightly benchmarks'
++ echo -e '\n\nThu Nov 12 06:00:28 PM EST 2026: now start nightly benchmarks'
 
 
-Wed Nov 11 06:00:28 PM EST 2026: now start nightly benchmarks
+Thu Nov 12 06:00:28 PM EST 2026: now start nightly benchmarks
 + pkill java
 + true
 + pkill mencoder
@@ -26,17 +26,40 @@ Your branch is up to date with 'origin/main'.
 + git pull origin main
 From https://gitbox.apache.org/repos/asf/lucene
  * branch                    main       -> FETCH_HEAD
-   e0a3a951e7e..5a1e9d46e31  main       -> origin/main
-Updating e0a3a951e7e..5a1e9d46e31
+   5a1e9d46e31..2aec368e588  main       -> origin/main
+Updating 5a1e9d46e31..2aec368e588
 Fast-forward
- .../lucene/index/SegmentDocValuesProducer.java     |  35 ++-
- .../lucene/search/PatienceKnnVectorQuery.java      |  19 +-
- .../search/TimeLimitingKnnCollectorManager.java    |   2 +-
- .../src/java/org/apache/lucene/util/LongsRef.java  |   2 +-
- .../lucene/index/TestSegmentDocValuesProducer.java | 296 +++++++++++++++++++++
- .../lucene/search/BaseKnnVectorQueryTestCase.java  |  14 +
- 6 files changed, 350 insertions(+), 18 deletions(-)
- create mode 100644 lucene/core/src/test/org/apache/lucene/index/TestSegmentDocValuesProducer.java
+ lucene/CHANGES.txt                                 |    7 +
+ .../java/org/apache/lucene/codecs/CodecUtil.java   |    7 +
+ .../java/org/apache/lucene/index/CodecReader.java  |   23 +-
+ .../apache/lucene/index/DocRangeCodecReader.java   |  189 ++
+ .../lucene/index/DocRangeDocValuesProducer.java    |  261 +++
+ .../lucene/index/DocRangeKnnVectorsReader.java     |  257 +++
+ .../apache/lucene/index/DocRangeNormsProducer.java |   91 +
+ .../apache/lucene/index/DocRangePartitions.java    |  115 ++
+ .../org/apache/lucene/index/FilterCodecReader.java |    5 +
+ .../java/org/apache/lucene/index/IndexWriter.java  |  878 +++++++---
+ .../java/org/apache/lucene/index/MergePolicy.java  |  163 +-
+ .../java/org/apache/lucene/index/MultiSorter.java  |   40 +-
+ .../lucene/index/OneMergeWrappingMergePolicy.java  |   20 +-
+ .../java/org/apache/lucene/index/SegmentInfos.java |   33 +-
+ .../org/apache/lucene/index/SegmentMerger.java     |   19 +-
+ .../index/SoftDeletesRetentionMergePolicy.java     |    2 +-
+ .../lucene/internal/hppc/CharObjectHashMap.java    |    2 +-
+ .../lucene/internal/hppc/IntObjectHashMap.java     |    2 +-
+ .../lucene/internal/hppc/LongObjectHashMap.java    |    2 +-
+ .../apache/lucene/index/TestMultiOutputMerge.java  | 1802 ++++++++++++++++++++
+ .../internal/hppc/TestCharObjectHashMap.java       |   23 +
+ .../lucene/internal/hppc/TestIntObjectHashMap.java |   23 +
+ .../internal/hppc/TestLongObjectHashMap.java       |   23 +
+ .../lucene/misc/index/BPReorderingMergePolicy.java |   12 +-
+ 24 files changed, 3732 insertions(+), 267 deletions(-)
+ create mode 100644 lucene/core/src/java/org/apache/lucene/index/DocRangeCodecReader.java
+ create mode 100644 lucene/core/src/java/org/apache/lucene/index/DocRangeDocValuesProducer.java
+ create mode 100644 lucene/core/src/java/org/apache/lucene/index/DocRangeKnnVectorsReader.java
+ create mode 100644 lucene/core/src/java/org/apache/lucene/index/DocRangeNormsProducer.java
+ create mode 100644 lucene/core/src/java/org/apache/lucene/index/DocRangePartitions.java
+ create mode 100644 lucene/core/src/test/org/apache/lucene/index/TestMultiOutputMerge.java
 + ../gradlew clean
 Starting a Gradle Daemon (subsequent builds will be faster)
 > Task :build-infra:compileJava UP-TO-DATE
@@ -46,30 +69,30 @@ Starting a Gradle Daemon (subsequent builds will be faster)
 > Task :build-infra:jar UP-TO-DATE
 The eclint tool location is not set ('lucene.tool.eclint' option), will not apply eclint checks.
 The eclint tool location is not set ('lucene.tool.eclint' option), will not apply eclint checks.
-> Task :lucene:analysis.tests:clean
 > Task :lucene:core.tests:clean
-> Task :lucene:distribution:clean UP-TO-DATE
-> Task :lucene:analysis:clean UP-TO-DATE
-> Task :lucene:clean UP-TO-DATE
 > Task :lucene:demo:clean
+> Task :lucene:clean UP-TO-DATE
+> Task :lucene:analysis.tests:clean
+> Task :lucene:analysis:clean UP-TO-DATE
 > Task :lucene:classification:clean
+> Task :lucene:distribution:clean UP-TO-DATE
+> Task :lucene:benchmark:clean
 > Task :lucene:documentation:clean UP-TO-DATE
 > Task :lucene:distribution.tests:clean
-> Task :lucene:benchmark:clean
 > Task :lucene:codecs:clean
 > Task :lucene:expressions:clean
 > Task :lucene:grouping:clean
 > Task :lucene:memory:clean
 > Task :lucene:misc:clean
-> Task :lucene:replicator:clean
 > Task :lucene:join:clean
+> Task :lucene:replicator:clean
+> Task :lucene:backward-codecs:clean
 > Task :lucene:monitor:clean
 > Task :lucene:highlighter:clean
-> Task :lucene:backward-codecs:clean
 > Task :lucene:facet:clean
 > Task :lucene:spatial-test-fixtures:clean
-> Task :lucene:luke:clean
 > Task :lucene:analysis:icu:clean
+> Task :lucene:luke:clean
 > Task :lucene:suggest:clean
 > Task :lucene:spatial-extras:clean
 > Task :lucene:spatial3d:clean
@@ -77,12 +100,12 @@ The eclint tool location is not set ('lucene.tool.eclint' option), will not appl
 > Task :lucene:queryparser:clean
 > Task :lucene:analysis:morfologik:clean
 > Task :lucene:queries:clean
-> Task :lucene:analysis:phonetic:clean
 > Task :lucene:analysis:opennlp:clean
+> Task :lucene:analysis:phonetic:clean
 > Task :lucene:sandbox:clean
-> Task :lucene:analysis:smartcn:clean
 > Task :lucene:analysis:kuromoji:clean
 > Task :lucene:analysis:stempel:clean
+> Task :lucene:analysis:smartcn:clean
 > Task :lucene:analysis:nori:clean
 > Task :lucene:benchmark-jmh:clean
 > Task :lucene:test-framework:clean
@@ -127,20 +150,24 @@ make: Nothing to be done for 'env'.
 + git pull origin main
 From github.com:mikemccand/luceneutil
  * branch              main       -> FETCH_HEAD
-   134e43e9..9fb038f5  main       -> origin/main
-Updating 134e43e9..9fb038f5
+   9fb038f5..9b495fab  main       -> origin/main
+Updating 9fb038f5..9b495fab
 Fast-forward
- tests/test_smell_vectors.py | 7 ++++++-
- 1 file changed, 6 insertions(+), 1 deletion(-)
+ ai-hints.md                           |   9 ++
+ src/python/dbpedia-openai3-README.txt |  78 ++++++++++++
+ src/python/load_dbpedia_openai3.py    | 227 ++++++++++++++++++++++++++++++++++
+ 3 files changed, 314 insertions(+)
+ create mode 100644 src/python/dbpedia-openai3-README.txt
+ create mode 100644 src/python/load_dbpedia_openai3.py
 + echo 'Run gradle test'
 Run gradle test
 + python3 -u /l/util.nightly/src/python/runNightlyGradleTestPrecommit.py
 ***USING BIG LINE FILE***
 Using java from: /usr/lib/jvm/java-26-openjdk/bin/
 use java command /usr/lib/jvm/java-26-openjdk/bin/java -server -Xms2g -Xmx2g --add-modules jdk.incubator.vector -XX:+HeapDumpOnOutOfMemoryError -XX:+UseParallelGC
-  gradle test log: /l/logs.nightly/ant_test/2026.11.11.lucene-tests.txt
-  took: 1.7 min
-  gradle precommit log: /l/logs.nightly/ant_test/2026.11.11.precommit.txt
+  gradle test log: /l/logs.nightly/ant_test/2026.11.12.lucene-tests.txt
+  took: 1.6 min
+  gradle precommit log: /l/logs.nightly/ant_test/2026.11.12.precommit.txt
   took: 0.6 min
 + echo 'Run lucene nightly'
 Run lucene nightly
@@ -158,11 +185,11 @@ GitHub pull request counts: None open, None closed
 
 
 
-[2026-11-11 18:03:34.785321] start
-[2026-11-11 18:03:34.785409] log dir /l/logs.nightly/2026.11.11.18.03.34
+[2026-11-12 18:03:31.655808] start
+[2026-11-12 18:03:31.655895] log dir /l/logs.nightly/2026.11.12.18.03.31
 
 
-Java version (see also /l/logs.nightly/2026.11.11.18.03.34/java_version.txt): cmd='/usr/lib/jvm/java-26-openjdk/bin/java --add-modules jdk.incubator.vector -Xmx32g -Xms32g -server -XX:+UseParallelGC -Djava.io.tmpdir=/l/tmp --enable-native-access=ALL-UNNAMED -version 2>&1'
+Java version (see also /l/logs.nightly/2026.11.12.18.03.31/java_version.txt): cmd='/usr/lib/jvm/java-26-openjdk/bin/java --add-modules jdk.incubator.vector -Xmx32g -Xms32g -server -XX:+UseParallelGC -Djava.io.tmpdir=/l/tmp --enable-native-access=ALL-UNNAMED -version 2>&1'
 WARNING: Using incubator modules: jdk.incubator.vector
 openjdk version "26.0.1" 2026-04-21
 OpenJDK Runtime Environment (build 26.0.1)
@@ -173,10 +200,10 @@ OpenJDK Runtime Environment (build 26.0.1)
 OpenJDK 64-Bit Server VM (build 26.0.1, mixed mode, sharing)
 
 
-Java full version (see also /l/logs.nightly/2026.11.11.18.03.34/java_full_version.txt): cmd='/usr/lib/jvm/java-26-openjdk/bin/java --add-modules jdk.incubator.vector -Xmx32g -Xms32g -server -XX:+UseParallelGC -Djava.io.tmpdir=/l/tmp --enable-native-access=ALL-UNNAMED -fullversion 2>&1' openjdk full version "26.0.1"
+Java full version (see also /l/logs.nightly/2026.11.12.18.03.31/java_full_version.txt): cmd='/usr/lib/jvm/java-26-openjdk/bin/java --add-modules jdk.incubator.vector -Xmx32g -Xms32g -server -XX:+UseParallelGC -Djava.io.tmpdir=/l/tmp --enable-native-access=ALL-UNNAMED -fullversion 2>&1' openjdk full version "26.0.1"
 
 
-Java version & all flags (see also /l/logs.nightly/2026.11.11.18.03.34/java_final_flags.txt): cmd='/usr/lib/jvm/java-26-openjdk/bin/java --add-modules jdk.incubator.vector -Xmx32g -Xms32g -server -XX:+UseParallelGC -Djava.io.tmpdir=/l/tmp --enable-native-access=ALL-UNNAMED -XX:+PrintFlagsFinal -version'
+Java version & all flags (see also /l/logs.nightly/2026.11.12.18.03.31/java_final_flags.txt): cmd='/usr/lib/jvm/java-26-openjdk/bin/java --add-modules jdk.incubator.vector -Xmx32g -Xms32g -server -XX:+UseParallelGC -Djava.io.tmpdir=/l/tmp --enable-native-access=ALL-UNNAMED -XX:+PrintFlagsFinal -version'
 [Global flags]
      bool AOTAdapterCaching                        = false                                  {diagnostic} {ergonomic}
     ccstr AOTCache                                 =                                           {product} {default}
@@ -709,7 +736,7 @@ ccstrlist OnOutOfMemoryError                       =                            
      intx ServiceThreadCleanupInterval             = 1000                                   {diagnostic} {default}
     ccstr SharedArchiveConfigFile                  =                                           {product} {default}
     ccstr SharedArchiveFile                        =                                           {product} {default}
-   size_t SharedBaseAddress                        = 1711276032                                {product} {default}
+   size_t SharedBaseAddress                        = 1962934272                                {product} {default}
     ccstr SharedClassListFile                      =                                           {product} {default}
      uint SharedSymbolTableBucketSize              = 4                                         {product} {default}
    double ShenandoahAdaptiveDecayFactor            = 0.500000                             {experimental} {default}
@@ -1100,14 +1127,14 @@ OpenJDK Runtime Environment (build 26.0.1)
 OpenJDK 64-Bit Server VM (build 26.0.1, mixed mode, sharing)
 
 
-Linux kernel version (see also /l/logs.nightly/2026.11.11.18.03.34/uname.txt): cmd='uname -a 2>&1' Linux beast3.mikemccandless.com 7.0.10-arch1-1 #1 SMP PREEMPT_DYNAMIC Sat, 23 May 2026 14:21:20 +0000 x86_64 GNU/Linux
+Linux kernel version (see also /l/logs.nightly/2026.11.12.18.03.31/uname.txt): cmd='uname -a 2>&1' Linux beast3.mikemccandless.com 7.0.10-arch1-1 #1 SMP PREEMPT_DYNAMIC Sat, 23 May 2026 14:21:20 +0000 x86_64 GNU/Linux
 
 
-CPU governor/scaling/frequency (see also /l/logs.nightly/2026.11.11.18.03.34/cpu_frequency_info.txt): cmd='cpupower frequency-info'
-analyzing CPU 51:
+CPU governor/scaling/frequency (see also /l/logs.nightly/2026.11.12.18.03.31/cpu_frequency_info.txt): cmd='cpupower frequency-info'
+analyzing CPU 80:
   driver: amd-pstate-epp
-  CPUs which run at the same hardware frequency: 51
-  CPUs which need to have their frequency coordinated by software: 51
+  CPUs which run at the same hardware frequency: 80
+  CPUs which need to have their frequency coordinated by software: 80
   energy performance preference: performance
   hardware limits: 554 MHz - 4.38 GHz
   available cpufreq governors: performance powersave
@@ -1127,7 +1154,7 @@ analyzing CPU 51:
     Preferred Core Support: 1. Preferred Core Ranking: 166.
 
 
-CPU specifics (see also /l/logs.nightly/2026.11.11.18.03.34/lscpu.txt): cmd='lscpu'
+CPU specifics (see also /l/logs.nightly/2026.11.12.18.03.31/lscpu.txt): cmd='lscpu'
 Architecture:                            x86_64
 CPU op-mode(s):                          32-bit, 64-bit
 Address sizes:                           43 bits physical, 48 bits virtual
@@ -1144,7 +1171,7 @@ Socket(s):                               1
 Stepping:                                0
 Microcode version:                       0x830107d
 Frequency boost:                         enabled
-CPU(s) scaling MHz:                      47%
+CPU(s) scaling MHz:                      46%
 CPU max MHz:                             4377.8730
 CPU min MHz:                             553.8280
 BogoMIPS:                                5834.83
@@ -1192,13 +1219,13 @@ Vulnerability Tsx async abort:           Not affected
 Vulnerability Vmscape:                   Vulnerable
 
 
-Full Linux version (see also /l/logs.nightly/2026.11.11.18.03.34/proc_version.txt): cmd='cat /proc/version' Linux version 7.0.10-arch1-1 (linux@archlinux) (gcc (GCC) 16.1.1 20260430, GNU ld (GNU Binutils) 2.46.0) #1 SMP PREEMPT_DYNAMIC Sat, 23 May 2026 14:21:20 +0000
+Full Linux version (see also /l/logs.nightly/2026.11.12.18.03.31/proc_version.txt): cmd='cat /proc/version' Linux version 7.0.10-arch1-1 (linux@archlinux) (gcc (GCC) 16.1.1 20260430, GNU ld (GNU Binutils) 2.46.0) #1 SMP PREEMPT_DYNAMIC Sat, 23 May 2026 14:21:20 +0000
 
 
-Kernel boot command-line (see also /l/logs.nightly/2026.11.11.18.03.34/proc_cmdline.txt): cmd='cat /proc/cmdline' BOOT_IMAGE=/boot/vmlinuz-linux root=UUID=d43378d5-fd9f-488a-a69b-73d83768f2d1 rw nowatchdog mitigations=off random.trust_cpu=1 nokaslr norandmaps loglevel=3 acpi_enforce_resources=lax amd_pstate=active cpufreq.default_governor=performance
+Kernel boot command-line (see also /l/logs.nightly/2026.11.12.18.03.31/proc_cmdline.txt): cmd='cat /proc/cmdline' BOOT_IMAGE=/boot/vmlinuz-linux root=UUID=d43378d5-fd9f-488a-a69b-73d83768f2d1 rw nowatchdog mitigations=off random.trust_cpu=1 nokaslr norandmaps loglevel=3 acpi_enforce_resources=lax amd_pstate=active cpufreq.default_governor=performance
 
 
-Loaded kernel modules (see also /l/logs.nightly/2026.11.11.18.03.34/lsmod.txt): cmd='lsmod'
+Loaded kernel modules (see also /l/logs.nightly/2026.11.12.18.03.31/lsmod.txt): cmd='lsmod'
 Module                  Size  Used by
 veth                   40960  0
 nf_conntrack_netlink    61440  0
@@ -1334,10 +1361,10 @@ hkdf                   12288  1 nvme_auth
 wmi                    36864  5 video,asus_wmi,wmi_bmof,mxm_wmi,nouveau
 
 
-Preempt mode (see also /l/logs.nightly/2026.11.11.18.03.34/preempt.txt): cmd='sudo cat /sys/kernel/debug/sched/preempt' (full) lazy
+Preempt mode (see also /l/logs.nightly/2026.11.12.18.03.31/preempt.txt): cmd='sudo cat /sys/kernel/debug/sched/preempt' (full) lazy
 
 
-Linux standard base version (see also /l/logs.nightly/2026.11.11.18.03.34/lsb.txt): cmd='lsb_release -a'
+Linux standard base version (see also /l/logs.nightly/2026.11.12.18.03.31/lsb.txt): cmd='lsb_release -a'
 LSB Version:	n/a
 Distributor ID:	Arch
 Description:	Arch Linux
@@ -1345,7 +1372,7 @@ Release:	rolling
 Codename:	n/a
 
 
-All installed packages&versions (see also /l/logs.nightly/2026.11.11.18.03.34/pacman.txt): cmd='pacman -Q'
+All installed packages&versions (see also /l/logs.nightly/2026.11.12.18.03.31/pacman.txt): cmd='pacman -Q'
 7zip 26.01-1
 abseil-cpp 20260107.1-1
 acl 2.3.2-2
@@ -2086,12 +2113,12 @@ zita-resampler 1.11.2-2
 zlib 1:1.3.2-3
 zlib-ng 2.3.3-1
 zstd 1.5.7-3
-luceneutil rev is 9fb038f58ec29e8f2fdfc529688c18589b7d9166
-LUCENE rev is 5a1e9d46e319ffa52e7842790e9af7cc7351f039
+luceneutil rev is 9b495fab300756f0ee86e75456fd1bb384f5d264
+LUCENE rev is 2aec368e588f7908689edacd07631a568597385e
 last successful Lucene rev 1c2072f028431da10c80b1d2307c6f56f9297aee, luceneutil rev 0258e1b95e752f775f8c19cff49bc166153fa2ef
-run ['git', 'log', '1c2072f028431da10c80b1d2307c6f56f9297aee^..5a1e9d46e319ffa52e7842790e9af7cc7351f039']
+run ['git', 'log', '1c2072f028431da10c80b1d2307c6f56f9297aee^..2aec368e588f7908689edacd07631a568597385e']
 No commit message asking for regold of results files
-[2026-11-11 18:03:35.005993] RUN: git clean -xfd
+[2026-11-12 18:03:31.883365] RUN: git clean -xfd
 Removing .gradle/
 Removing build-tools/build-infra-shadow/build/
 Removing build-tools/build-infra/.gradle/
@@ -2143,15 +2170,15 @@ Removing lucene/spatial-test-fixtures/build/
 Removing lucene/spatial3d/build/
 Removing lucene/suggest/build/
 Removing lucene/test-framework/build/
-[2026-11-11 18:03:35.237476]   took 0.2 sec
+[2026-11-12 18:03:32.114527]   took 0.2 sec
 will NOT regold results files but rather compare to last good result files
 Java command-line: /usr/lib/jvm/java-26-openjdk/bin/java --add-modules jdk.incubator.vector -Xmx32g -Xms32g -server -XX:+UseParallelGC -Djava.io.tmpdir=/l/tmp --enable-native-access=ALL-UNNAMED
 transparent_hugepages: [always] madvise never
 
-[2026-11-11 18:03:35.237642] RUN: /l/trunk.nightly/gradlew --stacktrace clean > /l/logs.nightly/2026.11.11.18.03.34/clean-lucene.log 2>&1
-[2026-11-11 18:03:39.530828]   took 4.3 sec
-[2026-11-11 18:03:39.530869] RUN: /l/trunk.nightly/gradlew jar > /l/logs.nightly/2026.11.11.18.03.34/jar-lucene.log 2>&1
-[2026-11-11 18:03:56.836176]   took 17.3 sec
+[2026-11-12 18:03:32.114637] RUN: /l/trunk.nightly/gradlew --stacktrace clean > /l/logs.nightly/2026.11.12.18.03.31/clean-lucene.log 2>&1
+[2026-11-12 18:03:36.519224]   took 4.4 sec
+[2026-11-12 18:03:36.519267] RUN: /l/trunk.nightly/gradlew jar > /l/logs.nightly/2026.11.12.18.03.31/jar-lucene.log 2>&1
+[2026-11-12 18:03:53.947890]   took 17.4 sec
 
 JAVA:
 WARNING: Using incubator modules: jdk.incubator.vector
